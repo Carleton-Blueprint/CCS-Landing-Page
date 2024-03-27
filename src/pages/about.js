@@ -1,9 +1,9 @@
 import React from 'react'
 import NavigationBar from '../components/NavigationBar'
-const HomePage = () => {
+const About = () => {
   return (
-    <div>HELLOO   <NavigationBar /></div>
+    <div><NavigationBar pathname={'about'}/></div>
   )
 }
 
-export default HomePage
+export default About

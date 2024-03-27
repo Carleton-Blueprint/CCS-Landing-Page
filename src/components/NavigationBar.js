@@ -1,7 +1,7 @@
 import React from 'react'
 
-const NavigationBar = ({location}) => {
-  const currentpath = location.pathname;
+const NavigationBar = (props) => {
+  const currentpath = props.pathname;
   const isCurrentPath = (page) =>{
     if (currentpath.startsWith(page)){
       return true;
@@ -10,7 +10,7 @@ const NavigationBar = ({location}) => {
   }
   
   return (
-    <div className=''>
+    <div className='container'>
       <div>{currentpath}</div>
       <div className='container flex gap-10'>
         <div className={`${currentpath === '/' ? 'font-bold' : 'font-normal'}`}>Home</div>
