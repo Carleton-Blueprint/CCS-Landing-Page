@@ -2,7 +2,7 @@ import React from 'react'
 import NavigationBar from '../components/NavigationBar'
 const About = () => {
   return (
-    <div><NavigationBar pathname={'about'}/></div>
+    <div><NavigationBar pathname={'/about'}/></div>
   )
 }
 
