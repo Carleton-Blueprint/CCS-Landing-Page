@@ -1,9 +1,11 @@
 import React from 'react'
+import React from 'react'
 
-function Form() {
+
+const Form = () => {
   return (
     <div className='container'>
-        <form name="contact" method="POST" netlify>
+        <form name="contact" method="POST">
             <label>
                 Name: 
                 <input type='text' name='name' id='name' style={{border: '1px solid black'}} /> {/*temp styling added to see form*/}
