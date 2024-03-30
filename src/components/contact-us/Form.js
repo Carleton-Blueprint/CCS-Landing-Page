@@ -4,7 +4,7 @@ import React from 'react'
 const Form = () => {
   return (
     <div className='container'>
-        <form name="contact" method="POST">
+        <form className="flex flex-col" name="contact">
             <label>
                 Name: 
                 <input type='text' name='name' id='name' style={{border: '1px solid black'}} /> {/*temp styling added to see form*/}

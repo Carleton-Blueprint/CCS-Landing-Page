@@ -11,7 +11,6 @@ const NavigationBar = (props) => {
   
   return (
     <div className='container'>
-      <div>{currentpath}</div>
       <div className='container flex gap-10'>
         <div className={`${currentpath === '/' ? 'font-bold' : 'font-normal'}`}>Home</div>
         <div className={`${isCurrentPath('/about') ? 'font-bold' : 'font-normal'}`}>About</div>
