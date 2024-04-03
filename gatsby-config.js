@@ -4,6 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `Carleton CUSEC Society`,
+    description: "Placeholder Description",
     siteUrl: `https://www.yourdomain.tld`
   },
   plugins: [{
