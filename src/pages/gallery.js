@@ -10,7 +10,7 @@ const ImageGallery = ({ data }) => {
     const [index, setIndex] = useState(0); //keep track of current display photos so they can shifted over at intervals
 
     useEffect(() => {
-        //interval to change the displayImages on (3 seconds)
+        //set an interval to change the index of the displayImages (3 seconds)
         const interval = setInterval(() => {
 
             //increase index, correct the value if its greater than the number of total images
@@ -26,8 +26,9 @@ const ImageGallery = ({ data }) => {
 
          
          return () => clearInterval(interval);
-    }, []);
+    }, [allImages.length]);
         
+    //when the index changes update the displayImages accordingly 
     useEffect(() => {
         if (index >= allImages.length) {
             setIndex(index % allImages.length);
@@ -47,7 +48,7 @@ const ImageGallery = ({ data }) => {
     );
 };
 
-// query to return all assests from the AboutUsGallery
+// query to return all galleryImages from the AboutUsGallery
 export const query = graphql`
   query {
     allContentfulAboutUsGallery {
