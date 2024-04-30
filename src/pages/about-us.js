@@ -1,5 +1,5 @@
 import React from "react"
-import AboutUsGallery from "../components/about-us-components/AboutUsGallery"
+import AboutUsGallery from "../components/about-us-components/gallery-components/AboutUsGallery"
 import { graphql } from "gatsby"
 
 const ImageGallery = ({ data }) => {
