@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 
 const ImageGallery = ({ data }) => {
     const galleryImages = data.allContentfulAboutUsGallery.nodes //all images the AboutUsGallery
-
+   
     return (
     <AboutUsGallery images={galleryImages} />
     )
