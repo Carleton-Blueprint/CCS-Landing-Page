@@ -13,7 +13,11 @@ const NavigationBar = (props) => {
     // change height based on screen
     <div className='container h-16'>
       {/* Add custom styles to tailwind config to match figma */}
-      <div className='flex w-screen justify-end items-center bg-gradient-to-r from-black from-23% to-red-700 gap-20  text-white font-poppins'>
+      <div className='flex sm:hidden md:hidden w-screen justify-end items-center bg-gradient-to-r from-black from-23% to-red-700 gap-20  text-white font-poppins'>
+        <div className='font-normal'>borgir</div>
+        <div></div>
+      </div>
+      <div className='hidden sm:flex md:flex w-screen justify-end items-center bg-gradient-to-r from-black from-23% to-red-700 gap-20  text-white font-poppins'>
         <div className={`${currentpath === '/' ? 'font-bold' : 'font-normal'}`}>HOME</div>
         <div className={`${isCurrentPath('/about') ? 'font-bold' : 'font-normal'}`}>ABOUT US</div>
         <div className={`${isCurrentPath('/events') ? 'font-bold' : 'font-normal'}`}>EVENTS</div>
