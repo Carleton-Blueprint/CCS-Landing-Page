@@ -1,5 +1,6 @@
 import React from 'react'
 import NavigationBar from '../components/base/NavigationBar'
+import Footer from '../components/base/Footer'
 import Form from '../components/contact-us/Form'
 import { Seo } from '../components/base/Seo'
 const HomePage = () => {
@@ -7,6 +8,7 @@ const HomePage = () => {
     <div>
       <NavigationBar pathname={'/'}/>
       <Form />
+      <Footer/>
     </div>
   )
 }
