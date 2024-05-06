@@ -104,11 +104,11 @@ const AboutUsGallery = (props) => {
     // Get default styles for visible images
     const baseStyle = `opacity-100 ${animationTypeString.current} ${animationTimeString.current}`;
     const zIndexAndSize = {
-      0: `z-20 w-60 h-48`,
-      1: `z-30 w-80 h-64`,
-      2: `z-40 w-[364px] h-80`,
-      3: `z-30 w-80 h-64`,
-      4: `z-20 w-60 h-48`
+      0: `z-20 w-[80px] h-14 md:w-[120px] md:h-24 lg:w-60 lg:h-48`,
+      1: `z-30 w-[120px] h-[88px] md:w-40 md:h-32 lg:w-80 lg:h-64`,
+      2: `z-40 w-[160px] h-[120px] md:w-[200px] md:h-40 lg:w-[400px] lg:h-80`,
+      3: `z-30 w-[120px] h-[88px] md:w-40 md:h-32 lg:w-80 lg:h-64`,
+      4: `z-20 w-[80px] h-14 md:w-[120px] md:h-24 lg:w-60 lg:h-48`
     };
   
     // Specific positioning logic
@@ -159,7 +159,7 @@ const AboutUsGallery = (props) => {
     animationTimeInt.current = duration
   }
   return (
-    <div className='flex flex-col items-center'>
+    <div className=' w-fit'>
       <div className='flex items-center h-fit gap-6 duration'>
   
         <div
@@ -180,7 +180,7 @@ const AboutUsGallery = (props) => {
           
         
         <div>
-          <div className="relative flex items-center h-80 w-[945px]">
+          <div className="relative flex items-center h-80 w-[230px] lg:w-[945px]">
               {allImages.map((image,index) =>(
                 <div className={`absolute ${getCss(index)}`}>
                   <GalleryImage key={image.galleryImage.id} url={image.galleryImage.gatsbyImageData} description={image.galleryImage.description} index = {index} brightness = {`${getBrightness(index)}`}/>
@@ -209,8 +209,9 @@ const AboutUsGallery = (props) => {
         </div>
     
 		  </div>
-
-      <GalleryDots imagesLength = {imagesLength} activeImage = {visibleImages[2]} callbackChangeImage = { (distance,direction) => handleImageNav(distance,direction)}/>
+      <div className='flex items-center justify-center'>
+        <GalleryDots imagesLength = {imagesLength} activeImage = {visibleImages[2]} callbackChangeImage = { (distance,direction) => handleImageNav(distance,direction)}/>
+      </div>
     </div>
   )
 }

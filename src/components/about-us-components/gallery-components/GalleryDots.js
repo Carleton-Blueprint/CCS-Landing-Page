@@ -43,7 +43,7 @@ const GalleryDots = (props) =>{
              className=' transition-all ease-in-out duration-200'
              onMouseEnter={(e) => e.target.setAttribute('fill', '#0292B7')}
              onMouseLeave={(e) => activeImage === index ? e.target.setAttribute('fill', '#08679D') : e.target.setAttribute('fill', '#D9D9D9') }
-             onClick={() => handleDotClick(index)}
+             onClick={(e) => {e.preventDefault(); handleDotClick(index)}}
              />
             </svg>
 
