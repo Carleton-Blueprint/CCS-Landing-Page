@@ -2,6 +2,7 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+
   siteMetadata: {
     title: `Carleton CUSEC Society`,
     description: "Placeholder Description",
@@ -19,4 +20,6 @@ module.exports = {
   "gatsby-transformer-sharp", 
   "gatsby-plugin-postcss"
   ]
+
+  
 };
