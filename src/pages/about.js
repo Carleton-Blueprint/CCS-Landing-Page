@@ -8,20 +8,21 @@ const About = ({data}) => {
   return (
     <>
       <div><NavigationBar pathname={'/about'}/></div>
-      <WhyAttend reasons = {data.allContentfulJoinReason.nodes}/>
+      <WhyAttend reasons = {data.allContentfulAttendReason.nodes}/>
     </>
   )
 }
 
 export const query = graphql`
   query MyQuery {
-    allContentfulJoinReason {
+    allContentfulAttendReason {
       nodes {
-        reason
+        subtitle
+        title
         id
       }
     }
-  } 
+  }
 `
 
 export default About
