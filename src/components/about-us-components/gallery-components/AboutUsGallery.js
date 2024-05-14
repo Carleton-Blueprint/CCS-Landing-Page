@@ -16,6 +16,7 @@ const AboutUsGallery = (props) => {
   const generateVisibleImages = (start,left) =>{
     movingLeft.current = left
     let pushVisibleImages = []
+    
     for (let i = start ; i<start+5 ; i++){
       pushVisibleImages.push(i % imagesLength)
     }
