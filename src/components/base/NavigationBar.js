@@ -1,8 +1,5 @@
 import React from 'react'
 
-import t from '../../images/icon.png'
-
-
 const NavigationBar = (props) => {
   const currentpath = props.pathname;
   const isCurrentPath = (page) =>{
@@ -15,7 +12,6 @@ const NavigationBar = (props) => {
   return (
     <div className='container'>
       <div className='container flex gap-10'>
-      
         <div className={`${currentpath === '/' ? 'font-bold' : 'font-normal'}`}>Home</div>
         <div className={`${isCurrentPath('/about') ? 'font-bold' : 'font-normal'}`}>About</div>
         <div className={`${isCurrentPath('/events') ? 'font-bold' : 'font-normal'}`}>Events</div>
