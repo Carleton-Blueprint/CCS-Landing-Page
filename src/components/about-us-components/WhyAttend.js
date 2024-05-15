@@ -6,10 +6,6 @@ const WhyAttend = (props) => {
   const movingLeft = useRef(false);
   const imagesLength = allImages.length;
   const startIndex = useRef(0);
-  const animationTimeInt = useRef(200);
-  const animationTimeString = useRef("duration-[200ms]");
-  const animationTypeString = useRef("ease-in-out");
-  const isRunning = useRef(false);
   const [visibleImages, setVisibleImages] = useState([0, 1, 2]);
 
   //returns an array of 5 image indexes
@@ -25,72 +21,18 @@ const WhyAttend = (props) => {
   //move visibleImages over by n
   //runs updateImages() n times
   //check if its the initial update (if not add a delay)
-  const increment = (n, isInitial) => {
-    if (n <= 0) {
-      isRunning.current = false;
-      animationTypeString.current = "ease-in-out";
-      return;
-    }
-
-    // Set the animation type to ease in out if its just a one move over. set to linear if the move is more than one.
-    animationTypeString.current =
-      n === 1 && isInitial ? "ease-in-out" : "ease-linear";
-
-    const updateImages = () => {
+  const increment = () => {
       const start = (startIndex.current + 1) % imagesLength;
       startIndex.current = start;
-      setVisibleImages(generateVisibleImages(startIndex.current, false));
-      increment(n - 1, false);
-    };
-
-    // Execute updateImages immediately if isInitial, else with a delay
-    if (isInitial) {
-      updateImages();
-    } else {
-      setTimeout(updateImages, animationTimeInt.current);
-    }
+      setVisibleImages(generateVisibleImages(startIndex.current, false));   
   };
 
   //assuming same as increment but go backwards
-  const decrement = (n, isInitial) => {
-    if (n <= 0) {
-      isRunning.current = false;
-      animationTypeString.current = "ease-in-out";
-      return;
-    }
-    // Set the animation type to ease in out if its just a one move over. set to linear if the move is more than one.
-    animationTypeString.current =
-      n === 1 && isInitial ? "ease-in-out" : "ease-linear";
-
-    const updateImages = () => {
-      let start = startIndex.current - 1;
-      if (start === -1) start = imagesLength - 1; // Wrap around if index goes below 0
-      startIndex.current = start;
-      setVisibleImages(generateVisibleImages(startIndex.current, true));
-      decrement(n - 1, false);
-    };
-
-    // Execute updateImages immediately if isInitial, else with a delay
-    if (isInitial) {
-      updateImages();
-    } else {
-      setTimeout(updateImages, animationTimeInt.current);
-    }
-  };
-
-  //choose btwn increment and decrement correctly
-  //and set animation time
-  const handleImageNav = (distance, direction) => {
-    if (distance === -1 || isRunning.current) {
-      return;
-    }
-    setAnimationTime(distance);
-    isRunning.current = true;
-    if (direction) {
-      increment(distance, true);
-    } else {
-      decrement(distance, true);
-    }
+  const decrement = () => {
+    let start = startIndex.current - 1;
+    if (start === -1) start = imagesLength - 1; // Wrap around if index goes below 0
+    startIndex.current = start;
+    setVisibleImages(generateVisibleImages(startIndex.current, true))
   };
 
   //returns a diff brightness className depending on the image index
@@ -113,13 +55,12 @@ const WhyAttend = (props) => {
     if (!visibleImages.includes(imageIndex)) {
       return `${
         movingLeft.current ? "right-0" : "left-0"
-      } opacity-0 transition-all ${animationTypeString.current} ${
-        animationTimeString.current
+      } opacity-0 transition-all ease-in-out duration-[3000ms]
       } w-0 h-0`;
     }
 
     // Get default styles for visible images
-    const baseStyle = `opacity-100 ${animationTypeString.current} ${animationTimeString.current}`;
+    const baseStyle = `opacity-100 duration-[3000ms] ease-in-out`;
     const zIndexAndSize = {
       0: `z-30 w-[120px] h-[88px] md:w-40 md:h-32 lg:w-80 lg:h-64`,
       1: `z-40 w-[113px] h-[120px] md:w-[170px] md:h-40 lg:w-[341px] lg:h-64`,
@@ -146,29 +87,6 @@ const WhyAttend = (props) => {
     return `${positionStyle} ${baseStyle} ${
       zIndexAndSize[visibleImages.indexOf(imageIndex)]
     }`;
-  };
-
-  //set animationTimeString and animationTimeInt
-  const setAnimationTime = (skipDistance) => {
-    let duration, durationString;
-
-    switch (skipDistance) {
-      case 1:
-        duration = 200;
-        durationString = "duration-[200ms]";
-        break;
-      case 2:
-      case 3:
-        duration = 100;
-        durationString = "duration-[100ms]";
-        break;
-      default:
-        duration = 50;
-        durationString = "duration-[50ms]";
-        break;
-    }
-    animationTimeString.current = durationString;
-    animationTimeInt.current = duration;
   };
 
   return (
@@ -202,7 +120,7 @@ const WhyAttend = (props) => {
                 "bg-[#ABAAAA] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full m-2")
             }
             onClick={() => {
-              setAnimationTime(1);
+          
               decrement(1, true, true);
             }}
             onMouseDown={(e) => e.preventDefault()}
@@ -227,7 +145,7 @@ const WhyAttend = (props) => {
               "bg-[#ABAAAA] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full m-2")
           }
           onClick={() => {
-            setAnimationTime(1);
+         
             increment(1, true, true);
           }}
           onMouseDown={(e) => e.preventDefault()}

@@ -3,8 +3,10 @@ import NavigationBar from '../components/base/NavigationBar'
 import WhyAttend from '../components/about-us-components/WhyAttend'
 import { Seo } from '../components/base/Seo'
 import { graphql } from 'gatsby'
+import AboutUsGallery from '../components/about-us-components/AboutUsGallery'
 
 const About = ({data}) => {
+  const galleryImages = data.allContentfulAboutUsGallery.nodes //all images the AboutUsGallery
   return (
     <>
       <div><NavigationBar pathname={'/about'}/></div>
@@ -20,6 +22,15 @@ export const query = graphql`
         subtitle
         title
         id
+      }
+    }
+    allContentfulAboutUsGallery {
+      nodes {
+        galleryImage {
+          id
+          url
+          description
+        }
       }
     }
   }
