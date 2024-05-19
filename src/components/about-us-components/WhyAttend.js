@@ -53,14 +53,11 @@ const WhyAttend = (props) => {
   const getCss = (imageIndex) => {
     // Early return for images not currently visible
     if (!visibleImages.includes(imageIndex)) {
-      return `${
-        movingLeft.current ? "right-0" : "left-0"
-      } opacity-0 transition-all ease-in-out duration-[3000ms]
-      } w-0 h-0`;
+      return `${movingLeft.current ? "right-0" : "left-0"} opacity-0 transition-all ease-in-out duration-200 w-0 h-0`;
     }
 
     // Get default styles for visible images
-    const baseStyle = `opacity-100 duration-[3000ms] ease-in-out`;
+    const baseStyle = `opacity-100 duration-200 ease-in-out`;
     const zIndexAndSize = {
       0: `z-30 w-[120px] h-[88px] md:w-40 md:h-32 lg:w-80 lg:h-64`,
       1: `z-40 w-[113px] h-[120px] md:w-[170px] md:h-40 lg:w-[341px] lg:h-64`,
@@ -72,13 +69,13 @@ const WhyAttend = (props) => {
 
     switch (visibleImages.indexOf(imageIndex)) {
       case 0:
-        positionStyle = "left-1/4 transform -translate-x-1/2 transition-all";
+        positionStyle = "left-0 transition-all";
         break;
       case 1:
-        positionStyle = "left-1/2 transform -translate-x-1/2 transition-all";
+        positionStyle = "left-1/2  transform -translate-x-1/2  transition-all";
         break;
       case 2:
-        positionStyle = "left-3/4 transform -translate-x-1/2 transition-all";
+        positionStyle = "right-0 transition-all";
         break;
       default:
         break;
@@ -91,7 +88,7 @@ const WhyAttend = (props) => {
 
   return (
     <div>
-      <div className="relative flex items-center h-80 lg:w-[945px]">
+      <div className="relative flex items-center h-80 lg:w-[750px]">
         {props.reasons.map((r, index) => {
           return (
             <div className={`absolute ${getCss(index)}`}>
@@ -107,7 +104,7 @@ const WhyAttend = (props) => {
         })}
       </div>
 
-      <div className="flex justify-center items-align lg:w-[945px] mt-16">
+      <div className="flex justify-center items-align lg:w-[750px] mt-16">
 
           <div
             className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full m-2"

@@ -1,6 +1,4 @@
 import React from "react";
-import decadron from "../../images/decadron.png";
-import { GatsbyImage } from "gatsby-plugin-image";
 
 const AttendReason = (props) => {
   return (
@@ -17,16 +15,27 @@ const AttendReason = (props) => {
         </p>
       </div> */}
 
-      <img
-        className={`object-cover object-center  rounded-lg drop-shadow-md ${props.brightness}`}
-        src={decadron}
-        alt={props.title}
-      />
-      <div class={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center`}>
-        <h2 class="text-xl font-bold">{props.title}</h2>
-        <br/>
-        <p class="text-base">{props.subtitle}</p>
-      </div>
+      <svg width="341" height="360" viewBox="0 0 341 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+              <linearGradient id="diagonalGradient" x1="1" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#D31921" />
+                  <stop offset="100%" stopColor="#240406" />
+              </linearGradient>
+              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feOffset result="offOut" in="SourceAlpha" dx="0" dy="3" />
+                  <feGaussianBlur result="blurOut" in="offOut" stdDeviation="2" />
+                  <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+              </filter>
+          </defs>
+          
+          <path d="M170.878 0.454032L69.5595 32.7601L5.94979 115.895L4.57035 225.991L66.1252 315.355L170.713 351.469L272.55 316.672L336.549 229.305L336.714 121.75L274.293 34.9018L170.878 0.454032Z" fill="url(#diagonalGradient)" filter="url(#shadow)"/>
+          
+    
+          <text x="50%" y="25%" dominant-baseline="middle" text-anchor="middle" fill="white" fontSize='25px' fontWeight='500' fontFamily="poppins">{props.title}</text>
+
+      </svg>
+
+
     </div>
   );
 };
