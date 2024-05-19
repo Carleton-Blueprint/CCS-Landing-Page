@@ -11,6 +11,10 @@ const About = ({data}) => {
     <>
       <div><NavigationBar pathname={'/about'}/></div>
       <WhyAttend reasons = {data.allContentfulAttendReason.nodes}/>
+  
+
+
+
     </>
   )
 }
