@@ -6,9 +6,13 @@ module.exports = {
   ],
   theme: {
     extend: {
-      
+    
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'] // Add the font family you want
+      },
+      boxShadow: {
+        'dark-bottom-left': '-3px 3px 4px rgba(0, 0, 0, 0.9)', // adjust values as needed
+        'dark-bottom': '0px 3px 4px rgba(0, 0, 0, 0.9)',
       }
       
     },

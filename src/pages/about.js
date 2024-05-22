@@ -1,3 +1,4 @@
+
 import React from "react";
 import NavigationBar from "../components/base/NavigationBar";
 import { Seo } from "../components/base/Seo";
