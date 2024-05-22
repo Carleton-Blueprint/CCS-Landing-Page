@@ -3,7 +3,7 @@ import NavigationBar from '../components/base/NavigationBar'
 import WhyAttend from '../components/about-us-components/WhyAttend'
 import { Seo } from '../components/base/Seo'
 import { graphql } from 'gatsby'
-import AboutUsGallery from '../components/about-us-components/AboutUsGallery'
+import AboutUsGallery from '../components/about-us-components/gallery-components/AboutUsGallery'
 
 const About = ({data}) => {
   const galleryImages = data.allContentfulAboutUsGallery.nodes //all images the AboutUsGallery
@@ -11,6 +11,10 @@ const About = ({data}) => {
     <>
       <div><NavigationBar pathname={'/about'}/></div>
       <WhyAttend reasons = {data.allContentfulAttendReason.nodes}/>
+  
+
+
+
     </>
   )
 }
