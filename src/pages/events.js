@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EventBlock from '../components/events-components/EventBlock';
+import CusecInfoLink from '../components/events-components/CusecInfoLink';
 import { graphql } from "gatsby";
 import { Seo } from '../components/base/Seo';
 
@@ -69,6 +70,8 @@ const Events = (props) => {
 
               }
           </div>
+        
+        <CusecInfoLink/>
 
       </div>
 
