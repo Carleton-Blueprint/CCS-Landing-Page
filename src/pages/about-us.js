@@ -3,11 +3,10 @@ import AboutUsGallery from '../components/about-us-components/gallery-components
 import WhyAttend from '../components/about-us-components/WhyAttend'
 import Statistics from '../components/about-us-components/AboutUsStatistics'
 import { graphql } from 'gatsby'
+import { Seo } from '../components/base/Seo'
 const ImageGallery = ({ data }) => {
     const galleryImages = data.allContentfulAboutUsGallery.nodes //all images the AboutUsGallery
     const bodySections = data.contentfulAboutPage.aboutUsSection
-
-    
     return (
       <div className=' flex flex-col'>
         <div className='flex justify-center items-center'>
@@ -84,5 +83,9 @@ query{
   }
 }
 `;
+
+export const Head = () => (
+  <Seo title = "About" description="This is the about page"/>
+)
 
 export default ImageGallery;
