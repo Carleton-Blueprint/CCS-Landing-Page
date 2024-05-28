@@ -1,6 +1,7 @@
 import React from 'react'
 import NavigationBar from '../components/base/NavigationBar'
 import Form from '../components/contact-us-components/Form'
+import Home from '../components/home-components/Home'
 import { Seo } from '../components/base/Seo'
 import { graphql } from "gatsby"
 
@@ -9,8 +10,7 @@ const HomePage = ({data}) => {
   return (
     <div>
       <NavigationBar pathname={'/'}/>
-      <Form />
-
+      <Home/>
     </div>
   )
 }
