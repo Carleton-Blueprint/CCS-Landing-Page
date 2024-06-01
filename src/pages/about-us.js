@@ -67,6 +67,14 @@ query{
       subtitle
       title
       id
+      icon{
+        gatsbyImageData(
+          layout: CONSTRAINED
+          placeholder: BLURRED
+          width: 600
+          formats: [AUTO, WEBP, AVIF]
+        )
+      }
     }
   }
   allContentfulAboutUsGallery {
