@@ -20,11 +20,12 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  result.data.allContentfulSpecificEventPage.nodes.forEach(node => {
+  result.data.allContentfulEvent.nodes.forEach((node) => {
     createPage({
-      path: `events/${node.slug}`,
-      component: EventTemplate, // Corrected component path
+      path: `/events/${node.slug}`,
+      component: path.resolve(`./src/templates/eventTemplate.js`),
       context: {
+        slug: node.slug,
         title: node.eventName,
       },
     });
