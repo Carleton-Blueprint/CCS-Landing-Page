@@ -1,28 +1,32 @@
 const path = require(`path`);
-import { graphql } from "gatsby";
 
 // Create blog pages dynamically
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-  const blogPostTemplate = path.resolve(`src/templates/blog-post.js`)
+  const { createPage } = actions;
+  const EventTemplate = path.resolve(`src/templates/EventTest.js`);
   const result = await graphql(`
     query {
-        allContentfulSpecificEventPage {
-            nodes {
-            slug
-            eventName
+      allContentfulSpecificEventPage {
+        nodes {
+          slug
+          eventName
+        }
+      }
     }
+  `);
+
+  if (result.errors) {
+    console.error(result.errors);
+    throw result.errors;
   }
-}
-`)
-  result.data.allContetnfulSpecificEventPage.nodes.forEach(node => {
-    console.log("Hello");
+
+  result.data.allContentfulSpecificEventPage.nodes.forEach(node => {
     createPage({
       path: `events/${node.slug}`,
-      component: path.resolve(`./src/template/EventTest.js`),
+      component: EventTemplate, // Corrected component path
       context: {
         title: node.eventName,
       },
-    })
-  })
-}
+    });
+  });
+};

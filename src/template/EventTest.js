@@ -8,11 +8,3 @@ const EventTest = () => {
 }
 
 export default EventTest
-
-
-export const query = graphql`
-  query($slug:String!) {
-  contentfulSpecificEventPage(slug: {eq: $slug}) {
-    eventName
-  }
-}`
