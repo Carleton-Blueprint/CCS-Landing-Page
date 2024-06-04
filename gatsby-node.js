@@ -1,9 +1,8 @@
 const path = require(`path`);
-
 // Create blog pages dynamically
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const EventTemplate = path.resolve(`src/templates/EventTest.js`);
+  const EventTemplate = path.resolve(`src/templates/eventTemplate.js`);
   const result = await graphql(`
     query {
       allContentfulSpecificEventPage {
@@ -20,13 +19,13 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  result.data.allContentfulEvent.nodes.forEach((node) => {
+
+  result.data.allContentfulSpecificEventPage.nodes.forEach(({ slug }) => {
     createPage({
-      path: `/events/${node.slug}`,
-      component: path.resolve(`./src/templates/eventTemplate.js`),
+      path: `/events/${slug}`,
+      component: EventTemplate,
       context: {
-        slug: node.slug,
-        title: node.eventName,
+        slug: slug,
       },
     });
   });
