@@ -10,7 +10,7 @@ const HomePage = ({data}) => {
     <div className='bg-red-200 h-screen'>
       <NavigationBar pathname={'/'}/>
       <Form />
-      <HomeImageCarousel images={data.allContentfulAboutUsGallery.nodes} size = 'lg'/>
+      <HomeImageCarousel images={data.allContentfulAboutUsGallery.nodes} size = 'sm'/>
     </div>
   )
 }
