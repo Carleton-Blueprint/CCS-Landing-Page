@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import EventBlock from '../components/events-components/EventBlock';
 import { graphql } from "gatsby";
 import { Seo } from '../components/base/Seo';
+import EventFilter from '../components/events-components/EventFilter';
 
 
 const Events = (props) => {
@@ -50,6 +51,7 @@ const Events = (props) => {
       <div>
         <button onClick={() => setRenderingPresent(true)} className=' bg-slate-200'>Present</button>
         <button onClick = {() =>  setRenderingPresent(false)}className=' bg-yellow-200'>Past</button>
+        <EventFilter data={props.data}/>
           <div className=' grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'>
               {
               
