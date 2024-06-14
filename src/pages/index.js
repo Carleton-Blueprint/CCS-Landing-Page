@@ -8,7 +8,7 @@ import TitleBackground from '../components/base/TitleBackground'
 
 const HomePage = ({data}) => {
   return (
-    <div className='bg-black'>
+    <div>
       <TitleBackground title = "CUSEC 2024"/>
       <NavigationBar pathname={'/'}/>
       <Form />
