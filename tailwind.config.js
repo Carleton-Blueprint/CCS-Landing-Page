@@ -6,7 +6,18 @@ module.exports = {
   ],
   theme: {
     extend: {
-    
+      container: {
+        screens:{
+          sm : '100%',
+          md: '100%',
+          lg: '100%',
+          xl: '100%',
+        }
+      },
+      colors: {
+        'nero' : '#252525',
+        'red-stop' : '#912024'
+      },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'] // Add the font family you want
       },
