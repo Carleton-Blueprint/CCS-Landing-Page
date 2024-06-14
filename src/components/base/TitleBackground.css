@@ -1,0 +1,19 @@
+.masked-div {
+
+  /* Mask image using direct SVG or base64 */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg id='Layer_2' data-name='Layer 2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Cpath d='m1920,884s-238.01,150-485.96,150c-183.3,0-376.04-104-474.04-150-95.58-44.86-304.06-150-493.26-150C225.86,734,0,884,0,884V0h1920v884Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg id='Layer_2' data-name='Layer 2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Cpath d='m1920,884s-238.01,150-485.96,150c-183.3,0-376.04-104-474.04-150-95.58-44.86-304.06-150-493.26-150C225.86,734,0,884,0,884V0h1920v884Z'/%3E%3C/svg%3E");
+  
+  /* Adjust the size of the mask to match the div size */
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  
+  /* Ensure the mask scales with the div */
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  
+  /* Clip everything outside the mask */
+  overflow: hidden;
+
+
+}
