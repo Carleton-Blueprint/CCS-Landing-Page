@@ -27,8 +27,10 @@ const Member = (props) => {
                 </div>
             </div>
             <div className="mt-[20px]">
-                <h1 className="text-xl font-bold text-center">{props.member.name}</h1>
-                <h3 className="text-md font-bold text-center">{props.member.position}</h3>
+                <h1 className="text-2xl font-bold text-center">{props.member.name}</h1>
+                <h3 className="text-md font-bold text-center">{props.member.position1}</h3>
+                {props.member.position2 == 'None' ? <></> : <h3 className="text-md font-bold text-center">{props.member.position2}</h3>}
+                
                 <p className="text-sm ml-[-10px] mr-[-20px]">{props.member.description}</p>
             </div>
         </div>

@@ -15,7 +15,8 @@ query MyQuery {
       nodes {
         id
         name
-        position
+        position1
+        position2
         year
         description
         email
