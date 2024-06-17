@@ -26,12 +26,11 @@ const Member = (props) => {
                     </a>
                 </div>
             </div>
-            <div className="mt-[20px]">
+            <div className="mt-[20px] ml-[-10px] mr-[-20px]">
                 <h1 className="text-2xl font-bold text-center">{props.member.name}</h1>
-                <h3 className="text-md font-bold text-center">{props.member.position1}</h3>
-                {props.member.position2 == 'None' ? <></> : <h3 className="text-md font-bold text-center">{props.member.position2}</h3>}
-                
-                <p className="text-sm ml-[-10px] mr-[-20px]">{props.member.description}</p>
+                <h3 className="text-sm font-bold text-center">{props.member.position2 === 'None' ? props.member.position1 : props.member.position1+'/'+props.member.position2}</h3>
+                <h3 className="text-sm font-bold text-center">{props.member.standing} year {props.member.program}</h3>
+                <p className="text-sm">{props.member.description}</p>
             </div>
         </div>
 

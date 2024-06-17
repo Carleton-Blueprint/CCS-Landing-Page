@@ -21,6 +21,8 @@ query MyQuery {
         description
         email
         linkedin
+        standing
+        program
         headshot {
           file {
             fileName
