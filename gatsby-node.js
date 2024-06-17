@@ -4,13 +4,13 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const EventTemplate = path.resolve(`src/templates/eventTemplate.js`);
   const result = await graphql(`
-    query {
-      allContentfulSpecificEventPage {
-        nodes {
-          slug
-          eventName
+      query {
+        allContentfulFeaturedEvent {
+          nodes{
+            slug
+            featureDetailedEventPage
+          }
         }
-      }
     }
   `);
 
@@ -19,8 +19,8 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-
-  result.data.allContentfulSpecificEventPage.nodes.forEach(({ slug }) => {
+  result.data.allContentfulFeaturedEvent.nodes.forEach(({ slug, featureDetailedEventPage }) => {
+    featureDetailedEventPage && 
     createPage({
       path: `/events/${slug}`,
       component: EventTemplate,
