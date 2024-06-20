@@ -40,10 +40,16 @@ background: linear-gradient(180deg, rgba(99,25,25,0.241421568627451) 0%, rgba(99
 .date-day{
     font-size: 40px;
     font-family: 'poppins';
+    background: -webkit-linear-gradient(#E91C24, #000000);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 
 }
 .date-month{
     font-size: 22px;
+    transform: translateY(-10px);
+    font-weight: 400;
 }
 }
 .main-container{

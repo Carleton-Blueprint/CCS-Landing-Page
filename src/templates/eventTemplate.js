@@ -68,6 +68,14 @@ const EventTemplate = ({ data }) => {
         return "Dec"
     }
   }
+  const handleCopy = async (content) => {
+    try {
+      await navigator.clipboard.writeText(content);
+      console.log('Copied to clipboard:', content);
+    } catch (error) {
+      console.error('Unable to copy to clipboard:', error);
+    }
+  };
   return (
     <div>
       <div className="relative fitdiv">
