@@ -85,6 +85,8 @@ export const query = graphql`
         description{
           raw
         }
+        slug
+        featureDetailedEventPage
       }
     }
   }
