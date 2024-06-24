@@ -2,7 +2,6 @@ import React from 'react'
 import NavigationBar from '../components/base/NavigationBar'
 import Form from '../components/contact-us-components/Form'
 import { Seo } from '../components/base/Seo'
-import { graphql } from "gatsby"
 
 
 const HomePage = ({data}) => {

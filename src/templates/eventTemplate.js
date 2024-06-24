@@ -66,8 +66,14 @@ const EventTemplate = ({ data }) => {
         return "Nov"
       case 12:
         return "Dec"
+      default:
+       console.log("ERROR::eventTemplate.js - Invalid switch case");
+       return;
     }
   }
+
+  /*
+  TO DO: ADD COPY EVENT FUNCTIONALITY
   const handleCopy = async (content) => {
     try {
       await navigator.clipboard.writeText(content);
@@ -75,7 +81,8 @@ const EventTemplate = ({ data }) => {
     } catch (error) {
       console.error('Unable to copy to clipboard:', error);
     }
-  };
+  }; */
+  
   return (
     <div>
       <div className="relative fitdiv">

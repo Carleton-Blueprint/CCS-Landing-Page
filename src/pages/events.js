@@ -3,7 +3,6 @@ import EventBlock from '../components/events-components/EventBlock';
 import EventsTitle from '../components/events-components/EventsTitle';
 import { graphql } from "gatsby";
 import { Seo } from '../components/base/Seo';
-import { render } from 'react-dom';
 
 
 const Events = (props) => {
@@ -65,19 +64,19 @@ const Events = (props) => {
           </div> 
           <hr className="mt-[-3px] mr-16 ml-16 mb-16 border-gray-500"  style={{"borderWidth": "1px"}}/>
 
-          <div className=' grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'>
+          <div className='grid grid-cols-1  md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'>
               {
               
               renderingPresent ?
               
               availableEvents.map((eventNode, index) => (
-                <div className='flex  justify-center'>
+                <div className='flex justify-center'>
                   <EventBlock event={eventNode} index={index} />
                 </div>
               ))
               :
               pastEvents.map((eventNode, index) => (
-                <div className='flex  justify-center'>
+                <div className='flex justify-center'>
                   <EventBlock event={eventNode} index={index} />
                 </div>
               ))

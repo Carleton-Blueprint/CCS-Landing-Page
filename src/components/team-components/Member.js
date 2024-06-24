@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import mailIcon from "../../images/mail-icon.png"
 import linkedinIcon from "../../images/linkedin-icon.png"
 
 const Member = (props) => {
@@ -10,6 +9,7 @@ const Member = (props) => {
     const headshotStyle = {
         'backgroundImage': 'url('+url+')',
     }
+    
     const overlayStyle = {
         'backgroundSize': '100% 200%',
         'backgroundPosition': isHovering ? '100% 100%' : '100% 50%',
@@ -20,7 +20,7 @@ const Member = (props) => {
         <div className="bg-cover w-[200px] h-[300px] rounded-tr-3xl rounded-bl-3xl " style={headshotStyle}>
             <div onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} className="transition-all duration-6000 ease-linear top-0 left-0  w-[200px] h-[300px] rounded-tr-3xl rounded-bl-3xl" style={overlayStyle}>
                 
-                <div className={isHovering ? "flex relative top-[82%] left-[70%]" : "flex relative top-[80%] left-[45%] hidden"}>
+                <div className="hover:flex hover:relative hover:top-[82%] hover:left-[70%] flex relative top-[80%] left-[45%] hidden">
                     <a href={props.member.linkedin} target="_blank" rel="noreferrer" className="border-2 border-black rounded-full w-[40px] p-[7px] m-[5px] h-[40px] hover:bg-red-300">
                         <img src={linkedinIcon} alt="linkedin"/>
                     </a>

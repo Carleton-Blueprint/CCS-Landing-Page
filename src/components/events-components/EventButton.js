@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 
 const convertRichTextToPlainText = (json) => {
     // Parse the JSON string into an object
