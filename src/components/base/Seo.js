@@ -13,6 +13,7 @@ export const Seo = ({ title, description}) => {
     <>
       <title>{seo.title + " | Carleton CUSEC Society"}</title>
       <meta name="description" content={seo.description} />
+      
     </>
   )
 
