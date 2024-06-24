@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import EventBlock from '../components/events-components/EventBlock';
+import EventsTitle from '../components/events-components/EventsTitle';
 import { graphql } from "gatsby";
 import { Seo } from '../components/base/Seo';
+import { render } from 'react-dom';
 
 
 const Events = (props) => {
@@ -41,15 +43,28 @@ const Events = (props) => {
           const dateOfEventB = new Date(b.startDate);
           return dateOfEventB - dateOfEventA; // Descending order for past dates
         });
-
+        
         setPastEvents(filteredEventsPast);
-    }, [eventsData]);
+      }, [eventsData]);
+      
+      return (
+        
+        <div>
+          <EventsTitle/>
 
-    return (
+          <div className='flex justify-center items-align'>
+            <div className='flex flex-col mr-8'>
+              <button onClick={() => setRenderingPresent(true)} className={renderingPresent ? "text-red-500" : ""} >Present</button>
+              <hr className='mt-4 border-red-500' width="50px" style={{"borderWidth": renderingPresent ? "3px" : "0"}}/>
+              
+            </div>
+            <div className='flex flex-col ml-8'>
+              <button onClick = {() =>  setRenderingPresent(false)} className={renderingPresent ? "": "text-red-500"} >Past</button>
+              <hr className='mt-4 border-red-500' width="50px" style={{"borderWidth": renderingPresent ? "0" : "3px"}}/>
+            </div>
+          </div> 
+          <hr className="mt-[-3px] mr-16 ml-16 mb-16 border-gray-500"  style={{"borderWidth": "1px"}}/>
 
-      <div>
-        <button onClick={() => setRenderingPresent(true)} className=' bg-slate-200'>Present</button>
-        <button onClick = {() =>  setRenderingPresent(false)}className=' bg-yellow-200'>Past</button>
           <div className=' grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'>
               {
               
@@ -69,6 +84,7 @@ const Events = (props) => {
 
               }
           </div>
+        
 
       </div>
 
