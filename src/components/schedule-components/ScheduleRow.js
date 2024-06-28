@@ -13,8 +13,8 @@ const ScheduleRow = ({eventRow}) => {
         <div className="m-10 text-white  grid-cols-1 flex p-8">
             <div className="pr-[20px] mr-[20px]">
 
-                <p className=" text-lg font-bold">{eventRow.startTime.toUpperCase()}</p>
-                <p className={`relative bottom-[-${time}px] text-lg font-bold`}>{eventRow.endTime.toUpperCase()}</p>
+                <p className=" text-lg">{eventRow.startTime.substr(0, eventRow.startTime.length-2)+" "+eventRow.startTime.substr(-2).toUpperCase()}</p>
+                <p className={`relative bottom-[-${time}px] text-lg`}>{eventRow.endTime.substr(0, eventRow.endTime.length-2)+" "+eventRow.endTime.substr(-2).toUpperCase()}</p>
             </div>
             <div>
                 {eventRow.eventBlock.map(element => {
