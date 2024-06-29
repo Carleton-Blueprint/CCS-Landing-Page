@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
+    "encoding": "^0.1.13",
     "framer-motion": "^11.2.10",
     "gatsby": "^5.13.3",
     "gatsby-plugin-image": "^3.13.1",
