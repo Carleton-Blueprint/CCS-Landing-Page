@@ -9,7 +9,7 @@ const Header = (props) => {
       <img
         className="object-contain w-screen"
         src={props.background}
-        alt="Contact Us Background"
+        alt="Header Background"
       />
     </div>
   );
