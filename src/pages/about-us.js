@@ -8,19 +8,19 @@ const ImageGallery = ({ data }) => {
     const galleryImages = data.allContentfulAboutUsGallery.nodes //all images the AboutUsGallery
     const bodySections = data.contentfulAboutPage.aboutUsSection
     return (
-      <div className=' flex flex-col'>
-        <div className='flex justify-center items-center'>
+      <div className='flex flex-col '>
+        <div className='flex items-center justify-center'>
           <AboutUsGallery images={galleryImages} />
         </div>
         
         <div className='flex justify-center'>
-          <div className=' w-4/5 flex flex-col justify-center gap-3 lg:gap-14'>
+          <div className='flex flex-col justify-center w-4/5 gap-3 lg:gap-14'>
             {bodySections.map((node) =>(
               <div>
                 <div className='font-poppins text-2xl md:text-3xl lg:text-5xl font-semibold text-[#ABAAAA]'>
                   {node.title}
                 </div>
-                <div className='font-poppins text-sm md:text-md lg:text-lg pt-3 lg:pt-8'>
+                <div className='pt-3 text-sm font-poppins md:text-md lg:text-lg lg:pt-8'>
                   {node.bodyText.bodyText}
                 </div>
               </div>
@@ -29,7 +29,7 @@ const ImageGallery = ({ data }) => {
           </div>
         </div>
         <div className='font-poppins text-2xl md:text-3xl lg:text-5xl font-semibold text-[#ABAAAA] flex justify-center pt-16'>
-          <p className=' w-4/5 '>Why Attend?</p>
+          <p className='w-4/5 '>Why Attend?</p>
         </div>
         <div className='flex justify-center pt-16'>
           <WhyAttend reasons = {data.allContentfulAttendReason.nodes}/>
