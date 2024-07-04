@@ -68,29 +68,32 @@ const EventTemplate = ({ data }) => {
         return "Dec"
     }
   }
-  const handleCopy = async (content) => {
+  const handleCopy = async (e,content) => {
+    e.preventDefault()
     try {
       await navigator.clipboard.writeText(content);
-      console.log('Copied to clipboard:', content);
+      
     } catch (error) {
       console.error('Unable to copy to clipboard:', error);
     }
   };
   return (
     <div>
-      <div className="relative fitdiv">
-        <div className="absolute left-0 right-0 top-0 ">
+      <div className="fitdiv">
+        <div className="backgroundImg">
           
-          <GatsbyImage image = {event.primaryImage.gatsbyImageData} alt="primary image" loading="lazy" className ="gatsbyImage z-0"/>
+          <GatsbyImage image = {event.primaryImage.gatsbyImageData} alt="primary image" loading="lazy" className ="gatsbyImage"/>
         </div>
 
-        <div className="gatsbyImage-bg absolute left-0 right-0 top-0 z-20">
+        <div className="gatsbyImage-bg">
           <div className="main-container">
-            <div className="button-container flex justify-between">
+            <div className="back-container">
               <EventBackButton/>
-              <EventLinkButton/>
+              <div className="link-container" onClick={(e) => handleCopy(e,window.location.href)} onTouchEnd={(e) => handleCopy(e,window.location.href) }>
+                <EventLinkButton/>
+              </div>
             </div>
-            <div className="titleSection flex justify-between">
+            <div className="titleSection">
               <div className="eventTitle">{event.displayTitle}</div>
               <div className="date-container">
                 <div className="date-day font-normal">{eventDate.slice(8)}</div>

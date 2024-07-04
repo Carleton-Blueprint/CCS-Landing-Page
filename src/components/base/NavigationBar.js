@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from "framer-motion";
 
 const NavigationBar = (props) => {
@@ -12,7 +12,18 @@ const NavigationBar = (props) => {
     }
     return false;
   }
-  
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    // Cleanup when the component unmounts
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -27,7 +38,7 @@ const NavigationBar = (props) => {
     // change height based on screen
     <div className='container h-14 md:h-16'>
       {/* Add custom styles to tailwind config to match figma */}
-      <div className='flex md:hidden w-screen justify-end items-center bg-gradient-to-r bg-gradient-to-r from-neutral-900 to-red-700 gap-10 text-white font-poppins'>
+      <div className='flex md:hidden w-screen justify-end items-center bg-gradient-to-r  from-neutral-900 to-red-700 gap-10 text-white font-poppins'>
         <button className='relative z-50 pr-10' onClick={toggleMenu}> 
           {isMenuOpen 
           ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7"> <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
@@ -37,7 +48,7 @@ const NavigationBar = (props) => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div 
-              className='fixed top-0 left-0 w-screen h-screen bg-gradient-to-t from-neutral-900 via-red-900 to-red-800 text-4xl font-bold'
+              className='fixed top-0 left-0 w-screen h-screen bg-gradient-to-t from-neutral-900 via-red-900 to-red-800 text-4xl font-bold z-40'
               initial="hidden"
               animate="visible"
               exit="exit"
