@@ -26,39 +26,26 @@ const convertRichTextToPlainText = (json) => {
 }
 
 const EventButton = (props) => {
-    const [addedToCalendar, setAddedToCalendar] = useState(false)
     const plainDescription = convertRichTextToPlainText(props.description)
-    
-    const getCss = (added) =>{
-        if (added){
-            return ' bg-[#631919] text-white transition-all ease-out duration-100 '
-        }
-        return ' bg-[#D9D9D9] text-black transition-all ease-out duration-100'
-    }
 
     const handleAdd = (e) =>{
         e.preventDefault()
-        if (!addedToCalendar)
-        { 
-        
-            const formattedStartDate = props.date.replace(/-/g, '')+"T080000";
-            const formattedEndDate = props.date.replace(/-/g, '')+"T120000";
-            const location = "Carleton University"
-            const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(props.title)}&dates=${formattedStartDate}/${formattedEndDate}&details=${encodeURIComponent(plainDescription)}&location=${encodeURIComponent(location)}&sf=true&output=xml`;
-            window.open(url, '_blank');
       
-            
-        }
+    
+        const formattedStartDate = props.date.replace(/-/g, '')+"T080000";
+        const formattedEndDate = props.date.replace(/-/g, '')+"T120000";
+        const location = "Carleton University"
+        const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(props.title)}&dates=${formattedStartDate}/${formattedEndDate}&details=${encodeURIComponent(plainDescription)}&location=${encodeURIComponent(location)}&sf=true&output=xml`;
+        window.open(url, '_blank');
+      
         
-
-        setAddedToCalendar(!addedToCalendar)
     }
 
     return (
-    <div className={` rounded-full h-[30px] w-[150px] text-center shadow-dark-bottom-left ${getCss(addedToCalendar)} text-sm flex justify-center items-center cursor-pointer`}
+    <div className={` rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm flex justify-center items-center cursor-pointer bg-[#D9D9D9] hover:bg-[#9E7979] hover:shadow-sm active:bg-[#631919] active:Shadow-none active:text-[#D9D9D9] active:duration-75 active:ease-linear transition-all ease-in duration-200`}
         onClick={(e) => handleAdd(e)}
     >
-        {addedToCalendar ? "Added To Calendar" : "Add To Calendar"}
+        Add To Calendar
     </div>
     )
 }

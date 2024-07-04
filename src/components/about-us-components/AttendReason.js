@@ -1,5 +1,6 @@
 import React from "react";
 import { useState,useEffect } from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
 const AttendReason = (props) => {
   const [flipped , setFlipped] = useState(false)
   useEffect(()=>{
@@ -27,7 +28,16 @@ const AttendReason = (props) => {
         
               <text x="50%" y="25%" dominant-baseline="middle" text-anchor="middle" fill="white" fontSize='25px' fontWeight='500' fontFamily="poppins">{props.title}</text>
             </svg>
-            
+            <div className="absolute w-24">
+              {props.image && (
+                <GatsbyImage 
+                className={` object-contain object-center h-full w-full drop-shadow-md`}
+                image={props.image.gatsbyImageData}
+                 />
+              )
+              }
+            </div>
+
           </div>
           <div className="absolute [backface-visibility:hidden] w-full h-full [transform:rotateY(180deg)] flex items-center justify-center font-bold text-white">
             <svg width="341" height="360" viewBox="0 0 341 360" fill="none" xmlns="http://www.w3.org/2000/svg">
