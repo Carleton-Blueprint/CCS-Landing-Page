@@ -11,12 +11,12 @@ function Question(props) {
   return (
     // figure out overlap effect, add proper icons, integrate rich text renderer, add transitions?
     <div className="flex justify-center">
-      <div className={`border-t rounded-t-3xl border-gray-400 w-[40rem] text-white font-poppins ${isOpen ? 'bg-gradient-to-b from-nero to-red-stop ' : 'bg-nero'}`}>
+      <div className={`border-t rounded-t-3xl border-gray-400 w-[40rem] text-white font-poppins ${isOpen ? 'bg-gradient-to-b from-nero to-red-stop ' : ''}`}>
         <button 
-          className="w-full flex justify-between items-center pt-3 pb-4 px-4 "
+          className="w-full flex justify-between items-center pt-4 pb-4 px-4 "
           onClick={toggleOpen}
         >
-          <span>{question}</span>
+          <span className='mx-2'>{question}</span>
           <span className="toggle-icon">{isOpen ? '▲' : '▼'}</span>
         </button>
 
