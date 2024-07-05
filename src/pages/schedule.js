@@ -1,8 +1,8 @@
 import React from "react";
 import AllEvents from "../components/schedule-components/AllEvents"
-import ScheduleHeader from "../components/schedule-components/ScheduleHeader"
 import { graphql } from "gatsby";
 import { useState } from "react";
+import greyBackground from "../images/schedule-title-background.png"
 
 const Schedule = ({data}) => {
     console.log("schedule", data.allContentfulScheduleRow.nodes);
@@ -19,8 +19,9 @@ const Schedule = ({data}) => {
     const dayNumber = date
     return (
         <>
-        {/* <ScheduleHeader dayNumber={date} date={dates[date-1]}/> */}
-        <div className="flex justify-center items-align sticky top-0 p-8 bg-[#232323] w-screen" style={{'boxShadow': '0px 3px 10px #000000'}}>
+        {/*flex justify-center items-align sticky top-0 p-8 w-screen bg-[#232323]  */}
+          <img src={greyBackground} className="absolute w-screen object-fit h-[170px]"></img>
+        <div className="flex justify-center items-align sticky top-0 p-8 w-screen">
             <button onClick={() => setDate(date-1)} className= {dayNumber > 1 ? "absolute left-20 rounded-full p-2" : "absolute left-20 rounded-full p-2 hidden"} style={arrowShadow}>
                 <svg xmlns="http://www.w3.org/2000/svg"
                 fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" className="size-8"
