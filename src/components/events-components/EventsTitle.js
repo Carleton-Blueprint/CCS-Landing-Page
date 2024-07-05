@@ -1,5 +1,5 @@
 import React from "react";
-import background from "../../images/events_background.svg";
+import background from "../../images/events-header.svg";
 import EventButton from "./EventButton";
 
 const EventsTitle = () => {
@@ -31,22 +31,6 @@ const EventsTitle = () => {
         </div>
 
       </div>
-      {/* <div
-        className="p-16"
-        style={{
-          transform: "translateY(-400px)",
-          width: "70%"
-        }}
-      >
-        <p className="text-xl text-gray-300 p-2">Featured Event</p>
-        <p className="text-3xl text-white p-2">Carleton University</p>
-        <p className="text-5xl text-white font-bold p-2">
-          Software Engineering Conference
-        </p>
-        <div className=" flex  p-8">
-          <EventButton description="description" title="title" date="date" />
-        </div>
-      </div> */}
     </>
   );
 };

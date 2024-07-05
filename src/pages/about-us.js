@@ -4,10 +4,17 @@ import WhyAttend from '../components/about-us-components/WhyAttend'
 import Statistics from '../components/about-us-components/AboutUsStatistics'
 import { graphql } from 'gatsby'
 import { Seo } from '../components/base/Seo'
+import Header from '../components/base/Header'
+import background from '../images/about-us-header.svg'
+import NavigationBar from '../components/base/NavigationBar'
+
 const ImageGallery = ({ data }) => {
     const galleryImages = data.allContentfulAboutUsGallery.nodes //all images the AboutUsGallery
     const bodySections = data.contentfulAboutPage.aboutUsSection
     return (
+      <>
+      <NavigationBar pathname='/about-us'/>
+      <Header title="About Us" background={background}/>
       <div className='flex flex-col '>
         <div className='flex items-center justify-center'>
           <AboutUsGallery images={galleryImages} />
@@ -39,6 +46,8 @@ const ImageGallery = ({ data }) => {
         </div>
       </div>
 
+      </>
+      
       
     )
 }
