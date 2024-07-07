@@ -5,6 +5,7 @@ import TeamMembers from "../components/team-components/TeamMembers";
 const MeetTeam = ({data}) => {
     const members = data.allContentfulTeamMember.nodes
     return(
+      
         <TeamMembers members={members}/>
     )
 }
