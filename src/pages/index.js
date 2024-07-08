@@ -5,14 +5,15 @@ import Header from '../components/base/Header'
 import { Seo } from '../components/base/Seo'
 import { graphql } from "gatsby"
 import background from "../images/csshomepage.png"
-
+import Footer from '../components/base/Footer'
 
 const HomePage = ({data}) => {
   return (
     <div>
       <NavigationBar pathname={'/'}/>
-      <Header title="Home" background={background}/>
+      <Header title="" background={background}/>
       <Form />
+      <Footer />
 
     </div>
   )
