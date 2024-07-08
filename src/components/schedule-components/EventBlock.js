@@ -2,39 +2,50 @@ import React from "react";
 import { useState } from "react";
 
 const EventBlock = ({ events, rangeStart, rangeTime }) => {
-  console.log(events);
+  
   const getTime = (time) => {
-    // let times = time.split(':')
-    let times = ["9", "30am"];
-    return parseInt(times[0]) + times[1].substr(0, 2) / 60;
+    try{
+      let hours = time.split(':')[0]
+      let mins = time.split(":")[1].slice(0,2)
+      let period = time.split(":")[1].slice(-2).toLowerCase();
+      
+      let totalTimePastMidnight = 0
+  
+      totalTimePastMidnight += period === "pm" && hours!==12 && 12*60
+  
+      totalTimePastMidnight += parseInt(hours)*60
+      totalTimePastMidnight += parseInt(mins)
+      
+      return totalTimePastMidnight
+    }
+    catch (err){
+      return 0;
+    }
+    
   };
 
 
-  let timeClassName =
-    "h-[" + rangeTime + "px] text-white border-l-2 border-l-white p-[20px]";
-  timeClassName = "h-[200px] text-white border-l-2 border-l-white p-[20px] hover:border-l-red hover:border-l-4 hover:border-l-red-500 hover:text-red-500 hover:scale-105 transition-transform duration-500 ease-in-out";
+  
+  const timeClassName = "h-full text-white border-l-2 border-l-white p-[20px] hover:border-l-red hover:border-l-4 hover:border-l-red-500 hover:text-red-500 hover:scale-105 transition-transform duration-500 ease-in-out";
 
-  events.sort(function (e1, e2) {
-    return getTime(e1.startTime) - getTime(e2.startTime);
-  });
-  const spliceIndex = events.findIndex((e) => {
-    return (e.startTime = rangeStart);
-  });
-  const fullEvents = events.toSpliced(spliceIndex);
-  const shortEvents = events.slice(spliceIndex);
-  let index = -1;
+
+  const fullEvents = events.filter(obj => getTime(obj.startTime) === getTime(rangeStart) && getTime(obj.endTime) === getTime(rangeStart) + rangeTime)
+
+  const shortEvents = events.filter(obj => getTime(obj.startTime) !== getTime(rangeStart) || getTime(obj.endTime) !== getTime(rangeStart) + rangeTime)
+
+  
   console.log(fullEvents, shortEvents);
-
+  
   const [insideHovering, setInsideHovering] = useState(false)
   return (
     // each column of events?
-    <div className="flex grid-cols-1 ">
-      {fullEvents.map((element) => {
+    <div className="flex grid-cols-1 h-full">
+      {fullEvents.map((element,index) => {
         // each event
-        index++;
+        
         if (index < shortEvents.length) {
           return (
-            <div key={element.id} className={insideHovering ? "h-[200px] text-white border-l-2 border-l-white p-[20px] transition-transform duration-500 ease-in-ou" : timeClassName }>
+            <div key={element.id} className={insideHovering ? "text-white border-l-2 border-l-white p-[20px] transition-transform duration-500 ease-in-out" : timeClassName }>
               <h1 className="font-bold text-lg">{element.title}</h1>
               <h1 className="text-sm">{element.desciption}</h1>
               <h1 className="text-sm flex">
@@ -62,7 +73,8 @@ const EventBlock = ({ events, rangeStart, rangeTime }) => {
                 onMouseEnter={() => {setInsideHovering(true)}}
                 onMouseLeave ={() => {setInsideHovering(false)}}
                 key={shortEvents[index].id}
-                className="text-white border-2-white border-l-2 border-l-white p-[20px] mt-[20px] hover:border-l-red hover:border-l-4 hover:border-l-red-500 hover:text-red-500 hover:scale-105 transition-transform duration-500 ease-in-ou"
+                style={{'minHeight' : `${(getTime(shortEvents[index].endTime) - getTime(shortEvents[index].startTime))*2}px`}}
+                className=" text-white border-2-white border-l-2 border-l-white p-[20px] mt-[20px] hover:border-l-red hover:border-l-4 hover:border-l-red-500 hover:text-red-500 hover:scale-105 transition-transform duration-500 ease-in-ou"
               >
                 <h1 className="font-bold text-lg">
                   {shortEvents[index].title}
@@ -94,7 +106,7 @@ const EventBlock = ({ events, rangeStart, rangeTime }) => {
             </div>
           );
         } else {
-          index++;
+         
           return (
             <div key={element.id} className={timeClassName}>
               <h1 className="font-bold text-lg">{element.title}</h1>
