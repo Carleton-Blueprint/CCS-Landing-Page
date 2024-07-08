@@ -9,7 +9,7 @@ const AllEvents = ({events}) => {
             0px 10vh 500px #E91C24`
     }
     return (
-        <div className="grid place-items-center" style={{'backgroundColor': '#41151B'}}>
+        <div className="grid place-items-center mt-[-5%]" style={{'backgroundColor': '#41151B'}}>
             <div className=" bg-[#111] w-[700px] h-screen" style={shadow}>
                 {events.map(element => {
                     return (

@@ -19,9 +19,7 @@ const Schedule = ({data}) => {
     const dayNumber = date
     return (
         <>
-        {/*flex justify-center items-align sticky top-0 p-8 w-screen bg-[#232323]  */}
-          <img src={greyBackground} className="absolute w-screen object-fit h-[170px]"></img>
-        <div className="flex justify-center items-align sticky top-0 p-8 w-screen">
+        <div className="flex justify-center items-align sticky top-0 p-8 w-screen bg-bottom" style={{'background-image': `url(${greyBackground})`, 'background-size': '100% 100%'}}>
             <button onClick={() => setDate(date-1)} className= {dayNumber > 1 ? "absolute left-20 rounded-full p-2" : "absolute left-20 rounded-full p-2 hidden"} style={arrowShadow}>
                 <svg xmlns="http://www.w3.org/2000/svg"
                 fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" className="size-8"
