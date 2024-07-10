@@ -1,13 +1,18 @@
 import React from "react";
 import Member from "./Member";
+import TeamMemberGroup from "./TeamMemberGroup";
 
 const TeamMembers = ({members}) => {
+    
+    const setYears = new Set(members.map(item => item.year))
+    const sortedYears = [...setYears].sort((a,b)=> b-a)
+    console.log(sortedYears)
     return(
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 justify-items-stretch gap-y-64 p-16 ">
-            {members.map((node) => {
+        <div>
+            {sortedYears.map((year,index) => {
                 return(
-                    <Member key={node.id} member={node}/>
-                );
+                    <TeamMemberGroup year = {year} allMembers = {members} first = {index===0}/>
+                )
             })}
         </div>
     )

@@ -3,7 +3,8 @@ import EventBlock from '../components/events-components/EventBlock';
 import EventsTitle from '../components/events-components/EventsTitle';
 import { graphql } from "gatsby";
 import { Seo } from '../components/base/Seo';
-import NavigationBar from '../components/base/NavigationBar'
+import NavigationBar from '../components/base/NavigationBar';
+import NavigationBar from '../components/base/NavigationBar';
 
 const Events = (props) => {
     
