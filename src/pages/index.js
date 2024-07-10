@@ -5,18 +5,17 @@ import Header from '../components/base/Header'
 import { Seo } from '../components/base/Seo'
 import { graphql } from "gatsby"
 import background from "../images/csshomepage.png"
-import Footer from '../components/base/Footer'import HomeImageCarousel from '../components/home-components/home-gallery-components/HomeImageCarousel'
+import HomeImageCarousel from '../components/home-components/home-gallery-components/HomeImageCarousel'
+import Footer from '../components/base/Footer'
 
 const HomePage = ({data}) => {
 
   return (
-    <div className='bg-red-200 h-screen'>
+    <div className='h-screen bg-red-200'>
       <NavigationBar pathname={'/'}/>
       <Header title="" background={background}/>
-      <Form />
-      <Footer />
-
       <HomeImageCarousel images={data.allContentfulAboutUsGallery.nodes} size = 'sm'/>
+      <Footer />
     </div>
   )
 }
