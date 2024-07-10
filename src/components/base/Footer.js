@@ -22,12 +22,12 @@ const Footer = () => {
             </div>
             <div className='text-white'>
                 <span>Site Map</span>
-                <ul className='flex-col pt-2 '>
-                    <li>HOME</li>
-                    <li>ABOUT US</li>
-                    <li>EVENTS</li>
+                <ul className='flex-col pt-2 font-poppins'>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Events</li>
                     <li>FAQ</li>
-                    <li>CONTACT</li>
+                    <li>Contact Us</li>
                 </ul>
             </div>
         </div>
