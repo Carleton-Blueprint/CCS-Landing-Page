@@ -4,19 +4,19 @@ import Form from '../components/contact-us-components/Form'
 import Header from '../components/base/Header'
 import { Seo } from '../components/base/Seo'
 import { graphql } from "gatsby"
-import background from "../images/csshomepage.png"
 import HomeImageCarousel from '../components/home-components/home-gallery-components/HomeImageCarousel'
-import Footer from '../components/base/Footer'
+import Layout from '../components/base/Layout'
 
-const HomePage = ({data}) => {
-
+const HomePage = ({ data, location }) => {
   return (
-    <div className='h-screen bg-red-200'>
-      <NavigationBar pathname={'/'}/>
-      <Header title="" background={background}/>
-      <HomeImageCarousel images={data.allContentfulAboutUsGallery.nodes} size = 'sm'/>
-      <Footer />
-    </div>
+    <Layout pathname={location.pathname}>
+      <div className='h-screen bg-red-200'>
+        <NavigationBar pathname={'/'}/>
+        <Form />
+        <HomeImageCarousel images={data.allContentfulAboutUsGallery.nodes} size = 'sm'/>
+      </div>
+    </Layout>
+    
   )
 }
 

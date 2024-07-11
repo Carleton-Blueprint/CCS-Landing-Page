@@ -4,14 +4,14 @@ import Header from "../components/base/Header"
 import SocialMedia from "../components/contact-us-components/SocialMedia"
 import background from "../images/contact-us-header.svg"
 import NavigationBar from "../components/base/NavigationBar"
-const ContactPage = () => {
+import Layout from "../components/base/Layout"
+const ContactPage = ({location}) => {
     return(
-        <>
-            <NavigationBar pathname={'/contact-us'}/>
+        <Layout pathname={location.pathname}>
             <Header title='Contact Us' background={background}/>
             <Form/>
             <SocialMedia/>
-        </>
+        </Layout>
     )
 }
 

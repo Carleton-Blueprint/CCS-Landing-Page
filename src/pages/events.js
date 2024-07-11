@@ -4,10 +4,8 @@ import EventsTitle from '../components/events-components/EventsTitle';
 import { graphql } from "gatsby";
 import { Seo } from '../components/base/Seo';
 import NavigationBar from '../components/base/NavigationBar';
-
+import Layout from '../components/base/Layout';
 const Events = (props) => {
-    
-    
     const eventsData = props.data.allContentfulFeaturedEvent.nodes;
     const [availableEvents, setAvailableEvents] = useState([]);
     const [pastEvents, setPastEvents] = useState([]);
@@ -48,8 +46,7 @@ const Events = (props) => {
       
       return (
         
-        <div>
-          <NavigationBar pathname='/events'/>
+        <Layout pathname={props.location.pathname}>
           <EventsTitle/>
 
           <div className='flex justify-center items-align'>
@@ -65,7 +62,7 @@ const Events = (props) => {
           </div> 
           <hr className="mt-[-3px] mr-16 ml-16 mb-16 border-gray-500"  style={{"borderWidth": "1px"}}/>
 
-          <div className='grid grid-cols-1  md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'>
+          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'>
               {
               
               renderingPresent ?
@@ -86,7 +83,7 @@ const Events = (props) => {
           </div>
         
 
-      </div>
+      </Layout>
 
      
     );

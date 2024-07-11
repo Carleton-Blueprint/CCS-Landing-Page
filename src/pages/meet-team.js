@@ -4,17 +4,17 @@ import TeamMembers from "../components/team-components/TeamMembers";
 import Header from '../components/base/Header'
 import background from '../images/meet-the-team-header.svg'
 import NavigationBar from '../components/base/NavigationBar'
+import Layout from "../components/base/Layout";
 
-const MeetTeam = ({data}) => {
+const MeetTeam = ({location, data}) => {
     const members = data.allContentfulTeamMember.nodes
     return(
-      <>
-        <NavigationBar pathname={'/meet-team'}/>
+      <Layout pathname={location.pathname}>
         <Header title='Meet the Team' background={background}/>
         <div className="">
           <TeamMembers members={members}/>
         </div>
-      </>
+      </Layout>
     )
 }
 

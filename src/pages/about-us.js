@@ -7,13 +7,13 @@ import { Seo } from '../components/base/Seo'
 import Header from '../components/base/Header'
 import background from '../images/about-us-header.svg'
 import NavigationBar from '../components/base/NavigationBar'
+import Layout from '../components/base/Layout'
 
-const ImageGallery = ({ data }) => {
+const ImageGallery = ({ location, data }) => {
     const galleryImages = data.allContentfulAboutUsGallery.nodes //all images the AboutUsGallery
     const bodySections = data.contentfulAboutPage.aboutUsSection
     return (
-      <>
-      <NavigationBar pathname='/about-us'/>
+      <Layout pathname={location.pathname} >
       <Header title="About Us" background={background}/>
       <div className='flex flex-col '>
         <div className='flex items-center justify-center'>
@@ -45,8 +45,10 @@ const ImageGallery = ({ data }) => {
           <Statistics stats={data.allContentfulStatistic.nodes}/>
         </div>
       </div>
+      </Layout>
+      
 
-      </>
+      
       
       
     )
