@@ -1,6 +1,6 @@
 <svg width="1280" height="800" viewBox="0 0 1280 800" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_1030_805)">
-<rect width="1280" height="800" fill="white"/>
+<rect width="1280" height="800" fill="black"/>
 <g clip-path="url(#clip1_1030_805)">
 <mask id="mask0_1030_805" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-126" y="-55" width="1529" height="730">
 <path d="M1403 366.002C1402.79 415.093 1337.13 467.745 1301.75 500.6C1147.48 643.844 925.711 716.729 709.093 648.444C504.033 583.803 324.541 449.887 93.54 467.583C65.8958 469.701 -126 485.434 -126 523.633V-55H1403C1403 -55 1403 365.759 1403 366.002Z" fill="white"/>
