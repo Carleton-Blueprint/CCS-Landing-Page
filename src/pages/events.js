@@ -89,14 +89,15 @@ const Events = (props) => {
 
       return (
         
-        <div className='font-poppins'>
         <Layout pathname={props.location.pathname} >
+          <div className='font-poppins'>
+
           <EventsTitle/>
           <div className='flex justify-center md:justify-normal'>
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
-              className='focus:outline-none bg-eventsGrey text-eventsTextGrey rounded-md drop-shadow-md md:ml-32 w-28 md:w-44 text-sm md:text-base px-2 md:px-4 md:py-1 mb-4  md:mb-0 md:mt-4'
+              className='px-2 mb-4 text-sm rounded-md focus:outline-none bg-eventsGrey text-eventsTextGrey drop-shadow-md md:ml-32 w-28 md:w-44 md:text-base md:px-4 md:py-1 md:mb-0 md:mt-4'
             >
               {academicYears.map((year, index) => {
                 return <option key={index} value={year} className="hover:bg-eventsDarkGrey"> {year} </option>
@@ -116,41 +117,41 @@ const Events = (props) => {
           </div> 
           <hr className="mt-[-3px] mr-16 ml-16 mb-16 border-gray-500"  style={{"borderWidth": "1px"}}/>
 
-          <div className=' grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'>
+          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'>
             {selectedYear === currentAcademicYear ?
                 renderingPresent ?
                     
                   availableEvents.map((eventNode, index) => (
-                    <div className='flex  justify-center'>
+                    <div className='flex justify-center'>
                       <EventBlock event={eventNode} index={index} />
                     </div>
                   ))
                   :
                   pastEvents.map((eventNode, index) => (
-                    <div className='flex  justify-center'>
+                    <div className='flex justify-center'>
                       <EventBlock event={eventNode} index={index} />
                     </div>
                   ))
                 :
                   selectedYearEvents.map((eventNode, index) => (
-                    <div className='flex  justify-center'>
+                    <div className='flex justify-center'>
                       <EventBlock event={eventNode} index={index} />
                     </div>
                   ))
             }
           </div>
-        
-
+          </div>
       </Layout>
 
      
     );
 }
 
-export const query = graphql`
+export const query = graphql
+`
   query{
-    allContentfulFeaturedEvent{
-      nodes{
+    allContentfulFeaturedEvent {
+      nodes {
         displayTitle
         startDate
         description{
