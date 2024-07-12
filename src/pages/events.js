@@ -4,6 +4,7 @@ import EventsTitle from '../components/events-components/EventsTitle';
 import { graphql } from "gatsby";
 import { Seo } from '../components/base/Seo';
 import NavigationBar from '../components/base/NavigationBar';
+import Layout from '../components/base/Layout';
 
 const Events = (props) => {
     
@@ -48,8 +49,7 @@ const Events = (props) => {
       
       return (
         
-        <div>
-          <NavigationBar pathname='/events'/>
+        <Layout pathname={props.location.pathname} >
           <EventsTitle/>
 
           <div className='flex justify-center items-align'>
@@ -86,7 +86,7 @@ const Events = (props) => {
           </div>
         
 
-      </div>
+      </Layout>
 
      
     );
