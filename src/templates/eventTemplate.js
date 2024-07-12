@@ -78,52 +78,77 @@ const EventTemplate = ({ data }) => {
     }
   };
   return (
-    <div>
-      <div className="fitdiv">
-        <div className="backgroundImg">
-          
-          <GatsbyImage image = {event.primaryImage.gatsbyImageData} alt="primary image" loading="lazy" className ="gatsbyImage"/>
-        </div>
-
-        <div className="gatsbyImage-bg">
-          <div className="main-container">
-            <div className="back-container">
-              <EventBackButton/>
-              <div className="link-container" onClick={(e) => handleCopy(e,window.location.href)} onTouchEnd={(e) => handleCopy(e,window.location.href) }>
-                <EventLinkButton/>
-              </div>
-            </div>
-            <div className="titleSection">
-              <div className="eventTitle">{event.displayTitle}</div>
-              <div className="date-container">
-                <div className="date-day font-normal">{eventDate.slice(8)}</div>
-                <div className="date-month">{convertMonthIntToShort(parseInt(eventDate.slice(5,7)))}</div>
-              </div>
-            </div>
-            <div className="locationEvent"><span className=" font-semibold locationText">Location:</span>  {event.location}</div>
-            <div className="descriptionEvent"><span className=" font-semibold descriptionText">About:</span>  {event.longDescription.longDescription}</div>
-            <div className="galleryText font-semibold">Photo Gallery</div>
-            <div className="flex eventGalleryContainer">
-            {
-              event.photoGallery.map((image,index) =>(
-                <div className="eventGalleryImageContainer">
-                  
-              
-                  <GatsbyImage image={image.gatsbyImageData} alt="event gallery image" class="eventGalleryImage"/>
-                    
-                </div>
-              ))
-
+  <>
+    {event && (
+      <div>
+        <div className="fitdiv">
+          <div className="backgroundImg">
+            {event.primaryImage && 
+              <GatsbyImage
+              image={event.primaryImage.gatsbyImageData}
+              alt="primary image"
+              loading="lazy"
+              className="gatsbyImage"
+            />
             }
+          </div>
+
+          <div className="gatsbyImage-bg">
+            <div className="main-container">
+              <div className="back-container">
+                <EventBackButton />
+                <div
+                  className="link-container"
+                  onClick={(e) => handleCopy(e, window.location.href)}
+                  onTouchEnd={(e) => handleCopy(e, window.location.href)}
+                >
+                  <EventLinkButton />
+                </div>
+              </div>
+              <div className="titleSection">
+                {event.displayTitle && <div className="eventTitle">{event.displayTitle}</div>}
+                <div className="date-container">
+                  {eventDate && 
+                    <>
+                    <div className="date-day font-normal">{eventDate.slice(8)}</div>
+                    <div className="date-month">
+                      {convertMonthIntToShort(parseInt(eventDate.slice(5, 7)))}
+                    </div>
+                    </>
+                  }
+                </div>
+              </div>
+              {event.location && 
+              <div className="locationEvent">
+                <span className="font-semibold locationText">Location:</span>
+                {event.location}
+              </div>
+              }
+              {event.longDescription && 
+                <div className="descriptionEvent">
+                  <span className="font-semibold descriptionText">About:</span>
+                  {event.longDescription.longDescription}
+                </div>
+              }
+              <div className="galleryText font-semibold">Photo Gallery</div>
+              <div className="flex eventGalleryContainer">
+                {event.photoGallery && event.photoGallery.map((image, index) => (
+                  <div key={index} className="eventGalleryImageContainer">
+                    <GatsbyImage
+                      image={image.gatsbyImageData}
+                      alt="event gallery image"
+                      className="eventGalleryImage"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-        
       </div>
-    </div>
-    
-
-  )
+    )}
+  </>
+  );
 };
 
 export default EventTemplate;
