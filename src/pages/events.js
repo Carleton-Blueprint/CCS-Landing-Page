@@ -89,11 +89,11 @@ const Events = (props) => {
         
         <div className='font-poppins'>
           <EventsTitle/>
-          <div>
+          <div className='flex justify-center md:justify-normal'>
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
-              className='focus:outline-none bg-eventsGrey text-eventsTextGrey rounded-md drop-shadow-md ml-32 w-44 px-4 py-1 mt-4'
+              className='focus:outline-none bg-eventsGrey text-eventsTextGrey rounded-md drop-shadow-md md:ml-32 w-28 md:w-44 text-sm md:text-base px-2 md:px-4 md:py-1 mb-4  md:mb-0 md:mt-4'
             >
               {academicYears.map((year, index) => {
                 return <option key={index} value={year} className="hover:bg-eventsDarkGrey"> {year} </option>
