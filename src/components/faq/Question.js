@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-
+// import { AnimatePresence, motion } from 'framer-motion';
+import RichText from './FaqRichTextRenderer';
 
 function Question(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,8 +11,6 @@ function Question(props) {
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   }
-  console.log(answer);
-
   return (
     <div className="flex justify-center">
       <div className={`border-t-[1.5px] rounded-t-[2rem] rounded-b-[2rem] z-${index*10} ${isLast ? '' : 'pb-8'} border-slate-600 w-[20rem] md:w-full text-white  font-poppins ${isOpen ? 'bg-gradient-to-b from-nero to-red-stop ' : 'bg-nero'}`}>
@@ -36,7 +34,8 @@ function Question(props) {
 
         {isOpen && (
           <div className="text-xs md:text-sm font-extralight md:font-light mx-6 md:mx-8 pb-6">
-            {answer.content.map((content, index) => (
+            <RichText content={answer.content} />
+            {/* {answer.content.map((content, index) => (
               <p key={index}>
                 {content.content.map((subcontent, subIndex) => (
                   <span key={subIndex}>
@@ -48,7 +47,7 @@ function Question(props) {
                   </span>
                 ))}
               </p>
-            ))}
+            ))} */}
           </div>
         )}
       </div>

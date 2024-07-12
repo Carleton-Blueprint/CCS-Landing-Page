@@ -2,9 +2,8 @@ import React from 'react';
 import Question from './Question';
 
 const Accordian = (props) => {
-
   return (
-    <div className="container flex justify-center">
+    <div className="container flex justify-center mb-8">
       <div className='flex flex-col items-center rounded-[2rem] md:w-[36rem] bg-nero relative'>
         {props.data.allContentfulFaq.nodes.map((faq, index) => {
           return (

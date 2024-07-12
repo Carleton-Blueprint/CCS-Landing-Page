@@ -4,6 +4,8 @@ import NavigationBar from '../components/base/NavigationBar'
 import Accordian from '../components/faq/Accordian'
 
 function Faq({data}) {
+
+
   return (
     <div className='container'>
       <NavigationBar pathname={'/FAQ'}/>
