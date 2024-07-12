@@ -1,7 +1,7 @@
 import React from 'react'
 import RichText from '../base/RichTextRenderer'
 import EventButton from './EventButton';
-
+import EventReadMore from './EventReadMore';
 const countCharactersOfContentfulRichTextNode = (contentfulRichTextNode) => {
     let characterCount = 0;
 
@@ -102,8 +102,14 @@ const EventBlock = (props) => {
         <div className=' h-[170px]'>
             <RichText content={description.content} fontSizeUtilityClass={getSize()}/>
         </div>
-        <div className=' flex justify-center items-center'>
+        <div className=' flex justify-center items-center gap-5'>
+            {
+                props.event.featureDetailedEventPage &&
+
+                <EventReadMore eventSlug={props.event.slug}/>
+            }
             <EventButton description = {description} title = {title} date = {props.event.startDate} />
+            
         </div>
     </div>
     )

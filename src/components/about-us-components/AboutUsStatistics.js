@@ -5,23 +5,30 @@ const Statistics = (props) => {
   console.log(props.stats);
 
   return (
-    <div className="bg-gradient-to-r from-red-500 to-black h-screen w-screen text-center">
-      <div className="inline-block bg-white bg-opacity-60 rounded-xl p-10">
-        <p className="text-lg font-bold">
-          Statistics of Carleton delegation at CUSEC
-        </p>
-        <div className="flex justify-between">
-          {props.stats.map((stat) => {
-            return(<Statistic
-              key={stat.id}
-              top={stat.subtitle1}
-              bottom={stat.bottomSubtitle}
-              stat={stat.statistic}
-            />);
-          })}
+    <div>
+      <div className=" w-screen bg-gradient-to-br from-red-600 to-black flex justify-center p-20">
+        <div className="w-full h-full absolute transform -translate-y-[80px] bg-gradient-to-b from-white to-30% z-10"></div>
+        <div className="text-center w-fit bg-white bg-opacity-75 rounded-[80px] p-5 z-50">
+          <div className="inline-block bg-opacity-80 rounded-xl p-10 ">
+            <p className="text-4xl font-bold">
+              Statistics of Carleton delegation at CUSEC
+            </p>
+            <div className="flex w-full justify-evenly">
+              {props.stats.map((stat,index) => {
+                return(<div><Statistic
+                  key={stat.id}
+                  index={index}
+                  top={stat.subtitle1}
+                  bottom={stat.bottomSubtitle}
+                  stat={stat.statistic}
+                /></div>);
+              })}
+            </div>
+          </div>
         </div>
+        
       </div>
-    </div>
+    </div>  
   );
 };
 
