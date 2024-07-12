@@ -1,9 +1,10 @@
 import React from 'react';
-import background from "../../images/shapes.svg";
-import { CUSECLogo } from '../../images/CUSEC-Logo';
-import CarletonLogo from '../../images/Carleton-Logo.png';
-import CarletonCUSECSocialMedia from './CarletonCUSECSocialMedia';
+import background from "../../images/footer-background.png";
+import CUSECLogo  from '../../images/cusec-logo.png';
+import CarletonLogo from '../../images/carleton-logo.png';
+import CarletonCUSECSocialMedia from './FooterSocialMedia';
 import BlueprintWatermark from './BlueprintWatermark';
+
 const Footer = () => {
   return (
     <div 
@@ -12,13 +13,15 @@ const Footer = () => {
     >
         <div className='flex items-center justify-center w-full space-x-10'>
             <div className='flex flex-col justify-between mt-6'>
-                <div className='flex justify-center mb-10 space-x-4'>
-                    <img src={CarletonLogo} />
-                    <CUSECLogo />
+                <div className='flex justify-center mb-5 space-x-4'>
+                    <div className='w-[85px]'>
+                        <img className='object-contain w-full h-full' src={CUSECLogo} alt='CUSEC logo'/>
+                    </div>
+                    <div className='w-[85px]'>
+                        <img className='object-contain w-full h-full' src={CarletonLogo} alt='CUSEC logo'/>
+                    </div>
                 </div>
-                <div>
-                    <CarletonCUSECSocialMedia />
-                </div>
+                <CarletonCUSECSocialMedia />
             </div>
             <div className='text-white'>
                 <span>Site Map</span>
