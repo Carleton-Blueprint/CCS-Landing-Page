@@ -15,7 +15,11 @@ module.exports = {
           xl: '100%',
         }
       },
-    
+      colors: {
+        eventsGrey: '#EDEBEB',
+        eventsDarkGrey: '#D9D9D9',
+        eventsTextGrey: '#737373',
+      },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'] // Add the font family you want
       },
