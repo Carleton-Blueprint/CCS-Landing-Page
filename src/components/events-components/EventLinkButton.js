@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+
 import linkImage from '../../images/LinkIcon.png'
 const EventLinkButton = () => {
     const handleCopy = async (content) => {
@@ -13,12 +13,12 @@ const EventLinkButton = () => {
   return (
     <div>
         <div 
-        className='w-10 h-10 bg-[#d9d9d986] lg:w-24 lg:h-24 rounded-full flex items-center justify-center scale-50'
+        className='w-12 h-12 bg-[#d9d9d986] rounded-full flex items-center justify-center cursor-pointer'
         onClick={() => handleCopy(window.location.href)}
         
         >
         
-            <img src={linkImage}/>
+            <img src={linkImage} className='h-8 w-8'/>
 
         </div>
 

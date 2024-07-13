@@ -24,6 +24,9 @@ module.exports = {
         }
       },
       colors: {
+        eventsGrey: '#EDEBEB',
+        eventsDarkGrey: '#D9D9D9',
+        eventsTextGrey: '#737373',
         'nero' : '#252525',
         'red-stop' : '#912024'
       },
