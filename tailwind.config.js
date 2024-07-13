@@ -15,7 +15,13 @@ module.exports = {
           xl: '100%',
         }
       },
-    
+      colors: {
+        eventsGrey: '#EDEBEB',
+        eventsDarkGrey: '#D9D9D9',
+        eventsTextGrey: '#737373',
+        'nero' : '#252525',
+        'red-stop' : '#912024'
+      },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'] // Add the font family you want
       },
@@ -28,6 +34,9 @@ module.exports = {
       },
       maskImage: {
         'fade-t-b': 'linear-gradient(to bottom, transparent, black)',
+      },
+      colors:{
+        primaryGray: '#252525'
       }
       
     },
