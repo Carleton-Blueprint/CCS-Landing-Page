@@ -34,6 +34,9 @@ module.exports = {
       },
       maskImage: {
         'fade-t-b': 'linear-gradient(to bottom, transparent, black)',
+      },
+      colors:{
+        primaryGray: '#252525'
       }
       
     },
