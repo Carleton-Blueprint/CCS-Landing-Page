@@ -13,12 +13,12 @@ function Question(props) {
   }
   return (
     <div className="flex justify-center">
-      <div className={`border-t-[1.5px] rounded-t-[2rem] rounded-b-[2rem] z-${index*10} ${isLast ? '' : 'pb-8'} border-slate-600 w-[20rem] md:w-full text-white  font-poppins ${isOpen ? 'bg-gradient-to-b from-nero to-red-stop ' : 'bg-nero'}`}>
+      <div className={`border-t-[1.5px] rounded-t-[2rem] rounded-b-[2rem] z-${index*10} ${isLast ? '' : 'pb-8'} border-slate-600 w-[20rem] w-full text-white  font-poppins ${isOpen ? 'bg-gradient-to-b from-nero to-red-stop ' : 'bg-nero'}`}>
         <button 
-          className="w-full flex justify-between items-center pt-4 pb-4 px-4"
+          className="flex items-center justify-between w-full px-4 pt-4 pb-4"
           onClick={toggleOpen}
         >
-          <span className='mx-2 md:mx-4 my-2 font-semibold text-xs md:text-sm'>{question}</span>
+          <span className='mx-2 my-2 text-xs font-semibold md:mx-4 md:text-sm'>{question}</span>
           <span className="mr-2">
             {isOpen 
               ? 
@@ -33,7 +33,7 @@ function Question(props) {
         </button>
 
         {isOpen && (
-          <div className="text-xs md:text-sm font-extralight md:font-light mx-6 md:mx-8 pb-6">
+          <div className="pb-6 mx-6 text-xs md:text-sm font-extralight md:font-light md:mx-8">
             <RichText content={answer.content} />
             {/* {answer.content.map((content, index) => (
               <p key={index}>
