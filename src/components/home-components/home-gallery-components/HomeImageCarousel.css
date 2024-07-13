@@ -1,0 +1,19 @@
+.masked-div {
+    /* Mask image using direct SVG or base64 */
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg width="267" height="306" viewBox="0 0 267 306" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.37793 0.547424H225.2L266.622 41.9509L266.622 305.453L41.7991 305.452L0.37793 264.049V0.547424Z" fill="white"/></svg>');
+    mask-image: url('data:image/svg+xml;utf8,<svg width="267" height="306" viewBox="0 0 267 306" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.37793 0.547424H225.2L266.622 41.9509L266.622 305.453L41.7991 305.452L0.37793 264.049V0.547424Z" fill="white"/></svg>');
+    
+    /* Adjust the size of the mask to match the div size */
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    
+    /* Ensure the mask scales with the div */
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    
+    /* Clip everything outside the mask */
+    overflow: hidden;
+  
+ 
+  }
+  

@@ -1,17 +1,21 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 import NavigationBar from '../components/base/NavigationBar'
-import Question from '../components/faq/Question'
+import Accordian from '../components/faq/Accordian'
+import Header from '../components/base/Header'
+import background from '../images/faq-header.svg'
 
 function Faq({data}) {
-  return (
-    <div className='container'>
-      <NavigationBar pathname={'/FAQ'}/>
-      {data.allContentfulFaq.nodes.map((faq, index) => {
-        return <div key={index}><Question faq={faq}/></div>
-      })}
 
+
+  return (
+    <>
+      <NavigationBar pathname={'/FAQ'}/>
+      <Header title='FAQ' background={background}/>
+    <div className='container'>
+      <Accordian  data={data} />
     </div>
+    </>
   )
 }
 
