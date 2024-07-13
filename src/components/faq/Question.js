@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 // import { AnimatePresence, motion } from 'framer-motion';
 import RichText from './FaqRichTextRenderer';
 
@@ -11,9 +11,10 @@ function Question(props) {
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   }
+
   return (
     <div className="flex justify-center">
-      <div className={`border-t-[1.5px] rounded-t-[2rem] rounded-b-[2rem] z-${index*10} ${isLast ? '' : 'pb-8'} border-slate-600 w-[20rem] w-full text-white  font-poppins ${isOpen ? 'bg-gradient-to-b from-nero to-red-stop ' : 'bg-nero'}`}>
+      <div className={`border-t-[1.5px] rounded-t-[1.5rem] z-${index*10} ${isLast ? 'rounded-b-[1.5em]' : 'pb-8'} border-slate-600 w-[20rem] w-full text-white  font-poppins ${isOpen ? 'bg-gradient-to-b from-primaryGray to-redStop ' : 'bg-primaryGray'}`}>
         <button 
           className="flex items-center justify-between w-full px-4 pt-4 pb-4"
           onClick={toggleOpen}

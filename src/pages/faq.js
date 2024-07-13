@@ -5,16 +5,16 @@ import Accordian from '../components/faq/Accordian'
 import Header from '../components/base/Header'
 import background from '../images/faq-header.svg'
 
-function Faq({data}) {
+function Faq({ data }) {
 
 
   return (
     <>
       <NavigationBar pathname={'/FAQ'}/>
       <Header title='FAQ' background={background}/>
-    <div className='container'>
-      <Accordian  data={data} />
-    </div>
+      <div className='container'>
+        <Accordian  data={data} />
+      </div>
     </>
   )
 }
