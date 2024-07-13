@@ -1,12 +1,14 @@
 import React from "react";
 import NavigationBar from "../components/base/NavigationBar";
+import background from "../images/404-background.svg"
+import logo from "../images/logo.svg"
 
 const Page404 = () => {
   return (
     <>
       <NavigationBar pathname="/404" />
-      <div className="text-white bg-gray-800 h-screen text-center flex flex-col items-center justify-center">
-        <h1 className="text-[200px] font-bold mt[-20px]">404</h1>
+      <div className="text-white bg-gray-800 h-screen text-center flex flex-col items-center justify-center" style={{'backgroundImage': `url(${background})`}}>
+        <h1 className="text-[200px] font-bold mt[-20px] flex">4 <img className="flex w-[200px]" src={logo}/>4</h1>
         <p className="text-lg">The page you are looking for doesn't exist or has been moved</p>
         <a href="/" className="flex bg-[#676666] rounded-full p-2 pl-4 pr-4 hover:bg-[#E91C24] mt-[50px]" style={{'boxShadow': '0 0 30px 5px black'}}>
             Go Home
