@@ -44,11 +44,11 @@ const Form = () => {
   return (
     <div className="flex justify-center mb-4 bg-center bg-cover transform -translate-y-20 lg:-translate-y-40 2xl:-translate-y-56">
       <form
-        className=" border-solid border-2 border-[#6464648f] flex flex-col w-10/12 lg:w-1/2 align-center bg-[#646464] bg-opacity-65 px-20 py-6 rounded-[40px] shadow-md"
+        className=" border-solid border-2 border-[#6464648f] flex flex-col w-10/12 lg:w-1/2 align-center bg-[#646464] bg-opacity-65 px-5 xl:px-20 py-6 rounded-[40px] shadow-md"
         name="contact"
         onSubmit={handleSubmit}
       >
-        <h1 className="mr-auto text-3xl font-poppins font-semibold text-white mb-14">Send a Message</h1>
+        <h1 className="mr-auto text-xl lg:text-3xl font-poppins font-semibold text-white mb-6 lg:mb-14">Send a Message</h1>
         <div className="flex w-full gap-x-4">
           <div className="w-1/2 flex">
           <div className=' flex-1'>
