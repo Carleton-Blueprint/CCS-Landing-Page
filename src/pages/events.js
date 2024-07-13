@@ -3,6 +3,7 @@ import EventBlock from '../components/events-components/EventBlock';
 import EventsTitle from '../components/events-components/EventsTitle';
 import { graphql } from "gatsby";
 import { Seo } from '../components/base/Seo';
+import NavigationBar from '../components/base/NavigationBar';
 import Layout from '../components/base/Layout';
 
 const Events = (props) => {
@@ -62,16 +63,7 @@ const Events = (props) => {
         const eventDate = new Date(event.startDate);
         return eventDate >= today;
       });
-      const filteredEventsFuture = eventsData.filter(event => {
-        const eventDate = new Date(event.startDate);
-        return eventDate >= today;
-      });
 
-      filteredEventsFuture.sort((a, b) => {
-        const dateOfEventA = new Date(a.startDate);
-        const dateOfEventB = new Date(b.startDate);
-        return Math.abs(dateOfEventA - today) - Math.abs(dateOfEventB - today);
-      });
       filteredEventsFuture.sort((a, b) => {
         const dateOfEventA = new Date(a.startDate);
         const dateOfEventB = new Date(b.startDate);
@@ -84,22 +76,6 @@ const Events = (props) => {
         const eventDate = new Date(event.startDate);
         return eventDate < today;
       });
-      setAvailableEvents(filteredEventsFuture)
-      
-      const filteredEventsPast = eventsData.filter(event => {
-        const eventDate = new Date(event.startDate);
-        return eventDate < today;
-      });
-
-      filteredEventsPast.sort((a, b) => {
-        const dateOfEventA = new Date(a.startDate);
-        const dateOfEventB = new Date(b.startDate);
-        return dateOfEventB - dateOfEventA; // Descending order for past dates
-      });
-      
-      setPastEvents(filteredEventsPast);
-      }, [eventsData, selectedYear]);
-      
 
       filteredEventsPast.sort((a, b) => {
         const dateOfEventA = new Date(a.startDate);
@@ -116,22 +92,7 @@ const Events = (props) => {
         <Layout pathname={props.location.pathname} >
           <div className='font-poppins'>
 
-        <Layout pathname={props.location.pathname} >
-          <div className='font-poppins'>
-
           <EventsTitle/>
-          <div className='flex justify-center md:justify-normal'>
-            <select
-              value={selectedYear}
-              onChange={(e) => setSelectedYear(e.target.value)}
-              className='px-2 mb-4 text-sm rounded-md focus:outline-none bg-eventsGrey text-eventsTextGrey drop-shadow-md md:ml-32 w-28 md:w-44 md:text-base md:px-4 md:py-1 md:mb-0 md:mt-4'
-            >
-              {academicYears.map((year, index) => {
-                return <option key={index} value={year} className="hover:bg-eventsDarkGrey"> {year} </option>
-              })}
-            </select>
-          </div>
-          <div className={`flex justify-center items-align ${selectedYear===currentAcademicYear ? 'visible' : 'invisible'}`}>
           <div className='flex justify-center md:justify-normal'>
             <select
               value={selectedYear}
@@ -147,13 +108,10 @@ const Events = (props) => {
             <div className='flex flex-col mr-8'>
               <button onClick={() => setRenderingPresent(true)} className={renderingPresent ? "text-red-500" : ""} >Upcoming</button>
               <hr className='mt-4 ml-4 border-red-500' width="40px" style={{"borderWidth": renderingPresent ? "3px" : "0"}}/>
-              <button onClick={() => setRenderingPresent(true)} className={renderingPresent ? "text-red-500" : ""} >Upcoming</button>
-              <hr className='mt-4 ml-4 border-red-500' width="40px" style={{"borderWidth": renderingPresent ? "3px" : "0"}}/>
               
             </div>
             <div className='flex flex-col ml-8'>
               <button onClick = {() =>  setRenderingPresent(false)} className={renderingPresent ? "": "text-red-500"} >Past</button>
-              <hr className='mt-4 border-red-500' width="40px" style={{"borderWidth": renderingPresent ? "0" : "3px"}}/>
               <hr className='mt-4 border-red-500' width="40px" style={{"borderWidth": renderingPresent ? "0" : "3px"}}/>
             </div>
           </div> 
@@ -181,31 +139,7 @@ const Events = (props) => {
                     </div>
                   ))
             }
-          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'>
-            {selectedYear === currentAcademicYear ?
-                renderingPresent ?
-                    
-                  availableEvents.map((eventNode, index) => (
-                    <div className='flex justify-center'>
-                      <EventBlock event={eventNode} index={index} />
-                    </div>
-                  ))
-                  :
-                  pastEvents.map((eventNode, index) => (
-                    <div className='flex justify-center'>
-                      <EventBlock event={eventNode} index={index} />
-                    </div>
-                  ))
-                :
-                  selectedYearEvents.map((eventNode, index) => (
-                    <div className='flex justify-center'>
-                      <EventBlock event={eventNode} index={index} />
-                    </div>
-                  ))
-            }
           </div>
-          </div>
-      </Layout>
           </div>
       </Layout>
 
@@ -215,11 +149,7 @@ const Events = (props) => {
 
 export const query = graphql
 `
-export const query = graphql
-`
   query{
-    allContentfulFeaturedEvent {
-      nodes {
     allContentfulFeaturedEvent {
       nodes {
         displayTitle
