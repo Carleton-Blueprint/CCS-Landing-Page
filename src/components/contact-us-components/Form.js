@@ -42,24 +42,26 @@ const Form = () => {
   };
 
   return (
-    <div className="flex justify-center w-full mb-4 bg-center bg-cover">
+    <div className="flex justify-center mb-4 bg-center bg-cover transform -translate-y-20 lg:-translate-y-40 2xl:-translate-y-56">
       <form
-        className="flex flex-col w-10/12 lg:w-1/2 align-center"
+        className=" border-solid border-2 border-[#6464648f] flex flex-col w-10/12 lg:w-1/2 align-center bg-[#646464] bg-opacity-65 px-20 py-6 rounded-[40px] shadow-md"
         name="contact"
         onSubmit={handleSubmit}
       >
-        <h1 className="mr-auto text-xl font-poppins">Send a Message</h1>
+        <h1 className="mr-auto text-3xl font-poppins font-semibold text-white mb-14">Send a Message</h1>
         <div className="flex w-full gap-x-4">
-          <div className="w-1/2">
+          <div className="w-1/2 flex">
+          <div className=' flex-1'>
+          
             <label
-              class="block text-gray-700 text-sm font-bold mb-2"
+              class="block text-white  text-sm lg:text-md text-md mb-2"
               htmlFor="fullName"
             >
             <input
               value={formData.fullName}
               onChange={handleChange}
               name="fullName"
-              class="appearance-none w-full border-b-4 py-2 px-3 text-gray-700"
+              class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
               id="fullName"
               type="text"
               placeholder="Full Name"
@@ -68,25 +70,32 @@ const Form = () => {
             </label>
             
           </div>
-          <div className="w-1/2">
+          <div className={` text-[#E91C24] font-bold text-xl ${formData.fullName && 'invisible'}`}>*</div>
+         </div>
+          <div className="w-1/2 flex">
+          <div className=' flex-1'>
             <label
-              class="block text-gray-700 text-sm font-bold mb-2"
+              class="block text-white  text-sm lg:text-md text-md mb-2"
               htmlFor="email"
             >
                 <input
               value={formData.email}
               onChange={handleChange}
               name="email"
-              class="appearance-none w-full border-b-4 py-2 px-3 text-gray-700"
+              class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
               id="email"
               type="text"
               placeholder="Email"
             />
             </label>
-            
           </div>
+          <div className={` text-[#E91C24] font-bold text-xl ${/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && 'invisible'}`}>*</div>
+          </div>
+          
         </div>
-        <div class="mb-4">
+        
+        <div className="mb-4 flex">
+          <div className=' flex-1'>
           <label
             class="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="subject"
@@ -95,27 +104,28 @@ const Form = () => {
             value={formData.subject}
             onChange={handleChange}
             name="subject"
-            class="appearance-none border-b-4 w-full py-2 px-3 text-gray-700"
+            class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
             id="subject"
             type="text"
             placeholder="Subject"
           />
           </label>
-          
+          </div>
+          <div className={` text-[#E91C24] font-bold text-xl ${formData.subject && 'invisible'}`}>*</div>
         </div>
         <textarea
           value={formData.message}
           onChange={handleChange}
           name="message"
-          className="w-full h-64 p-4 mb-4 border-2 border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full h-64 p-4 mb-4 border-2 border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-[#E91C24]"
           placeholder="Word is bond :100:"
         ></textarea>
         <button
-          className="w-1/3 mx-auto rounded-xl padding"
+          className="text-white shadow-dark-bottom text-xl font-semibold flex justify-center items-center p-6 px-10 h-10 mx-auto rounded-full padding my-5 transition-all duration-100 ease-out border-0 bg-gradient-to-r from-[#E91C24] to-[#831014] active:from-[#831014] active:to-[#581b1d] active:shadow-none"
           type="submit"
-          style={{ border: '1px solid black' }}
+
         >
-          Send Message
+          SUBMIT
         </button>
       </form>
     </div>

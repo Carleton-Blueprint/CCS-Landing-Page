@@ -19,7 +19,6 @@ query MyQuery {
         position2
         year
         description
-        email
         linkedin
         standing
         program
