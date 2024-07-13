@@ -15,14 +15,6 @@ module.exports = {
           xl: '100%',
         }
       },
-      container: {
-        screens:{
-          sm : '100%',
-          md: '100%',
-          lg: '100%',
-          xl: '100%',
-        }
-      },
       colors: {
         eventsGrey: '#EDEBEB',
         eventsDarkGrey: '#D9D9D9',
