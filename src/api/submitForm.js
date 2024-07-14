@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     console.log(auth);
     return res.json({
       message: 'Successfully submitted form',
-      submited: { ...req.body, key, ...auth },
+      submited: { ...req.body },
     });
   } catch (error) {
     console.error('Error submitting data to Google Sheets:', error);
