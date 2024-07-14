@@ -28,7 +28,6 @@ export default async function handler(req, res) {
         values: [Object.values(req.body)],
       },
     });
-    console.log(auth);
     return res.json({
       message: 'Successfully submitted form',
       submited: { ...req.body },
