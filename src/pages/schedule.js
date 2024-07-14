@@ -1,10 +1,23 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import AllEvents from "../components/schedule-components/AllEvents"
 import { graphql } from "gatsby";
-import { useState } from "react";
+
 import greyBackground from "../images/schedule-title-background.png"
 
+import MobileSchedule from "../components/schedule-components/MobileSchedule";
 const Schedule = ({data}) => {
+  const [width,setWidth] = useState(window.innerWidth)
+    useEffect(() => {
+      const handleResize = () => {
+        setWidth(window.innerWidth)
+      }
+
+      window.addEventListener('resize', handleResize);
+      handleResize(); // Call the function immediately to set initial size
+
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
     const currentDate = new Date()
     const futureEvents = data.allContentfulScheduleRow.nodes.filter(event => new Date(event.date) >= currentDate)
 
@@ -73,7 +86,12 @@ const Schedule = ({data}) => {
             </button>
         </div>
         <div className=" pt-20">
-        <AllEvents eventRows={events}/>
+          {
+            width <= 768 ? 
+            <MobileSchedule eventRows = {events}/> :
+            <AllEvents eventRows={events}/>
+          }
+        
         </div>
         </>
     )
