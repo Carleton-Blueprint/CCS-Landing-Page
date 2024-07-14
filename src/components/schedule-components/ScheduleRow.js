@@ -1,8 +1,8 @@
 import React from "react";
 import EventBlock from "./EventBlock"
 
-const ScheduleRow = ({eventRow,index}) => {
- 
+const ScheduleRow = ({startTime, endTime, eventRow,index}) => {
+    console.log(eventRow, startTime , endTime)
     const getTime = (time) => {
         try{
           let hours = time.split(':')[0]
@@ -23,22 +23,24 @@ const ScheduleRow = ({eventRow,index}) => {
         }
         
       };
-    const time = ((getTime(eventRow.endTime) - getTime(eventRow.startTime)))
+    
+    const time = ((getTime(endTime) - getTime(startTime)))
+    
+    
 
     return (
         <div className={`m-10 text-white  grid-cols-1 flex p-8 ${index === 0 ? 'pt-20' : '' }`}>
-            <div className=" flex flex-col justify-between pr-[20px] mr-[20px]" style={{'minHeight': `${time*2}px`}}>
+            <div className=" text-nowrap flex flex-col justify-between " style={{'minHeight': `${time*2}px`}}>
 
-                <p className=" text-lg">{eventRow.startTime.substr(0, eventRow.startTime.length-2)+" "+eventRow.startTime.substr(-2).toUpperCase()}</p>
-                <p className={`relative bottom-[-${time}px] text-lg`}>{eventRow.endTime.substr(0, eventRow.endTime.length-2)+" "+eventRow.endTime.substr(-2).toUpperCase()}</p>
+                <p className="w-[100px] text-lg">{startTime.substr(0, startTime.length-2)+" "+ startTime.substr(-2).toUpperCase()}</p>
+                <p className={`relative bottom-[-${time}px] text-lg`}>{endTime.substr(0, endTime.length-2)+" "+endTime.substr(-2).toUpperCase()}</p>
             </div>
-            <div>
-                {eventRow.eventBlock.map(element => {
-                    return (
-                        <EventBlock key={element.id} events={element.event} rangeStart = {eventRow.startTime} rangeTime={time}/>
-                    )
-                })}
-            </div>
+                <div>
+                    
+                    <EventBlock events={eventRow.events} rangeStart = {startTime} rangeTime={time}/>
+                    
+                
+                </div>
         </div>
 
     )
