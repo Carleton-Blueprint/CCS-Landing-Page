@@ -1,8 +1,6 @@
 const { google } = require('googleapis');
 
 export default async function handler(req, res) {
-  console.log('hi');
-
   //
   // Set up authentication
   const auth = new google.auth.JWT({
@@ -10,6 +8,8 @@ export default async function handler(req, res) {
     key: process.env.GATSBY_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
+
+  const key = process.env.GATSBY_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n');
 
   // Initialize the Sheets API
   const sheets = google.sheets({ version: 'v4', auth });
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     });
     return res.json({
       message: 'Successfully submitted form',
-      submited: req.body,
+      submited: { ...req.body, key },
     });
   } catch (error) {
     console.error('Error submitting data to Google Sheets:', error);
