@@ -19,10 +19,10 @@ const HomeGalleryDots = (props) => {
             <div key={index}>
                 <svg width={cxy*2} height={cxy*2} viewBox={`0 0 ${cxy*2} ${cxy*2}`} fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle 
-                cx={cxy} cy={cxy} r={r} fill={`${activeImage === index ? '#08679D' : '#D9D9D9'}`}
+                cx={cxy} cy={cxy} r={r} fill={`${activeImage === index ? '#08679D' : 'var(--lightergray)'}`}
                 className=' transition-all ease-in-out duration-200'
                 onMouseEnter={(e) => e.target.setAttribute('fill', '#0292B7')}
-                onMouseLeave={(e) => activeImage === index ? e.target.setAttribute('fill', '#08679D') : e.target.setAttribute('fill', '#D9D9D9') }
+                onMouseLeave={(e) => activeImage === index ? e.target.setAttribute('fill', '#08679D') : e.target.setAttribute('fill', 'var(--lightergray)') }
                 onClick={() => handleDotClick(index)}
                 />
                 </svg>

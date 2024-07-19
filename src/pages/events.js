@@ -90,7 +90,7 @@ const Events = (props) => {
       return (
         
         <Layout pathname={props.location.pathname} >
-          <div className='font-poppins'>
+          <div>
 
           <EventsTitle/>
           <div className='flex justify-center md:justify-normal'>

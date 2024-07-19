@@ -39,10 +39,10 @@ const GalleryDots = (props) =>{
           <div key={index}>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
              <circle 
-             cx="9" cy="9" r="8.5" fill={`${activeImage === index ? '#08679D' : '#D9D9D9'}`}
+             cx="9" cy="9" r="8.5" fill={`${activeImage === index ? '#08679D' : 'var(--lightergray)'}`}
              className=' transition-all ease-in-out duration-200'
              onMouseEnter={(e) => e.target.setAttribute('fill', '#0292B7')}
-             onMouseLeave={(e) => activeImage === index ? e.target.setAttribute('fill', '#08679D') : e.target.setAttribute('fill', '#D9D9D9') }
+             onMouseLeave={(e) => activeImage === index ? e.target.setAttribute('fill', '#08679D') : e.target.setAttribute('fill', 'var(--lightergray') }
              onClick={(e) => {e.preventDefault(); handleDotClick(index)}}
              />
             </svg>

@@ -164,9 +164,9 @@ const AboutUsGallery = (props) => {
       <div className='flex items-center h-fit gap-6 duration'>
   
         <div
-        className='bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full'
-        onMouseEnter={(e) => e.currentTarget.className = 'bg-[#e91c24] w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full'}
-        onMouseLeave={(e) => e.currentTarget.className = 'bg-[#ABAAAA] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full'}
+        className='bg-[--lightgray] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full'
+        onMouseEnter={(e) => e.currentTarget.className = 'bg-[--red] w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full'}
+        onMouseLeave={(e) => e.currentTarget.className = 'bg-[--lightgray] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full'}
         onClick={() => {setAnimationTime(1); decrement(1, true, true)}}
         onMouseDown={(e) => e.preventDefault()}
         >
@@ -194,9 +194,9 @@ const AboutUsGallery = (props) => {
 
 
         <div
-        className='bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full'
-        onMouseEnter={(e) => e.currentTarget.className = 'bg-[#e91c24] w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full'}
-        onMouseLeave={(e) => e.currentTarget.className = 'bg-[#ABAAAA] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full'}
+        className='bg-[--lightgray] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full'
+        onMouseEnter={(e) => e.currentTarget.className = 'bg-[--red] w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full'}
+        onMouseLeave={(e) => e.currentTarget.className = 'bg-[--lightgray] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full'}
         onClick={() => {setAnimationTime(1); increment(1, true, true)}}
         onMouseDown={(e) => e.preventDefault()}
         >

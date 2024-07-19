@@ -83,7 +83,7 @@ const EventBlock = (props) => {
     return (
     <div className=' w-[360px] h-[360px] bg-gradient-to-br from-[#BB161D] to-black to-90% rounded-[56px] shadow-dark-bottom-left flex flex-col p-6'>
         <div className=' flex'>
-        <div className=' font-poppins'>
+        <div>
             <svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg" className=' shadow-dark-bottom rounded-full'>
                 <circle cx="37" cy="37" r="37" fill="black" fillOpacity="0.4"/>
                 <text x="50%" y="42" textAnchor="middle" fill="white" className=" text-4xl">

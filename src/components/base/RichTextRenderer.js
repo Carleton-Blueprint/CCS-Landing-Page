@@ -7,7 +7,7 @@ const RichText = ({ content, fontSizeUtilityClass }) => {
       switch (node.nodeType) {
         case 'paragraph':
           return (
-            <p className={`${fontSizeUtilityClass || 'text-base'} text-[#D9D9D9]`}>
+            <p className={`${fontSizeUtilityClass || 'text-base'} text-[--lightergray]`}>
               {node.content.map(renderNode)}
             </p>
           );

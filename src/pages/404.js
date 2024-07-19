@@ -10,7 +10,7 @@ const Page404 = () => {
       <div className="bg-cover bg-no-repeat text-white bg-gray-800 h-[100vh] w-[100vw] text-center flex flex-col items-center justify-center" style={{'backgroundImage': `url(${background})`}}>
         <h1 className="text-[100px] sm:text-[150px] md:text-[200px] lg:text-[200px] font-bold mt[-20px] flex">4 <img className="flex w-[100px] sm:w-[150px] md:w-[200px] lg:w-[200px]" src={logo}/>4</h1>
         <p className="text-lg w-[80vw]">The page you are looking for doesn't exist or has been moved</p>
-        <a href="/" className="flex bg-[#676666] rounded-full p-2 pl-4 pr-4 hover:bg-[#E91C24] mt-[50px]" style={{'boxShadow': '0 0 30px 5px black'}}>
+        <a href="/" className="flex bg-[#676666] rounded-full p-2 pl-4 pr-4 hover:bg-[--red] mt-[50px]" style={{'boxShadow': '0 0 30px 5px black'}}>
             Go Home
             <svg
             xmlns="http://www.w3.org/2000/svg"

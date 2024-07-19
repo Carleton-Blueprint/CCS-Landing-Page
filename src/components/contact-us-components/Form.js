@@ -54,7 +54,7 @@ const Form = () => {
         name="contact"
         onSubmit={handleSubmit}
       >
-        <h1 className="mb-6 mr-auto text-xl font-semibold text-white lg:text-3xl font-poppins lg:mb-14">
+        <h1 className="mb-6 mr-auto text-xl font-semibold text-white lg:text-3xl lg:mb-14">
           Send a Message
         </h1>
         <div className="flex w-full gap-x-4">
@@ -68,7 +68,7 @@ const Form = () => {
                   value={formData.fullName}
                   onChange={handleChange}
                   name="fullName"
-                  class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
+                  class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[--red] transition-colors ease-out duration-200"
                   id="fullName"
                   type="text"
                   placeholder="Full Name"
@@ -76,7 +76,7 @@ const Form = () => {
               </label>
             </div>
             <div
-              className={` text-[#E91C24] font-bold text-xl ${
+              className={` text-[--red] font-bold text-xl ${
                 formData.fullName && 'invisible'
               }`}
             >
@@ -93,7 +93,7 @@ const Form = () => {
                   value={formData.email}
                   onChange={handleChange}
                   name="email"
-                  class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
+                  class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[--red] transition-colors ease-out duration-200"
                   id="email"
                   type="text"
                   placeholder="Email"
@@ -101,7 +101,7 @@ const Form = () => {
               </label>
             </div>
             <div
-              className={` text-[#E91C24] font-bold text-xl ${
+              className={` text-[--red] font-bold text-xl ${
                 /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && 'invisible'
               }`}
             >
@@ -120,7 +120,7 @@ const Form = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 name="subject"
-                class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
+                class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[--red] transition-colors ease-out duration-200"
                 id="subject"
                 type="text"
                 placeholder="Subject"
@@ -128,7 +128,7 @@ const Form = () => {
             </label>
           </div>
           <div
-            className={` text-[#E91C24] font-bold text-xl ${
+            className={` text-[--red] font-bold text-xl ${
               formData.subject && 'invisible'
             }`}
           >
@@ -139,11 +139,11 @@ const Form = () => {
           value={formData.message}
           onChange={handleChange}
           name="message"
-          className="w-full h-64 p-4 mb-4 border-2 border-gray-300 rounded-lg resize-none font-poppins focus:outline-none focus:ring-2 focus:ring-[#E91C24]"
+          className="w-full h-64 p-4 mb-4 border-2 border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-[--red]"
           placeholder="Write a message..."
         ></textarea>
         <button
-          className="text-white shadow-dark-bottom text-xl font-semibold flex justify-center items-center p-6 px-10 h-10 mx-auto rounded-full padding my-5 transition-all duration-100 ease-out border-0 bg-gradient-to-r from-[#E91C24] to-[#831014] active:from-[#831014] active:to-[#581b1d] active:shadow-none"
+          className="text-white shadow-dark-bottom text-xl font-semibold flex justify-center items-center p-6 px-10 h-10 mx-auto rounded-full padding my-5 transition-all duration-100 ease-out border-0 bg-gradient-to-r from-[--red] to-[#831014] active:from-[#831014] active:to-[#581b1d] active:shadow-none"
           type="submit"
         >
           SUBMIT

@@ -11,8 +11,8 @@ const GetInvolvedCard = ({data}) => {
   return  (
     <div className='relative flex flex-col w-10/12 text-white rounded-tr-[3rem] rounded-bl-[3rem] bg-primaryGray h-[16rem] sm:w-[32rem] sm:h-[22rem]'>
         <div className='px-6 pt-8'>
-            <p className='mb-4 text-lg font-semibold sm:text-2xl font-poppins'>{title}</p>
-            <p className='text-xs sm:text-lg font-extralight font-poppins'>{description}</p>
+            <p className='mb-4 text-lg font-semibold sm:text-2xl'>{title}</p>
+            <p className='text-xs sm:text-lg font-extralight'>{description}</p>
         </div>
         <div className='flex justify-between w-full'>
             <div className='p-6'>
