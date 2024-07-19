@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import AboutUsGallery from '../components/about-us-components/gallery-components/AboutUsGallery'
 import WhyAttend from '../components/about-us-components/WhyAttend'
 import Statistics from '../components/about-us-components/AboutUsStatistics'
@@ -7,17 +7,37 @@ import { Seo } from '../components/base/Seo'
 import Header from '../components/base/Header'
 import background from '../images/about-us-header.svg'
 import NavigationBar from '../components/base/NavigationBar'
-
+import WhyAttendMobile from '../components/about-us-components/WhyAttendMobile'
+import AboutUsGalleryMobile from '../components/about-us-components/gallery-components/AboutUsGalleryMobile'
 const ImageGallery = ({ data }) => {
     const galleryImages = data.allContentfulAboutUsGallery.nodes //all images the AboutUsGallery
     const bodySections = data.contentfulAboutPage.aboutUsSection
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+      // Function to update the state based on the current window width
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 768);
+      };
+
+      // Add event listener for window resize
+      window.addEventListener('resize', handleResize);
+
+      // Cleanup function to remove the event listener
+      return () => window.removeEventListener('resize', handleResize);
+    }, []); // Empty dependency array means this effect runs only on mount and unmount
+
     return (
       <>
       <NavigationBar pathname='/about-us'/>
       <Header title="About Us" background={background}/>
       <div className='flex flex-col '>
         <div className='flex items-center justify-center'>
-          <AboutUsGallery images={galleryImages} />
+        { !isMobile ?
+            <AboutUsGallery images = {galleryImages}/>:
+            <AboutUsGalleryMobile images = {galleryImages}/>
+            
+          }
         </div>
         
         <div className='flex justify-center'>
@@ -39,8 +59,14 @@ const ImageGallery = ({ data }) => {
           <p className='w-4/5 '>Why Attend?</p>
         </div>
         <div className='flex justify-center pt-16'>
-          <WhyAttend reasons = {data.allContentfulAttendReason.nodes}/>
+          {
+            !isMobile ? 
+            <WhyAttend reasons = {data.allContentfulAttendReason.nodes}/>:
+            <WhyAttendMobile reasons = {data.allContentfulAttendReason.nodes}/>
+          }
+          
         </div>
+        
         <div className='flex justify-center'>
           <Statistics stats={data.allContentfulStatistic.nodes}/>
         </div>
