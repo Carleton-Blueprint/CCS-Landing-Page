@@ -19,7 +19,7 @@ const Home = () => {
 
         <div className='relative z-20 pl-60 pt-44 '>
             <div className='text-white text-5xl font-poppins font-bold'>
-                CUSEC 2024
+                Canadian University
             </div>
             <div className='text-white text-6xl mb-10 pt-5 font-poppins font-bold'>
                 Software Engineering Conference
