@@ -2,15 +2,10 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 
-if (process.env.STAGING) {
-  require('dotenv').config({
-    path: `.env.staging`,
-  });
-} else {
-  require('dotenv').config({
-    path: `.env.${process.env.NODE_ENV}`,
-  });
-}
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   plugins: [
     {
