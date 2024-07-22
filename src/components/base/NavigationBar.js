@@ -36,9 +36,9 @@ const NavigationBar = (props) => {
 
   return (
     // change height based on screen
-    <div className='container h-14 md:h-16'>
+    <div className='absolute container h-14 md:h-20'>
       {/* Add custom styles to tailwind config to match figma */}
-      <div className='flex items-center justify-end w-screen gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins'>
+      <div className='flex items-center justify-end w-screen gap-10 text-white md:hidden bg-transparent font-poppins'>
         <button className='relative z-50 pr-10' onClick={toggleMenu}> 
           {isMenuOpen 
           ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7"> <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
@@ -67,7 +67,7 @@ const NavigationBar = (props) => {
           )}
         </AnimatePresence>
       </div>
-      <div className='items-center justify-end hidden w-screen gap-20 text-white md:flex bg-gradient-to-r from-neutral-900 to-red-700 font-poppins'>
+      <div className='items-center justify-end hidden w-screen gap-20 text-white md:flex bg-transparant'>
         <ul className='flex items-center justify-end gap-20 pr-20'>
           <li className={`${currentpath === '/' ? 'font-bold' : 'font-semibold'}`}>HOME</li>
           <li className={`${isCurrentPath('/about') ? 'font-bold' : 'font-semibold'}`}>ABOUT US</li>
@@ -75,6 +75,9 @@ const NavigationBar = (props) => {
           <li className={`${isCurrentPath('/FAQ') ? 'font-bold' : 'font-semibold'}`}>FAQ</li>
           <li className={`${isCurrentPath('/contact') ? 'font-bold' : 'font-semibold'}`}>CONTACT</li>
         </ul>
+      </div>
+      <div className='w-full flex justify-center'>
+        <div className=' h-[1px] w-[95%] bg-white'></div>
       </div>
     </div>
   )

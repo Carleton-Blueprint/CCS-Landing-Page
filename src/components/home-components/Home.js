@@ -1,8 +1,9 @@
 import React from 'react';
-import backgroundImage from '../../images/csshome_2024_background.png'; // Adjust the path as needed
-import backgroundLines from '../../images/csshome_2024_background_lines.png'; // Adjust the path as needed
+import backgroundImage from '../../images/csshome_2024_background.png';
+import backgroundLines from '../../images/csshome_2024_background_lines.png'; 
+import HomeImageCarousel from './home-gallery-components/HomeImageCarousel';
 import { Link } from 'gatsby';
-const Home = () => {
+const Home = ({data}) => {
   return (
     <div
       className="w-full h-screen relative"
@@ -33,6 +34,12 @@ const Home = () => {
         </div>
         <div className='absolute bottom-5 left-10 font-poppins text-3xl text-white font-light'>Janurary 11-13</div>
         <div className='absolute bottom-5 left-1/3 font-poppins text-3xl text-white font-light'>Le Centre Sheraton, Montreal, QC </div>
+        <div className='absolute bottom-[10vh] right-1/4'>
+            <HomeImageCarousel
+            images={data.allContentfulAboutUsGallery.nodes}
+            size="lg"
+            />
+        </div>
     </div>
   );
 };
