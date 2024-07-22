@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import AttendReason from "./AttendReason";
 
 const WhyAttend = (props) => {
+ 
   const allImages = props.reasons;
   const movingLeft = useRef(false);
   const imagesLength = allImages.length;
@@ -18,9 +19,6 @@ const WhyAttend = (props) => {
     return pushVisibleImages;
   };
 
-  //move visibleImages over by n
-  //runs updateImages() n times
-  //check if its the initial update (if not add a delay)
   const increment = () => {
       const start = (startIndex.current + 1) % imagesLength;
       startIndex.current = start;
@@ -35,7 +33,6 @@ const WhyAttend = (props) => {
     setVisibleImages(generateVisibleImages(startIndex.current, true))
   };
 
-  //returns a diff brightness className depending on the image index
   const getBrightness = (imageIndex) => {
     const index = visibleImages.indexOf(imageIndex);
     if (index === -1) {
@@ -89,15 +86,19 @@ const WhyAttend = (props) => {
   return (
     <div>
       <div className="relative flex items-center h-[360px] lg:w-[600px]">
+        
         {props.reasons.map((r, index) => {
           return (
+            
             <div className={`absolute h-auto ${getCss(index)}`}>
+              {console.log(r)}
               <AttendReason
                 key={r.id}
                 title={r.title}
                 subtitle={r.subtitle}
                 isCenter={visibleImages.indexOf(index) === 1}
                 brightness={`${getBrightness(index)}`}
+                image = {r.icon}
               />
             </div>
           );
@@ -118,7 +119,7 @@ const WhyAttend = (props) => {
             }
             onClick={() => {
           
-              decrement(1, true, true);
+              decrement();
             }}
             onMouseDown={(e) => e.preventDefault()}
           >
@@ -143,7 +144,7 @@ const WhyAttend = (props) => {
           }
           onClick={() => {
          
-            increment(1, true, true);
+            increment();
           }}
           onMouseDown={(e) => e.preventDefault()}
         >
