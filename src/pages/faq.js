@@ -4,16 +4,16 @@ import NavigationBar from '../components/base/NavigationBar';
 import Accordian from '../components/faq-components/Accordian';
 import Header from '../components/base/Header';
 import background from '../images/faq-header.svg';
+import Layout from '../components/base/Layout';
 
-function Faq({ data }) {
+function Faq({ data, location }) {
   return (
-    <>
-      <NavigationBar pathname={'/FAQ'} />
+    <Layout pathname={location.pathname}>
       <Header title="FAQ" background={background} />
       <div className="container">
         <Accordian data={data} />
       </div>
-    </>
+    </Layout>
   );
 }
 
