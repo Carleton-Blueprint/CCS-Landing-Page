@@ -1,6 +1,5 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import NavigationBar from '../components/base/NavigationBar';
 import Accordian from '../components/faq-components/Accordian';
 import Header from '../components/base/Header';
 import background from '../images/faq-header.svg';

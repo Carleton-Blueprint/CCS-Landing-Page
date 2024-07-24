@@ -35,7 +35,7 @@ const NavigationBar = (props) => {
 
   return (
     // change height based on screen
-    <div className="container h-14 md:h-16">
+    <div className="container fixed top-0 h-14 md:h-16 z-[95]">
       {/* Add custom styles to tailwind config to match figma */}
       <div className="flex items-center justify-end w-screen gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
         <button className="relative z-50 pr-10" onClick={toggleMenu}>
