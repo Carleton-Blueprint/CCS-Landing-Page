@@ -88,6 +88,14 @@ const Events = (props) => {
     setPastEvents(filteredEventsPast);
   }, [eventsData, selectedYear]);
 
+  const eventsToRender =
+    selectedYear === currentAcademicYear
+      ? renderingPresent
+        ? availableEvents
+        : pastEvents
+      : selectedYearEvents;
+  console.log(eventsToRender);
+
   return (
     <Layout pathname={props.location.pathname}>
       <div className="font-poppins">
@@ -105,8 +113,7 @@ const Events = (props) => {
                   value={year}
                   className="hover:bg-eventsDarkGrey"
                 >
-                  {' '}
-                  {year}{' '}
+                  {year}
                 </option>
               );
             })}
@@ -150,23 +157,17 @@ const Events = (props) => {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20">
-          {selectedYear === currentAcademicYear
-            ? renderingPresent
-              ? availableEvents.map((eventNode, index) => (
-                  <div className="flex justify-center">
-                    <EventBlock event={eventNode} index={index} />
-                  </div>
-                ))
-              : pastEvents.map((eventNode, index) => (
-                  <div className="flex justify-center">
-                    <EventBlock event={eventNode} index={index} />
-                  </div>
-                ))
-            : selectedYearEvents.map((eventNode, index) => (
-                <div className="flex justify-center">
-                  <EventBlock event={eventNode} index={index} />
-                </div>
-              ))}
+          {eventsToRender && eventsToRender.length ? (
+            eventsToRender.map((eventNode, index) => (
+              <div key={index} className="flex justify-center">
+                <EventBlock event={eventNode} index={index} />
+              </div>
+            ))
+          ) : (
+            <div className="mb-10 text-xl font-semibold text-center col-span-full">
+              No events right now, stay tuned for more!
+            </div>
+          )}
         </div>
       </div>
     </Layout>
