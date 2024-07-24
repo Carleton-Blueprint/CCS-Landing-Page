@@ -40,10 +40,12 @@ const AllEvents = ({ eventRows }) => {
 
   const shadow = {
     boxShadow: `
-            0px 0px 100px #E91C24, 
+            0px -1px 100px #E91C24, 
             0px 0px 50px #E91C24,
-            0px 10vh 500px #E91C24`,
+            0px 0px 500px #E91C24
+`,
   };
+
   return (
     <div
       className="grid place-items-center "

@@ -34,6 +34,7 @@ const Events = (props) => {
     today.setHours(0, 0, 0, 0); // Set the time to 00:00:00 for today
 
     const academicYearSet = new Set();
+
     eventsData.forEach((event) => {
       const year = getAcademicYear(event.startDate);
       academicYearSet.add(year);
@@ -42,10 +43,15 @@ const Events = (props) => {
 
     const startDate = new Date(selectedYear.substring(0, 4), 8, 1);
     const endDate = new Date(selectedYear.substring(5, 9), 7, 31);
+
     const filteredEventsYear = eventsData.filter((event) => {
       const eventDate = new Date(event.startDate);
+      console.log(eventDate);
+      console.log(eventDate <= endDate);
       return eventDate >= startDate && eventDate <= endDate;
     });
+
+    console.log(filteredEventsYear);
 
     filteredEventsYear.sort((a, b) => {
       const dateOfEventA = new Date(a.startDate);
@@ -55,7 +61,7 @@ const Events = (props) => {
 
     setSelectedYearEvents(filteredEventsYear);
 
-    const filteredEventsFuture = eventsData.filter((event) => {
+    const filteredEventsFuture = filteredEventsYear.filter((event) => {
       const eventDate = new Date(event.startDate);
       return eventDate >= today;
     });
@@ -68,7 +74,7 @@ const Events = (props) => {
 
     setAvailableEvents(filteredEventsFuture);
 
-    const filteredEventsPast = eventsData.filter((event) => {
+    const filteredEventsPast = filteredEventsYear.filter((event) => {
       const eventDate = new Date(event.startDate);
       return eventDate < today;
     });
