@@ -2,6 +2,7 @@ import React from 'react';
 import NavigationBar from '../components/base/NavigationBar';
 import Form from '../components/contact-us-components/Form';
 import Header from '../components/base/Header';
+import Home from '../components/home-components/Home'
 import { Seo } from '../components/base/Seo';
 import { graphql } from 'gatsby';
 import background from '../images/csshomepage.png';
@@ -9,9 +10,9 @@ import HomeImageCarousel from '../components/home-components/home-gallery-compon
 
 const HomePage = ({ data }) => {
   return (
-    <div className="h-screen bg-red-200">
-      <NavigationBar pathname={'/'} />
-      <Form />
+    <div>
+      <NavigationBar pathname={'/'}/>
+      <Home/>
       <HomeImageCarousel
         images={data.allContentfulAboutUsGallery.nodes}
         size="sm"
