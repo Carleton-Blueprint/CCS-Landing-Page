@@ -48,7 +48,7 @@ src/
 ├── gatsby-config.js          
 └── gatsby-node.js
 ```
-<b>Notes<b>:
+<b>Notes</b>:
 - Gatsby has no typical "entry" point file (ex. index.js in `create-react-app`)
 - Routing is done automatically, urls are associated with the name of files in pages folder
 - Images are where we serve static images (ex. logos, background, etc.)
