@@ -127,7 +127,7 @@ const EventTemplate = ({ data }) => {
                 {event.location && (
                   <div className="locationEvent">
                     <span className="font-semibold locationText">
-                      Location:
+                      Location:&nbsp;
                     </span>
                     {event.location}
                   </div>
@@ -135,7 +135,7 @@ const EventTemplate = ({ data }) => {
                 {event.longDescription && (
                   <div className="descriptionEvent">
                     <span className="font-semibold descriptionText">
-                      About:
+                      About:&nbsp;
                     </span>
                     {event.longDescription.longDescription}
                   </div>
