@@ -7,7 +7,8 @@ import greyBackground from '../images/schedule-title-background.png';
 import background from '../images/get-involved-header.svg';
 import MobileSchedule from '../components/schedule-components/MobileSchedule';
 import Layout from '../components/base/Layout';
-import Header from '../components/base/Header';
+import HeaderWithSubtitle from '../components/base/HeaderWithSubtitle';
+
 const Schedule = ({ data, location }) => {
   const [width, setWidth] = useState(0);
 
@@ -89,7 +90,11 @@ const Schedule = ({ data, location }) => {
   const dayNumber = date;
   return (
     <Layout pathname={location.pathname}>
-      <Header title="Schedule" background={background} />
+      <HeaderWithSubtitle
+        title="Schedule"
+        subtitle="CUSEC 2024"
+        background={background}
+      />
       <div className="relative">
         <div
           className="sticky top-0 z-[100] flex justify-center w-full p-8 mt-[-2] bg-bottom items-align"

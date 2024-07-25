@@ -1,15 +1,17 @@
-import React from "react";
+import React from 'react';
 
 const Header = (props) => {
   return (
     <div className="">
       <img
-        className="object-cover object-bottom lg:h-[80vh] md:[70vh] sm:h-[60vh] w-screen z-0"
+        className="object-cover object-bottom lg:h-[90vh] h-[70vh] w-screen z-0"
         src={props.background}
         alt="Header Background"
-        />
-      <div className="flex absolute justify-center z-10 top-[10vh] sm:top-[20vh] w-screen text-center">
-        <h1 className="lg:text-[70px] md:text-[50px] sm:text-[30px] text-[40px] font-bold text-white">{props.title}</h1>
+      />
+      <div className=" absolute z-10 top-[14vh] sm:top-[20vh] md:top-[18vh] w-screen text-center">
+        <h1 className="lg:text-[80px] md:text-[70px] sm:text-[60px] text-[50px] font-bold text-white">
+          {props.title}
+        </h1>
       </div>
     </div>
   );
