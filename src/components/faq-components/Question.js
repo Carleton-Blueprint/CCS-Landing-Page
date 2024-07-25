@@ -17,13 +17,15 @@ function Question(props) {
       className={`border-t-[1.5px] rounded-t-[2rem] pb-8 ${
         isLast ? 'rounded-b-[2rem]' : ''
       } justify-center ${
-        isOpen ? 'bg-gradient-to-b from-nero to-red-stop' : 'bg-nero'
+        isOpen
+          ? 'bg-gradient-to-b from-primaryGray to-redStop'
+          : 'bg-primaryGray'
       }`}
     >
       <motion.div
         initial={false}
         onClick={toggleOpen}
-        className={`border-t-[1.5px] rounded-t-[2rem]  z-${index * 10} ${
+        className={`border-t-[1.5px] rounded-t-[2rem]  ${
           isLast ? '' : 'pb-8'
         } border-slate-600 w-[20rem] w-full text-white  font-poppins`}
       >
@@ -85,8 +87,8 @@ function Question(props) {
             }}
             transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
-            <div className="text-xs text-white md:text-sm font-extralight md:font-light md:mx-8">
-              <RichText content={answer.content} />
+            <div className="px-5 text-xs text-white md:text-sm font-extralight md:font-light md:mx-8">
+              {answer ? <RichText content={answer.content} /> : null}
             </div>
           </motion.section>
         )}

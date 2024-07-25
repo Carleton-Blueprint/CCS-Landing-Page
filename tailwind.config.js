@@ -3,7 +3,7 @@ module.exports = {
   content: [
     `./src/pages/**/*.{js,jsx,ts,tsx}`,
     `./src/components/**/*.{js,jsx,ts,tsx}`,
-    `./src/pages/templates/**/*.{js,jsx,ts,tsx}`
+    `./src/pages/templates/**/*.{js,jsx,ts,tsx}`,
   ],
   theme: {
     extend: {
@@ -13,17 +13,17 @@ module.exports = {
           md: '100%',
           lg: '100%',
           xl: '100%',
-        }
+        },
       },
       colors: {
         primaryGray: '#252525',
         eventsGrey: '#EDEBEB',
         eventsDarkGrey: '#D9D9D9',
         eventsTextGrey: '#737373',
-        redStop: '#912024'
+        redStop: '#912024',
       },
       fontFamily: {
-        'poppins': ['Poppins', 'sans-serif'] // Add the font family you want
+        poppins: ['Poppins', 'sans-serif'], // Add the font family you want
       },
       boxShadow: {
         'dark-bottom-left': '-3px 3px 4px rgba(0, 0, 0, 0.9)', // adjust values as needed
@@ -34,8 +34,8 @@ module.exports = {
       },
       maskImage: {
         'fade-t-b': 'linear-gradient(to bottom, transparent, black)',
-      }   
+      },
     },
   },
   plugins: [],
-}
+};
