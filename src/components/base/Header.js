@@ -8,8 +8,8 @@ const Header = (props) => {
         src={props.background}
         alt="Header Background"
         />
-      <div className="flex absolute justify-center z-10 top-[20vh] w-screen text-center">
-        <h1 className="lg:text-[70px] md:text-[50px] sm:text-[30px] font-bold text-white">{props.title}</h1>
+      <div className="flex absolute justify-center z-10 top-[10vh] sm:top-[20vh] w-screen text-center">
+        <h1 className="lg:text-[70px] md:text-[50px] sm:text-[30px] text-[40px] font-bold text-white">{props.title}</h1>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 
 const RichText = ({ content }) => {
-    console.log(content)
     const renderNode = (node) => {
       switch (node.nodeType) {
         case 'paragraph':
@@ -20,7 +19,7 @@ const RichText = ({ content }) => {
           );
         case 'unordered-list':
           return (
-            <ul className='ml-6 md:ml-10 mt-2 list-disc '>
+            <ul className='mt-2 ml-6 list-disc md:ml-10 '>
               {node.content.map(renderNode)}
             </ul>
           );
@@ -38,7 +37,7 @@ const RichText = ({ content }) => {
     const renderText = (textNode) => {
       const { value, marks } = textNode;
       if (marks && marks.some(mark => mark.type === 'bold')) {
-        return <span className=" font-medium">{value}</span>;
+        return <span className="font-medium ">{value}</span>;
       } else {
         return value;
       }
