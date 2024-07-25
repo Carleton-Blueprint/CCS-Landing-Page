@@ -2,8 +2,6 @@
 
 Welcome to the Carleton CUSEC Society (CCS) website, brought to you by Carleton Blueprint ❤️!
 
-The goal of the CCS website was simple: to share essential information on CUSEC, foster interest in joining CCS as a member and attending their events, and motivate students to attend CUSEC.
-
 # Technologies
 
 - **Frontend:** [Gatsby](https://www.gatsbyjs.com/docs/)
