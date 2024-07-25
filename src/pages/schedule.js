@@ -4,7 +4,7 @@ import AllEvents from '../components/schedule-components/AllEvents';
 import { graphql } from 'gatsby';
 
 import greyBackground from '../images/schedule-title-background.png';
-import background from '../images/get-involved-header.svg';
+import background from '../images/schedule-header.svg';
 import MobileSchedule from '../components/schedule-components/MobileSchedule';
 import Layout from '../components/base/Layout';
 import HeaderWithSubtitle from '../components/base/HeaderWithSubtitle';
@@ -97,7 +97,7 @@ const Schedule = ({ data, location }) => {
       />
       <div className="relative">
         <div
-          className="sticky top-0 z-[100] flex justify-center w-full p-8 mt-[-2] bg-bottom items-align"
+          className="sticky top-0 z-[100] flex justify-center w-full p-8 mt-[-20px] bg-bottom items-align"
           style={{
             'background-image': `url(${greyBackground})`,
             'background-size': '100% 100%',

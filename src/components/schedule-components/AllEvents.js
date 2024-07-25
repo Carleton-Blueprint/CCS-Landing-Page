@@ -40,10 +40,9 @@ const AllEvents = ({ eventRows }) => {
 
   const shadow = {
     boxShadow: `
-            0px -1px 100px #E91C24, 
-            0px 0px 50px #E91C24,
-            0px 0px 500px #E91C24
-`,
+          0px 0px 0px #E91C24,        
+          150px 2px 50px -50px #E91C24,  
+          -150px -10px 50px -50px #E91C24`,
   };
 
   return (
@@ -51,7 +50,7 @@ const AllEvents = ({ eventRows }) => {
       className="grid place-items-center "
       style={{ backgroundColor: '#41151B' }}
     >
-      <div className=" bg-[#111] w-[700px] min-h-screen z-10" style={shadow}>
+      <div className="bg-[#111] w-[700px] min-h-screen z-10" style={shadow}>
         {eventRows.map((element, index) => {
           return (
             <ScheduleRow
