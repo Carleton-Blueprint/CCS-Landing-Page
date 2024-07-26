@@ -3,17 +3,17 @@ import Form from '../components/contact-us-components/Form';
 import Header from '../components/base/Header';
 import SocialMedia from '../components/contact-us-components/SocialMedia';
 import background from '../images/contact-us-header.svg';
-import NavigationBar from '../components/base/NavigationBar';
+import Layout from '../components/base/Layout';
+
 import ToastProvider from '../components/base/ToastProvider';
 
-const ContactPage = () => {
+const ContactPage = ({ location }) => {
   return (
-    <ToastProvider>
-      <NavigationBar pathname={'/contact-us'} />
+    <ToastProviderLayout pathname={location.pathname}>
       <Header title="Contact Us" background={background} />
       <Form />
       <SocialMedia />
-    </ToastProvider>
+    </LayoutToastProvider>
   );
 };
 

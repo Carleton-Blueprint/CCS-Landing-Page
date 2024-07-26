@@ -24,7 +24,8 @@ const Form = () => {
     e.preventDefault();
     //validation
     if (
-      !formData.fullName ||
+      !formData.firstName ||
+      !formData.lastName ||
       !formData.email ||
       !formData.subject ||
       !formData.message
@@ -32,6 +33,7 @@ const Form = () => {
       console.log('Please enter all info'); //TO DO: Snackbar
       return;
     }
+    console.log(formData);
     await window
       .fetch(`/api/submitForm`, {
         //serverless funciton, see src/api/submitForm for the function!
@@ -50,7 +52,8 @@ const Form = () => {
       </div>
     )
     setFormData({
-      fullName: '',
+      firstName: '',
+      lastName: '',
       email: '',
       subject: '',
       message: '',
@@ -72,22 +75,22 @@ const Form = () => {
             <div className="flex-1 ">
               <label
                 class="block text-white  text-sm lg:text-md text-md mb-2"
-                htmlFor="fullName"
+                htmlFor="firstName"
               >
                 <input
-                  value={formData.fullName}
+                  value={formData.firstName}
                   onChange={handleChange}
-                  name="fullName"
+                  name="firstName"
                   class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
-                  id="fullName"
+                  id="firstName"
                   type="text"
-                  placeholder="Full Name"
+                  placeholder="First Name"
                 />
               </label>
             </div>
             <div
               className={` text-[#E91C24] font-bold text-xl ${
-                formData.fullName && 'invisible'
+                formData.firstName && 'invisible'
               }`}
             >
               *
@@ -97,26 +100,51 @@ const Form = () => {
             <div className="flex-1 ">
               <label
                 class="block text-white  text-sm lg:text-md text-md mb-2"
-                htmlFor="email"
+                htmlFor="lastName"
               >
                 <input
-                  value={formData.email}
+                  value={formData.lastName}
                   onChange={handleChange}
-                  name="email"
+                  name="lastName"
                   class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
-                  id="email"
+                  id="lastName"
                   type="text"
-                  placeholder="Email"
+                  placeholder="Last Name"
                 />
               </label>
             </div>
             <div
               className={` text-[#E91C24] font-bold text-xl ${
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && 'invisible'
+                formData.lastName && 'invisible'
               }`}
             >
               *
             </div>
+          </div>
+        </div>
+        <div className="flex mb-4">
+          <div className="flex-1">
+            <label
+              class="block text-white  text-sm lg:text-md text-md mb-2"
+              htmlFor="email"
+            >
+              <input
+                value={formData.email}
+                onChange={handleChange}
+                name="email"
+                class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
+                id="email"
+                type="text"
+                placeholder="Email"
+              />
+            </label>
+          </div>
+          <div
+            className={` text-[#E91C24] font-bold text-xl ${
+              /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && 'invisible'
+            }`}
+          >
+            *
           </div>
         </div>
 
@@ -145,6 +173,7 @@ const Form = () => {
             *
           </div>
         </div>
+
         <textarea
           value={formData.message}
           onChange={handleChange}
