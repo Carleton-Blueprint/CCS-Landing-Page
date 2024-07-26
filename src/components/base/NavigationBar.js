@@ -41,7 +41,7 @@ const NavigationBar = (props) => {
       {/* Add custom styles to tailwind config to match figma */}
       <div className="flex items-center justify-end w-screen gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
         <button className="relative z-50 w-full pr-10" onClick={toggleMenu}>
-          {isMenuOpen ? (
+          {!isMenuOpen ? (
             <div className="flex justify-between w-full">
               <img
                 className="w-[45px] h-auto ml-2"
