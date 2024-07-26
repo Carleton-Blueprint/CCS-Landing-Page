@@ -9,11 +9,13 @@ import ToastProvider from '../components/base/ToastProvider';
 
 const ContactPage = ({ location }) => {
   return (
-    <ToastProviderLayout pathname={location.pathname}>
-      <Header title="Contact Us" background={background} />
-      <Form />
-      <SocialMedia />
-    </LayoutToastProvider>
+    <Layout pathname={location.pathname}>
+      <ToastProvider>
+        <Header title="Contact Us" background={background} />
+        <Form />
+        <SocialMedia />
+      </ToastProvider>
+    </Layout>
   );
 };
 
