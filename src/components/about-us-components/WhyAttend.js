@@ -3,9 +3,9 @@ import AttendReason from "./AttendReason";
 
 const WhyAttend = (props) => {
  
-  const allImages = props.reasons;
+  const allNodes = props.reasons;
   const movingLeft = useRef(false);
-  const imagesLength = allImages.length;
+  const imagesLength = allNodes.length;
   const startIndex = useRef(0);
   const [visibleImages, setVisibleImages] = useState([0, 1, 2]);
 
@@ -87,7 +87,7 @@ const WhyAttend = (props) => {
     <div>
       <div className="relative flex items-center h-[360px] lg:w-[600px]">
         
-        {props.reasons.map((r, index) => {
+        {allNodes.map((r, index) => {
           return (
             
             <div className={`absolute h-auto ${getCss(index)}`}>
