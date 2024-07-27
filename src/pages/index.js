@@ -10,10 +10,6 @@ const HomePage = ({ data }) => {
     <div>
       <NavigationBar pathname={'/'} />
       <Home />
-      <HomeImageCarousel
-        images={data.allContentfulAboutUsGallery.nodes}
-        size="sm"
-      />
     </div>
   );
 };
