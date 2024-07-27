@@ -43,7 +43,10 @@ const RichText = ({ content }) => {
       }
     };
   
-    return <div>{content.map(renderNode)}</div>;
+    return <div>
+      <p className="mb-2">CUSEC 2024</p>
+      {content.map(renderNode)}
+      </div>;
   };
 
 export default RichText
