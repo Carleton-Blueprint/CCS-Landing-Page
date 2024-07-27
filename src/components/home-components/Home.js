@@ -56,10 +56,12 @@ const Home = ({ data }) => {
         <div className="pt-4">Le Centre Sheraton, Montreal, QC</div>
       </div>
       <div className="absolute right-1/2 bottom-[18vh] lg:bottom-[10vh] lg:right-1/4">
-        <HomeImageCarousel
-          images={data.allContentfulAboutUsGallery.nodes}
-          size={`${isMobile ? (height < 700 ? 'sm' : 'md') : 'lg'}`}
-        />
+        {data ? (
+          <HomeImageCarousel
+            images={data.allContentfulAboutUsGallery.nodes}
+            size={`${isMobile ? (height < 700 ? 'sm' : 'md') : 'lg'}`}
+          />
+        ) : null}
       </div>
     </div>
   );
