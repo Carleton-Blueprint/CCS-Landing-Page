@@ -10,7 +10,6 @@ const HomePage = ({ data }) => {
     <div>
       <NavigationBar pathname={'/'} />
       <Home data={data} />
-      <div className="bg-slate-50"></div>
     </div>
   );
 };
