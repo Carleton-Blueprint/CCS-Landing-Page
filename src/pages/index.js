@@ -9,7 +9,8 @@ const HomePage = ({ data }) => {
   return (
     <div>
       <NavigationBar pathname={'/'} />
-      <Home />
+      <Home data={data} />
+      <div className="bg-slate-50"></div>
     </div>
   );
 };
