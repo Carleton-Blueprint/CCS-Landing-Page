@@ -9,7 +9,7 @@ const HomePage = ({ data }) => {
   return (
     <div>
       <NavigationBar pathname={'/'} />
-      <Home />
+      <Home data={data} />
     </div>
   );
 };
