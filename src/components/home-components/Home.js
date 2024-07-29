@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import backgroundImage from '../../images/csshome_2024_background.png';
 import backgroundLines from '../../images/csshome_2024_background_lines.png';
+import { TypeAnimation } from 'react-type-animation';
 import HomeImageCarousel from './home-gallery-components/HomeImageCarousel';
 import { Link } from 'gatsby';
 const Home = ({ data }) => {
@@ -32,7 +33,17 @@ const Home = ({ data }) => {
       }}
     >
       <div className="w-40 lg:w-auto left-[10vw] top-[8vh] lg:top-[11vh] absolute text-5xl lg:text-9xl font-poppins font-extrabold text-[#8a8a8a79]">
-        <div>CCS 2025</div>
+        <TypeAnimation
+          sequence={[
+            // Same substring at the start will only be typed out once, initially
+            '',
+            500, // wait 1s before replacing "Mice" with "Hamsters"
+            'CCS 2024',
+          ]}
+          wrapper="span"
+          speed={40}
+          repeat={0}
+        />
       </div>
       <div className="absolute inset-0 z-10">
         <img src={backgroundLines} className="w-full h-1/2 lg:h-screen" />

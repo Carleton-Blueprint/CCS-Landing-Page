@@ -2,10 +2,13 @@ import React from 'react';
 import Question from './Question';
 
 const Accordian = (props) => {
+  const filteredData = props.data.allContentfulFaq.nodes.filter(
+    (item) => item.faqQuestion !== null && item.faqAnswer !== null
+  );
   return (
     <div className="container flex justify-center mb-8">
       <div className="flex flex-col items-center rounded-[2rem] bg-primaryGray relative">
-        {props.data.allContentfulFaq.nodes.map((faq, index) => {
+        {filteredData.map((faq, index) => {
           if (!(faq.faqAnswer && faq.faqQuestion)) {
             return;
           }
@@ -19,7 +22,7 @@ const Accordian = (props) => {
               <Question
                 faq={faq}
                 index={index}
-                isLast={index === props.data.allContentfulFaq.nodes.length - 1}
+                isLast={index === filteredData.length - 1}
               />
             </div>
           );
