@@ -136,39 +136,47 @@ const NavigationBar = (props) => {
           <li
             className={`${
               isCurrentPath('/about') ? 'font-bold' : 'font-semibold'
-            } flex justify-center items-center`}
+            }`}
           >
-
             <motion.div
               initial={false}
               onClick={() => setAboutHover(!aboutHover)}
             >
-            <div>
-              ABOUT US
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className=" ml-2 inline size-6">
-                <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
-              </svg>
-
-            </div>
+              <div>
+                ABOUT US
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className=" ml-2 inline size-6"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
             </motion.div>
 
             <AnimatePresence initial={false}>
-            {aboutHover && (
-              <motion.div
-              initial={{ opacity: 0, y: -60 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              whileInView={{y:-20}}
-              transition={{ duration: 0.3 }}
-            >
-
-                <div className={`relative top-[0px] bg-red-500 p-2 bg-gradient-to-r from-neutral-900 to-red-700 rounded-lg`}>Meet The Team</div>
-                {/* <div className={`absolute top-[0px] bg-red-500 p-2 bg-gradient-to-r from-neutral-900 to-red-700 rounded-lg ${aboutHover ? '' : 'hidden'}`}>Meet The Team</div> */}
-
-              </motion.div>
-      )}
-      </AnimatePresence>
-
+              {aboutHover && (
+                <motion.div
+                  initial={{ opacity: 0, y: -100 }}
+                  animate={{ opacity: 1, y: 10 }}
+                  exit={{ opacity: 0, y: -100 }}
+                  whileInView={{ y: 10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div
+                    className={`z-[100] absolute right-[20px] top-[0px] bg-red-500 p-2 bg-gradient-to-r from-neutral-900 to-red-700 rounded-lg`}
+                  >
+                    Meet The Team
+                  </div>
+                  {/* <div className={`absolute top-[0px] bg-red-500 p-2 bg-gradient-to-r from-neutral-900 to-red-700 rounded-lg ${aboutHover ? '' : 'hidden'}`}>Meet The Team</div> */}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </li>
           <li
             className={`${
