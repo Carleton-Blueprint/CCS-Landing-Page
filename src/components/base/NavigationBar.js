@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 const NavigationBar = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [aboutHover, setAboutHover] = useState(false);
   const currentpath = props.pathname;
 
   const isCurrentPath = (page) => {
@@ -135,9 +136,9 @@ const NavigationBar = (props) => {
           <li
             className={`${
               isCurrentPath('/about') ? 'font-bold' : 'font-semibold'
-            }`}
+            } flex justify-center items-center`}
           >
-            <div className=''>
+            <div onMouseEnter={() => setAboutHover(true)} onMouseLeave={() => setAboutHover(false)}>
               ABOUT US
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className=" ml-2 inline size-6">
                 <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z" clip-rule="evenodd" />
@@ -145,7 +146,7 @@ const NavigationBar = (props) => {
 
             </div>
 
-            <div className='z-0 relative top-[20px] bg-red-500 p-2'>Meet The Team</div>
+            <div className={`absolute top-[40px] bg-red-500 p-2 bg-gradient-to-r from-neutral-900 to-red-700 rounded-lg ${aboutHover ? '' : 'hidden'}`}>Meet The Team</div>
           </li>
           <li
             className={`${
