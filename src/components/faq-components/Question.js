@@ -27,7 +27,7 @@ function Question(props) {
         onClick={toggleOpen}
         className={`border-t-[1.5px] rounded-t-[2rem]  ${
           isLast ? '' : 'pb-8'
-        } border-slate-600 w-[20rem] w-full text-white  font-poppins`}
+        } border-slate-600  w-full text-white  font-poppins`}
       >
         <button
           className="flex items-center justify-between w-full px-4 pt-4 pb-4"
@@ -77,15 +77,31 @@ function Question(props) {
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.section
-            // Add animations for the accordion content
             initial="collapsed"
             animate="open"
             exit="collapsed"
             variants={{
-              open: { opacity: 1, height: 'auto' },
-              collapsed: { opacity: 0, height: 0 },
+              open: {
+                opacity: 1,
+                height: 'fit-content',
+                transition: {
+                  height: { duration: 0.5, ease: [0.04, 0.62, 0.23, 1] },
+                  opacity: {
+                    delay: 0.25,
+                    duration: 0.25,
+                    ease: [0.04, 0.62, 0.23, 1],
+                  },
+                },
+              },
+              collapsed: {
+                opacity: 0,
+                height: 0,
+                transition: {
+                  height: { duration: 0.5, ease: [0.04, 0.62, 0.23, 1] },
+                  opacity: { duration: 0.1, ease: [0.04, 0.62, 0.23, 1] },
+                },
+              },
             }}
-            transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
             <div className="px-5 text-xs text-white md:text-sm font-extralight md:font-light md:mx-8">
               {answer ? <RichText content={answer.content} /> : null}
