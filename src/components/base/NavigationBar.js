@@ -4,6 +4,7 @@ import CarletonCUSECLogo from '../../images/cusec-logo.png';
 import { Link } from 'gatsby';
 const NavigationBar = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [aboutHover, setAboutHover] = useState(false);
   const currentpath = props.pathname;
 
   const isCurrentPath = (page) => {
@@ -182,10 +183,47 @@ const NavigationBar = (props) => {
           </li>
           <li
             className={`${
-              isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
-            }`}
+              isCurrentPath('/about') ? 'font-bold' : 'font-semibold'
+            } flex justify-center items-center`}
           >
-            <a href="/about-us">ABOUT US</a>
+            <motion.div
+              initial={false}
+              onClick={() => setAboutHover((prev) => !prev)}
+            >
+              <div>
+                ABOUT US
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className=" ml-2 inline size-6"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </motion.div>
+
+            <AnimatePresence initial={false}>
+              {aboutHover && (
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 50 }}
+                  exit={{ opacity: 0, y: 40 }}
+                  whileInView={{ y: 50 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div
+                    className={`right-[-5vw] sm:right-[-15vw] md:right-[-5vw] lg:right-[-1vw] whitespace-nowrap z-[100] absolute right-[20px] bg-red-500 p-2 bg-red-900 rounded-lg`}
+                  >
+                    <a href='/meet-team'>Meet The Team</a>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </li>
           <li
             className={`${
