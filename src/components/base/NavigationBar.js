@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 const NavigationBar = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [aboutHover, setAboutHover] = useState(false);
+  const [eventsHover, setEventsHover] = useState(false);
   const currentpath = props.pathname;
 
   const isCurrentPath = (page) => {
@@ -195,7 +196,7 @@ const NavigationBar = (props) => {
           </li>
           <li
             className={`${
-              isCurrentPath('/about') ? 'font-bold' : 'font-semibold'
+              isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
             } flex justify-center items-center`}
           >
             <motion.div
@@ -248,9 +249,54 @@ const NavigationBar = (props) => {
           <li
             className={`${
               isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
-            }`}
+            } flex justify-center items-center`}
           >
-            <a href="/events">EVENTS</a>
+            <motion.div
+              initial={false}
+            >
+              <div className='whitespace-nowrap'>
+                <a href="/events">EVENTS</a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className=" ml-2 inline size-6 cursor-pointer"
+                  onClick={() => setEventsHover((prev) => !prev)}
+                >
+                  {eventsHover ? (
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m4.5 15.75 7.5-7.5 7.5 7.5"
+                    />
+                  ) : (
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    />
+                  )}
+                </svg>
+              </div>
+            </motion.div>
+
+            <AnimatePresence initial={false}>
+              {eventsHover && (
+                <motion.div
+                  initial={{ opacity: 0, y: 35 }}
+                  animate={{ opacity: 1, y: 50 }}
+                  exit={{ opacity: 0, y: 35 }}
+                  whileInView={{ y: 50 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div
+                    className={`right-[0vw] whitespace-nowrap z-[100] absolute right-[20px] bg-red-500 p-2 bg-red-900 rounded-lg`}
+                  >
+                    <a href="/schedule">Schedule</a>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </li>
           <li
             className={`${
@@ -272,13 +318,6 @@ const NavigationBar = (props) => {
             }`}
           >
             <a href="/get-involved">GET INVOVLED</a>
-          </li>
-          <li
-            className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-semibold'
-            }`}
-          >
-            <a href="/schedule">SCHEDULE</a>
           </li>
         </ul>
       </div>
