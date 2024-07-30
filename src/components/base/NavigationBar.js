@@ -117,18 +117,18 @@ const NavigationBar = (props) => {
                     }`}
                   >
                     <a href="/about-us">ABOUT US</a>
-                      <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className=" ml-2 inline size-6"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className=" ml-2 inline size-6"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
                   </li>
                   <li
                     className={`my-16 ${
@@ -200,22 +200,29 @@ const NavigationBar = (props) => {
           >
             <motion.div
               initial={false}
-              onHoverStart={() => setAboutHover((prev) => true)}
-              onHoverEnd={() => setAboutHover((prev) => false)}
             >
               <div>
-                ABOUT US
+                <a href="/about-us">ABOUT US</a>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className=" ml-2 inline size-6"
+                  className=" ml-2 inline size-6 cursor-pointer"
+                  onClick={() => setAboutHover((prev) => !prev)}
                 >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
-                    clip-rule="evenodd"
-                  />
+                  {aboutHover ? (
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m4.5 15.75 7.5-7.5 7.5 7.5"
+                    />
+                  ) : (
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    />
+                  )}
                 </svg>
               </div>
             </motion.div>
@@ -223,16 +230,16 @@ const NavigationBar = (props) => {
             <AnimatePresence initial={false}>
               {aboutHover && (
                 <motion.div
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 35 }}
                   animate={{ opacity: 1, y: 50 }}
-                  exit={{ opacity: 0, y: 40 }}
+                  exit={{ opacity: 0, y: 35 }}
                   whileInView={{ y: 50 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div
                     className={`right-[-5vw] sm:right-[-15vw] md:right-[-5vw] lg:right-[-1vw] whitespace-nowrap z-[100] absolute right-[20px] bg-red-500 p-2 bg-red-900 rounded-lg`}
                   >
-                    <a href='/meet-team'>Meet The Team</a>
+                    <a href="/meet-team">Meet The Team</a>
                   </div>
                 </motion.div>
               )}
