@@ -117,26 +117,106 @@ const NavigationBar = (props) => {
                       isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
                     }`}
                   >
-                    <a href="/about-us">ABOUT US</a>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className=" ml-2 inline size-6"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
+                    <motion.div initial={false}>
+                      <div>
+                        <a href="/about-us">ABOUT US</a>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className=" ml-2 inline size-10 cursor-pointer"
+                          onClick={() => setAboutHover((prev) => !prev)}
+                        >
+                          {aboutHover ? (
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m4.5 15.75 7.5-7.5 7.5 7.5"
+                            />
+                          ) : (
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                            />
+                          )}
+                        </svg>
+                      </div>
+                    </motion.div>
+                    <AnimatePresence initial={false}>
+                      {aboutHover && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -20 }}
+                          animate={{ opacity: 1, y: 20 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          whileInView={{ y: 20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div
+                            className={`${
+                              isCurrentPath('/meet-team')
+                                ? 'font-bold'
+                                : 'font-semibold'
+                            } ml-[50px]`}
+                          >
+                            <a href="/meet-team">Meet The Team</a>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </li>
                   <li
                     className={`my-16 ${
                       isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
                     }`}
                   >
-                    <a href="/events">EVENTS</a>
+                    <motion.div initial={false}>
+                      <div>
+                        <a href="/events">EVENTS</a>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className=" ml-2 inline size-10 cursor-pointer"
+                          onClick={() => setEventsHover((prev) => !prev)}
+                        >
+                          {eventsHover ? (
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m4.5 15.75 7.5-7.5 7.5 7.5"
+                            />
+                          ) : (
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                            />
+                          )}
+                        </svg>
+                      </div>
+                    </motion.div>
+                    <AnimatePresence initial={false}>
+                      {eventsHover && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -20 }}
+                          animate={{ opacity: 1, y: 20 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          whileInView={{ y: 20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div
+                            className={`${
+                              isCurrentPath('/schedule')
+                                ? 'font-bold'
+                                : 'font-semibold'
+                            } ml-[50px]`}
+                          >
+                            <a href="/schedule">Schedule</a>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </li>
                   <li
                     className={`my-16 ${
@@ -162,15 +242,6 @@ const NavigationBar = (props) => {
                     }`}
                   >
                     <a href="/get-involved">GET INVOVLED</a>
-                  </li>
-                  <li
-                    className={`my-16 ${
-                      isCurrentPath('/contact-us')
-                        ? 'font-bold'
-                        : 'font-semibold'
-                    }`}
-                  >
-                    <a href="/schedule">SCHEDULE</a>
                   </li>
                 </ul>
               </div>
@@ -199,9 +270,7 @@ const NavigationBar = (props) => {
               isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
             } flex justify-center items-center`}
           >
-            <motion.div
-              initial={false}
-            >
+            <motion.div initial={false}>
               <div>
                 <a href="/about-us">ABOUT US</a>
                 <svg
@@ -238,7 +307,11 @@ const NavigationBar = (props) => {
                   transition={{ duration: 0.3 }}
                 >
                   <div
-                    className={`right-[-5vw] sm:right-[-15vw] md:right-[-5vw] lg:right-[-1vw] whitespace-nowrap z-[100] absolute right-[20px] bg-red-500 p-2 bg-red-900 rounded-lg`}
+                    className={`${
+                      isCurrentPath('/meet-team')
+                        ? 'font-bold'
+                        : 'font-semibold'
+                    } right-[-5vw] sm:right-[-15vw] md:right-[-5vw] lg:right-[-1vw] whitespace-nowrap z-[100] absolute right-[20px] bg-red-500 p-2 bg-red-900 rounded-lg`}
                   >
                     <a href="/meet-team">Meet The Team</a>
                   </div>
@@ -251,10 +324,8 @@ const NavigationBar = (props) => {
               isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
             } flex justify-center items-center`}
           >
-            <motion.div
-              initial={false}
-            >
-              <div className='whitespace-nowrap'>
+            <motion.div initial={false}>
+              <div className="whitespace-nowrap">
                 <a href="/events">EVENTS</a>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -290,7 +361,9 @@ const NavigationBar = (props) => {
                   transition={{ duration: 0.3 }}
                 >
                   <div
-                    className={`right-[0vw] whitespace-nowrap z-[100] absolute right-[20px] bg-red-500 p-2 bg-red-900 rounded-lg`}
+                    className={` ${
+                      isCurrentPath('/schedule') ? 'font-bold' : 'font-semibold'
+                    } right-[0vw] whitespace-nowrap z-[100] absolute right-[20px] bg-red-500 p-2 bg-red-900 rounded-lg`}
                   >
                     <a href="/schedule">Schedule</a>
                   </div>
