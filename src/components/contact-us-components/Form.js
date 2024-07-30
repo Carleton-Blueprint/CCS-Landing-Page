@@ -18,45 +18,68 @@ const Form = () => {
     });
   };
 
-  // When the form is submitted, send the form values
-  // to our function for processing.
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    //validation
-    if (
-      !formData.firstName ||
-      !formData.lastName ||
-      !formData.email ||
-      !formData.subject ||
-      !formData.message
-    ) {
-      console.log('Please enter all info'); //TO DO: Snackbar
-      return;
-    }
-    console.log(formData);
-    await window
-      .fetch(`/api/submitForm`, {
-        //serverless funciton, see src/api/submitForm for the function!
-        method: `POST`,
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify({ ...formData, date: new Date() }),
-      })
-      .then((res) => res.json());
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  if (
+    !formData.firstName ||
+    !formData.lastName ||
+    !formData.email ||
+    !formData.subject ||
+    !formData.message
+  ) {
+    console.log('Please enter all info');
     toast.open(
-      <div class="container flex w-3/4 rounded-3xl border-2 border-[#8EA087] bg-[#DEF2D7] p-4 font-poppins text-[#8EA087]">
+      <div class="container mt-4 flex w-full pr-12 rounded-3xl border-2 border-[#8E6C6A] bg-[#EBC8C4] p-4 pb-2 pt-2 font-poppins text-[#8E6C6A]">
         <div class="p-2">
-          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 50 50">
-            <path fill="#8EA087" stroke="#8EA087" stroke-width="2.5" d="M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 37.690466 12.309534 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 13.390466 46 4 36.609534 4 25 C 4 13.390466 13.390466 4 25 4 z M 34.988281 14.988281 A 1.0001 1.0001 0 0 0 34.171875 15.439453 L 23.970703 30.476562 L 16.679688 23.710938 A 1.0001 1.0001 0 1 0 15.320312 25.177734 L 24.316406 33.525391 L 35.828125 16.560547 A 1.0001 1.0001 0 0 0 34.988281 14.988281 z"></path>
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-alert-circle">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+            <path d="M12 8v4" />
+            <path d="M12 16h.01" />
           </svg>
         </div>
         <div class="gap ml-4 mt-1.5 font-medium">
-          <span class="block text-3xl font-medium"> Success! </span>
-          <span class="block text-xl font-medium">Your message has been sent. </span>
+          <span class="block text-3xl font-medium"> Error! </span>
+          <span class="block text-lg font-medium"> Ensure all provided information is correct. </span>
         </div>
       </div>
-    )
+    );
+    return;
+  }
+
+  try {
+    const response = await window.fetch(`/api/submitForm`, {
+      method: `POST`,
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ ...formData, date: new Date() }),
+    });
+
+    if (response.ok) {
+      toast.open(
+        <div class="min-h-screen flex flex-col items-center justify-center overflow-hidden">
+          <div class="container flex w-3/4 rounded-3xl border-2 border-[#8EA087] bg-[#DEF2D7] p-4 pb-2 pt-2 font-poppins text-[#8EA087]">
+            <div class="p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="60" viewBox="0 0 50 50">
+                <path fill="#8EA087" stroke="#8EA087" stroke-width="2.5" d="M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 37.690466 12.309534 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 13.390466 46 4 36.609534 4 25 C 4 13.390466 13.390466 4 25 4 z M 34.988281 14.988281 A 1.0001 1.0001 0 0 0 34.171875 15.439453 L 23.970703 30.476562 L 16.679688 23.710938 A 1.0001 1.0001 0 1 0 15.320312 25.177734 L 24.316406 33.525391 L 35.828125 16.560547 A 1.0001 1.0001 0 0 0 34.988281 14.988281 z"></path>
+              </svg>
+            </div>
+            <div class="gap ml-4 mt-1.5 font-medium">
+              <span class="block text-3xl font-medium"> Success! </span>
+              <span class="block text-lg font-medium">Your message has been sent. </span>
+            </div>
+            <button class="ml-32">
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 48 48" id="close">
+                <path fill="#8EA087" d="M38 12.83 35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z"></path>
+                <path fill="none" d="M0 0h48v48H0z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      );
+    }
     setFormData({
       firstName: '',
       lastName: '',
@@ -64,7 +87,35 @@ const Form = () => {
       subject: '',
       message: '',
     });
-  };
+  } catch (error) {
+    console.error('Error:', error);
+    toast.open(
+      <div class="min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        <div class="container mt-4 flex w-3/4 rounded-3xl border-2 border-[#8E6C6A] bg-[#EBC8C4] p-4 pb-2 pt-2 font-poppins text-[#8E6C6A]">
+          <div class="p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-alert-circle">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+              <path d="M12 8v4" />
+              <path d="M12 16h.01" />
+            </svg>
+          </div>
+          <div class="gap ml-4 mt-1.5 font-medium">
+            <span class="block text-3xl font-medium"> Error! </span>
+            <span class="block text-lg font-medium"> Failled to send message. Please try again. </span>
+          </div>
+          <button class="ml-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 48 48" id="close">
+              <path fill="#8E6C6A"d="M38 12.83 35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z"></path>
+              <path fill="none" d="M0 0h48v48H0z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    );
+  }
+};
+
 
   return (
     <div className="flex justify-center mb-4 transform -translate-y-20 bg-center bg-cover lg:-translate-y-40 2xl:-translate-y-56">

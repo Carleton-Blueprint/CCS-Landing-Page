@@ -16,6 +16,7 @@ export default async function handler(req, res) {
     const range = 'Sheet1!A1'; // Adjust the range as needed
 
     // Append the data to the sheet
+    console.log('request body: ', req.body);
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range,
@@ -31,9 +32,6 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     console.error('Error submitting data to Google Sheets:', error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to submit data' }),
-    };
+    return res.status(500).json({ error: 'Failed to submit data' });
   }
 }
