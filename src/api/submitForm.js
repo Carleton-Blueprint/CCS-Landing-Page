@@ -9,8 +9,11 @@ export default async function handler(req, res) {
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
+    const key = process.env.GATSBY_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n');
+
     // Initialize the Sheets API
     const sheets = google.sheets({ version: 'v4', auth });
+
     // Specify the spreadsheet and range
     const spreadsheetId = process.env.GATSBY_GOOGLE_SHEET_ID;
     const range = 'Sheet1!A1'; // Adjust the range as needed
@@ -30,7 +33,7 @@ export default async function handler(req, res) {
       submited: { ...req.body },
     });
   } catch (error) {
-    console.error('Error submitting data to Google Sheets:', error);
+    console.error('Error submitting data to Google Sheets:'.json(), error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to submit data' }),
