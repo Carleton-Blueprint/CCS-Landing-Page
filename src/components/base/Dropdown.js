@@ -3,7 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
   return (
-    <>
+    <div
+      onMouseOver={() => setHover((prev) => true)}
+      onMouseOut ={() => setHover((prev) => false)}
+    >
       <motion.div initial={false}>
         <div className="whitespace-nowrap">
           <a href={label.href}>{label.name}</a>
@@ -14,7 +17,6 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
             className={` ml-2 inline ${
               mobile ? 'size-10' : 'size-6'
             } cursor-pointer`}
-            onClick={() => setHover((prev) => !prev)}
           >
             {hover ? (
               <path
@@ -33,38 +35,37 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
         </div>
       </motion.div>
       <AnimatePresence initial={false}>
-          {
-            hover && (
-              <>
-              {items.map((item, index) => {
-                return (
-                    <motion.div
-                      initial={{ opacity: 0, y: mobile ? -20 : 35 * (index+1) }}
-                      animate={{ opacity: 1, y: mobile ? 20 : 50 * (index+1) }}
-                      exit={{ opacity: 0, y: mobile ? -20 : 35 * (index+1) }}
-                      whileInView={{ y: mobile ? 20 : 50 * (index+1) }}
-                      transition={{ duration: 0.3 }}
+        {hover && (
+          <>
+            {items.map((item, index) => {
+              return (
+                <motion.div
+                  initial={{ opacity: 0, y: mobile ? -20 : 0 }}
+                  animate={{ opacity: 1, y: mobile ? 20 : 23 * (index * 1.8 +1) }}
+                  exit={{ opacity: 0, y: mobile ? -20 : 0  }}
+                  whileInView={{ y: mobile ? 20 : 23 * (index * 1.8 +1) }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div>
+                    <div
+                      className={`${
+                        isCurrent(item.href) ? 'font-bold' : 'font-semibold'
+                      } ${
+                        mobile
+                          ? 'ml-[50px] mb-[30px]'
+                          : 'right-[0vw] whitespace-nowrap z-[100] absolute bg-red-500 p-2 bg-red-900 rounded-lg hover:text-red-900 hover:bg-white'
+                      }`}
                     >
-                      <div>
-                        <div
-                          className={`${
-                            isCurrent(item.href) ? 'font-bold' : 'font-semibold'
-                          } ${
-                            mobile
-                              ? 'ml-[50px] mb-[30px]'
-                              : 'right-[0vw] whitespace-nowrap z-[100] absolute bg-red-500 p-2 bg-red-900 rounded-lg'
-                          }`}
-                        >
-                          <a href={item.href}>{item.name}</a>
-                        </div>
-                      </div>
-                    </motion.div>
-                );
-              })} 
-              </>
+                      <a href={item.href}>{item.name}</a>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 
