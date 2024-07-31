@@ -40,15 +40,19 @@ const NavigationBar = (props) => {
     <div className="container fixed top-0 h-14 md:h-16 z-[95]">
       {/* Add custom styles to tailwind config to match figma */}
       <div className="flex items-center justify-end w-screen gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
-        <button className="relative z-50 w-full pr-10" onClick={toggleMenu}>
+        <div className="relative z-50 w-full pr-10">
           {!isMenuOpen ? (
             <div className="flex justify-between w-full">
-              <img
-                className="w-[45px] h-auto ml-2"
-                alt="Carleton CUSEC Society Logo"
-                src={CarletonCUSECLogo}
-              />
-              <div className="mt-2">
+              <Link to="/">
+                <div className="w-[45px] h-auto pl-2">
+                  <img
+                    className="w-full h-full"
+                    alt="Carleton CUSEC Society Logo"
+                    src={CarletonCUSECLogo}
+                  />
+                </div>
+              </Link>
+              <div className="mt-2" onClick={toggleMenu}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -67,12 +71,16 @@ const NavigationBar = (props) => {
             </div>
           ) : (
             <div className="flex justify-between w-full">
-              <img
-                className="w-[45px] h-auto ml-2"
-                alt="Carleton CUSEC Society Logo"
-                src={CarletonCUSECLogo}
-              />
-              <div className="mt-2.5">
+              <Link to="/">
+                <div className="w-[45px] h-auto pl-2">
+                  <img
+                    className="w-full h-full"
+                    alt="Carleton CUSEC Society Logo"
+                    src={CarletonCUSECLogo}
+                  />
+                </div>
+              </Link>
+              <div className="mt-2.5" onClick={toggleMenu}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -90,7 +98,7 @@ const NavigationBar = (props) => {
               </div>
             </div>
           )}
-        </button>
+        </div>
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -105,55 +113,49 @@ const NavigationBar = (props) => {
                 <ul className="flex-col items-center justify-end pt-2 pl-20 ">
                   <li
                     className={`my-16 ${
-                      currentpath === '/' ? 'font-bold' : 'font-semibold'
+                      currentpath === '/' ? 'font-bold' : 'font-normal'
                     }`}
                   >
-                    <a href="/">HOME</a>
+                    <a href="">HOME</a>
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
+                      isCurrentPath('/about-us') ? 'font-bold' : 'font-normal'
                     }`}
                   >
                     <a href="/about-us">ABOUT US</a>
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
+                      isCurrentPath('/events') ? 'font-bold' : 'font-normal'
                     }`}
                   >
                     <a href="/events">EVENTS</a>
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/faq') ? 'font-bold' : 'font-semibold'
+                      isCurrentPath('/faq') ? 'font-bold' : 'font-normal'
                     }`}
                   >
                     <a href="/faq">FAQ</a>
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/contact-us')
-                        ? 'font-bold'
-                        : 'font-semibold'
+                      isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
                     }`}
                   >
                     <a href="/contact-us">CONTACT</a>
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/contact-us')
-                        ? 'font-bold'
-                        : 'font-semibold'
+                      isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
                     }`}
                   >
                     <a href="/get-involved">GET INVOVLED</a>
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/contact-us')
-                        ? 'font-bold'
-                        : 'font-semibold'
+                      isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
                     }`}
                   >
                     <a href="/schedule">SCHEDULE</a>
@@ -168,7 +170,7 @@ const NavigationBar = (props) => {
         <Link to="/">
           <div className="p-3 ml-3">
             <img
-              className="w-[60px] h-auto"
+              className="w-[60px] h-auto hover:rotate-180 hover:scale-110 transition-all ease-in-out duration-500"
               alt="Carleton CUSEC Society Logo"
               src={CarletonCUSECLogo}
             />
@@ -176,48 +178,46 @@ const NavigationBar = (props) => {
         </Link>
         <ul className="flex items-center justify-end gap-20 pr-20">
           <li
-            className={`${currentpath === '/' ? 'font-bold' : 'font-semibold'}`}
+            className={`${currentpath === '/' ? 'font-bold' : 'font-normal'}`}
           >
             <a href="/">HOME</a>
           </li>
           <li
             className={`${
-              isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
+              isCurrentPath('/about-us') ? 'font-bold' : 'font-normal'
             }`}
           >
             <a href="/about-us">ABOUT US</a>
           </li>
           <li
             className={`${
-              isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
+              isCurrentPath('/events') ? 'font-bold' : 'font-normal'
             }`}
           >
             <a href="/events">EVENTS</a>
           </li>
           <li
-            className={`${
-              isCurrentPath('/faq') ? 'font-bold' : 'font-semibold'
-            }`}
+            className={`${isCurrentPath('/faq') ? 'font-bold' : 'font-normal'}`}
           >
             <a href="/faq">FAQ</a>
           </li>
           <li
             className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-semibold'
+              isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
             }`}
           >
             <a href="/contact-us">CONTACT</a>
           </li>
           <li
             className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-semibold'
+              isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
             }`}
           >
             <a href="/get-involved">GET INVOVLED</a>
           </li>
           <li
             className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-semibold'
+              isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
             }`}
           >
             <a href="/schedule">SCHEDULE</a>
