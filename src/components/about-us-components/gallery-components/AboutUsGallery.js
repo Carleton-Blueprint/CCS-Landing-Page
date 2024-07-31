@@ -94,11 +94,11 @@ const AboutUsGallery = (props) => {
       return 'brightness-0';
     }
     const brightnessArray = [
+      'brightness-[30%]',
       'brightness-50',
-      'brightness-75',
-      'brightness-100',
-      'brightness-75',
+      'brightness-110',
       'brightness-50',
+      'brightness-[30%]',
     ];
     return brightnessArray[index];
   };

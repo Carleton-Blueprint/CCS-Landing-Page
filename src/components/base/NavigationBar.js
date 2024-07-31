@@ -116,7 +116,7 @@ const NavigationBar = (props) => {
                       currentpath === '/' ? 'font-bold' : 'font-normal'
                     }`}
                   >
-                    <a href="">HOME</a>
+                    <a href="/">HOME</a>
                   </li>
                   <li
                     className={`my-16 ${

@@ -13,7 +13,7 @@ const ImageGallery = ({ data }) => {
   const galleryImages = data.allContentfulAboutUsGallery.nodes; //all images the AboutUsGallery
   const bodySections = data.contentfulAboutPage.aboutUsSection;
 
-  const [isMobile, setIsMobile] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     // Function to update the state based on the current window width
