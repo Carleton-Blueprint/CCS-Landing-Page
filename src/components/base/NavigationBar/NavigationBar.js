@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import CarletonCUSECLogo from '../../images/cusec-logo.png';
+import CarletonCUSECLogo from '../../../images/cusec-logo.png';
 import { Link } from 'gatsby';
 import Dropdown from './Dropdown';
 const NavigationBar = (props) => {
@@ -137,7 +137,11 @@ const NavigationBar = (props) => {
                       hover={eventsHover}
                       setHover={setEventsHover}
                       label={{ name: 'EVENTS', href: '/events' }}
-                      items={[{ name: 'Schedule', href: '/schedule' }, { name: 'Another Item', href: '/schedule' }, { name: 'Other Item', href: '/schedule' }]}
+                      items={[
+                        { name: 'Schedule', href: '/schedule' },
+                        { name: 'Another Item', href: '/schedule' },
+                        { name: 'Other Item', href: '/schedule' },
+                      ]}
                       mobile={true}
                     />
                   </li>
@@ -212,7 +216,11 @@ const NavigationBar = (props) => {
               hover={eventsHover}
               setHover={setEventsHover}
               label={{ name: 'EVENTS', href: '/events' }}
-              items={[{ name: 'Schedule', href: '/schedule' }, { name: 'Another Item', href: '/schedule' }, { name: 'Other Item', href: '/schedule' }]}
+              items={[
+                { name: 'Schedule', href: '/schedule' },
+                { name: 'Another Item', href: '/schedule' },
+                { name: 'Other Item', href: '/schedule' },
+              ]}
               mobile={false}
             />
           </li>

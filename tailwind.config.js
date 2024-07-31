@@ -31,6 +31,7 @@ module.exports = {
       },
       backgroundImage: {
         'red-to-black': 'linear-gradient(to right, red, black)',
+        'dark-red-to-light-red': 'linear-gradient(to right, #631818, #801313)',
       },
       maskImage: {
         'fade-t-b': 'linear-gradient(to bottom, transparent, black)',
