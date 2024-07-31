@@ -107,3 +107,4 @@ const GetInovlved = ({ data }) => {
 # Contributors
 
 - [Hasith De Alwis](https://hasithportfolio.netlify.app): Project Manager
+- [Neyha Billing](https://www.linkedin.com/in/neyhabilling/): Developer
