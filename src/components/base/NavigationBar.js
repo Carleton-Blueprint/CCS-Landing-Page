@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import CarletonCUSECLogo from '../../images/cusec-logo.png';
 import { Link } from 'gatsby';
+import Dropdown from './Dropdown';
 const NavigationBar = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [aboutHover, setAboutHover] = useState(false);
@@ -117,106 +118,28 @@ const NavigationBar = (props) => {
                       isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
                     }`}
                   >
-                    <motion.div initial={false}>
-                      <div>
-                        <a href="/about-us">ABOUT US</a>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className=" ml-2 inline size-10 cursor-pointer"
-                          onClick={() => setAboutHover((prev) => !prev)}
-                        >
-                          {aboutHover ? (
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="m4.5 15.75 7.5-7.5 7.5 7.5"
-                            />
-                          ) : (
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                            />
-                          )}
-                        </svg>
-                      </div>
-                    </motion.div>
-                    <AnimatePresence initial={false}>
-                      {aboutHover && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -20 }}
-                          animate={{ opacity: 1, y: 20 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          whileInView={{ y: 20 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div
-                            className={`${
-                              isCurrentPath('/meet-team')
-                                ? 'font-bold'
-                                : 'font-semibold'
-                            } ml-[50px]`}
-                          >
-                            <a href="/meet-team">Meet The Team</a>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    <Dropdown
+                      isCurrent={isCurrentPath}
+                      hover={aboutHover}
+                      setHover={setAboutHover}
+                      label={{ name: 'ABOUT US', href: '/about-us' }}
+                      items={[{ name: 'Meet The Team', href: '/meet-team' }]}
+                      mobile={true}
+                    />
                   </li>
                   <li
                     className={`my-16 ${
                       isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
                     }`}
                   >
-                    <motion.div initial={false}>
-                      <div>
-                        <a href="/events">EVENTS</a>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className=" ml-2 inline size-10 cursor-pointer"
-                          onClick={() => setEventsHover((prev) => !prev)}
-                        >
-                          {eventsHover ? (
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="m4.5 15.75 7.5-7.5 7.5 7.5"
-                            />
-                          ) : (
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                            />
-                          )}
-                        </svg>
-                      </div>
-                    </motion.div>
-                    <AnimatePresence initial={false}>
-                      {eventsHover && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -20 }}
-                          animate={{ opacity: 1, y: 20 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          whileInView={{ y: 20 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <div
-                            className={`${
-                              isCurrentPath('/schedule')
-                                ? 'font-bold'
-                                : 'font-semibold'
-                            } ml-[50px]`}
-                          >
-                            <a href="/schedule">Schedule</a>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    <Dropdown
+                      isCurrent={isCurrentPath}
+                      hover={eventsHover}
+                      setHover={setEventsHover}
+                      label={{ name: 'EVENTS', href: '/events' }}
+                      items={[{ name: 'Schedule', href: '/schedule' }, { name: 'Another Item', href: '/schedule' }, { name: 'Other Item', href: '/schedule' }]}
+                      mobile={true}
+                    />
                   </li>
                   <li
                     className={`my-16 ${
@@ -270,106 +193,28 @@ const NavigationBar = (props) => {
               isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
             } flex justify-center items-center`}
           >
-            <motion.div initial={false}>
-              <div>
-                <a href="/about-us">ABOUT US</a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className=" ml-2 inline size-6 cursor-pointer"
-                  onClick={() => setAboutHover((prev) => !prev)}
-                >
-                  {aboutHover ? (
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="m4.5 15.75 7.5-7.5 7.5 7.5"
-                    />
-                  ) : (
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                    />
-                  )}
-                </svg>
-              </div>
-            </motion.div>
-
-            <AnimatePresence initial={false}>
-              {aboutHover && (
-                <motion.div
-                  initial={{ opacity: 0, y: 35 }}
-                  animate={{ opacity: 1, y: 50 }}
-                  exit={{ opacity: 0, y: 35 }}
-                  whileInView={{ y: 50 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div
-                    className={`${
-                      isCurrentPath('/meet-team')
-                        ? 'font-bold'
-                        : 'font-semibold'
-                    } right-[-5vw] sm:right-[-15vw] md:right-[-5vw] lg:right-[-1vw] whitespace-nowrap z-[100] absolute right-[20px] bg-red-500 p-2 bg-red-900 rounded-lg`}
-                  >
-                    <a href="/meet-team">Meet The Team</a>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <Dropdown
+              isCurrent={isCurrentPath}
+              hover={aboutHover}
+              setHover={setAboutHover}
+              label={{ name: 'ABOUT US', href: '/about-us' }}
+              items={[{ name: 'Meet Team', href: '/meet-team' }]}
+              mobile={false}
+            />
           </li>
           <li
             className={`${
               isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
             } flex justify-center items-center`}
           >
-            <motion.div initial={false}>
-              <div className="whitespace-nowrap">
-                <a href="/events">EVENTS</a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className=" ml-2 inline size-6 cursor-pointer"
-                  onClick={() => setEventsHover((prev) => !prev)}
-                >
-                  {eventsHover ? (
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="m4.5 15.75 7.5-7.5 7.5 7.5"
-                    />
-                  ) : (
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                    />
-                  )}
-                </svg>
-              </div>
-            </motion.div>
-
-            <AnimatePresence initial={false}>
-              {eventsHover && (
-                <motion.div
-                  initial={{ opacity: 0, y: 35 }}
-                  animate={{ opacity: 1, y: 50 }}
-                  exit={{ opacity: 0, y: 35 }}
-                  whileInView={{ y: 50 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div
-                    className={` ${
-                      isCurrentPath('/schedule') ? 'font-bold' : 'font-semibold'
-                    } right-[0vw] whitespace-nowrap z-[100] absolute right-[20px] bg-red-500 p-2 bg-red-900 rounded-lg`}
-                  >
-                    <a href="/schedule">Schedule</a>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <Dropdown
+              isCurrent={isCurrentPath}
+              hover={eventsHover}
+              setHover={setEventsHover}
+              label={{ name: 'EVENTS', href: '/events' }}
+              items={[{ name: 'Schedule', href: '/schedule' }, { name: 'Another Item', href: '/schedule' }, { name: 'Other Item', href: '/schedule' }]}
+              mobile={false}
+            />
           </li>
           <li
             className={`${
