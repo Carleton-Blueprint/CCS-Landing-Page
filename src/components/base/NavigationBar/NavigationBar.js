@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import CarletonCUSECLogo from '../../images/cusec-logo.png';
+import CarletonCUSECLogo from '../../../images/cusec-logo.png';
 import { Link } from 'gatsby';
+import Dropdown from './Dropdown';
 const NavigationBar = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [aboutHover, setAboutHover] = useState(false);
+  const [eventsHover, setEventsHover] = useState(false);
   const currentpath = props.pathname;
 
   const isCurrentPath = (page) => {
@@ -115,14 +118,32 @@ const NavigationBar = (props) => {
                       isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
                     }`}
                   >
-                    <a href="/about-us">ABOUT US</a>
+                    <Dropdown
+                      isCurrent={isCurrentPath}
+                      hover={aboutHover}
+                      setHover={setAboutHover}
+                      label={{ name: 'ABOUT US', href: '/about-us' }}
+                      items={[{ name: 'Meet The Team', href: '/meet-team' }]}
+                      mobile={true}
+                    />
                   </li>
                   <li
                     className={`my-16 ${
                       isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
                     }`}
                   >
-                    <a href="/events">EVENTS</a>
+                    <Dropdown
+                      isCurrent={isCurrentPath}
+                      hover={eventsHover}
+                      setHover={setEventsHover}
+                      label={{ name: 'EVENTS', href: '/events' }}
+                      items={[
+                        { name: 'Schedule', href: '/schedule' },
+                        { name: 'Another Item', href: '/schedule' },
+                        { name: 'Other Item', href: '/schedule' },
+                      ]}
+                      mobile={true}
+                    />
                   </li>
                   <li
                     className={`my-16 ${
@@ -149,15 +170,6 @@ const NavigationBar = (props) => {
                   >
                     <a href="/get-involved">GET INVOVLED</a>
                   </li>
-                  <li
-                    className={`my-16 ${
-                      isCurrentPath('/contact-us')
-                        ? 'font-bold'
-                        : 'font-semibold'
-                    }`}
-                  >
-                    <a href="/schedule">SCHEDULE</a>
-                  </li>
                 </ul>
               </div>
             </motion.div>
@@ -183,16 +195,34 @@ const NavigationBar = (props) => {
           <li
             className={`${
               isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
-            }`}
+            } flex justify-center items-center`}
           >
-            <a href="/about-us">ABOUT US</a>
+            <Dropdown
+              isCurrent={isCurrentPath}
+              hover={aboutHover}
+              setHover={setAboutHover}
+              label={{ name: 'ABOUT US', href: '/about-us' }}
+              items={[{ name: 'Meet Team', href: '/meet-team' }]}
+              mobile={false}
+            />
           </li>
           <li
             className={`${
               isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
-            }`}
+            } flex justify-center items-center`}
           >
-            <a href="/events">EVENTS</a>
+            <Dropdown
+              isCurrent={isCurrentPath}
+              hover={eventsHover}
+              setHover={setEventsHover}
+              label={{ name: 'EVENTS', href: '/events' }}
+              items={[
+                { name: 'Schedule', href: '/schedule' },
+                { name: 'Another Item', href: '/schedule' },
+                { name: 'Other Item', href: '/schedule' },
+              ]}
+              mobile={false}
+            />
           </li>
           <li
             className={`${
@@ -214,13 +244,6 @@ const NavigationBar = (props) => {
             }`}
           >
             <a href="/get-involved">GET INVOVLED</a>
-          </li>
-          <li
-            className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-semibold'
-            }`}
-          >
-            <a href="/schedule">SCHEDULE</a>
           </li>
         </ul>
       </div>
