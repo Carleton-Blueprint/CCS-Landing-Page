@@ -2,7 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import linkedinIcon from '../../images/linkedin-icon.png';
 const Member = (props) => {
-  const url = props.member.headshot.file.url;
+  const url =
+    props.member && props.member.headshot && props.member.headshot.file
+      ? props.member.headshot.file.url
+      : null;
   const [isHovering, setIsHovering] = useState(false);
   const headshotStyle = {
     backgroundImage: 'url(' + url + ')',
