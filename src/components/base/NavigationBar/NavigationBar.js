@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import CarletonCUSECLogo from '../../images/cusec-logo.png';
+import CarletonCUSECLogo from '../../../images/cusec-logo.png';
 import { Link } from 'gatsby';
+import Dropdown from './Dropdown';
 const NavigationBar = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [aboutHover, setAboutHover] = useState(false);
+  const [eventsHover, setEventsHover] = useState(false);
   const currentpath = props.pathname;
 
   const isCurrentPath = (page) => {
@@ -40,19 +43,15 @@ const NavigationBar = (props) => {
     <div className="container fixed top-0 h-14 md:h-16 z-[95]">
       {/* Add custom styles to tailwind config to match figma */}
       <div className="flex items-center justify-end w-screen gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
-        <div className="relative z-50 w-full pr-10">
+        <button className="relative z-50 w-full pr-10" onClick={toggleMenu}>
           {!isMenuOpen ? (
             <div className="flex justify-between w-full">
-              <Link to="/">
-                <div className="w-[45px] h-auto pl-2">
-                  <img
-                    className="w-full h-full"
-                    alt="Carleton CUSEC Society Logo"
-                    src={CarletonCUSECLogo}
-                  />
-                </div>
-              </Link>
-              <div className="mt-2" onClick={toggleMenu}>
+              <img
+                className="w-[45px] h-auto ml-2"
+                alt="Carleton CUSEC Society Logo"
+                src={CarletonCUSECLogo}
+              />
+              <div className="mt-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -71,16 +70,12 @@ const NavigationBar = (props) => {
             </div>
           ) : (
             <div className="flex justify-between w-full">
-              <Link to="/">
-                <div className="w-[45px] h-auto pl-2">
-                  <img
-                    className="w-full h-full"
-                    alt="Carleton CUSEC Society Logo"
-                    src={CarletonCUSECLogo}
-                  />
-                </div>
-              </Link>
-              <div className="mt-2.5" onClick={toggleMenu}>
+              <img
+                className="w-[45px] h-auto ml-2"
+                alt="Carleton CUSEC Society Logo"
+                src={CarletonCUSECLogo}
+              />
+              <div className="mt-2.5">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -98,7 +93,7 @@ const NavigationBar = (props) => {
               </div>
             </div>
           )}
-        </div>
+        </button>
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -113,52 +108,67 @@ const NavigationBar = (props) => {
                 <ul className="flex-col items-center justify-end pt-2 pl-20 ">
                   <li
                     className={`my-16 ${
-                      currentpath === '/' ? 'font-bold' : 'font-normal'
+                      currentpath === '/' ? 'font-bold' : 'font-semibold'
                     }`}
                   >
                     <a href="/">HOME</a>
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/about-us') ? 'font-bold' : 'font-normal'
+                      isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
                     }`}
                   >
-                    <a href="/about-us">ABOUT US</a>
+                    <Dropdown
+                      isCurrent={isCurrentPath}
+                      hover={aboutHover}
+                      setHover={setAboutHover}
+                      label={{ name: 'ABOUT US', href: '/about-us' }}
+                      items={[{ name: 'Meet The Team', href: '/meet-team' }]}
+                      mobile={true}
+                    />
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/events') ? 'font-bold' : 'font-normal'
+                      isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
                     }`}
                   >
-                    <a href="/events">EVENTS</a>
+                    <Dropdown
+                      isCurrent={isCurrentPath}
+                      hover={eventsHover}
+                      setHover={setEventsHover}
+                      label={{ name: 'EVENTS', href: '/events' }}
+                      items={[
+                        { name: 'Schedule', href: '/schedule' },
+                        { name: 'Another Item', href: '/schedule' },
+                        { name: 'Other Item', href: '/schedule' },
+                      ]}
+                      mobile={true}
+                    />
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/faq') ? 'font-bold' : 'font-normal'
+                      isCurrentPath('/faq') ? 'font-bold' : 'font-semibold'
                     }`}
                   >
                     <a href="/faq">FAQ</a>
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
+                      isCurrentPath('/contact-us')
+                        ? 'font-bold'
+                        : 'font-semibold'
                     }`}
                   >
                     <a href="/contact-us">CONTACT</a>
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
+                      isCurrentPath('/contact-us')
+                        ? 'font-bold'
+                        : 'font-semibold'
                     }`}
                   >
                     <a href="/get-involved">GET INVOVLED</a>
-                  </li>
-                  <li
-                    className={`my-16 ${
-                      isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
-                    }`}
-                  >
-                    <a href="/schedule">SCHEDULE</a>
                   </li>
                 </ul>
               </div>
@@ -170,7 +180,7 @@ const NavigationBar = (props) => {
         <Link to="/">
           <div className="p-3 ml-3">
             <img
-              className="w-[60px] h-auto hover:rotate-180 hover:scale-110 transition-all ease-in-out duration-500"
+              className="w-[60px] h-auto"
               alt="Carleton CUSEC Society Logo"
               src={CarletonCUSECLogo}
             />
@@ -178,49 +188,62 @@ const NavigationBar = (props) => {
         </Link>
         <ul className="flex items-center justify-end gap-20 pr-20">
           <li
-            className={`${currentpath === '/' ? 'font-bold' : 'font-normal'}`}
+            className={`${currentpath === '/' ? 'font-bold' : 'font-semibold'}`}
           >
             <a href="/">HOME</a>
           </li>
           <li
             className={`${
-              isCurrentPath('/about-us') ? 'font-bold' : 'font-normal'
-            }`}
+              isCurrentPath('/about-us') ? 'font-bold' : 'font-semibold'
+            } flex justify-center items-center`}
           >
-            <a href="/about-us">ABOUT US</a>
+            <Dropdown
+              isCurrent={isCurrentPath}
+              hover={aboutHover}
+              setHover={setAboutHover}
+              label={{ name: 'ABOUT US', href: '/about-us' }}
+              items={[{ name: 'Meet Team', href: '/meet-team' }]}
+              mobile={false}
+            />
           </li>
           <li
             className={`${
-              isCurrentPath('/events') ? 'font-bold' : 'font-normal'
-            }`}
+              isCurrentPath('/events') ? 'font-bold' : 'font-semibold'
+            } flex justify-center items-center`}
           >
-            <a href="/events">EVENTS</a>
+            <Dropdown
+              isCurrent={isCurrentPath}
+              hover={eventsHover}
+              setHover={setEventsHover}
+              label={{ name: 'EVENTS', href: '/events' }}
+              items={[
+                { name: 'Schedule', href: '/schedule' },
+                { name: 'Another Item', href: '/schedule' },
+                { name: 'Other Item', href: '/schedule' },
+              ]}
+              mobile={false}
+            />
           </li>
           <li
-            className={`${isCurrentPath('/faq') ? 'font-bold' : 'font-normal'}`}
+            className={`${
+              isCurrentPath('/faq') ? 'font-bold' : 'font-semibold'
+            }`}
           >
             <a href="/faq">FAQ</a>
           </li>
           <li
             className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
+              isCurrentPath('/contact-us') ? 'font-bold' : 'font-semibold'
             }`}
           >
             <a href="/contact-us">CONTACT</a>
           </li>
           <li
             className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
+              isCurrentPath('/contact-us') ? 'font-bold' : 'font-semibold'
             }`}
           >
             <a href="/get-involved">GET INVOVLED</a>
-          </li>
-          <li
-            className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
-            }`}
-          >
-            <a href="/schedule">SCHEDULE</a>
           </li>
         </ul>
       </div>

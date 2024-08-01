@@ -6,7 +6,7 @@ import { graphql } from 'gatsby';
 import { Seo } from '../components/base/Seo';
 import Header from '../components/base/Header';
 import background from '../images/about-us-header.svg';
-import NavigationBar from '../components/base/NavigationBar';
+import NavigationBar from '../components/base/NavigationBar/NavigationBar';
 import WhyAttendMobile from '../components/about-us-components/WhyAttendMobile';
 import AboutUsGalleryMobile from '../components/about-us-components/gallery-components/AboutUsGalleryMobile';
 const ImageGallery = ({ data }) => {
