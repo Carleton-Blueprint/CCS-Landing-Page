@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import GalleryImage from './GalleryImage';
+
 const AboutUsGalleryMobile = (props) => {
   const allImages = props.images;
   const imagesLength = allImages.length;

@@ -69,7 +69,7 @@ const ImageGallery = ({ data }) => {
           )}
         </div>
 
-        <div className="flex justify-center p-4">
+        <div className="flex justify-center ">
           <Statistics stats={data.allContentfulStatistic.nodes} />
         </div>
       </div>

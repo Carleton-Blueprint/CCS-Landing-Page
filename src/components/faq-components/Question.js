@@ -14,7 +14,7 @@ function Question(props) {
 
   return (
     <div
-      className={`border-t-[1.5px] rounded-t-[2rem] pb-8 ${
+      className={`border-t-[1.5px] rounded-t-[2rem] pb-8 hover:pb-12 transition-all duration-150 ease-out ${
         isLast ? 'rounded-b-[2rem]' : ''
       } justify-center ${
         isOpen

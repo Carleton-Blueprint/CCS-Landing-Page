@@ -11,7 +11,7 @@ const Header = (props) => {
         style={{ willChange: 'transform, opacity' }} // Enable GPU acceleration
       >
         <img
-          className="object-cover object-bottom lg:h-[90vh] h-[70vh] w-screen z-0"
+          className="object-cover object-bottom lg:h-[90vh] h-[70vh] w-full z-0"
           src={props.background}
           alt="Header Background"
         />
