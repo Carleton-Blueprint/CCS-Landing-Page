@@ -42,7 +42,7 @@ const NavigationBar = (props) => {
     // change height based on screen
     <div className="container fixed top-0 h-14 md:h-16 z-[95]">
       {/* Add custom styles to tailwind config to match figma */}
-      <div className="flex items-center justify-end w-full gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
+      <div className="flex items-center justify-end w-screen gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
         <button className="relative z-50 w-full pr-10" onClick={toggleMenu}>
           {!isMenuOpen ? (
             <div className="flex justify-between w-full">
@@ -97,14 +97,14 @@ const NavigationBar = (props) => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="fixed top-0 left-0 z-40 w-full h-screen overflow-y-auto text-4xl font-bold bg-gradient-to-t from-neutral-900 via-red-900 to-red-800"
+              className="fixed top-0 left-0 z-40 w-screen h-screen overflow-y-auto text-4xl font-bold bg-gradient-to-t from-neutral-900 via-red-900 to-red-800"
               initial="hidden"
               animate="visible"
               exit="exit"
               variants={menuVariants}
               transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }}
             >
-              <div className="w-full border-t border-gray-400 my-14">
+              <div className="w-screen border-t border-gray-400 my-14">
                 <ul className="flex-col items-center justify-end pt-2 pl-20 ">
                   <li
                     className={`my-16 ${
@@ -176,7 +176,7 @@ const NavigationBar = (props) => {
           )}
         </AnimatePresence>
       </div>
-      <div className="items-center justify-between hidden w-full gap-20 text-white md:flex bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
+      <div className="items-center justify-between hidden w-screen gap-20 text-white md:flex bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
         <Link to="/">
           <div className="p-3 ml-3">
             <img
