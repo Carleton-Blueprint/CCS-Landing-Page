@@ -43,7 +43,7 @@ const NavigationBar = (props) => {
     <div className="container fixed top-0 h-14 md:h-16 z-[95]">
       {/* Add custom styles to tailwind config to match figma */}
       <div className="flex items-center justify-end w-screen gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
-        <button className="relative z-50 w-full pr-10" onClick={toggleMenu}>
+        <div className="relative z-50 w-full pr-10">
           {!isMenuOpen ? (
             <div className="flex justify-between w-full">
               <img
@@ -51,7 +51,7 @@ const NavigationBar = (props) => {
                 alt="Carleton CUSEC Society Logo"
                 src={CarletonCUSECLogo}
               />
-              <div className="mt-2">
+              <div className="mt-2" onClick={toggleMenu}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -75,7 +75,7 @@ const NavigationBar = (props) => {
                 alt="Carleton CUSEC Society Logo"
                 src={CarletonCUSECLogo}
               />
-              <div className="mt-2.5">
+              <div className="mt-2.5" onClick={toggleMenu}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -93,7 +93,7 @@ const NavigationBar = (props) => {
               </div>
             </div>
           )}
-        </button>
+        </div>
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
