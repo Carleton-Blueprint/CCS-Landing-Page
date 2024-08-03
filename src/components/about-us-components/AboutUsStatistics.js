@@ -12,19 +12,21 @@ const Statistics = (props) => {
               Statistics of Carleton delegation at CUSEC
             </p>
             <div className="flex flex-col md:flex-row w-full justify-evenly">
-              {props.stats.map((stat, index) => {
-                return (
-                  <div>
-                    <Statistic
-                      key={stat.id}
-                      index={index}
-                      top={stat.subtitle1}
-                      bottom={stat.bottomSubtitle}
-                      stat={stat.statistic}
-                    />
-                  </div>
-                );
-              })}
+              {props.stats.length
+                ? props.stats.map((stat, index) => {
+                    return (
+                      <div>
+                        <Statistic
+                          key={stat.id}
+                          index={index}
+                          top={stat.subtitle1}
+                          bottom={stat.bottomSubtitle}
+                          stat={stat.statistic}
+                        />
+                      </div>
+                    );
+                  })
+                : null}
             </div>
           </div>
         </div>

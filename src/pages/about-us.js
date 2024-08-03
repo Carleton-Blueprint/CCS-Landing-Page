@@ -13,23 +13,23 @@ const ImageGallery = ({ data }) => {
   const galleryImages = data.allContentfulAboutUsGallery.nodes; //all images the AboutUsGallery
   const bodySections = data.contentfulAboutPage.aboutUsSection;
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Function to update the state based on the current window width
-    if (!window) {
-      return;
-    }
+    if (!window) return;
+
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+    // Invoke handleResize initially
+    handleResize();
 
-    // Cleanup function to remove the event listener
-    return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty dependency array means this effect runs only on mount and unmount
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <>

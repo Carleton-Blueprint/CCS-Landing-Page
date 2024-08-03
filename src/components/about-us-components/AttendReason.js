@@ -13,7 +13,7 @@ const AttendReason = (props) => {
       }`}
     >
       <div
-        className={`relative w-full h-full [transform-style:preserve-3d] transition-all duration-500 ${
+        className={`relative w-full h-full [transform-style:preserve-3d] transform-gpu transition-all duration-500 ${
           props.isCenter && flipped && '[transform:rotateY(180deg)]'
         }`}
         onClick={() => setFlipped(!flipped)}

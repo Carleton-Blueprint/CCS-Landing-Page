@@ -10,6 +10,8 @@ const Home = ({ data }) => {
   const [height, setViewportHeight] = useState(0);
 
   useEffect(() => {
+    if (!window) return;
+
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
       setViewportHeight(window.innerHeight);

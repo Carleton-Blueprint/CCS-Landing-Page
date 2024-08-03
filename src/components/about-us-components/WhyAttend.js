@@ -19,16 +19,14 @@ const WhyAttend = (props) => {
   };
 
   const increment = () => {
-    const start = (startIndex.current + 1) % imagesLength;
-    startIndex.current = start;
+    startIndex.current = (startIndex.current + 1) % imagesLength;
     setVisibleImages(generateVisibleImages(startIndex.current, false));
   };
 
   //assuming same as increment but go backwards
   const decrement = () => {
-    let start = startIndex.current - 1;
-    if (start === -1) start = imagesLength - 1; // Wrap around if index goes below 0
-    startIndex.current = start;
+    startIndex.current =
+      startIndex.current - 1 === -1 ? imagesLength - 1 : startIndex.current - 1;
     setVisibleImages(generateVisibleImages(startIndex.current, true));
   };
 
@@ -91,7 +89,7 @@ const WhyAttend = (props) => {
       <div className="relative flex items-center h-[360px] lg:w-[600px]">
         {allNodes.map((r, index) => {
           return (
-            <div className={`absolute h-auto ${getCss(index)}`}>
+            <div className={`absolute h-auto ${getCss(index)} transform-gpu`}>
               <div
                 onClick={() =>
                   visibleImages.indexOf(index) === 0
