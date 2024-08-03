@@ -6,7 +6,6 @@ import { Link } from 'gatsby';
 const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
   const timerRef = useRef(null);
 
-  console.log(mobile);
   const handleMouseEnter = () => {
     if (mobile) {
       return;
