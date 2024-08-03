@@ -102,6 +102,7 @@ function Question(props) {
                 },
               },
             }}
+            style={{ willChange: 'height, opacity' }}
           >
             <div className="px-5 py-5 text-xs text-white md:text-sm font-extralight md:font-light md:mx-8">
               {answer ? <RichText content={answer.content} /> : null}

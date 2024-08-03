@@ -9,27 +9,29 @@ const AboutUsGalleryMobile = (props) => {
 
   return (
     <div className="flex flex-col">
-      {allImages.map((image, index) => {
-        return (
-          <div
-            className={` transition-opacity duration-200 ease-in-out ${
-              visibleIndex !== index
-                ? 'p-0 w-0 h-0 opacity-0'
-                : 'px-10 h-44 opacity-100'
-            }`}
-          >
-            {visibleIndex === index && (
-              <GalleryImage
-                key={image.galleryImage.id}
-                clicked={() => {}}
-                url={image.galleryImage.gatsbyImageData}
-                description={image.galleryImage.description}
-                index={index}
-              />
-            )}
-          </div>
-        );
-      })}
+      {allImages.length
+        ? allImages.map((image, index) => {
+            return (
+              <div
+                className={` transition-opacity duration-200 ease-in-out ${
+                  visibleIndex !== index
+                    ? 'p-0 w-0 h-0 opacity-0'
+                    : 'px-10 h-44 opacity-100'
+                }`}
+              >
+                {visibleIndex === index && (
+                  <GalleryImage
+                    key={image.galleryImage.id}
+                    clicked={() => {}}
+                    url={image.galleryImage.gatsbyImageData}
+                    description={image.galleryImage.description}
+                    index={index}
+                  />
+                )}
+              </div>
+            );
+          })
+        : null}
       <div className="flex justify-center py-10 gap-10">
         <div
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full"

@@ -87,28 +87,32 @@ const WhyAttend = (props) => {
   return (
     <div>
       <div className="relative flex items-center h-[360px] lg:w-[600px]">
-        {allNodes.map((r, index) => {
-          return (
-            <div className={`absolute h-auto ${getCss(index)} transform-gpu`}>
-              <div
-                onClick={() =>
-                  visibleImages.indexOf(index) === 0
-                    ? decrement()
-                    : visibleImages.indexOf(index) === 2 && increment()
-                }
-              >
-                <AttendReason
-                  key={r.id}
-                  title={r.title}
-                  subtitle={r.subtitle}
-                  isCenter={visibleImages.indexOf(index) === 1}
-                  brightness={`${getBrightness(index)}`}
-                  image={r.icon}
-                />
-              </div>
-            </div>
-          );
-        })}
+        {allNodes.length
+          ? allNodes.map((r, index) => {
+              return (
+                <div
+                  className={`absolute h-auto ${getCss(index)} transform-gpu`}
+                >
+                  <div
+                    onClick={() =>
+                      visibleImages.indexOf(index) === 0
+                        ? decrement()
+                        : visibleImages.indexOf(index) === 2 && increment()
+                    }
+                  >
+                    <AttendReason
+                      key={r.id}
+                      title={r.title}
+                      subtitle={r.subtitle}
+                      isCenter={visibleImages.indexOf(index) === 1}
+                      brightness={`${getBrightness(index)}`}
+                      image={r.icon}
+                    />
+                  </div>
+                </div>
+              );
+            })
+          : null}
       </div>
 
       <div className="flex justify-center items-align lg:w-[600px] mt-10">

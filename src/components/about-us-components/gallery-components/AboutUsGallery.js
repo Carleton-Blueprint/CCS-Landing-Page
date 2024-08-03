@@ -176,7 +176,6 @@ const AboutUsGallery = (props) => {
   };
 
   const handleImageClick = (relativeIndex) => {
-    console.log(relativeIndex);
     switch (relativeIndex) {
       case 0:
         setAnimationTime(2);
@@ -237,9 +236,7 @@ const AboutUsGallery = (props) => {
                   description={image.galleryImage.description}
                   indexRelative={visibleImages.indexOf(index)}
                   brightness={`${getBrightness(index)}`}
-                  clicked={() =>
-                    console.log(handleImageClick(visibleImages.indexOf(index)))
-                  }
+                  clicked={() => handleImageClick(visibleImages.indexOf(index))}
                 />
               </div>
             ))}
