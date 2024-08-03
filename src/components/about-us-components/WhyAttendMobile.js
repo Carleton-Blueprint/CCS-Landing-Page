@@ -38,7 +38,9 @@ const WhyAttendMobile = (props) => {
               'bg-[#ABAAAA] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full m-2')
           }
           onClick={() => {
-            setRenderIndex((prev) => prev - 1);
+            setRenderIndex((prev) =>
+              prev - 1 === -1 ? allNodes.length - 1 : prev - 1
+            );
           }}
           onMouseDown={(e) => e.preventDefault()}
         >
@@ -62,7 +64,7 @@ const WhyAttendMobile = (props) => {
               'bg-[#ABAAAA] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full m-2')
           }
           onClick={() => {
-            setRenderIndex((prev) => prev + 1);
+            setRenderIndex((prev) => (prev + 1) % allNodes.length);
           }}
           onMouseDown={(e) => e.preventDefault()}
         >
