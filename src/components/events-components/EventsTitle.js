@@ -16,7 +16,7 @@ const EventsTitle = () => {
         }}
       >
         <div className="flex justify-center">
-          <hr className="w-screen opacity-50" />
+          <hr className="w-full opacity-50" />
         </div>
         <div className="container flex-col text-white mt-[10vh] lg:p-16 p-4">
           <h1 className="text-5xl font-semibold text-center lg:text-7xl lg:pt-0">

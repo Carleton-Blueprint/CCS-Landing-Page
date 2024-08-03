@@ -1,8 +1,7 @@
-import React, { useRef, useState } from "react";
-import AttendReason from "./AttendReason";
+import React, { useRef, useState } from 'react';
+import AttendReason from './AttendReason';
 
 const WhyAttend = (props) => {
- 
   const allNodes = props.reasons;
   const movingLeft = useRef(false);
   const imagesLength = allNodes.length;
@@ -20,28 +19,26 @@ const WhyAttend = (props) => {
   };
 
   const increment = () => {
-      const start = (startIndex.current + 1) % imagesLength;
-      startIndex.current = start;
-      setVisibleImages(generateVisibleImages(startIndex.current, false));   
+    startIndex.current = (startIndex.current + 1) % imagesLength;
+    setVisibleImages(generateVisibleImages(startIndex.current, false));
   };
 
   //assuming same as increment but go backwards
   const decrement = () => {
-    let start = startIndex.current - 1;
-    if (start === -1) start = imagesLength - 1; // Wrap around if index goes below 0
-    startIndex.current = start;
-    setVisibleImages(generateVisibleImages(startIndex.current, true))
+    startIndex.current =
+      startIndex.current - 1 === -1 ? imagesLength - 1 : startIndex.current - 1;
+    setVisibleImages(generateVisibleImages(startIndex.current, true));
   };
 
   const getBrightness = (imageIndex) => {
     const index = visibleImages.indexOf(imageIndex);
     if (index === -1) {
-      return "brightness-0";
+      return 'brightness-0';
     }
     const brightnessArray = [
-      "brightness-75",
-      "brightness-100",
-      "brightness-75",
+      'brightness-75',
+      'brightness-100',
+      'brightness-75',
     ];
     return brightnessArray[index];
   };
@@ -50,7 +47,9 @@ const WhyAttend = (props) => {
   const getCss = (imageIndex) => {
     // Early return for images not currently visible
     if (!visibleImages.includes(imageIndex)) {
-      return `${movingLeft.current ? "right-0" : "left-0"} opacity-0 transition-all ease-in-out duration-[200ms] w-0 h-0`;
+      return `${
+        movingLeft.current ? 'right-0' : 'left-0'
+      } opacity-0 transition-all ease-in-out duration-[200ms] w-0 h-0`;
     }
 
     // Get default styles for visible images
@@ -62,17 +61,19 @@ const WhyAttend = (props) => {
     };
 
     // Specific positioning logic
-    let positionStyle = "";
+    let positionStyle = '';
 
     switch (visibleImages.indexOf(imageIndex)) {
       case 0:
-        positionStyle = "left-0 transition-all";
+        positionStyle = 'left-0 transition-all';
         break;
       case 1:
-        positionStyle = !movingLeft.current ? "left-1/2 transform -translate-x-1/2  transition-all" : "right-1/2 transform translate-x-1/2  transition-all";
+        positionStyle = !movingLeft.current
+          ? 'left-1/2 transform -translate-x-1/2  transition-all'
+          : 'right-1/2 transform translate-x-1/2  transition-all';
         break;
       case 2:
-        positionStyle = "right-0 transition-all";
+        positionStyle = 'right-0 transition-all';
         break;
       default:
         break;
@@ -86,64 +87,70 @@ const WhyAttend = (props) => {
   return (
     <div>
       <div className="relative flex items-center h-[360px] lg:w-[600px]">
-        
-        {allNodes.map((r, index) => {
-          return (
-            
-            <div className={`absolute h-auto ${getCss(index)}`}>
-              {console.log(r)}
-              <AttendReason
-                key={r.id}
-                title={r.title}
-                subtitle={r.subtitle}
-                isCenter={visibleImages.indexOf(index) === 1}
-                brightness={`${getBrightness(index)}`}
-                image = {r.icon}
-              />
-            </div>
-          );
-        })}
+        {allNodes.length
+          ? allNodes.map((r, index) => {
+              return (
+                <div
+                  className={`absolute h-auto ${getCss(index)} transform-gpu`}
+                >
+                  <div
+                    onClick={() =>
+                      visibleImages.indexOf(index) === 0
+                        ? decrement()
+                        : visibleImages.indexOf(index) === 2 && increment()
+                    }
+                  >
+                    <AttendReason
+                      key={r.id}
+                      title={r.title}
+                      subtitle={r.subtitle}
+                      isCenter={visibleImages.indexOf(index) === 1}
+                      brightness={`${getBrightness(index)}`}
+                      image={r.icon}
+                    />
+                  </div>
+                </div>
+              );
+            })
+          : null}
       </div>
 
       <div className="flex justify-center items-align lg:w-[600px] mt-10">
-
-          <div
-            className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full m-2"
-            onMouseEnter={(e) =>
-              (e.currentTarget.className =
-                "bg-[#e91c24] w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.className =
-                "bg-[#ABAAAA] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full m-2")
-            }
-            onClick={() => {
-          
-              decrement();
-            }}
-            onMouseDown={(e) => e.preventDefault()}
-          >
-            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-              <path
-                className={`transition-all ease-in-out duration-300`}
-                d="M11.9393 18.9393C11.3536 19.5251 11.3536 20.4749 11.9393 21.0607L21.4853 30.6066C22.0711 31.1924 23.0208 31.1924 23.6066 30.6066C24.1924 30.0208 24.1924 29.0711 23.6066 28.4853L15.1213 20L23.6066 11.5147C24.1924 10.9289 24.1924 9.97919 23.6066 9.3934C23.0208 8.80761 22.0711 8.80761 21.4853 9.3934L11.9393 18.9393ZM14.5 18.5H13V21.5H14.5V18.5Z"
-                fill="white"
-              />
-            </svg>
-          </div>
+        <div
+          className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full m-2"
+          onMouseEnter={(e) =>
+            (e.currentTarget.className =
+              'bg-[#e91c24] w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.className =
+              'bg-[#ABAAAA] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full m-2')
+          }
+          onClick={() => {
+            decrement();
+          }}
+          onMouseDown={(e) => e.preventDefault()}
+        >
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <path
+              className={`transition-all ease-in-out duration-300`}
+              d="M11.9393 18.9393C11.3536 19.5251 11.3536 20.4749 11.9393 21.0607L21.4853 30.6066C22.0711 31.1924 23.0208 31.1924 23.6066 30.6066C24.1924 30.0208 24.1924 29.0711 23.6066 28.4853L15.1213 20L23.6066 11.5147C24.1924 10.9289 24.1924 9.97919 23.6066 9.3934C23.0208 8.80761 22.0711 8.80761 21.4853 9.3934L11.9393 18.9393ZM14.5 18.5H13V21.5H14.5V18.5Z"
+              fill="white"
+            />
+          </svg>
+        </div>
 
         <div
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full m-2"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
-              "bg-[#e91c24] w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2")
+              'bg-[#e91c24] w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
           }
           onMouseLeave={(e) =>
             (e.currentTarget.className =
-              "bg-[#ABAAAA] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full m-2")
+              'bg-[#ABAAAA] w-[40px] h-[40px] translate-x-0 transition-all ease-in-out duration-300 rounded-full m-2')
           }
           onClick={() => {
-         
             increment();
           }}
           onMouseDown={(e) => e.preventDefault()}
@@ -156,9 +163,7 @@ const WhyAttend = (props) => {
             />
           </svg>
         </div>
-
       </div>
-
     </div>
   );
 };

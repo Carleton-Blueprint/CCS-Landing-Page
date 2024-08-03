@@ -7,7 +7,7 @@ import Layout from '../components/base/Layout';
 
 const GetInovlved = ({ data, location }) => {
   return (
-    <Layout pathname={location.pathname}>
+    <Layout pathname={location.pathname} backgroundColour="black">
       <Header title="Get Involved" background={background} />
       <div className="bg-black">
         <div className="flex flex-wrap justify-center w-full">

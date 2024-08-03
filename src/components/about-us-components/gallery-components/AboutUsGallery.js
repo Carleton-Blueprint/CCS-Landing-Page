@@ -23,7 +23,7 @@ const AboutUsGallery = (props) => {
     return pushVisibleImages;
   };
 
-  const increment = (n, isInitial) => {
+  const increment = (n, isInitial = true) => {
     if (n <= 0) {
       isRunning.current = false;
       animationTypeString.current = 'ease-in-out';
@@ -49,7 +49,7 @@ const AboutUsGallery = (props) => {
     }
   };
 
-  const decrement = (n, isInitial) => {
+  const decrement = (n, isInitial = true) => {
     if (n <= 0) {
       isRunning.current = false;
       animationTypeString.current = 'ease-in-out';
@@ -82,9 +82,9 @@ const AboutUsGallery = (props) => {
     setAnimationTime(distance);
     isRunning.current = true;
     if (direction) {
-      increment(distance, true);
+      increment(distance);
     } else {
-      decrement(distance, true);
+      decrement(distance);
     }
   };
 
@@ -94,11 +94,11 @@ const AboutUsGallery = (props) => {
       return 'brightness-0';
     }
     const brightnessArray = [
+      'brightness-[30%]',
       'brightness-50',
-      'brightness-75',
-      'brightness-100',
-      'brightness-75',
+      'brightness-110',
       'brightness-50',
+      'brightness-[30%]',
     ];
     return brightnessArray[index];
   };
@@ -174,6 +174,30 @@ const AboutUsGallery = (props) => {
     animationTimeString.current = durationString;
     animationTimeInt.current = duration;
   };
+
+  const handleImageClick = (relativeIndex) => {
+    switch (relativeIndex) {
+      case 0:
+        setAnimationTime(2);
+        decrement(2);
+        break;
+      case 1:
+        setAnimationTime(1);
+        decrement(1);
+        break;
+      case 3:
+        setAnimationTime(1);
+        increment(1);
+        break;
+      case 4:
+        setAnimationTime(2);
+        increment(2);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="mb-5 w-fit">
       <div className="flex items-center gap-6 h-fit duration">
@@ -189,7 +213,7 @@ const AboutUsGallery = (props) => {
           }
           onClick={() => {
             setAnimationTime(1);
-            decrement(1, true, true);
+            decrement(1);
           }}
           onMouseDown={(e) => e.preventDefault()}
         >
@@ -210,8 +234,9 @@ const AboutUsGallery = (props) => {
                   key={image.galleryImage.id}
                   url={image.galleryImage.gatsbyImageData}
                   description={image.galleryImage.description}
-                  index={index}
+                  indexRelative={visibleImages.indexOf(index)}
                   brightness={`${getBrightness(index)}`}
+                  clicked={() => handleImageClick(visibleImages.indexOf(index))}
                 />
               </div>
             ))}
@@ -230,7 +255,7 @@ const AboutUsGallery = (props) => {
           }
           onClick={() => {
             setAnimationTime(1);
-            increment(1, true, true);
+            increment(1);
           }}
           onMouseDown={(e) => e.preventDefault()}
         >
