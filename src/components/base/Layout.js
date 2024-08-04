@@ -65,10 +65,10 @@ const Layout = ({ pathname, backgroundColour, children }) => {
   return (
     <div className="layout" style={{ backgroundColor: backgroundColour }}>
       <div
-        className={`inset-0 fixed z-[100] transition-transform transform-gpu ease-in-out ${
+        className={`top-0 left-0 right-0 fixed z-[100] transition-transform transform-gpu ease-out ${
           isVisible
             ? 'translate-y-0 duration-200'
-            : '-translate-y-full duration-500'
+            : '-translate-y-full duration-300'
         }`}
       >
         <NavigationBar isVisible={isVisible} pathname={pathname} />
