@@ -45,12 +45,15 @@ const NavigationBar = (props) => {
       <div className="flex items-center justify-end w-full gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
         <div className="relative z-50 w-full pr-10">
           {!isMenuOpen ? (
-            <div className="flex justify-between w-full">
+            
+            <div className="flex justify-between w-full ">
+              <a href={"/"}>
               <img
                 className="w-[45px] h-auto ml-2"
                 alt="Carleton CUSEC Society Logo"
                 src={CarletonCUSECLogo}
               />
+              </a>
               <div className="mt-2" onClick={toggleMenu}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -70,11 +73,14 @@ const NavigationBar = (props) => {
             </div>
           ) : (
             <div className="flex justify-between w-full">
-              <img
-                className="w-[45px] h-auto ml-2"
-                alt="Carleton CUSEC Society Logo"
-                src={CarletonCUSECLogo}
-              />
+              <a href={"/"}>
+                <img
+          
+                  className="w-[45px] h-auto ml-2"
+                  alt="Carleton CUSEC Society Logo"
+                  src={CarletonCUSECLogo}
+                />
+              </a>
               <div className="mt-2.5" onClick={toggleMenu}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -178,9 +184,9 @@ const NavigationBar = (props) => {
       </div>
       <div className="items-center justify-between hidden w-full gap-20 text-white md:flex bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
         <Link to="/">
-          <div className="p-3 ml-3">
+          <div className="p-3 ml-3 ">
             <img
-              className="w-[60px] h-auto"
+              className="w-[60px] h-auto hover:rotate-180 hover:scale-110 transition-all duration-150 ease-in-out"
               alt="Carleton CUSEC Society Logo"
               src={CarletonCUSECLogo}
             />
