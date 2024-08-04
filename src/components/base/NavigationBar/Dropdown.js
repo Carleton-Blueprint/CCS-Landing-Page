@@ -24,7 +24,7 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
     timerRef.current = setTimeout(() => {
       setHover(false);
       timerRef.current = null;
-    }, 200);
+    }, 300);
   };
 
   const handleClick = () => {
@@ -36,7 +36,11 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
       <motion.div initial={false}>
         <div className="whitespace-nowrap">
           <Link to={label.href}>{label.name}</Link>
-          <RotatingArrow isHovering={hover} handleClick={handleClick} isMobile={mobile}/>
+          <RotatingArrow
+            isHovering={hover}
+            handleClick={handleClick}
+            isMobile={mobile}
+          />
         </div>
       </motion.div>
       <AnimatePresence initial={false}>
@@ -71,11 +75,11 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
                   <div>
                     <div
                       className={`${
-                        isCurrent(item.href) ? 'font-bold' : 'font-semibold'
+                        isCurrent(item.href) ? 'font-bold' : 'font-normal'
                       } ${
                         mobile
                           ? 'ml-[50px] mb-[30px]'
-                          : 'w-[9em] whitespace-nowrap z-[100] relative p-2 rounded-lg hover:text-red-900 hover:bg-white'
+                          : 'w-[9em] whitespace-nowrap z-[100] relative p-2 rounded-lg hover:text-red-900 hover:bg-white transition-colors duration-150 ease-in-out'
                       }`}
                     >
                       <a href={item.href}>{item.name}</a>
