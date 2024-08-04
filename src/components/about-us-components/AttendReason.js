@@ -7,13 +7,9 @@ const AttendReason = (props) => {
     setFlipped(false);
   }, [props.isCenter]);
   return (
-    <div
-      className={`flex group [perspective:1000px] transition-all duration-150 ease-out w-full h-full ${
-        props.isCenter ? 'hover:scale-[115%]' : 'hover:scale-110'
-      }`}
-    >
+    <div className="flex group [perspective:1000px] w-full h-full">
       <div
-        className={`relative w-full h-full [transform-style:preserve-3d] transform-gpu transition-all duration-500 ${
+        className={`relative w-full h-full [transform-style:preserve-3d] transition-all duration-500 ${
           props.isCenter && flipped && '[transform:rotateY(180deg)]'
         }`}
         onClick={() => setFlipped(!flipped)}
