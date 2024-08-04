@@ -36,7 +36,7 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
       <motion.div initial={false}>
         <div className="whitespace-nowrap">
           <Link to={label.href}>{label.name}</Link>
-          <RotatingArrow isHovering={hover} handleClick={handleClick} />
+          <RotatingArrow isHovering={hover} handleClick={handleClick} isMobile={mobile}/>
         </div>
       </motion.div>
       <AnimatePresence initial={false}>

@@ -9,7 +9,7 @@ const RotatingArrow = ({ isHovering, isMobile, handleClick }) => {
       viewBox="0 0 24 24"
       fill="currentColor"
       className={`inline ml-2 cursor-pointer ${
-        isMobile ? 'size-6' : 'size-10'
+        isMobile ? 'size-10' : 'size-6'
       }`}
       animate={{ rotate: isHovering ? 0 : 180 }}
       transition={{ duration: 0.3 }}
