@@ -43,16 +43,14 @@ const AllEvents = ({ eventRows }) => {
 
   const shadow = {
     boxShadow: `
-          0px 0px 0px #E91C24,        
-          150px 2px 50px -50px #E91C24,  
-          -150px -10px 50px -50px #E91C24`,
+        0px -20px 40px #E91C24,      
+        20px 0px 40px #E91C24,        
+        -20px 0px 40px #E91C24        
+  `,
   };
 
   return (
-    <div
-      className="grid mb-24 place-items-center"
-      style={{ backgroundColor: '#41151B' }}
-    >
+    <div className="grid mb-24 place-items-center">
       <div
         className="bg-[#111] w-[95%] md:w-[70%] min-h-screen z-10"
         style={shadow}
