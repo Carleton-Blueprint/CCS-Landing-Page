@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import ScheduleRow from './ScheduleRow';
 
 const AllEvents = ({ eventRows }) => {
@@ -8,9 +8,7 @@ const AllEvents = ({ eventRows }) => {
       let mins = time.split(':')[1].slice(0, 2);
       let period = time.split(':')[1].slice(-2).toLowerCase();
 
-      let totalTimePastMidnight = 0;
-
-      totalTimePastMidnight += period === 'pm' && hours !== 12 && 12 * 60;
+      let totalTimePastMidnight = period === 'pm' && hours != '12' ? 720 : 0;
 
       totalTimePastMidnight += parseInt(hours) * 60;
       totalTimePastMidnight += parseInt(mins);
@@ -34,9 +32,14 @@ const AllEvents = ({ eventRows }) => {
         : max;
     }, eventRow.events[0]).endTime;
   };
-  eventRows.sort(
-    (a, b) => getTime(findStartTime(a)) - getTime(findStartTime(b))
-  );
+
+  const sortedRows = useMemo(() => {
+    const rows = [...eventRows];
+    if (!eventRows.length) return;
+    rows.sort((a, b) => getTime(findStartTime(a)) - getTime(findStartTime(b)));
+    console.log(getTime(findStartTime(rows[rows.length - 1])));
+    return rows;
+  }, [eventRows]);
 
   const shadow = {
     boxShadow: `
@@ -47,21 +50,26 @@ const AllEvents = ({ eventRows }) => {
 
   return (
     <div
-      className="grid place-items-center "
+      className="grid mb-24 place-items-center"
       style={{ backgroundColor: '#41151B' }}
     >
-      <div className="bg-[#111] w-[700px] min-h-screen z-10" style={shadow}>
-        {eventRows.map((element, index) => {
-          return (
-            <ScheduleRow
-              key={element.id}
-              eventRow={element}
-              startTime={findStartTime(element)}
-              endTime={findEndTime(element)}
-              index={index}
-            />
-          );
-        })}
+      <div
+        className="bg-[#111] w-[95%] md:w-[70%] min-h-screen z-10"
+        style={shadow}
+      >
+        {sortedRows
+          ? sortedRows.map((element, index) => {
+              return (
+                <ScheduleRow
+                  key={element.id}
+                  eventRow={element}
+                  startTime={findStartTime(element)}
+                  endTime={findEndTime(element)}
+                  index={index}
+                />
+              );
+            })
+          : null}
       </div>
     </div>
   );
