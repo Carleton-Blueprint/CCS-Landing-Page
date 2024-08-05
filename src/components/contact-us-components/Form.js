@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Toast from '../base/Toast';
 
 const Form = () => {
   const [formData, setFormData] = useState({
