@@ -1,41 +1,26 @@
 import React from 'react';
-import { useState } from 'react';
 import { LocationIcon } from '../../SVGs/LocationIcon';
-import { parse, getHours, getMinutes } from 'date-fns';
+import { getMinutesAfterMidnight } from '../../helpers/getMinutesAfterMidnight';
 
 const EventBlock = ({ events, rangeStart, rangeTime }) => {
-  const [insideHovering, setInsideHovering] = useState(false);
-
-  const getTime = (time) => {
-    try {
-      let hours = time.split(':')[0];
-      let mins = time.split(':')[1].slice(0, 2);
-      let period = time.split(':')[1].slice(-2).toLowerCase();
-
-      let totalTimePastMidnight = period === 'pm' ? 720 : 0;
-
-      totalTimePastMidnight += parseInt(hours) * 60;
-      totalTimePastMidnight += parseInt(mins);
-      return totalTimePastMidnight;
-    } catch (err) {
-      return 0;
-    }
-  };
-
   const calculateHeight = () => {
     return `${rangeTime * 2.5}px`;
   };
 
   const fullEvents = events.filter(
     (obj) =>
-      getTime(obj.startTime) === getTime(rangeStart) &&
-      getTime(obj.endTime) === getTime(rangeStart) + rangeTime
+      getMinutesAfterMidnight(obj.startTime) ===
+        getMinutesAfterMidnight(rangeStart) &&
+      getMinutesAfterMidnight(obj.endTime) ===
+        getMinutesAfterMidnight(rangeStart) + rangeTime
   );
 
   const shortEvents = events.filter(
     (obj) =>
-      getTime(obj.startTime) !== getTime(rangeStart) ||
-      getTime(obj.endTime) !== getTime(rangeStart) + rangeTime
+      getMinutesAfterMidnight(obj.startTime) !==
+        getMinutesAfterMidnight(rangeStart) ||
+      getMinutesAfterMidnight(obj.endTime) !==
+        getMinutesAfterMidnight(rangeStart) + rangeTime
   );
 
   return (
@@ -64,8 +49,8 @@ const EventBlock = ({ events, rangeStart, rangeTime }) => {
                 key={shortEvents[index].id}
                 style={{
                   minHeight: `${
-                    (getTime(shortEvents[index].endTime) -
-                      getTime(shortEvents[index].startTime)) *
+                    (getMinutesAfterMidnight(shortEvents[index].endTime) -
+                      getMinutesAfterMidnight(shortEvents[index].startTime)) *
                     2.5
                   }px`,
                 }}

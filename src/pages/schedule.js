@@ -4,36 +4,14 @@ import AllEvents from '../components/schedule-components/AllEvents';
 import { graphql } from 'gatsby';
 import greyBackground from '../images/schedule-title-background.png';
 import background from '../images/schedule-header.svg';
-import MobileSchedule from '../components/schedule-components/MobileSchedule';
 import Layout from '../components/base/Layout';
 import HeaderWithSubtitle from '../components/base/HeaderWithSubtitle';
-
+import SchedulerArrow from '../SVGs/SchedulerArrow';
 const Schedule = ({ data, location }) => {
-  const [width, setWidth] = useState(0);
   const [date, setDate] = useState(1);
   const [currentEvents, setCurrentEvents] = useState([]);
 
   const allEvents = [...data.allContentfulScheduleRow.nodes];
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setWidth(window.innerWidth);
-    } else {
-    }
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (typeof window !== 'undefined') {
-        setWidth(window.innerWidth);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize(); // Call the function immediately to set initial size
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     const currentDate = new Date(dates[date - 1]);
@@ -55,10 +33,6 @@ const Schedule = ({ data, location }) => {
         (a, b) => new Date(a) - new Date(b)
       ),
     []
-  );
-
-  const futureEvents = allEvents.filter(
-    (event) => new Date(event.date) >= new Date()
   );
 
   dates.sort((a, b) => new Date(a) - new Date(b));

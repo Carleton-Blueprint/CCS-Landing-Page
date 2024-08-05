@@ -1,23 +1,10 @@
 import React from 'react';
 import EventBlock from './EventBlock';
+import { getMinutesAfterMidnight } from '../../helpers/getMinutesAfterMidnight';
 
 const ScheduleRow = ({ startTime, endTime, eventRow, index }) => {
-  const getTime = (time) => {
-    try {
-      let hours = time.split(':')[0];
-      let mins = time.split(':')[1].slice(0, 2);
-      let period = time.split(':')[1].slice(-2).toLowerCase();
-      let totalTimePastMidnight = period === 'pm' ? 720 : 0;
-
-      totalTimePastMidnight += parseInt(hours) * 60;
-      totalTimePastMidnight += parseInt(mins);
-      return totalTimePastMidnight;
-    } catch (err) {
-      return 0;
-    }
-  };
-
-  const time = getTime(endTime) - getTime(startTime);
+  const time =
+    getMinutesAfterMidnight(endTime) - getMinutesAfterMidnight(startTime);
 
   return (
     <div
