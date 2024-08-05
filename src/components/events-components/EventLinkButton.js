@@ -1,13 +1,19 @@
 import React from 'react';
-
 import linkImage from '../../images/LinkIcon.png';
+import { toast } from 'react-toastify';
 const EventLinkButton = () => {
   const handleCopy = async (content) => {
     try {
       await navigator.clipboard.writeText(content);
-      console.log('Copied to clipboard:', content);
+      toast.success('Copied link to clipboard', {
+        theme: 'colored',
+        position: 'bottom-right',
+      });
     } catch (error) {
-      console.error('Unable to copy to clipboard:', error);
+      toast.error('Unable to copy to clipboard', {
+        theme: 'colored',
+        position: 'bottom-right',
+      });
     }
   };
   return (

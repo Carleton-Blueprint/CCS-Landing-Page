@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Toast from '../base/Toast';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -27,27 +30,41 @@ const Form = () => {
       !formData.subject ||
       !formData.message
     ) {
-      console.log('Please enter all info'); //TO DO: Snackbar
+      toast.error('Fill out all fields', {
+        theme: 'colored',
+        position: 'bottom-right',
+      });
       return;
     }
-    console.log(formData);
-    await window
-      .fetch(`/api/submitForm`, {
-        //serverless funciton, see src/api/submitForm for the function!
-        method: `POST`,
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify({ ...formData, date: new Date() }),
-      })
-      .then((res) => res.json());
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
+    try {
+      await window
+        .fetch(`/api/submitForm`, {
+          //serverless funciton, see src/api/submitForm for the function!
+          method: `POST`,
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({ ...formData, date: new Date() }),
+        })
+        .then((res) => res.json());
+      toast.success('Message Sent!', {
+        theme: 'colored',
+        position: 'bottom-right',
+      });
+    } catch (err) {
+      console.error('Form::handleSubmit ERROR', err);
+      toast.error('Error Occured Sending Message', {
+        position: 'bottom-right',
+      });
+    } finally {
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+    }
   };
 
   return (
