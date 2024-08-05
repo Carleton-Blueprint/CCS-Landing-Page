@@ -1,5 +1,5 @@
 import React from 'react';
-import { LocationIcon } from '../../SVGs/LocationIcon';
+import { LocationIcon } from '../../SVGs/scheduler-SVGs';
 import { getMinutesAfterMidnight } from '../../helpers/getMinutesAfterMidnight';
 
 const EventBlock = ({ events, rangeStart, rangeTime }) => {

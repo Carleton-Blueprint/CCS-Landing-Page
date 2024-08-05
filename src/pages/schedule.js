@@ -6,7 +6,10 @@ import greyBackground from '../images/schedule-title-background.png';
 import background from '../images/schedule-header.svg';
 import Layout from '../components/base/Layout';
 import HeaderWithSubtitle from '../components/base/HeaderWithSubtitle';
-import SchedulerArrow from '../SVGs/SchedulerArrow';
+import {
+  SchedulerLeftArrow,
+  SchedulerRightArrow,
+} from '../SVGs/scheduler-SVGs';
 const Schedule = ({ data, location }) => {
   const [date, setDate] = useState(1);
   const [currentEvents, setCurrentEvents] = useState([]);
@@ -108,20 +111,7 @@ const Schedule = ({ data, location }) => {
               }
               style={arrowShadow}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="white"
-                className="size-8"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5 8.25 12l7.5-7.5"
-                />
-              </svg>
+              <SchedulerLeftArrow />
             </button>
             <div className="">
               <h1 className="text-3xl font-bold text-center text-white">
@@ -140,20 +130,7 @@ const Schedule = ({ data, location }) => {
               }
               style={arrowShadow}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="white"
-                className="size-8"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                />
-              </svg>
+              <SchedulerRightArrow />
             </button>
           </div>
           <div className="mt-[-50px]">
