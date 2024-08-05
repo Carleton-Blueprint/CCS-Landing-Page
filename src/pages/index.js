@@ -8,7 +8,6 @@ import HomeImageCarousel from '../components/home-components/home-gallery-compon
 const HomePage = ({ data }) => {
   return (
     <div>
-      <NavigationBar pathname={'/'} />
       <Home data={data} />
     </div>
   );
