@@ -29,7 +29,6 @@ const MobileSchedule = ({ eventRows }) => {
     return getTime(a.startTime) - getTime(b.startTime);
   });
 
-  console.log('mobile', allEvents);
   const shadow = {
     background:
       'linear-gradient(90deg, #41151B 0%,#E91C24 7%, #111 10%, #111 90%, #E91C24 93%, #41151B 100%)',

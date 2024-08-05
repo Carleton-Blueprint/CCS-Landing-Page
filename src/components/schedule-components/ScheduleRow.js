@@ -2,7 +2,6 @@ import React from 'react';
 import EventBlock from './EventBlock';
 
 const ScheduleRow = ({ startTime, endTime, eventRow, index }) => {
-  console.log(eventRow, startTime, endTime);
   const getTime = (time) => {
     try {
       let hours = time.split(':')[0];
@@ -26,12 +25,12 @@ const ScheduleRow = ({ startTime, endTime, eventRow, index }) => {
 
   return (
     <div
-      className={`m-10 text-white  grid-cols-1 flex p-8 ${
+      className={`m-10 text-white  grid-cols-1 flex ${
         index === 0 ? 'pt-20' : ''
       }`}
     >
       <div
-        className="flex flex-col justify-between  text-nowrap"
+        className="flex flex-col justify-between text-nowrap"
         style={{ minHeight: `${time * 2}px` }}
       >
         <p className="w-[100px] text-lg">

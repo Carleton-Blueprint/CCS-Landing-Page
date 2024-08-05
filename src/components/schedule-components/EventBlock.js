@@ -1,7 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
+import { LocationIcon } from '../../SVGs/LocationIcon';
 
 const EventBlock = ({ events, rangeStart, rangeTime }) => {
+  const [insideHovering, setInsideHovering] = useState(false);
+
   const getTime = (time) => {
     try {
       let hours = time.split(':')[0];
@@ -21,8 +24,9 @@ const EventBlock = ({ events, rangeStart, rangeTime }) => {
     }
   };
 
-  const timeClassName =
-    'h-full text-white border-l-2 border-l-white p-[20px] hover:border-l-red hover:border-l-4 hover:border-l-red-500 hover:text-red-500 hover:scale-105 transition-transform duration-500 ease-in-out flex-1';
+  const calculateHeight = () => {
+    return `${rangeTime * 2.5}px`;
+  };
 
   const fullEvents = events.filter(
     (obj) =>
@@ -36,45 +40,27 @@ const EventBlock = ({ events, rangeStart, rangeTime }) => {
       getTime(obj.endTime) !== getTime(rangeStart) + rangeTime
   );
 
-  const [insideHovering, setInsideHovering] = useState(false);
   return (
-    // each column of events?
+    // each column of events
     <div className="flex h-full grid-cols-1">
       {fullEvents.map((element, index) => {
-        // each event
-
         if (index < shortEvents.length) {
           return (
             <div
               key={element.id}
               className={
                 insideHovering
-                  ? 'text-white border-l-2 border-l-white p-[20px] transition-transform duration-500 ease-in-out flex-1 flex-1'
-                  : timeClassName
+                  ? `text-white border-l-2 border-l-white p-[20px] transition-transform 
+                  duration-500 ease-in-out flex-1 flex-1`
+                  : `h-full text-white border-l-2 border-l-white p-[20px] hover:border-l-red 
+                  hover:border-l-4 hover:border-l-red-500 hover:text-red-500 
+                  hover:scale-105 transition-transform duration-500 ease-in-out flex-1`
               }
             >
               <h1 className="text-lg font-bold">{element.displayTitle}</h1>
               <h1 className="text-xs">{element.description}</h1>
               <h1 className="flex text-sm">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-5 pr-[2px]"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                  />
-                </svg>
+                <LocationIcon />
                 {element.location}
               </h1>
 
@@ -100,25 +86,7 @@ const EventBlock = ({ events, rangeStart, rangeTime }) => {
                 </h1>
                 <h1 className="text-xs">{shortEvents[index].description}</h1>
                 <h1 className="flex text-sm">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="size-5 pr-[2px]"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                    />
-                  </svg>
+                  <LocationIcon />
                   {shortEvents[index].location}
                 </h1>
               </div>
@@ -126,29 +94,17 @@ const EventBlock = ({ events, rangeStart, rangeTime }) => {
           );
         } else {
           return (
-            <div key={element.id} className={timeClassName}>
+            <div
+              key={element.id}
+              className="text-white border-l-2 border-l-white p-[20px] hover:border-l-red 
+                  hover:border-l-4 hover:border-l-red-500 hover:text-red-500 
+                  hover:scale-105 transition-transform duration-500 ease-in-out flex-1"
+              style={{ minHeight: calculateHeight() }}
+            >
               <h1 className="text-lg font-bold">{element.displayTitle}</h1>
               <h1 className="text-xs ">{element.description}</h1>
               <h1 className="flex text-sm">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-5 pr-[2px]"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                  />
-                </svg>
+                <LocationIcon />
                 {element.location}
               </h1>
             </div>

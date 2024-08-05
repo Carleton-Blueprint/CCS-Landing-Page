@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
+    "date-fns": "^3.6.0",
     "encoding": "^0.1.13",
     "framer-motion": "^11.2.10",
     "gatsby": "^5.13.3",

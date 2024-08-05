@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useState, useEffect } from 'react';
 import AllEvents from '../components/schedule-components/AllEvents';
 import { graphql } from 'gatsby';
-
 import greyBackground from '../images/schedule-title-background.png';
 import background from '../images/schedule-header.svg';
 import MobileSchedule from '../components/schedule-components/MobileSchedule';
@@ -11,6 +10,10 @@ import HeaderWithSubtitle from '../components/base/HeaderWithSubtitle';
 
 const Schedule = ({ data, location }) => {
   const [width, setWidth] = useState(0);
+  const [date, setDate] = useState(1);
+  const [currentEvents, setCurrentEvents] = useState([]);
+
+  const allEvents = [...data.allContentfulScheduleRow.nodes];
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -31,19 +34,37 @@ const Schedule = ({ data, location }) => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  const currentDate = new Date();
-  const futureEvents = data.allContentfulScheduleRow.nodes.filter(
-    (event) => new Date(event.date) >= currentDate
+
+  useEffect(() => {
+    const currentDate = new Date(dates[date - 1]);
+    const currentEvents = allEvents.filter((event) => {
+      const eventDate = new Date(event.date);
+      return (
+        eventDate.getFullYear() === currentDate.getFullYear() &&
+        eventDate.getMonth() === currentDate.getMonth() &&
+        eventDate.getDate() === currentDate.getDate()
+      );
+    });
+    setCurrentEvents(currentEvents);
+  }, [date]);
+
+  //don't calculate the dates available after the initial mount
+  const dates = useMemo(
+    () =>
+      [...new Set(allEvents.map((item) => item.date))].sort(
+        (a, b) => new Date(a) - new Date(b)
+      ),
+    []
   );
 
-  const [date, setDate] = useState(1);
+  const futureEvents = allEvents.filter(
+    (event) => new Date(event.date) >= new Date()
+  );
 
-  const dates = [
-    ...new Set(data.allContentfulScheduleRow.nodes.map((item) => item.date)),
-  ];
   dates.sort((a, b) => new Date(a) - new Date(b));
-  const events = futureEvents.filter((event) => event.date === dates[date - 1]);
+
   const formatDate = (dateString) => {
+    console.log(dates);
     const months = [
       'January',
       'February',
@@ -104,7 +125,7 @@ const Schedule = ({ data, location }) => {
           }}
         >
           <button
-            onClick={() => setDate(date - 1)}
+            onClick={() => setDate((prevDate) => prevDate - 1)}
             className={
               dayNumber > 1
                 ? 'absolute left-20 rounded-full p-2'
@@ -162,9 +183,9 @@ const Schedule = ({ data, location }) => {
         </div>
         <div className="mt-[-50px]">
           {width <= 768 ? (
-            <MobileSchedule eventRows={events} />
+            <MobileSchedule eventRows={currentEvents} />
           ) : (
-            <AllEvents eventRows={events} />
+            <AllEvents eventRows={currentEvents} />
           )}
         </div>
       </div>
