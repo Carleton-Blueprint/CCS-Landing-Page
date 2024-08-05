@@ -60,7 +60,9 @@ const EventBlock = ({ events, rangeStart, rangeTime }) => {
               <h1 className="text-lg font-bold">{element.displayTitle}</h1>
               <h1 className="text-xs">{element.description}</h1>
               <h1 className="flex text-sm">
-                <LocationIcon />
+                <div className="w-[20px]">
+                  <LocationIcon />
+                </div>
                 {element.location}
               </h1>
 
@@ -86,7 +88,9 @@ const EventBlock = ({ events, rangeStart, rangeTime }) => {
                 </h1>
                 <h1 className="text-xs">{shortEvents[index].description}</h1>
                 <h1 className="flex text-sm">
-                  <LocationIcon />
+                  <div className="w-[20px]">
+                    <LocationIcon />
+                  </div>
                   {shortEvents[index].location}
                 </h1>
               </div>
@@ -104,7 +108,9 @@ const EventBlock = ({ events, rangeStart, rangeTime }) => {
               <h1 className="text-lg font-bold">{element.displayTitle}</h1>
               <h1 className="text-xs ">{element.description}</h1>
               <h1 className="flex text-sm">
-                <LocationIcon />
+                <div className="w-[20px]">
+                  <LocationIcon />
+                </div>
                 {element.location}
               </h1>
             </div>
