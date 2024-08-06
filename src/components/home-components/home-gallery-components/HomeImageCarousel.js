@@ -17,18 +17,24 @@ const HomeImageCarousel = (props) => {
   let height = 306.0;
 
   if (props.size === 'lg') {
-    width *= 1.2;
-    height *= 1.2;
+    width *= 1.1;
+    height *= 1.1;
   } else if (props.size === 'sm') {
     width *= 0.5;
     height *= 0.5;
-  }else if (props.size === 'md') {
+  } else if (props.size === 'md') {
     width *= 0.8;
     height *= 0.8;
   }
 
   const getOffset = () => {
-    return props.size === 'lg' ? 70 : props.size === 'sm' ? 30 : props.size === 'md' ? 45 : 55;
+    return props.size === 'lg'
+      ? 70
+      : props.size === 'sm'
+      ? 30
+      : props.size === 'md'
+      ? 45
+      : 55;
   };
 
   const allImages = props.images;
