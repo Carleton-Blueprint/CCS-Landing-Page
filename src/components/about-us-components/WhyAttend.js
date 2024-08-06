@@ -49,15 +49,15 @@ const WhyAttend = (props) => {
     if (!visibleImages.includes(imageIndex)) {
       return `${
         movingLeft.current ? 'right-0' : 'left-0'
-      } opacity-0 transition-all ease-in-out duration-[200ms] w-0 h-0`;
+      } opacity-0 transition-all ease-in-out duration-[200ms] w-0 h-0 `;
     }
 
     // Get default styles for visible images
     const baseStyle = `opacity-100 duration-[200ms] ease-in-out`;
     const zIndexAndSize = {
-      0: `z-30 w-[120px] md:w-64 lg:w-60 `,
+      0: `z-30 w-[120px] md:w-64 lg:w-60 hover:animate-growShrink`,
       1: `z-40 w-[113px] md:w-96 lg:w-[341px] `,
-      2: `z-30 w-[120px] md:w-64 lg:w-60 `,
+      2: `z-30 w-[120px] md:w-64 lg:w-60 hover:animate-growShrink`,
     };
 
     // Specific positioning logic
@@ -91,7 +91,9 @@ const WhyAttend = (props) => {
           ? allNodes.map((r, index) => {
               return (
                 <div
-                  className={`absolute h-auto ${getCss(index)} transform-gpu`}
+                  className={`absolute h-auto ${getCss(
+                    index
+                  )} transform-gpu cursor-pointer`}
                 >
                   <div
                     onClick={() =>
