@@ -41,7 +41,6 @@ const Schedule = ({ data, location }) => {
   dates.sort((a, b) => new Date(a) - new Date(b));
 
   const formatDate = (dateString) => {
-    console.log(dates);
     const months = [
       'January',
       'February',

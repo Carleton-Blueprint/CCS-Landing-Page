@@ -28,7 +28,6 @@ const AllEvents = ({ eventRows }) => {
         getMinutesAfterMidnight(findStartTime(a)) -
         getMinutesAfterMidnight(findStartTime(b))
     );
-    console.log(getMinutesAfterMidnight(findStartTime(rows[rows.length - 1])));
     return rows;
   }, [eventRows]);
 
