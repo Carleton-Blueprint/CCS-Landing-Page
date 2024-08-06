@@ -103,11 +103,7 @@ const Events = (props) => {
           >
             {academicYears.map((year, index) => {
               return (
-                <option
-                  key={index}
-                  value={year}
-                  className="hover:bg-eventsDarkGrey"
-                >
+                <option key={index} value={year} className="hover:bg-darkGrey">
                   {year}
                 </option>
               );

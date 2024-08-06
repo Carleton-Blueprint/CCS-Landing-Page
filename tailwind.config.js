@@ -10,7 +10,7 @@ module.exports = {
       keyframes: {
         growShrink: {
           '0%, 100%': { transform: 'scale(1)' },
-          '50%': { transform: 'scale(1.05)' },
+          '50%': { transform: 'scale(1.08)' },
         },
       },
       animation: {
@@ -27,7 +27,7 @@ module.exports = {
       colors: {
         primaryGray: '#252525',
         eventsGrey: '#EDEBEB',
-        eventsDarkGrey: '#D9D9D9',
+        darkGrey: '#D9D9D9',
         eventsTextGrey: '#737373',
         redStop: '#912024',
       },
@@ -38,6 +38,8 @@ module.exports = {
         'dark-bottom-left': '-3px 3px 4px rgba(0, 0, 0, 0.9)',
         'light-bottom-left': '-6px 6px 12px rgba(0, 0, 0, 0.9)',
         'light-bottom-left-hover': '-10px 10px 20px rgba(0, 0, 0, 0.9)',
+        'red-bottom-left': '-6px 6px 12px #E91C24',
+        'red-bottom-left-hover': '-10px 10px 20px #E91C24',
         'dark-bottom': '0px 3px 4px rgba(0, 0, 0, 0.9)',
       },
       backgroundImage: {

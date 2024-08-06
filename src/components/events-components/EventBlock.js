@@ -119,7 +119,7 @@ const EventBlock = (props) => {
         <div
           className={`flex items-center pl-5 ${
             title.length > 25 ? 'text-lg' : 'text-2xl'
-          } max-h-[74px] text-[#D9D9D9]`}
+          } max-h-[74px] text-darkGrey`}
         >
           {title}
         </div>
