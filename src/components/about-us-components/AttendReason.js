@@ -56,7 +56,7 @@ const AttendReason = (props) => {
           <div className="absolute w-24">
             {props.image && (
               <GatsbyImage
-                className={` object-contain object-center h-full w-full drop-shadow-md`}
+                className={`object-contain object-center h-full w-full drop-shadow-md`}
                 image={props.image.gatsbyImageData}
               />
             )}
@@ -101,7 +101,7 @@ const AttendReason = (props) => {
               {props.title}
             </text>
           </svg>
-          <div className="absolute font-normal text-center w-3/4">
+          <div className="absolute w-3/4 font-normal text-center">
             {props.subtitle}
           </div>
         </div>
