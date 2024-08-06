@@ -104,11 +104,10 @@ const Schedule = ({ data, location }) => {
           >
             <button
               onClick={() => setDate((prevDate) => prevDate - 1)}
-              className={
-                dayNumber > 1
-                  ? 'absolute left-20 rounded-full p-2'
-                  : 'absolute left-20 rounded-full p-2 hidden'
-              }
+              className={`absolute left-10 sm:left-20 rounded-full p-2
+                ${dayNumber > 1 ? '' : 'hidden'}
+
+              `}
               style={arrowShadow}
             >
               <SchedulerLeftArrow />
@@ -123,11 +122,9 @@ const Schedule = ({ data, location }) => {
             </div>
             <button
               onClick={() => setDate(date + 1)}
-              className={
-                dayNumber < 3
-                  ? 'absolute right-20 rounded-full p-2'
-                  : 'absolute right-20 rounded-full p-2 hidden'
-              }
+              className={`absolute right-10 sm:right-20 rounded-full p-2
+                ${dayNumber < 3 ? '' : 'hidden'}
+              `}
               style={arrowShadow}
             >
               <SchedulerRightArrow />
