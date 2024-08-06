@@ -86,7 +86,7 @@ const Schedule = ({ data, location }) => {
   // bc schedule header is disabled
   const dayNumber = date;
   return (
-    <div className="bg-gradient-to-b from-60% from-black to-[#5F0B0F]">
+    <div className="bg-gradient-to-b from-60% from-[#41151B] to-black">
       <Layout pathname={location.pathname}>
         <HeaderWithSubtitle
           title="Schedule"
