@@ -7,6 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        growShrink: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+        },
+      },
+      animation: {
+        growShrink: 'growShrink 0.5s ease-in-out',
+      },
       container: {
         screens: {
           sm: '100%',
@@ -26,7 +35,9 @@ module.exports = {
         poppins: ['Poppins', 'sans-serif'], // Add the font family you want
       },
       boxShadow: {
-        'dark-bottom-left': '-3px 3px 4px rgba(0, 0, 0, 0.9)', // adjust values as needed
+        'dark-bottom-left': '-3px 3px 4px rgba(0, 0, 0, 0.9)',
+        'light-bottom-left': '-6px 6px 12px rgba(0, 0, 0, 0.9)',
+        'light-bottom-left-hover': '-10px 10px 20px rgba(0, 0, 0, 0.9)',
         'dark-bottom': '0px 3px 4px rgba(0, 0, 0, 0.9)',
       },
       backgroundImage: {
@@ -35,6 +46,11 @@ module.exports = {
       },
       maskImage: {
         'fade-t-b': 'linear-gradient(to bottom, transparent, black)',
+      },
+    },
+    variants: {
+      extend: {
+        boxShadow: ['hover'],
       },
     },
   },

@@ -7,7 +7,7 @@ const TeamMemberGroup = (props) => {
   return (
     <div className="ml-4 font-poppins">
       <div className="flex flex-col items-center">
-        <div className="flex items-center w-[85%] p-4 pl-5 sm:p-10 h-fit">
+        <div className="inline-flex items-center w-[85%] p-4 pl-5 sm:p-10 h-fit hover:animate-growShrink">
           <div className="w-2 h-14 bg-[#E91C24]"></div>
           <div className="pl-6 text-2xl font-semibold">
             {`${
