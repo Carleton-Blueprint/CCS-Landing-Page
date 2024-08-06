@@ -30,6 +30,7 @@ module.exports = {
         darkGrey: '#D9D9D9',
         eventsTextGrey: '#737373',
         redStop: '#912024',
+        brightRed: '#E91C24',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'], // Add the font family you want
@@ -38,8 +39,8 @@ module.exports = {
         'dark-bottom-left': '-3px 3px 4px rgba(0, 0, 0, 0.9)',
         'light-bottom-left': '-6px 6px 12px rgba(0, 0, 0, 0.9)',
         'light-bottom-left-hover': '-10px 10px 20px rgba(0, 0, 0, 0.9)',
-        'red-bottom-left': '-6px 6px 12px #E91C24',
-        'red-bottom-left-hover': '-10px 10px 20px #E91C24',
+        'red-bottom-left': '-6px 6px 12px brightRed',
+        'red-bottom-left-hover': '-10px 10px 20px brightRed',
         'dark-bottom': '0px 3px 4px rgba(0, 0, 0, 0.9)',
       },
       backgroundImage: {

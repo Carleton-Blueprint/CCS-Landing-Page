@@ -120,7 +120,7 @@ const WhyAttend = (props) => {
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full m-2"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
-              'bg-[#e91c24] w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
+              'bg-brightRedw-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
           }
           onMouseLeave={(e) =>
             (e.currentTarget.className =
@@ -144,7 +144,7 @@ const WhyAttend = (props) => {
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full m-2"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
-              'bg-[#e91c24] w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
+              'bg-brightRed w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
           }
           onMouseLeave={(e) =>
             (e.currentTarget.className =

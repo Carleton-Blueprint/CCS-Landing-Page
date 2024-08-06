@@ -32,12 +32,12 @@ const AboutUsGalleryMobile = (props) => {
             );
           })
         : null}
-      <div className="flex justify-center py-10 gap-10">
+      <div className="flex justify-center gap-10 py-10">
         <div
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
-              'bg-[#e91c24] w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full')
+              'bg-brightRed w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full')
           }
           onMouseLeave={(e) =>
             (e.currentTarget.className =
@@ -62,7 +62,7 @@ const AboutUsGalleryMobile = (props) => {
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
-              'bg-[#e91c24] w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full')
+              'bg-brightRed w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full')
           }
           onMouseLeave={(e) =>
             (e.currentTarget.className =
