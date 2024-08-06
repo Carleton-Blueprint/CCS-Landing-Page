@@ -95,7 +95,7 @@ const Schedule = ({ data, location }) => {
         />
         <div className="relative">
           <div
-            className="sticky top-0 z-[100] flex justify-center w-full p-8 mt-[-20px] bg-bottom items-align"
+            className="sticky top-0 z-[99] flex justify-center w-full p-8 mt-[-20px] bg-bottom items-align"
             style={{
               'background-image': `url(${greyBackground})`,
               'background-size': '100% 100%',
