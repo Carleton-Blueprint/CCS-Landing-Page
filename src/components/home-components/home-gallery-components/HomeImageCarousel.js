@@ -8,40 +8,21 @@ const HomeImageCarousel = (props) => {
 
   useEffect(() => {
     setTranslateAmount(0);
-  }, [props.size]);
+  }, []);
 
   const getActive = () => {
     return translateAmount / width;
   };
-  let width = 267.0;
-  let height = 306.0;
 
-  if (props.size === 'lg') {
-    width *= 1.1;
-    height *= 1.1;
-  } else if (props.size === 'sm') {
-    width *= 0.5;
-    height *= 0.5;
-  } else if (props.size === 'md') {
-    width *= 0.8;
-    height *= 0.8;
-  }
-
-  const getOffset = () => {
-    return props.size === 'lg'
-      ? 70
-      : props.size === 'sm'
-      ? 30
-      : props.size === 'md'
-      ? 45
-      : 55;
-  };
+  const width = 267.0;
+  const height = 306.0;
+  const offset = 70;
 
   const allImages = props.images;
   return (
     <div
       className="relative flex flex-col items-center justify-center"
-      style={{ height: `${height + getOffset()}px` }}
+      style={{ height: `${height + offset}px` }}
     >
       <div
         className="absolute z-30 transition-all duration-150 ease-out masked-div hover:scale-110"
