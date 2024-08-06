@@ -4,7 +4,6 @@ import TeamMemberGroup from './TeamMemberGroup';
 const TeamMembers = ({ members }) => {
   const setYears = new Set(members.map((item) => item.year));
   const sortedYears = [...setYears].sort((a, b) => b - a);
-  console.log(sortedYears);
   return (
     <div>
       {sortedYears.map((year, index) => {

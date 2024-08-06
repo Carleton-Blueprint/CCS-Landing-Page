@@ -51,7 +51,7 @@ const Form = () => {
   };
 
   return (
-    <div className="flex justify-center mb-4 transform -translate-y-20 bg-center bg-cover lg:-translate-y-40 2xl:-translate-y-56">
+    <div className="flex justify-center transform -translate-y-20 bg-center bg-cover lg:-translate-y-40 2xl:-translate-y-56">
       <form
         className=" border-solid border-2 border-[#6464648f] flex flex-col w-10/12 lg:w-1/2 align-center bg-[#646464] bg-opacity-65 px-5 xl:px-20 py-6 rounded-[40px] shadow-md"
         name="contact"
