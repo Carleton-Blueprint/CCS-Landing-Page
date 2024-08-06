@@ -111,19 +111,23 @@ const Events = (props) => {
           </select>
         </div>
         <div
-          className={`flex justify-center items-align ${
-            selectedYear === currentAcademicYear ? 'visible' : 'invisible'
+          className={`flex justify-center items-center transition-all duration-500 ease-in-out ${
+            selectedYear === currentAcademicYear
+              ? 'opacity-100 visible'
+              : 'opacity-0 invisible'
           }`}
         >
           <div className="flex flex-col mr-8">
             <button
               onClick={() => setRenderingPresent(true)}
-              className={renderingPresent ? 'text-red-500' : ''}
+              className={`transition-colors duration-300 ${
+                renderingPresent ? 'text-red-500' : 'text-black'
+              }`}
             >
               Upcoming
             </button>
             <hr
-              className="mt-4 ml-4 border-red-500"
+              className="mt-4 ml-4 transition-all duration-[50ms] border-red-500"
               width="40px"
               style={{ borderWidth: renderingPresent ? '3px' : '0' }}
             />
@@ -131,12 +135,14 @@ const Events = (props) => {
           <div className="flex flex-col ml-8">
             <button
               onClick={() => setRenderingPresent(false)}
-              className={renderingPresent ? '' : 'text-red-500'}
+              className={`transition-colors duration-300 ${
+                renderingPresent ? 'text-black' : 'text-red-500'
+              }`}
             >
               Past
             </button>
             <hr
-              className="mt-4 border-red-500"
+              className="mt-4 ml-4 transition-all duration-[50ms] border-red-500"
               width="40px"
               style={{ borderWidth: renderingPresent ? '0' : '3px' }}
             />
