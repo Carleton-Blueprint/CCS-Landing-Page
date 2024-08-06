@@ -46,12 +46,8 @@ const Events = (props) => {
 
     const filteredEventsYear = eventsData.filter((event) => {
       const eventDate = new Date(event.startDate);
-      console.log(eventDate);
-      console.log(eventDate <= endDate);
       return eventDate >= startDate && eventDate <= endDate;
     });
-
-    console.log(filteredEventsYear);
 
     filteredEventsYear.sort((a, b) => {
       const dateOfEventA = new Date(a.startDate);
@@ -94,7 +90,6 @@ const Events = (props) => {
         ? availableEvents
         : pastEvents
       : selectedYearEvents;
-  console.log(eventsToRender);
 
   return (
     <Layout pathname={props.location.pathname}>
