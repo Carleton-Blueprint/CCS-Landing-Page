@@ -8,8 +8,8 @@ const SocialMedia = () => {
   const sharedStyles =
     'bg-gray-300 rounded-full w-[40px] m-[5px] hover:bg-gray-500 p-[10px] transition-all ease-out duration-150';
   return (
-    <div className="flex-col items-center justify-center">
-      <h1 className="text-center font-bold text-xl text-gray-600 m-[10px]">
+    <div className="flex-col items-center justify-center mb-3">
+      <h1 className="mb-1 text-xl font-bold text-center text-gray-600">
         Get in touch with CUSEC
       </h1>
       <div className="flex items-center justify-center">

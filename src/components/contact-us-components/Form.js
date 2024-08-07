@@ -51,7 +51,7 @@ const Form = () => {
   };
 
   return (
-    <div className="flex justify-center mb-4 transform -translate-y-20 bg-center bg-cover lg:-translate-y-40 2xl:-translate-y-56">
+    <div className="flex justify-center transform -translate-y-20 bg-center bg-cover lg:-translate-y-40 2xl:-translate-y-56">
       <form
         className=" border-solid border-2 border-[#6464648f] flex flex-col w-10/12 lg:w-1/2 align-center bg-[#646464] bg-opacity-65 px-5 xl:px-20 py-6 rounded-[40px] shadow-md"
         name="contact"
@@ -71,7 +71,7 @@ const Form = () => {
                   value={formData.firstName}
                   onChange={handleChange}
                   name="firstName"
-                  class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
+                  class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-brightRed transition-colors ease-out duration-200"
                   id="firstName"
                   type="text"
                   placeholder="First Name"
@@ -79,7 +79,7 @@ const Form = () => {
               </label>
             </div>
             <div
-              className={` text-[#E91C24] font-bold text-xl ${
+              className={` text-brightRed font-bold text-xl ${
                 formData.firstName && 'invisible'
               }`}
             >
@@ -96,7 +96,7 @@ const Form = () => {
                   value={formData.lastName}
                   onChange={handleChange}
                   name="lastName"
-                  class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
+                  class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-brightRed transition-colors ease-out duration-200"
                   id="lastName"
                   type="text"
                   placeholder="Last Name"
@@ -104,7 +104,7 @@ const Form = () => {
               </label>
             </div>
             <div
-              className={` text-[#E91C24] font-bold text-xl ${
+              className={` text-brightRed font-bold text-xl ${
                 formData.lastName && 'invisible'
               }`}
             >
@@ -122,7 +122,7 @@ const Form = () => {
                 value={formData.email}
                 onChange={handleChange}
                 name="email"
-                class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
+                class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-brightRed transition-colors ease-out duration-200"
                 id="email"
                 type="text"
                 placeholder="Email"
@@ -130,7 +130,7 @@ const Form = () => {
             </label>
           </div>
           <div
-            className={` text-[#E91C24] font-bold text-xl ${
+            className={` text-brightRed font-bold text-xl ${
               /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && 'invisible'
             }`}
           >
@@ -148,7 +148,8 @@ const Form = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 name="subject"
-                class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent focus:outline-none focus:border-[#E91C24] transition-colors ease-out duration-200"
+                class="appearance-none font-semibold w-full border-b-[3px] py-2 px-3 placeholder-white text-white bg-transparent 
+                focus:outline-none focus:border-brightRed transition-colors ease-out duration-200"
                 id="subject"
                 type="text"
                 placeholder="Subject"
@@ -156,7 +157,7 @@ const Form = () => {
             </label>
           </div>
           <div
-            className={` text-[#E91C24] font-bold text-xl ${
+            className={` text-brightRed font-bold text-xl ${
               formData.subject && 'invisible'
             }`}
           >
@@ -168,11 +169,13 @@ const Form = () => {
           value={formData.message}
           onChange={handleChange}
           name="message"
-          className="w-full h-64 p-4 mb-4 border-2 border-gray-300 rounded-lg resize-none font-poppins focus:outline-none focus:ring-2 focus:ring-[#E91C24]"
+          className="w-full h-64 p-4 mb-4 border-2 border-gray-300 rounded-lg resize-none font-poppins focus:outline-none focus:ring-2 focus:ring-brightRed"
           placeholder="Write a message..."
         ></textarea>
         <button
-          className="text-white shadow-dark-bottom text-xl font-semibold flex justify-center items-center p-6 px-10 h-10 mx-auto rounded-full padding my-5 transition-all duration-100 ease-out border-0 bg-gradient-to-r from-[#E91C24] to-[#831014] active:from-[#831014] active:to-[#581b1d] active:shadow-none"
+          className="shadow-dark-bottom text-xl font-semibold flex justify-center items-center 
+          p-6 px-10 h-10 mx-auto rounded-full padding my-5 transition-all duration-100 ease-out
+          bg-white hover:bg-brightRed active:bg-[#7C0005] text-black hover:text-white active:text-white"
           type="submit"
         >
           SUBMIT

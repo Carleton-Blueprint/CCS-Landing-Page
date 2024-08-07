@@ -1,6 +1,7 @@
 import React from 'react';
 import AttendReason from './AttendReason';
 import { useState } from 'react';
+import { WhyAttendRightArrow } from '../../SVGs/about-us-SVGs';
 const WhyAttendMobile = (props) => {
   const [renderIndex, setRenderIndex] = useState(1);
   const allNodes = props.reasons;
@@ -27,11 +28,11 @@ const WhyAttendMobile = (props) => {
         })}
       </div>
       <div className="flex justify-center items-align lg:w-[600px] mt-10">
-        <div
+        <button
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full m-2"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
-              'bg-[#e91c24] w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
+              'bg-brightRed w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
           }
           onMouseLeave={(e) =>
             (e.currentTarget.className =
@@ -51,13 +52,13 @@ const WhyAttendMobile = (props) => {
               fill="white"
             />
           </svg>
-        </div>
+        </button>
 
-        <div
+        <button
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full m-2"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
-              'bg-[#e91c24] w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
+              'bg-brightRed w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
           }
           onMouseLeave={(e) =>
             (e.currentTarget.className =
@@ -68,14 +69,8 @@ const WhyAttendMobile = (props) => {
           }}
           onMouseDown={(e) => e.preventDefault()}
         >
-          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-            <path
-              className={`transition-all ease-in-out duration-300`}
-              d="M26.0607 21.0607C26.6464 20.4749 26.6464 19.5251 26.0607 18.9393L16.5147 9.3934C15.9289 8.80761 14.9792 8.80761 14.3934 9.3934C13.8076 9.97918 13.8076 10.9289 14.3934 11.5147L22.8787 20L14.3934 28.4853C13.8076 29.0711 13.8076 30.0208 14.3934 30.6066C14.9792 31.1924 15.9289 31.1924 16.5147 30.6066L26.0607 21.0607ZM23.5 21.5L25 21.5L25 18.5L23.5 18.5L23.5 21.5Z"
-              fill="white"
-            />
-          </svg>
-        </div>
+          <WhyAttendRightArrow />
+        </button>
       </div>
     </div>
   );

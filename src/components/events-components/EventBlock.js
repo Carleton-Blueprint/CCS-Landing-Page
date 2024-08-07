@@ -84,16 +84,20 @@ const EventBlock = (props) => {
   const title = props.event.displayTitle;
 
   return (
-    <div className="mb-5 w-[360px] h-[360px] bg-gradient-to-br from-[#BB161D] to-black to-90% rounded-[56px] shadow-dark-bottom-left flex flex-col p-6">
+    <div
+      className="mb-5 w-[360px] h-[360px] rounded-[56px]  flex flex-col p-6 hover:scale-[1.05]
+     transition-all duration-300 shadow-light-bottom-left hover:shadow-light-bottom-left-hover
+     bg-gradient-to-br from-[#BB161D] to-black to-90%"
+    >
       <div className="flex ">
-        <div className=" font-poppins">
+        <div className="font-poppins">
           <svg
             width="74"
             height="74"
             viewBox="0 0 74 74"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="rounded-full shadow-dark-bottom"
+            className="rounded-full"
           >
             <circle cx="37" cy="37" r="37" fill="black" fillOpacity="0.4" />
             <text
@@ -119,7 +123,7 @@ const EventBlock = (props) => {
         <div
           className={`flex items-center pl-5 ${
             title.length > 25 ? 'text-lg' : 'text-2xl'
-          } max-h-[74px] text-[#D9D9D9]`}
+          } max-h-[74px] text-darkGrey`}
         >
           {title}
         </div>
