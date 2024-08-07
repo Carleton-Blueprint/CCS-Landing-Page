@@ -24,7 +24,7 @@ const Page404 = ({ location }) => {
         </p>
         <a
           href="/"
-          className="flex bg-[#676666] rounded-full p-2 pl-4 pr-4 hover:bg-[#E91C24] mt-[50px]"
+          className="flex bg-[#676666] rounded-full p-2 pl-4 pr-4 hover:bg-brightRed mt-[50px]"
           style={{ boxShadow: '0 0 30px 5px black' }}
         >
           Go Home
