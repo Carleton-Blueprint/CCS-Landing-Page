@@ -6,10 +6,8 @@ import greyBackground from '../images/schedule-title-background.png';
 import background from '../images/schedule-header.svg';
 import Layout from '../components/base/Layout';
 import HeaderWithSubtitle from '../components/base/HeaderWithSubtitle';
-import {
-  SchedulerLeftArrow,
-  SchedulerRightArrow,
-} from '../SVGs/scheduler-SVGs';
+import { SchedulerRightArrow } from '../SVGs/scheduler-SVGs';
+import { SchedulerLeftArrow } from '../SVGs/scheduler-SVGs'; //need to import these individually or bugs occur
 const Schedule = ({ data, location }) => {
   const [date, setDate] = useState(1);
   const [currentEvents, setCurrentEvents] = useState([]);

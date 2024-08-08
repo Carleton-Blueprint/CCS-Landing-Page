@@ -7,8 +7,8 @@ import Layout from '../components/base/Layout';
 import Bubble from '../components/animation-wrappers/Bubble';
 const Events = (props) => {
   const eventsData = props.data.allContentfulFeaturedEvent.nodes;
-  const isMobile = !window ? true : window.innerWidth <= 768;
   const [availableEvents, setAvailableEvents] = useState([]);
+  const isMobile = useRef(true);
   const [pastEvents, setPastEvents] = useState([]);
   const [renderingPresent, setRenderingPresent] = useState(true);
   const [academicYears, setAcademicYears] = useState([]);
@@ -17,17 +17,17 @@ const Events = (props) => {
   const ref = useRef(null);
 
   useEffect(() => {
+    if (!window) return;
+
+    isMobile.current = window.innerWidth <= 768;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          console.log('Int');
           setIsInView(true);
-        } else {
-          console.log('Out');
-          setIsInView(false);
         }
       },
-      { threshold: 0.8 } // Adjust threshold as needed
+      { threshold: 0.2 }
     );
 
     if (ref.current) {
@@ -188,10 +188,10 @@ const Events = (props) => {
                 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'
               }
               sharedObjectClass={'flex justify-center transform-gpu'}
-              delay={100}
+              delay={200}
               duration={200}
               direction={'ltr'}
-              isActive={isMobile ? true : isInView}
+              isActive={isMobile.current ? true : isInView}
             />
           ) : (
             <div className="mb-10 text-xl font-semibold text-center col-span-full">

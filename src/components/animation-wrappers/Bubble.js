@@ -65,6 +65,18 @@ const Bubble = ({
   const getDelay = (index) => {
     return (delayOrder[index] * delay) / 1000;
   };
+  const getClassName = () => {
+    if (shared) {
+      return sharedObjectClass;
+    }
+
+    if (Array.isArray(allObjectClass) && allObjectClass[index]) {
+      return allObjectClass[index];
+    }
+
+    return '';
+  };
+  const className = getClassName();
 
   return (
     <div className={wrapperClass ? wrapperClass : ''}>
@@ -72,13 +84,7 @@ const Bubble = ({
         ? renderObjects.map((obj, index) => {
             return (
               <motion.div
-                className={
-                  shared
-                    ? sharedObjectClass
-                    : Array.isArray(allObjectClass) && allObjectClass[index]
-                    ? allObjectClass[index]
-                    : ''
-                }
+                className={className}
                 initial={{
                   ...(Array.isArray(translations) && translations[index]
                     ? translations[index]
