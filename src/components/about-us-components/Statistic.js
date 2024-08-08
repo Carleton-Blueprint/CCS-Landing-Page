@@ -5,7 +5,6 @@ import { useRef, useState, useEffect } from 'react';
 const Statistic = (props) => {
   const textBoxValue = useRef(parseFloat(props.stat) / 100);
   const [isInView, setIsInView] = useState(false);
-  const [isOutOfView, setIsOutOfView] = useState(true);
   const ref = useRef(null);
 
   useEffect(() => {
@@ -13,10 +12,8 @@ const Statistic = (props) => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-          setIsOutOfView(false);
         } else {
           setIsInView(false);
-          setIsOutOfView(true);
         }
       },
       { threshold: 0.5 } // Adjust threshold as needed

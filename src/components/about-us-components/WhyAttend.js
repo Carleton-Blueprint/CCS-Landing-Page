@@ -1,13 +1,37 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import AttendReason from './AttendReason';
-
+import Bubble from '../animation-wrappers/Bubble';
 const WhyAttend = (props) => {
   const allNodes = props.reasons;
   const movingLeft = useRef(false);
   const imagesLength = allNodes.length;
   const startIndex = useRef(0);
   const [visibleImages, setVisibleImages] = useState([0, 1, 2]);
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        } else {
+          setIsInView(false);
+        }
+      },
+      { threshold: 0.5 } // Adjust threshold as needed
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
   //returns an array of 5 image indexes
   const generateVisibleImages = (start, left) => {
     movingLeft.current = left;
@@ -42,7 +66,17 @@ const WhyAttend = (props) => {
     ];
     return brightnessArray[index];
   };
-
+  const getTranslateX = (index) => {
+    switch (visibleImages.indexOf(index)) {
+      case 1:
+        return !movingLeft.current ? { x: '-50%' } : { x: '50%' };
+      case 0:
+      case 2:
+        return { x: 0 };
+      default:
+        return;
+    }
+  };
   //return className string with positionStyle, baseStyle, and zIndex and Size styling
   const getCss = (imageIndex) => {
     // Early return for images not currently visible
@@ -69,8 +103,8 @@ const WhyAttend = (props) => {
         break;
       case 1:
         positionStyle = !movingLeft.current
-          ? 'left-1/2 transform -translate-x-1/2  transition-all'
-          : 'right-1/2 transform translate-x-1/2  transition-all';
+          ? 'left-1/2 transform  transition-all'
+          : 'right-1/2 transform  transition-all';
         break;
       case 2:
         positionStyle = 'right-0 transition-all';
@@ -85,16 +119,12 @@ const WhyAttend = (props) => {
   };
 
   return (
-    <div>
-      <div className="relative flex items-center h-[360px] lg:w-[600px]">
-        {allNodes.length
-          ? allNodes.map((r, index) => {
-              return (
-                <div
-                  className={`absolute h-auto ${getCss(
-                    index
-                  )} transform-gpu cursor-pointer`}
-                >
+    <div ref={ref}>
+      <Bubble
+        renderObjects={
+          allNodes.length
+            ? allNodes.map((r, index) => {
+                return (
                   <div
                     onClick={() =>
                       visibleImages.indexOf(index) === 0
@@ -111,11 +141,24 @@ const WhyAttend = (props) => {
                       image={r.icon}
                     />
                   </div>
-                </div>
-              );
-            })
-          : null}
-      </div>
+                );
+              })
+            : null
+        }
+        wrapperClass={'relative flex items-center h-[360px] lg:w-[600px]'}
+        allObjectClass={new Array(imagesLength)
+          .fill(0)
+          .map(
+            (_, index) =>
+              `absolute h-auto ${getCss(index)} transform-gpu cursor-pointer`
+          )}
+        translations={new Array(imagesLength)
+          .fill(0)
+          .map((_, index) => getTranslateX(index))}
+        delay={100}
+        direction={'ltr'}
+        isActive={isInView}
+      />
 
       <div className="flex justify-center items-align lg:w-[600px] mt-10">
         <button

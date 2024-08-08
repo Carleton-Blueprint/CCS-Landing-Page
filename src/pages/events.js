@@ -1,19 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import EventBlock from '../components/events-components/EventBlock';
 import EventsTitle from '../components/events-components/EventsTitle';
 import { graphql } from 'gatsby';
 import { Seo } from '../components/base/Seo';
 import Layout from '../components/base/Layout';
-
+import Bubble from '../components/animation-wrappers/Bubble';
 const Events = (props) => {
   const eventsData = props.data.allContentfulFeaturedEvent.nodes;
-
+  const isMobile = !window ? true : window.innerWidth <= 768;
   const [availableEvents, setAvailableEvents] = useState([]);
   const [pastEvents, setPastEvents] = useState([]);
   const [renderingPresent, setRenderingPresent] = useState(true);
   const [academicYears, setAcademicYears] = useState([]);
   const [selectedYearEvents, setSelectedYearEvents] = useState([]);
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          console.log('Int');
+          setIsInView(true);
+        } else {
+          console.log('Out');
+          setIsInView(false);
+        }
+      },
+      { threshold: 0.8 } // Adjust threshold as needed
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
   // get academic year of any date
   const getAcademicYear = (date) => {
     const year = parseInt(date.substring(0, 4), 10);
@@ -152,14 +178,21 @@ const Events = (props) => {
           className="mt-[-3px] mr-16 ml-16 mb-16 border-gray-500"
           style={{ borderWidth: '1px' }}
         />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20">
+        <div ref={ref}>
           {eventsToRender && eventsToRender.length ? (
-            eventsToRender.map((eventNode, index) => (
-              <div key={index} className="flex justify-center">
+            <Bubble
+              renderObjects={eventsToRender.map((eventNode, index) => (
                 <EventBlock event={eventNode} index={index} />
-              </div>
-            ))
+              ))}
+              wrapperClass={
+                'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'
+              }
+              sharedObjectClass={'flex justify-center transform-gpu'}
+              delay={100}
+              duration={200}
+              direction={'ltr'}
+              isActive={isMobile ? true : isInView}
+            />
           ) : (
             <div className="mb-10 text-xl font-semibold text-center col-span-full">
               No events right now, stay tuned for more!

@@ -9,10 +9,14 @@ const Bubble = ({
   delay,
   duration,
   direction,
+  isActive,
 }) => {
   const shared = allObjectClass ? false : true;
   const size = renderObjects ? renderObjects.length : 0;
   let delayOrder = [];
+  if (isActive === undefined) {
+    isActive = true;
+  }
   if (!direction) {
     direction = 'ltr';
   }
@@ -85,7 +89,7 @@ const Bubble = ({
                   ...(Array.isArray(translations) && translations[index]
                     ? translations[index]
                     : {}),
-                  scale: 1,
+                  scale: isActive ? 1 : 0,
                 }}
                 transition={{
                   scale: {

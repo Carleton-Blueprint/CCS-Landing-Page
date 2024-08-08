@@ -4,19 +4,23 @@ import GetInvolvedCard from '../components/get-involved-components/GetInvolvedCa
 import background from '../images/get-involved-header.svg';
 import Header from '../components/base/Header';
 import Layout from '../components/base/Layout';
-
+import Bubble from '../components/animation-wrappers/Bubble';
 const GetInovlved = ({ data, location }) => {
   return (
     <Layout pathname={location.pathname} backgroundColour="black">
       <Header title="Get Involved" background={background} />
       <div className="bg-black">
-        <div className="flex flex-wrap justify-center w-full">
-          {data.allContentfulGetInvolvedCard.nodes.map((reason) => (
-            <div className="flex justify-center m-4">
+        <Bubble
+          renderObjects={data.allContentfulGetInvolvedCard.nodes.map(
+            (reason) => (
               <GetInvolvedCard data={reason} />
-            </div>
-          ))}
-        </div>
+            )
+          )}
+          wrapperClass={'flex flex-wrap justify-center w-full'}
+          sharedObjectClass={'flex justify-center m-4 transform-gpu'}
+          duration={300}
+          delay={100}
+        />
       </div>
     </Layout>
   );
