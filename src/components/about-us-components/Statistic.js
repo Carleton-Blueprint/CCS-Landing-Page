@@ -7,6 +7,7 @@ const Statistic = (props) => {
   const [isInView, setIsInView] = useState(false);
   const [isOutOfView, setIsOutOfView] = useState(true);
   const ref = useRef(null);
+  const [svgHover, setSvgHover] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,7 +37,12 @@ const Statistic = (props) => {
   return (
     <div className="flex flex-col items-center w-full p-4 text-center">
       <p className="font-bold text-[#685353]">{props.top}</p>
-      <div className="relative rounded-full p-8 m-4 shadow-dark-bottom bg-gradient-to-b from-white to-[#d6d6d6] from-50% ">
+      <div
+        onMouseEnter={() => setSvgHover(true)}
+        onMouseLeave={() => setSvgHover(false)}
+        style={svgHover ? {'boxShadow': '0 0 20px 2px #383838'} : {}}
+        className="transition-transform hover:scale-110 relative rounded-full p-8 m-4 shadow-dark-bottom bg-gradient-to-b from-white to-[#d6d6d6] from-50% "
+      >
         <div className="flex items-center justify-center h-full p-4 bg-white border-4 border-red-200 rounded-full shadow-inner-top">
           <p className="text-xl font-bold text-red-500">{props.stat}%</p>
         </div>
