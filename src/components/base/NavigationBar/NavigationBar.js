@@ -139,9 +139,7 @@ const NavigationBar = (props) => {
                       hover={eventsHover}
                       setHover={setEventsHover}
                       label={{ name: 'EVENTS', href: '/events' }}
-                      items={[
-                        { name: 'Schedule', href: '/schedule' },
-                      ]}
+                      items={[{ name: 'Schedule', href: '/schedule' }]}
                       mobile={true}
                     />
                   </li>
@@ -154,7 +152,9 @@ const NavigationBar = (props) => {
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
+                      isCurrentPath('/get-involved')
+                        ? 'font-bold'
+                        : 'font-normal'
                     }`}
                   >
                     <a href="/get-involved">GET INVOVLED</a>
@@ -223,7 +223,7 @@ const NavigationBar = (props) => {
           </li>
           <li
             className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
+              isCurrentPath('/get-involved') ? 'font-bold' : 'font-normal'
             }`}
           >
             <a href="/get-involved">GET INVOVLED</a>
