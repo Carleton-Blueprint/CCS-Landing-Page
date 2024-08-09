@@ -6,9 +6,14 @@ const Layout = ({ pathname, backgroundColour, children }) => {
   const [isVisible, setIsVisible] = useState(true);
   const scrollY = useRef(0);
   const timeoutRef = useRef(null); // Reference to store the timeout
-  const [locked, setIsLocked] = useState(true);
+  const locked = useRef(false);
   useEffect(() => {
     const handleScroll = () => {
+      console.log(locked.current);
+      if (locked.current) {
+        setIsVisible(true);
+        return;
+      }
       const viewportHeight = window.innerHeight;
       const currentScrollY = window.scrollY;
       const threshold = viewportHeight * 0.22;
@@ -17,11 +22,7 @@ const Layout = ({ pathname, backgroundColour, children }) => {
         clearTimeout(timeoutRef.current);
       }
 
-      if (
-        currentScrollY > scrollY.current &&
-        currentScrollY > threshold &&
-        !locked
-      ) {
+      if (currentScrollY > scrollY.current && currentScrollY > threshold) {
         // Scrolling down
         setIsVisible(false);
       } else if (currentScrollY < scrollY.current) {
@@ -30,7 +31,7 @@ const Layout = ({ pathname, backgroundColour, children }) => {
       }
 
       // Set a new timeout to hide the navigation bar after 3 seconds of inactivity
-      if (currentScrollY > threshold && !locked) {
+      if (currentScrollY > threshold) {
         timeoutRef.current = setTimeout(() => {
           setIsVisible(false);
         }, 2000);
@@ -39,6 +40,11 @@ const Layout = ({ pathname, backgroundColour, children }) => {
     };
 
     const handleMouseMove = (event) => {
+      console.log(locked.current);
+      if (locked.current) {
+        setIsVisible(true);
+        return;
+      }
       const viewportHeight = window.innerHeight;
       const currentScrollY = window.scrollY;
       const threshold = viewportHeight * 0.21;
@@ -50,7 +56,7 @@ const Layout = ({ pathname, backgroundColour, children }) => {
       if (event.clientY < 150) {
         // Cursor is within 150 pixels of the top of the viewport
         setIsVisible(true);
-      } else if (currentScrollY > threshold && !locked) {
+      } else if (currentScrollY > threshold) {
         // Set a new timeout to hide the navigation bar after 2 seconds if cursor is not near the top
         timeoutRef.current = setTimeout(() => {
           setIsVisible(false);
@@ -83,8 +89,12 @@ const Layout = ({ pathname, backgroundColour, children }) => {
         <NavigationBar
           isVisible={isVisible}
           pathname={pathname}
-          lockNavBar={() => setIsLocked(true)}
-          unlockNavBar={() => setIsLocked(false)}
+          lockNavBar={() => {
+            locked.current = true;
+          }}
+          unlockNavBar={() => {
+            locked.current = false;
+          }}
         />
       </div>
       <div className="content">{children}</div>
