@@ -4,46 +4,22 @@ import backgroundLines from '../../images/csshome_2024_background_lines.png';
 import { TypeAnimation } from 'react-type-animation';
 import HomeImageCarousel from './home-gallery-components/HomeImageCarousel';
 import { Link } from 'gatsby';
-import Layout from '../base/Layout';
 
 const Home = ({ data }) => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [height, setViewportHeight] = useState(0);
-
-  useEffect(() => {
-    if (!window) return;
-
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-      setViewportHeight(window.innerHeight);
-    };
-
-    // Invoke handleResize initially
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <div
-      className=" w-[100%] h-screen overflow-x-hidden"
+      className="w-[100%] relative h-[110vh] sm:h-screen overflow-x-hidden"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 top-[5vh] z-0">
         <img src={backgroundLines} className="w-full h-1/2 lg:h-screen" />
       </div>
-      <div className="absolute">
-        <div
-          className="relative w-full left-[3vw] lg:left-[10vw] top-[8vh] 
-        lg:top-[11vh] text-6xl sm:text-8xl lg:text-9xl font-poppins font-extrabold text-[#8a8a8a79]"
-        >
+      <div className="relative z-10 mt-[6rem] ml-5 sm:ml-12 sm:mt-[8rem]">
+        <div className="w-full text-6xl sm:text-8xl lg:text-9xl font-poppins font-extrabold text-[#8a8a8a79] z-20">
           <TypeAnimation
             sequence={['', 500, 'CCS 2024']}
             wrapper="span"
@@ -66,7 +42,7 @@ const Home = ({ data }) => {
         </div>
       </div>
 
-      <div className="absolute right-1/2 bottom-[10vh] sm:bottom-[12vh] lg:bottom-[10vh] lg:right-1/4">
+      <div className="absolute right-1/2 bottom-5 sm:bottom-[12vh] lg:bottom-[10vh] lg:right-1/4">
         {data ? (
           <HomeImageCarousel
             images={data.allContentfulAboutUsGallery.nodes}

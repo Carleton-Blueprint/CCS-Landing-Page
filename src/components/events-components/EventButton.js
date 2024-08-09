@@ -43,7 +43,7 @@ const EventButton = (props) => {
 
   return (
     <div
-      className={`text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm flex justify-center items-center cursor-pointer bg-[#D9D9D9] hover:bg-[#9E7979] hover:shadow-sm active:bg-[#631919] active:Shadow-none active:text-[#D9D9D9] active:duration-75 active:ease-linear transition-all ease-in duration-200`}
+      className={`text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm flex justify-center items-center cursor-pointer bg-darkGrey hover:bg-[#9E7979] hover:shadow-sm active:bg-[#631919] active:Shadow-none active:text-darkGrey active:duration-75 active:ease-linear transition-all ease-in duration-200`}
       onClick={(e) => handleAdd(e)}
     >
       Add To Calendar
