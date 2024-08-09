@@ -187,7 +187,9 @@ const Events = (props) => {
               wrapperClass={
                 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'
               }
-              sharedObjectClass={'flex justify-center transform-gpu'}
+              sharedObjectClass={
+                'flex items-center justify-center transform-gpu'
+              }
               delay={200}
               duration={200}
               direction={'ltr'}
