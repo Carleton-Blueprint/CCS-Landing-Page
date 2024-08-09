@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
+import Springy from '../animation-wrappers/Springy'
+
 
 const Statistic = (props) => {
   const textBoxValue = useRef(parseFloat(props.stat) / 100);
@@ -36,6 +38,7 @@ const Statistic = (props) => {
   return (
     <div className="flex flex-col items-center w-full p-4 text-center">
       <p className="font-bold text-[#685353]">{props.top}</p>
+        <Springy magnitude='3'>
       <div className="relative bg-gradient-to-b from-white to-[#d6d6d6] from-50% rounded-full p-8 w-36 h-36 m-4 shadow-dark-bottom">
         <div className="flex items-center justify-center h-full p-4 bg-white border-4 border-red-200 rounded-full shadow-inner-top">
           <p className="text-xl font-bold text-red-500">{props.stat}%</p>
@@ -91,7 +94,9 @@ const Statistic = (props) => {
             </svg>
           </div>
         </div>
+
       </div>
+        </Springy>
       <p className="text-[#685353] font-bold">{props.bottom}</p>
     </div>
   );

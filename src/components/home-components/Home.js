@@ -5,6 +5,8 @@ import { TypeAnimation } from 'react-type-animation';
 import HomeImageCarousel from './home-gallery-components/HomeImageCarousel';
 import { Link } from 'gatsby';
 import Layout from '../base/Layout';
+import AppearFrom from '../animation-wrappers/AppearFrom';
+import Springy from '../animation-wrappers/Springy';
 
 const Home = ({ data }) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -50,12 +52,14 @@ const Home = ({ data }) => {
         </div>
 
         <div className="relative z-20 pl-10 lg:pl-60 pt-44 ">
-          <div className="text-xl font-bold text-white lg:text-5xl font-poppins">
-            Canadian University
-          </div>
-          <div className="pt-5 mb-5 font-bold text-white textxl lg:text-6xl lg:mb-10 font-poppins">
-            Software Engineering Conference
-          </div>
+          <AppearFrom direction='left' speed='2'>
+            <div className="text-xl font-bold text-white lg:text-5xl font-poppins">
+              Canadian University
+            </div>
+            <div className="z-20 pt-5 mb-5 font-bold text-white textxl lg:text-6xl lg:mb-10 font-poppins">
+              Software Engineering Conference
+            </div>
+          </AppearFrom>
           <Link to="/about-us">
             <button className="transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] font-poppins font-medium px-4 p-2 rounded-full text-white flex appearance-none bg-[#ffffff80]">
               Learn More
@@ -66,13 +70,19 @@ const Home = ({ data }) => {
           <div>January 11-13</div>
           <div className="pt-4">Le Centre Sheraton, Montreal, QC</div>
         </div>
-        <div className="absolute right-1/2 bottom-[18vh] lg:bottom-[10vh] lg:right-1/4">
-          {data ? (
-            <HomeImageCarousel
-              images={data.allContentfulAboutUsGallery.nodes}
-              size={`${isMobile ? (height < 700 ? 'sm' : 'md') : 'lg'}`}
-            />
-          ) : null}
+
+        <div className=" z-10 absolute right-1/2 bottom-[18vh] lg:bottom-[10vh] lg:right-1/4">
+        <AppearFrom direction='right'>
+
+            {data ? (
+          <Springy magnitude='2'>
+              <HomeImageCarousel
+                images={data.allContentfulAboutUsGallery.nodes}
+                size={`${isMobile ? (height < 700 ? 'sm' : 'md') : 'lg'}`}
+                />
+                </Springy>
+            ) : null}
+        </AppearFrom>
         </div>
       </div>
     </Layout>

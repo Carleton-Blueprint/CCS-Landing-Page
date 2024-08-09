@@ -1,4 +1,5 @@
 import React from 'react'
+import Springy from '../animation-wrappers/Springy';
 
 const GetInvolvedCard = ({data}) => {
     const title = data.title;
@@ -9,6 +10,8 @@ const GetInvolvedCard = ({data}) => {
     const link = data.link
     
   return  (
+    <Springy magnitude='2'>
+
     <div className='relative flex flex-col w-10/12 text-white rounded-tr-[3rem] rounded-bl-[3rem] bg-primaryGray h-[16rem] sm:w-[32rem] sm:h-[22rem]'>
         <div className='px-6 pt-8'>
             <p className='mb-4 text-lg font-semibold sm:text-2xl font-poppins'>{title}</p>
@@ -27,6 +30,7 @@ const GetInvolvedCard = ({data}) => {
             </div>
         </div>
     </div>
+    </Springy>
     )
 }
 
