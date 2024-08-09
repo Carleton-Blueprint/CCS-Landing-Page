@@ -5,7 +5,6 @@ import { useRef, useState, useEffect } from 'react';
 const Statistic = (props) => {
   const textBoxValue = useRef(parseFloat(props.stat) / 100);
   const [isInView, setIsInView] = useState(false);
-  const [isOutOfView, setIsOutOfView] = useState(true);
   const ref = useRef(null);
 
   useEffect(() => {
@@ -13,13 +12,11 @@ const Statistic = (props) => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-          setIsOutOfView(false);
         } else {
           setIsInView(false);
-          setIsOutOfView(true);
         }
       },
-      { threshold: 0.5 } // Adjust threshold as needed
+      { threshold: 0.8 }
     );
 
     if (ref.current) {
@@ -41,7 +38,7 @@ const Statistic = (props) => {
           <p className="text-xl font-bold text-red-500">{props.stat}%</p>
         </div>
         <div className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-          <div className="w-32 h-32">
+          <div ref={ref} className="w-32 h-32">
             <svg
               id="Layer_1"
               data-name="Layer 1"
@@ -67,7 +64,6 @@ const Statistic = (props) => {
                 </linearGradient>
               </defs>
               <motion.path
-                ref={ref}
                 initial={{ pathLength: 0 }}
                 animate={
                   isInView
