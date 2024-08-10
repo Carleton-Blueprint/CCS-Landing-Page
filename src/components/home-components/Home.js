@@ -18,7 +18,7 @@ const Home = ({ data }) => {
       }}
     >
       <div className="absolute inset-0 top-[5vh] z-0">
-        <img src={backgroundLines} className="w-full h-1/2 lg:h-screen" />
+        <img src={backgroundLines} className="w-full h-1/2 lg:h-full" />
       </div>
       <div className="relative z-10 mt-[6rem] ml-5 sm:ml-12 sm:mt-[8rem]">
         <div className="w-full text-6xl sm:text-8xl lg:text-9xl font-poppins font-extrabold text-[#8a8a8a79] z-20">
