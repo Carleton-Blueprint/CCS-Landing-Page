@@ -1,13 +1,35 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import AttendReason from './AttendReason';
-
+import Bubble from '../animation-wrappers/Bubble';
 const WhyAttend = (props) => {
   const allNodes = props.reasons;
   const movingLeft = useRef(false);
   const imagesLength = allNodes.length;
   const startIndex = useRef(0);
   const [visibleImages, setVisibleImages] = useState([0, 1, 2]);
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
   //returns an array of 5 image indexes
   const generateVisibleImages = (start, left) => {
     movingLeft.current = left;
@@ -42,22 +64,32 @@ const WhyAttend = (props) => {
     ];
     return brightnessArray[index];
   };
-
+  const getTranslateX = (index) => {
+    switch (visibleImages.indexOf(index)) {
+      case 1:
+        return !movingLeft.current ? { x: '-50%' } : { x: '50%' };
+      case 0:
+      case 2:
+        return { x: 0 };
+      default:
+        return;
+    }
+  };
   //return className string with positionStyle, baseStyle, and zIndex and Size styling
   const getCss = (imageIndex) => {
     // Early return for images not currently visible
     if (!visibleImages.includes(imageIndex)) {
       return `${
         movingLeft.current ? 'right-0' : 'left-0'
-      } opacity-0 transition-all ease-in-out duration-[200ms] w-0 h-0`;
+      } opacity-0 transition-all ease-in-out duration-[200ms] w-0 h-0 `;
     }
 
     // Get default styles for visible images
     const baseStyle = `opacity-100 duration-[200ms] ease-in-out`;
     const zIndexAndSize = {
-      0: `z-30 w-[120px] md:w-40 lg:w-60 `,
-      1: `z-40 w-[113px] md:w-[170px] lg:w-[341px] `,
-      2: `z-30 w-[120px] md:w-40 lg:w-60 `,
+      0: `z-30 w-[120px] md:w-64 lg:w-60 hover:animate-growShrink`,
+      1: `z-40 w-[113px] md:w-96 lg:w-[341px] `,
+      2: `z-30 w-[120px] md:w-64 lg:w-60 hover:animate-growShrink`,
     };
 
     // Specific positioning logic
@@ -69,8 +101,8 @@ const WhyAttend = (props) => {
         break;
       case 1:
         positionStyle = !movingLeft.current
-          ? 'left-1/2 transform -translate-x-1/2  transition-all'
-          : 'right-1/2 transform translate-x-1/2  transition-all';
+          ? 'left-1/2 transform  transition-all'
+          : 'right-1/2 transform  transition-all';
         break;
       case 2:
         positionStyle = 'right-0 transition-all';
@@ -85,14 +117,12 @@ const WhyAttend = (props) => {
   };
 
   return (
-    <div>
-      <div className="relative flex items-center h-[360px] lg:w-[600px]">
-        {allNodes.length
-          ? allNodes.map((r, index) => {
-              return (
-                <div
-                  className={`absolute h-auto ${getCss(index)} transform-gpu`}
-                >
+    <div ref={ref}>
+      <Bubble
+        renderObjects={
+          allNodes.length
+            ? allNodes.map((r, index) => {
+                return (
                   <div
                     onClick={() =>
                       visibleImages.indexOf(index) === 0
@@ -109,18 +139,31 @@ const WhyAttend = (props) => {
                       image={r.icon}
                     />
                   </div>
-                </div>
-              );
-            })
-          : null}
-      </div>
+                );
+              })
+            : null
+        }
+        wrapperClass={'relative flex items-center h-[360px] lg:w-[600px]'}
+        allObjectClass={new Array(imagesLength)
+          .fill(0)
+          .map(
+            (_, index) =>
+              `absolute h-auto ${getCss(index)} transform-gpu cursor-pointer`
+          )}
+        translations={new Array(imagesLength)
+          .fill(0)
+          .map((_, index) => getTranslateX(index))}
+        delay={100}
+        direction={'ltr'}
+        isActive={isInView}
+      />
 
       <div className="flex justify-center items-align lg:w-[600px] mt-10">
-        <div
+        <button
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full m-2"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
-              'bg-[#e91c24] w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
+              'bg-brightRed w-[40px] h-[40px] -translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
           }
           onMouseLeave={(e) =>
             (e.currentTarget.className =
@@ -138,13 +181,13 @@ const WhyAttend = (props) => {
               fill="white"
             />
           </svg>
-        </div>
+        </button>
 
-        <div
+        <button
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full m-2"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
-              'bg-[#e91c24] w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
+              'bg-brightRed w-[40px] h-[40px] translate-x-1 transition-all ease-in-out duration-300 rounded-full m-2')
           }
           onMouseLeave={(e) =>
             (e.currentTarget.className =
@@ -162,7 +205,7 @@ const WhyAttend = (props) => {
               fill="white"
             />
           </svg>
-        </div>
+        </button>
       </div>
     </div>
   );

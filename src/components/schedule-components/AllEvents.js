@@ -40,7 +40,7 @@ const AllEvents = ({ eventRows }) => {
   };
 
   return (
-    <div className="grid mb-24 place-items-center">
+    <div className="grid mb-48 place-items-center">
       <div
         className="bg-[#111] w-[95%] md:w-[70%] min-h-screen z-10"
         style={shadow}

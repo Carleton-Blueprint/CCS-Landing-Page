@@ -1,19 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import EventBlock from '../components/events-components/EventBlock';
 import EventsTitle from '../components/events-components/EventsTitle';
 import { graphql } from 'gatsby';
 import { Seo } from '../components/base/Seo';
 import Layout from '../components/base/Layout';
-
+import Bubble from '../components/animation-wrappers/Bubble';
 const Events = (props) => {
   const eventsData = props.data.allContentfulFeaturedEvent.nodes;
-
   const [availableEvents, setAvailableEvents] = useState([]);
+  const isMobile = useRef(true);
   const [pastEvents, setPastEvents] = useState([]);
   const [renderingPresent, setRenderingPresent] = useState(true);
   const [academicYears, setAcademicYears] = useState([]);
   const [selectedYearEvents, setSelectedYearEvents] = useState([]);
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
 
+  useEffect(() => {
+    if (!window) return;
+
+    isMobile.current = window.innerWidth <= 768;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
   // get academic year of any date
   const getAcademicYear = (date) => {
     const year = parseInt(date.substring(0, 4), 10);
@@ -103,11 +129,7 @@ const Events = (props) => {
           >
             {academicYears.map((year, index) => {
               return (
-                <option
-                  key={index}
-                  value={year}
-                  className="hover:bg-eventsDarkGrey"
-                >
+                <option key={index} value={year} className="hover:bg-darkGrey">
                   {year}
                 </option>
               );
@@ -115,19 +137,23 @@ const Events = (props) => {
           </select>
         </div>
         <div
-          className={`flex justify-center items-align ${
-            selectedYear === currentAcademicYear ? 'visible' : 'invisible'
+          className={`flex justify-center items-center transition-all duration-500 ease-in-out ${
+            selectedYear === currentAcademicYear
+              ? 'opacity-100 visible'
+              : 'opacity-0 invisible'
           }`}
         >
           <div className="flex flex-col mr-8">
             <button
               onClick={() => setRenderingPresent(true)}
-              className={renderingPresent ? 'text-red-500' : ''}
+              className={`transition-colors duration-300 ${
+                renderingPresent ? 'text-red-500' : 'text-black'
+              }`}
             >
               Upcoming
             </button>
             <hr
-              className="mt-4 ml-4 border-red-500"
+              className="mt-4 ml-4 transition-all duration-[50ms] border-red-500"
               width="40px"
               style={{ borderWidth: renderingPresent ? '3px' : '0' }}
             />
@@ -135,12 +161,14 @@ const Events = (props) => {
           <div className="flex flex-col ml-8">
             <button
               onClick={() => setRenderingPresent(false)}
-              className={renderingPresent ? '' : 'text-red-500'}
+              className={`transition-colors duration-300 ${
+                renderingPresent ? 'text-black' : 'text-red-500'
+              }`}
             >
               Past
             </button>
             <hr
-              className="mt-4 border-red-500"
+              className="mt-4 ml-4 transition-all duration-[50ms] border-red-500"
               width="40px"
               style={{ borderWidth: renderingPresent ? '0' : '3px' }}
             />
@@ -150,14 +178,23 @@ const Events = (props) => {
           className="mt-[-3px] mr-16 ml-16 mb-16 border-gray-500"
           style={{ borderWidth: '1px' }}
         />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20">
+        <div ref={ref}>
           {eventsToRender && eventsToRender.length ? (
-            eventsToRender.map((eventNode, index) => (
-              <div key={index} className="flex justify-center">
+            <Bubble
+              renderObjects={eventsToRender.map((eventNode, index) => (
                 <EventBlock event={eventNode} index={index} />
-              </div>
-            ))
+              ))}
+              wrapperClass={
+                'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-y-20'
+              }
+              sharedObjectClass={
+                'flex items-center justify-center transform-gpu'
+              }
+              delay={200}
+              duration={200}
+              direction={'ltr'}
+              isActive={isMobile.current ? true : isInView}
+            />
           ) : (
             <div className="mb-10 text-xl font-semibold text-center col-span-full">
               No events right now, stay tuned for more!

@@ -6,10 +6,8 @@ import greyBackground from '../images/schedule-title-background.png';
 import background from '../images/schedule-header.svg';
 import Layout from '../components/base/Layout';
 import HeaderWithSubtitle from '../components/base/HeaderWithSubtitle';
-import {
-  SchedulerLeftArrow,
-  SchedulerRightArrow,
-} from '../SVGs/scheduler-SVGs';
+import { SchedulerRightArrow } from '../SVGs/scheduler-SVGs';
+import { SchedulerLeftArrow } from '../SVGs/scheduler-SVGs'; //need to import these individually or bugs occur
 const Schedule = ({ data, location }) => {
   const [date, setDate] = useState(1);
   const [currentEvents, setCurrentEvents] = useState([]);
@@ -78,15 +76,10 @@ const Schedule = ({ data, location }) => {
     return `${monthString} ${dayWithSuffix}`;
   };
 
-  const arrowShadow = {
-    boxShadow: `
-            1px 1px 3px #000000,
-            -1px -1px 2px #AAAAAA`,
-  };
   // bc schedule header is disabled
   const dayNumber = date;
   return (
-    <div className="bg-gradient-to-b from-60% from-black to-[#5F0B0F]">
+    <div className="bg-gradient-to-b from-60% from-[#41151B] to-black">
       <Layout pathname={location.pathname}>
         <HeaderWithSubtitle
           title="Schedule"
@@ -95,7 +88,7 @@ const Schedule = ({ data, location }) => {
         />
         <div className="relative">
           <div
-            className="sticky top-0 z-[100] flex justify-center w-full p-8 mt-[-20px] bg-bottom items-align"
+            className="sticky top-0 z-[99] flex justify-center w-full p-8 mt-[-20px] bg-bottom items-align"
             style={{
               'background-image': `url(${greyBackground})`,
               'background-size': '100% 100%',
@@ -103,11 +96,11 @@ const Schedule = ({ data, location }) => {
           >
             <button
               onClick={() => setDate((prevDate) => prevDate - 1)}
-              className={`absolute left-10 sm:left-20 rounded-full p-2
+              className={`bg-[#676666] hover:bg-brightRed active:bg-[#7C0005] transition-colors duration-200
+                 absolute left-10 sm:left-20 rounded-full p-2 border-white border-2 
                 ${dayNumber > 1 ? '' : 'hidden'}
 
               `}
-              style={arrowShadow}
             >
               <SchedulerLeftArrow />
             </button>
@@ -121,10 +114,10 @@ const Schedule = ({ data, location }) => {
             </div>
             <button
               onClick={() => setDate(date + 1)}
-              className={`absolute right-10 sm:right-20 rounded-full p-2
+              className={`bg-[#676666] hover:bg-brightRed active:bg-[#7C0005] border-white transition-colors duration-200
+                border-2 absolute right-10 sm:right-20 rounded-full p-2 
                 ${dayNumber < 3 ? '' : 'hidden'}
               `}
-              style={arrowShadow}
             >
               <SchedulerRightArrow />
             </button>

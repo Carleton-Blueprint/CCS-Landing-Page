@@ -9,10 +9,7 @@ const EventsTitle = () => {
         className="w-full bg-center bg-cover"
         style={{
           backgroundImage: `url(${background})`,
-          //   backgroundPosition: "center",
-          //   width: "100%",
-          height: '100vh', // or any other height
-          //   clipPath: "inset(0% 17% 0% 17%)",
+          height: '100vh',
         }}
       >
         <div className="flex justify-center">
@@ -23,7 +20,7 @@ const EventsTitle = () => {
             Events
           </h1>
           <div className="flex justify-center">
-            <hr className="w-3/4 mt-16 mb-16 opacity-50 lg:mt-32 lg:mb-32" />{' '}
+            <hr className="w-3/4 mt-16 mb-16 opacity-50 lg:mt-16 lg:mb-16" />{' '}
           </div>
 
           <p className="p-2 text-xl text-gray-300 lg:text-4xl">
@@ -37,16 +34,24 @@ const EventsTitle = () => {
           </p>
           <div className="flex gap-10 p-8">
             <a href="https://2024.cusec.net/">
-              <div className="rounded-full px-6 py-2 text-center text-sm flex justify-center text-[#D9D9D9] border-[#D9D9D9] border-solid border items-center cursor-pointer bg-redStop hover:bg-primaryGray active:bg-[#d663634b] transition-all ease-in duration-100">
+              <button
+                className="text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm 
+                flex justify-center items-center cursor-pointer bg-darkGrey hover:bg-[#9E7979] 
+                hover:shadow-sm active:bg-[#631919] active:Shadow-none active:text-darkGrey 
+                active:duration-75 active:ease-linear transition-all ease-in duration-200"
+              >
                 Read More
-              </div>
+              </button>
             </a>
             <Link to="/schedule">
-              <div
-                className={`text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm flex justify-center items-center cursor-pointer bg-[#D9D9D9] hover:bg-[#9E7979] hover:shadow-sm active:bg-[#631919] active:Shadow-none active:text-[#D9D9D9] active:duration-75 active:ease-linear transition-all ease-in duration-200`}
+              <button
+                className="text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm 
+                flex justify-center items-center cursor-pointer bg-darkGrey hover:bg-[#9E7979] 
+                hover:shadow-sm active:bg-[#631919] active:Shadow-none active:text-darkGrey 
+                active:duration-75 active:ease-linear transition-all ease-in duration-200"
               >
                 CUSEC 2024 Schedule
-              </div>
+              </button>
             </Link>
           </div>
         </div>

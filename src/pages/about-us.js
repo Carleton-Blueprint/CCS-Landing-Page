@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AboutUsGallery from '../components/about-us-components/gallery-components/AboutUsGallery';
 import WhyAttend from '../components/about-us-components/WhyAttend';
-import Statistics from '../components/about-us-components/AboutUsStatistics';
+import AboutUsStatistics from '../components/about-us-components/AboutUsStatistics';
 import { graphql } from 'gatsby';
 import { Seo } from '../components/base/Seo';
 import Header from '../components/base/Header';
@@ -46,11 +46,11 @@ const ImageGallery = ({ data, location }) => {
         <div className="flex justify-center">
           <div className="flex flex-col justify-center w-4/5 gap-3 lg:gap-14">
             {bodySections.map((node) => (
-              <div>
-                <div className="font-poppins text-2xl md:text-3xl lg:text-5xl font-semibold text-[#ABAAAA]">
+              <div className="mb-3">
+                <div className="font-poppins text-2xl md:text-5xl lg:text-5xl font-semibold text-[#ABAAAA]">
                   {node.title}
                 </div>
-                <div className="pt-3 text-sm font-poppins md:text-md lg:text-lg lg:pt-8">
+                <div className="pt-3 text-sm font-poppins md:text-lg lg:text-lg lg:pt-8">
                   {node.bodyText.bodyText}
                 </div>
               </div>
@@ -68,8 +68,8 @@ const ImageGallery = ({ data, location }) => {
           )}
         </div>
 
-        <div className="flex justify-center ">
-          <Statistics stats={data.allContentfulStatistic.nodes} />
+        <div className="flex justify-center">
+          <AboutUsStatistics stats={data.allContentfulStatistic.nodes} />
         </div>
       </div>
     </Layout>
