@@ -44,6 +44,7 @@ const WhyAttendMobile = (props) => {
             );
           }}
           onMouseDown={(e) => e.preventDefault()}
+          aria-label="previous"
         >
           <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -68,6 +69,7 @@ const WhyAttendMobile = (props) => {
             setRenderIndex((prev) => (prev + 1) % allNodes.length);
           }}
           onMouseDown={(e) => e.preventDefault()}
+          aria-label="next"
         >
           <WhyAttendRightArrow />
         </button>

@@ -173,6 +173,7 @@ const WhyAttend = (props) => {
             decrement();
           }}
           onMouseDown={(e) => e.preventDefault()}
+          aria-label="previous"
         >
           <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -197,6 +198,7 @@ const WhyAttend = (props) => {
             increment();
           }}
           onMouseDown={(e) => e.preventDefault()}
+          aria-label="next"
         >
           <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
             <path

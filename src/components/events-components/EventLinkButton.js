@@ -17,14 +17,13 @@ const EventLinkButton = () => {
     }
   };
   return (
-    <div>
-      <div
-        className="w-12 h-12 bg-darkGrey active:bg-black hover:bg-[#ffffff3b] transition-all ease-out duration-200 rounded-full flex items-center justify-center cursor-pointer"
-        onClick={() => handleCopy(window.location.href)}
-      >
-        <img alt="Copy a link button" src={linkImage} className="w-8 h-8" />
-      </div>
-    </div>
+    <button
+      className=" appearance-none w-12 h-12 bg-[#ffffff3b] active:bg-black hover:bg-darkGrey transition-all ease-out duration-200 rounded-full flex items-center justify-center cursor-pointer"
+      onClick={() => handleCopy(window.location.href)}
+      aria-label="copy event link"
+    >
+      <img alt="Copy a link button" src={linkImage} className="w-8 h-8" />
+    </button>
   );
 };
 

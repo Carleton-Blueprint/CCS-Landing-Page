@@ -258,6 +258,7 @@ const AboutUsGallery = (props) => {
               decrement(1);
             }}
             onMouseDown={(e) => e.preventDefault()}
+            aria-label="previous image"
           >
             <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -315,6 +316,7 @@ const AboutUsGallery = (props) => {
               increment(1);
             }}
             onMouseDown={(e) => e.preventDefault()}
+            aria-label="next image"
           >
             <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
               <path

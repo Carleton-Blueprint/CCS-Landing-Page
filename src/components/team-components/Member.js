@@ -39,6 +39,7 @@ const Member = (props) => {
               className={`flex relative top-[85%] left-[80%] lg:relative ${
                 isHovering ? 'block' : 'lg:hidden'
               }`}
+              aria-label={`go to ${props.member.name}'s linkedIn`}
             >
               <a
                 href={props.member.linkedin}
