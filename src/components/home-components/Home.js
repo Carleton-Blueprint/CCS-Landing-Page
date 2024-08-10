@@ -48,12 +48,14 @@ const Home = ({ data }) => {
 
       <div className="absolute right-1/2 bottom-5 sm:bottom-[12vh] lg:bottom-[10vh] lg:right-1/4">
         {data ? (
-          <AppearFrom direction="right" speed="2">
-            <HomeImageCarousel
-              images={data.allContentfulAboutUsGallery.nodes}
-              size="lg"
-            />
-          </AppearFrom>
+          <Springy>
+            <AppearFrom direction="right" speed="2">
+              <HomeImageCarousel
+                images={data.allContentfulAboutUsGallery.nodes}
+                size="lg"
+              />
+            </AppearFrom>
+          </Springy>
         ) : null}
       </div>
     </div>
