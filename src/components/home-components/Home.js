@@ -4,6 +4,8 @@ import backgroundLines from '../../images/csshome_2024_background_lines.png';
 import { TypeAnimation } from 'react-type-animation';
 import HomeImageCarousel from './home-gallery-components/HomeImageCarousel';
 import { Link } from 'gatsby';
+import AppearFrom from '../animation-wrappers/AppearFrom';
+import Springy from '../animation-wrappers/Springy';
 
 const Home = ({ data }) => {
   return (
@@ -26,28 +28,34 @@ const Home = ({ data }) => {
             speed={40}
             repeat={0}
           />
-          <div className="mt-[-10px] overflow-x-hidden w-full">
-            <div className="z-20 text-3xl font-bold text-white sm:text-5xl lg:text-5xl font-poppins">
-              Canadian University
+          <AppearFrom direction="left" speed="2">
+            <div className="mt-[-10px] overflow-x-hidden w-full">
+              <div className="z-20 text-3xl font-bold text-white sm:text-5xl lg:text-5xl font-poppins">
+                Canadian University
+              </div>
+              <div className="z-20 text-3xl font-bold text-white sm:text-6xl lg:text-6xl lg:mb-10 font-poppins">
+                Software Engineering Conference
+              </div>
+              <Link to="/about-us">
+                <button className="text-lg transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] font-poppins font-medium px-4 p-2 rounded-full text-white flex appearance-none bg-[#ffffff80]">
+                  Learn More
+                </button>
+              </Link>
             </div>
-            <div className="z-20 text-3xl font-bold text-white sm:text-6xl lg:text-6xl lg:mb-10 font-poppins">
-              Software Engineering Conference
-            </div>
-            <Link to="/about-us">
-              <button className="text-lg transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] font-poppins font-medium px-4 p-2 rounded-full text-white flex appearance-none bg-[#ffffff80]">
-                Learn More
-              </button>
-            </Link>
-          </div>
+          </AppearFrom>
         </div>
       </div>
 
       <div className="absolute right-1/2 bottom-5 sm:bottom-[12vh] lg:bottom-[10vh] lg:right-1/4">
         {data ? (
-          <HomeImageCarousel
-            images={data.allContentfulAboutUsGallery.nodes}
-            size="lg"
-          />
+          <Springy>
+            <AppearFrom direction="right" speed="2">
+              <HomeImageCarousel
+                images={data.allContentfulAboutUsGallery.nodes}
+                size="lg"
+              />
+            </AppearFrom>
+          </Springy>
         ) : null}
       </div>
     </div>
