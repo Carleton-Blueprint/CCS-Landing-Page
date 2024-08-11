@@ -10,7 +10,7 @@ import Springy from '../animation-wrappers/Springy';
 const Home = ({ data }) => {
   return (
     <div
-      className="w-screen min-h-screen overflow-y-hidden"
+      className="w-screen overflow-y-hidden md:min-h-screen"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
