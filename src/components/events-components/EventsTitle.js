@@ -1,15 +1,17 @@
 import React from 'react';
 import background from '../../images/events-header.svg';
 import { Link } from 'gatsby';
+import AppearFrom from '../animation-wrappers/AppearFrom';
 
 const EventsTitle = () => {
   return (
     <>
       <div
-        className="w-full bg-center bg-cover"
+        className="w-full min-h-screen"
         style={{
           backgroundImage: `url(${background})`,
-          height: '100vh',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
         <div className="flex justify-center">
@@ -33,9 +35,10 @@ const EventsTitle = () => {
             Software Engineering Conference
           </p>
           <div className="flex gap-10 p-8">
-            <a href="https://2024.cusec.net/">
-              <button
-                className="text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm 
+            <AppearFrom direction="left" speed="3">
+              <a href="https://2024.cusec.net/">
+                <button
+                  className="text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm 
                 flex justify-center items-center cursor-pointer bg-darkGrey hover:bg-[#9E7979] 
                 hover:shadow-sm active:bg-[#631919] active:Shadow-none active:text-darkGrey 
                 active:duration-75 active:ease-linear transition-all ease-in duration-200"

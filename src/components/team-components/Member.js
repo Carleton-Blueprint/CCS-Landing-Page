@@ -18,6 +18,7 @@ const Member = (props) => {
     backgroundImage:
       'linear-gradient(rgb(255,0,0,0), rgb(255,0,0,0), rgb(255,0,0,0.6))',
   };
+  const randomInt = Math.floor(Math.random() * 10) + 1;
 
   return (
     <div className="h-[600px] lg:h-[620px]">

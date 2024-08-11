@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import { Seo } from '../components/base/Seo';
 import Layout from '../components/base/Layout';
 import Bubble from '../components/animation-wrappers/Bubble';
+import AppearFrom from '../components/animation-wrappers/AppearFrom';
 const Events = (props) => {
   const eventsData = props.data.allContentfulFeaturedEvent.nodes;
   const [availableEvents, setAvailableEvents] = useState([]);
@@ -120,7 +121,9 @@ const Events = (props) => {
   return (
     <Layout pathname={props.location.pathname}>
       <div className="font-poppins">
-        <EventsTitle />
+        <AppearFrom direction="top">
+          <EventsTitle />
+        </AppearFrom>
         <div className="flex justify-center md:justify-normal">
           <select
             aria-label="select year"
