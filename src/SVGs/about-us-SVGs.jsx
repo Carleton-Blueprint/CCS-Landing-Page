@@ -1,5 +1,5 @@
 import React from 'react';
-export const AttendCard = ({ text }) => {
+export const AttendCard = ({ title }) => {
   return (
     <svg
       width="341"
@@ -35,7 +35,7 @@ export const AttendCard = ({ text }) => {
         fontWeight="500"
         fontFamily="poppins"
       >
-        {text}
+        {title}
       </text>
     </svg>
   );

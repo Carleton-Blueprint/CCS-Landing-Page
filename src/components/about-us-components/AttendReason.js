@@ -16,22 +16,22 @@ const AttendReason = (props) => {
         onClick={() => setFlipped(!flipped)}
       >
         <div className="absolute w-full [backface-visibility:hidden] h-full flex items-center justify-center font-bold text-white">
-          <AttendCard text={props.title} />
+          <AttendCard title={props.title} />
           <div className="absolute w-24">
-            {props.image && (
+            {!flipped && props.image ? (
               <GatsbyImage
                 className={`object-contain object-center h-full w-full drop-shadow-md`}
                 image={props.image.gatsbyImageData}
               />
-            )}
+            ) : null}
           </div>
         </div>
         <div
           className="absolute [backface-visibility:hidden] w-full h-full [transform:rotateY(180deg)] 
         flex items-center justify-center font-bold text-white"
         >
-          <AttendCard text={props.title} />
-          <div className="absolute w-3/4 font-normal text-center">
+          <AttendCard title={props.title} />
+          <div className="absolute w-3/4 text-sm font-normal text-center md:px-4 lg:px-0">
             {props.subtitle}
           </div>
         </div>
