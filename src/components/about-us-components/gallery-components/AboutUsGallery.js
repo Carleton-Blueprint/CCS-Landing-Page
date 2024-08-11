@@ -1,7 +1,8 @@
 import React from 'react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import GalleryImage from './GalleryImage';
 import GalleryDots from './GalleryDots';
+import Bubble from '../../animation-wrappers/Bubble';
 const AboutUsGallery = (props) => {
   const allImages = props.images;
   const movingLeft = useRef(false);
@@ -12,7 +13,31 @@ const AboutUsGallery = (props) => {
   const animationTypeString = useRef('ease-in-out');
   const isRunning = useRef(false);
   const [visibleImages, setVisibleImages] = useState([0, 1, 2, 3, 4]);
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        } else {
+          setIsInView(false);
+        }
+      },
+      { threshold: 0.5 } // Adjust threshold as needed
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
   const generateVisibleImages = (start, left) => {
     movingLeft.current = left;
     let pushVisibleImages = [];
@@ -21,6 +46,18 @@ const AboutUsGallery = (props) => {
       pushVisibleImages.push(i % imagesLength);
     }
     return pushVisibleImages;
+  };
+  const getTranslateX = (index) => {
+    const position = visibleImages.indexOf(index);
+    switch (position) {
+      case 0:
+      case 4:
+        return { x: 0 };
+      case 1:
+      case 2:
+      case 3:
+        return { x: '-50%' };
+    }
   };
 
   const increment = (n, isInitial = true) => {
@@ -113,7 +150,7 @@ const AboutUsGallery = (props) => {
     }
 
     // Get default styles for visible images
-    const baseStyle = `opacity-100 ${animationTypeString.current} ${animationTimeString.current}`;
+    const baseStyle = `absolute transform-gpu opacity-100 ${animationTypeString.current} ${animationTimeString.current}`;
     const zIndexAndSize = {
       0: `z-20 w-[80px] h-14 md:w-[440px] md:h-[150px] lg:w-60 lg:h-48`,
       1: `z-30 w-[120px] h-[88px] md:w-[400px] md:h-[240px] lg:w-80 lg:h-64`,
@@ -131,13 +168,13 @@ const AboutUsGallery = (props) => {
         }`;
         break;
       case 1:
-        positionStyle = 'left-1/4 transform -translate-x-1/2 transition-all';
+        positionStyle = 'left-1/4 transform transition-all';
         break;
       case 2:
-        positionStyle = 'left-1/2 transform -translate-x-1/2 transition-all';
+        positionStyle = 'left-1/2 transform transition-all';
         break;
       case 3:
-        positionStyle = 'left-3/4 transform -translate-x-1/2 transition-all';
+        positionStyle = 'left-3/4 transform transition-all';
         break;
       case 4:
         positionStyle = `right-0 ${
@@ -201,7 +238,11 @@ const AboutUsGallery = (props) => {
   return (
     <div className="w-[90%] lg:w-fit mb-5">
       <div className="flex items-center justify-between gap-6 duration">
-        <div>
+        <div
+          className={`flex items-center justify-center transition-opacity opacity-0 ease-in-out duration-200 delay-[1200ms] ${
+            isInView ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
           <button
             className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full"
             onMouseEnter={(e) =>
@@ -227,10 +268,9 @@ const AboutUsGallery = (props) => {
             </svg>
           </button>
         </div>
-
-        <div className="relative flex items-center h-80 w-[250px] lg:w-[945px]">
-          {allImages.map((image, index) => (
-            <div className={`absolute ${getCss(index)}`}>
+        <div ref={ref}>
+          <Bubble
+            renderObjects={allImages.map((image, index) => (
               <GalleryImage
                 key={image.galleryImage.id}
                 url={image.galleryImage.gatsbyImageData}
@@ -239,11 +279,27 @@ const AboutUsGallery = (props) => {
                 brightness={`${getBrightness(index)}`}
                 clicked={() => handleImageClick(visibleImages.indexOf(index))}
               />
-            </div>
-          ))}
+            ))}
+            wrapperClass={
+              'relative flex items-center h-80 w-[250px] lg:w-[945px]'
+            }
+            allObjectClass={new Array(imagesLength)
+              .fill(0)
+              .map((_, index) => getCss(index))}
+            translations={new Array(imagesLength)
+              .fill(0)
+              .map((_, index) => getTranslateX(index))}
+            delay={100}
+            duration={200}
+            direction={'ctr'}
+            isActive={isInView}
+          />
         </div>
-
-        <div>
+        <div
+          className={`flex items-center justify-center transition-opacity opacity-0 ease-in-out duration-200 delay-[1200ms] ${
+            isInView ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
           <button
             className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full"
             onMouseEnter={(e) =>
@@ -270,7 +326,12 @@ const AboutUsGallery = (props) => {
           </button>
         </div>
       </div>
-      <div className="flex items-center justify-center">
+
+      <div
+        className={`flex items-center justify-center transition-opacity opacity-0 ease-in-out duration-200 delay-[800ms] ${
+          isInView ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
         <GalleryDots
           imagesLength={imagesLength}
           activeImage={visibleImages[2]}

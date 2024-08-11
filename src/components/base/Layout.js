@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import NavigationBar from './NavigationBar/NavigationBar';
 import Footer from './Footer';
-
+import { ToastContainer } from 'react-toastify';
 const Layout = ({ pathname, backgroundColour, children }) => {
   const [isVisible, setIsVisible] = useState(true);
   const scrollY = useRef(0);
@@ -80,6 +80,7 @@ const Layout = ({ pathname, backgroundColour, children }) => {
 
   return (
     <div className="layout" style={{ backgroundColor: backgroundColour }}>
+      <ToastContainer />
       <div
         className={`top-0 left-0 right-0 fixed z-[100] transition-transform transform-gpu ease-out ${
           isVisible
