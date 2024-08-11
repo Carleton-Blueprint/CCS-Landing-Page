@@ -10,7 +10,7 @@ import Springy from '../animation-wrappers/Springy';
 const Home = ({ data }) => {
   return (
     <div
-      className="w-[100%] relative h-[110vh] sm:h-screen overflow-x-hidden"
+      className="w-[100%] relative h-[120vh] sm:h-screen overflow-x-hidden"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
@@ -30,14 +30,15 @@ const Home = ({ data }) => {
           />
           <AppearFrom direction="left" speed="2">
             <div className="mt-[-10px] overflow-x-hidden w-full">
-              <div className="z-20 text-3xl font-bold text-white sm:text-5xl lg:text-5xl font-poppins">
-                Canadian University
+              <div className="z-20 text-3xl font-bold text-white sm:text-5xl lg:text-6xl font-poppins">
+                Carleton CUSEC Society
               </div>
-              <div className="z-20 text-3xl font-bold text-white sm:text-6xl lg:text-6xl lg:mb-10 font-poppins">
-                Software Engineering Conference
+              <div className="z-20 text-lg font-light text-white lg:w-1/2 lg:mb-10 font-poppins">
+                Representing Carleton University as an independent member of the
+                Canadian University Software Engineering Conference
               </div>
               <Link to="/about-us">
-                <button className="text-lg transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] font-poppins font-medium px-4 p-2 rounded-full text-white flex appearance-none bg-[#ffffff80]">
+                <button className="text-base transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] font-poppins font-medium px-4 p-2 rounded-full text-white flex appearance-none bg-[#ffffff80]">
                   Learn More
                 </button>
               </Link>
