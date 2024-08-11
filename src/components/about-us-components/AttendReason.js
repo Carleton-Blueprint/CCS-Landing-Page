@@ -31,9 +31,11 @@ const AttendReason = (props) => {
         flex items-center justify-center font-bold text-white"
         >
           <AttendCard title={props.title} />
-          <div className="absolute w-3/4 text-sm font-normal text-center md:px-4 lg:px-0">
-            {props.subtitle}
-          </div>
+          {flipped ? (
+            <div className="absolute w-3/4 text-sm font-normal text-center md:px-4 lg:px-0">
+              {props.subtitle}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
