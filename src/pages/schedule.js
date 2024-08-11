@@ -101,6 +101,7 @@ const Schedule = ({ data, location }) => {
                 ${dayNumber > 1 ? '' : 'hidden'}
 
               `}
+              ariaLabel={`set date to ${date-1}`}
             >
               <SchedulerLeftArrow />
             </button>
@@ -118,6 +119,7 @@ const Schedule = ({ data, location }) => {
                 border-2 absolute right-10 sm:right-20 rounded-full p-2 
                 ${dayNumber < 3 ? '' : 'hidden'}
               `}
+              ariaLabel={`set date to ${date+1}`}
             >
               <SchedulerRightArrow />
             </button>
