@@ -16,6 +16,7 @@ const Layout = ({ pathname, backgroundColour, children }) => {
       }
       const viewportHeight = window.innerHeight;
       const currentScrollY = window.scrollY;
+      // threshold is the height that the user has to scroll down to hide the navigation bar, set to a percentage of the viewport height
       const threshold = viewportHeight * 0.22;
       // Clear any existing timeout to reset the timer
       if (timeoutRef.current) {

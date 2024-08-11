@@ -8,12 +8,6 @@ const NavigationBar = (props) => {
   const [aboutHover, setAboutHover] = useState(false);
   const [eventsHover, setEventsHover] = useState(false);
   const currentpath = props.pathname;
-  const lock = () => {
-    props.lockNavBar();
-  };
-  const unlock = () => {
-    props.unlockNavBar();
-  };
   const isCurrentPath = (page) => {
     if (currentpath.startsWith(page)) {
       return true;
@@ -23,10 +17,10 @@ const NavigationBar = (props) => {
 
   useEffect(() => {
     if (isMenuOpen) {
-      lock();
+      props.lockNavBar();
       document.body.style.overflow = 'hidden';
     } else {
-      unlock();
+      props.unlockNavBar();
       document.body.style.overflow = '';
     }
 
