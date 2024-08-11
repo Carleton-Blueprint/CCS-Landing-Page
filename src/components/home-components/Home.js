@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import backgroundImage from '../../images/csshome_2024_background.png';
 import backgroundLines from '../../images/csshome_2024_background_lines.png';
 import { TypeAnimation } from 'react-type-animation';
@@ -10,7 +10,7 @@ import Springy from '../animation-wrappers/Springy';
 const Home = ({ data }) => {
   return (
     <div
-      className="w-screen overflow-y-hidden md:min-h-screen"
+      className="w-full h-auto overflow-y-hidden md:min-h-screen"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
@@ -18,9 +18,13 @@ const Home = ({ data }) => {
       }}
     >
       <div className="absolute inset-0 top-[5vh] z-0">
-        <img src={backgroundLines} className="w-full h-1/2 lg:h-full" />
+        <img
+          src={backgroundLines}
+          alt="background-lines"
+          className="w-full h-1/2 lg:h-full"
+        />
       </div>
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center w-full ">
         <div className="flex-col align-center w-[90%] z-10 mt-[6rem] sm:mt-[8rem]">
           <div className="w-full text-6xl sm:text-8xl lg:text-9xl font-poppins font-extrabold text-[#8a8a8a79] z-20">
             <TypeAnimation
@@ -41,8 +45,8 @@ const Home = ({ data }) => {
               </div>
             </AppearFrom>
           </div>
-          <div className="flex flex-col justify-between w-full mt-2 mb-10 xl:flex-row">
-            <div className="mb-2">
+          <div className="flex flex-col items-center w-full h-full mt-2 mb-10 xl:items-start xl:h-auto xl:flex-row">
+            <div className="w-full mb-5">
               <Link to="/about-us">
                 <button
                   className="text-base transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] 
@@ -53,7 +57,7 @@ const Home = ({ data }) => {
               </Link>
             </div>
             {data ? (
-              <Springy>
+              <Springy style="md:flex-1 xl:flex-0 flex justify-center items-center">
                 <AppearFrom direction="right" speed="2">
                   <HomeImageCarousel
                     images={data.allContentfulAboutUsGallery.nodes}

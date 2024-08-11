@@ -4,13 +4,12 @@ const HomeGalleryDots = (props) => {
   const translateIncrement = props.increment;
   const mapDots = Array(props.amount).fill(null);
   const activeImage = props.activeImage;
-  const handleImageNav = (translateX) => props.callbackChangeImage(translateX);
 
   const radius = 6;
   const cxy = 6;
 
   const handleDotClick = (index) => {
-    handleImageNav(translateIncrement * index);
+    props.setTranslateAmount(translateIncrement * index);
   };
   return (
     <div className="flex gap-3 w-fit">
