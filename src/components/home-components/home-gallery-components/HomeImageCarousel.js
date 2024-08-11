@@ -20,13 +20,10 @@ const HomeImageCarousel = (props) => {
 
   const allImages = props.images;
   return (
-    <div
-      className="relative flex flex-col items-center justify-center"
-      style={{ height: `${height + offset}px` }}
-    >
+    <div className="flex flex-col items-center justify-center h-[376px] md:h-[423px] xl:w-[267px] xl:h-[306px]">
       <div
-        className="absolute z-30 transition-all duration-150 ease-out masked-div hover:scale-110"
-        style={{ width: `${width}px`, height: `${height}px` }}
+        className="z-30 transition-all duration-150 ease-out masked-div hover:scale-[1.07] 
+      w-[267px] h-[306px] md:w-[355px] md:h-[423px]"
       >
         <div className="flex w-fit">
           {allImages.map((image) => (
@@ -35,8 +32,7 @@ const HomeImageCarousel = (props) => {
               className="transition-all duration-150 ease-out"
             >
               <GatsbyImage
-                style={{ width: `${width}px`, height: `${height}px` }}
-                className=""
+                className="w-[267px] h-[306px] md:w-[355px] md:h-[423px] xl:w-[267px] xl:h-[306px]"
                 image={image.galleryImage.gatsbyImageData}
                 alt={image.galleryImage.description}
               />
@@ -44,7 +40,7 @@ const HomeImageCarousel = (props) => {
           ))}
         </div>
       </div>
-      <div className="absolute bottom-0 z-30 ">
+      <div className="z-[30] absolute bottom-1 sm:bottom-[-2vh] xl:bottom-[-3vh]">
         <HomeGalleryDots
           size={props.size}
           amount={allImages.length}
@@ -56,8 +52,8 @@ const HomeImageCarousel = (props) => {
         />
       </div>
       <div
-        className="absolute z-0 scale-125 opacity-50 masked-div "
-        style={{ width: `${width}px`, height: `${height}px` }}
+        className="absolute z-0 scale-125 opacity-50 masked-div 
+      w-[267px] h-[306px] md:w-[355px] md:h-[423px] xl:w-[267px] xl:h-[306px]"
       >
         <div className="w-full h-full bg-white"></div>
       </div>

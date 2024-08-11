@@ -6,15 +6,14 @@ const HomeGalleryDots = (props) => {
   const activeImage = props.activeImage;
   const handleImageNav = (translateX) => props.callbackChangeImage(translateX);
 
-  const r = props.size === 'lg' ? 8.5 : props.size === 'sm' ? 5.5 : 7;
-  const cxy = props.size === 'lg' ? 9 : props.size === 'sm' ? 6 : 7.5;
+  const radius = 6;
+  const cxy = 6;
 
   const handleDotClick = (index) => {
-    console.log(index);
     handleImageNav(translateIncrement * index);
   };
   return (
-    <div className="flex gap-3 pt-8 w-fit">
+    <div className="flex gap-3 w-fit">
       {mapDots.map((_, index) => (
         <div key={index}>
           <svg
@@ -28,9 +27,9 @@ const HomeGalleryDots = (props) => {
             <circle
               cx={cxy}
               cy={cxy}
-              r={r}
+              r={radius}
               fill={`${activeImage === index ? '#08679D' : '#D9D9D9'}`}
-              className=" transition-color ease-in-out duration-200"
+              className="duration-200 ease-in-out transition-color"
               onMouseEnter={(e) => e.target.setAttribute('fill', '#0292B7')}
               onMouseLeave={(e) =>
                 activeImage === index

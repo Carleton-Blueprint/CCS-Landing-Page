@@ -10,7 +10,7 @@ import Springy from '../animation-wrappers/Springy';
 const Home = ({ data }) => {
   return (
     <div
-      className="w-[100%] relative h-[120vh] sm:h-screen overflow-x-hidden"
+      className="w-screen min-h-screen overflow-y-hidden"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
@@ -20,44 +20,50 @@ const Home = ({ data }) => {
       <div className="absolute inset-0 top-[5vh] z-0">
         <img src={backgroundLines} className="w-full h-1/2 lg:h-full" />
       </div>
-      <div className="relative z-10 mt-[6rem] ml-5 sm:ml-12 sm:mt-[8rem]">
-        <div className="w-full text-6xl sm:text-8xl lg:text-9xl font-poppins font-extrabold text-[#8a8a8a79] z-20">
-          <TypeAnimation
-            sequence={['', 500, 'CCS 2024']}
-            wrapper="span"
-            speed={40}
-            repeat={0}
-          />
-          <AppearFrom direction="left" speed="2">
-            <div className="mt-[-10px] overflow-x-hidden w-full">
-              <div className="z-20 text-3xl font-bold text-white sm:text-5xl lg:text-6xl font-poppins">
-                Carleton CUSEC Society
+      <div className="flex justify-center w-full">
+        <div className="flex-col align-center w-[90%] z-10 mt-[6rem] sm:mt-[8rem]">
+          <div className="w-full text-6xl sm:text-8xl lg:text-9xl font-poppins font-extrabold text-[#8a8a8a79] z-20">
+            <TypeAnimation
+              sequence={['', 500, 'CCS 2024']}
+              wrapper="span"
+              speed={40}
+              repeat={0}
+            />
+            <AppearFrom direction="left" speed="2">
+              <div className="w-full mt-[-20px]">
+                <div className="z-20 text-3xl font-bold text-white sm:text-5xl lg:text-6xl font-poppins">
+                  Carleton CUSEC Society
+                </div>
+                <div className="z-20 text-lg font-light text-white lg:w-3/4 xl:w-1/2 lg:mb-10 font-poppins">
+                  Representing Carleton University as an independent member of
+                  the Canadian University Software Engineering Conference
+                </div>
               </div>
-              <div className="z-20 text-lg font-light text-white lg:w-1/2 lg:mb-10 font-poppins">
-                Representing Carleton University as an independent member of the
-                Canadian University Software Engineering Conference
-              </div>
+            </AppearFrom>
+          </div>
+          <div className="flex flex-col justify-between w-full mt-2 mb-10 xl:flex-row">
+            <div className="mb-2">
               <Link to="/about-us">
-                <button className="text-base transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] font-poppins font-medium px-4 p-2 rounded-full text-white flex appearance-none bg-[#ffffff80]">
+                <button
+                  className="text-base transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] 
+                font-poppins font-medium px-4 p-2 rounded-full text-white flex appearance-none bg-[#ffffff80]"
+                >
                   Learn More
                 </button>
               </Link>
             </div>
-          </AppearFrom>
+            {data ? (
+              <Springy>
+                <AppearFrom direction="right" speed="2">
+                  <HomeImageCarousel
+                    images={data.allContentfulAboutUsGallery.nodes}
+                    size="lg"
+                  />
+                </AppearFrom>
+              </Springy>
+            ) : null}
+          </div>
         </div>
-      </div>
-
-      <div className="absolute right-1/2 bottom-5 sm:bottom-[12vh] lg:bottom-[10vh] lg:right-1/4">
-        {data ? (
-          <Springy>
-            <AppearFrom direction="right" speed="2">
-              <HomeImageCarousel
-                images={data.allContentfulAboutUsGallery.nodes}
-                size="lg"
-              />
-            </AppearFrom>
-          </Springy>
-        ) : null}
       </div>
     </div>
   );
