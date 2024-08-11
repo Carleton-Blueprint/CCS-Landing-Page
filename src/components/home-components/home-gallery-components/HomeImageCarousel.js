@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './HomeImageCarousel.css'; // Import your CSS file
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { useState, useRef } from 'react';
