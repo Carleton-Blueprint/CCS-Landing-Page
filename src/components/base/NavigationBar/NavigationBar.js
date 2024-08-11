@@ -8,7 +8,6 @@ const NavigationBar = (props) => {
   const [aboutHover, setAboutHover] = useState(false);
   const [eventsHover, setEventsHover] = useState(false);
   const currentpath = props.pathname;
-
   const isCurrentPath = (page) => {
     if (currentpath.startsWith(page)) {
       return true;
@@ -18,8 +17,10 @@ const NavigationBar = (props) => {
 
   useEffect(() => {
     if (isMenuOpen) {
+      props.lockNavBar();
       document.body.style.overflow = 'hidden';
     } else {
+      props.unlockNavBar();
       document.body.style.overflow = '';
     }
 
@@ -39,10 +40,8 @@ const NavigationBar = (props) => {
   };
 
   return (
-    // change height based on screen
-    <div className="container h-14 md:h-auto z-[95]">
-      {/* Add custom styles to tailwind config to match figma */}
-      <div className="flex items-center justify-end w-full gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
+    <div className="container h-14 xl:h-auto z-[95]">
+      <div className="flex items-center justify-end w-full gap-10 text-white xl:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
         <div className="relative z-50 w-full pr-10">
           {!isMenuOpen ? (
             <div className="flex justify-between w-full ">
@@ -141,11 +140,7 @@ const NavigationBar = (props) => {
                       hover={eventsHover}
                       setHover={setEventsHover}
                       label={{ name: 'EVENTS', href: '/events' }}
-                      items={[
-                        { name: 'Schedule', href: '/schedule' },
-                        { name: 'Another Item', href: '/schedule' },
-                        { name: 'Other Item', href: '/schedule' },
-                      ]}
+                      items={[{ name: 'Schedule', href: '/schedule' }]}
                       mobile={true}
                     />
                   </li>
@@ -158,7 +153,9 @@ const NavigationBar = (props) => {
                   </li>
                   <li
                     className={`my-16 ${
-                      isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
+                      isCurrentPath('/get-involved')
+                        ? 'font-bold'
+                        : 'font-normal'
                     }`}
                   >
                     <a href="/get-involved">GET INVOVLED</a>
@@ -176,7 +173,7 @@ const NavigationBar = (props) => {
           )}
         </AnimatePresence>
       </div>
-      <div className="items-center justify-between hidden w-full gap-20 text-white md:flex bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
+      <div className="items-center justify-between hidden w-full gap-20 text-white xl:flex bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
         <Link to="/">
           <div className="p-3 ml-3 ">
             <img
@@ -227,7 +224,7 @@ const NavigationBar = (props) => {
           </li>
           <li
             className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
+              isCurrentPath('/get-involved') ? 'font-bold' : 'font-normal'
             }`}
           >
             <a href="/get-involved">GET INVOVLED</a>
