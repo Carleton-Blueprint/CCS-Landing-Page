@@ -8,6 +8,8 @@ import Layout from '../components/base/Layout';
 import HeaderWithSubtitle from '../components/base/HeaderWithSubtitle';
 import { SchedulerRightArrow } from '../SVGs/scheduler-SVGs';
 import { SchedulerLeftArrow } from '../SVGs/scheduler-SVGs'; //need to import these individually or bugs occur
+import { Seo } from '../components/base/Seo';
+
 const Schedule = ({ data, location }) => {
   const [date, setDate] = useState(1);
   const [currentEvents, setCurrentEvents] = useState([]);
@@ -101,7 +103,7 @@ const Schedule = ({ data, location }) => {
                 ${dayNumber > 1 ? '' : 'hidden'}
 
               `}
-              ariaLabel={`set date to ${date-1}`}
+              ariaLabel={`set date to ${date - 1}`}
             >
               <SchedulerLeftArrow />
             </button>
@@ -119,7 +121,7 @@ const Schedule = ({ data, location }) => {
                 border-2 absolute right-10 sm:right-20 rounded-full p-2 
                 ${dayNumber < 3 ? '' : 'hidden'}
               `}
-              ariaLabel={`set date to ${date+1}`}
+              ariaLabel={`set date to ${date + 1}`}
             >
               <SchedulerRightArrow />
             </button>
@@ -132,6 +134,10 @@ const Schedule = ({ data, location }) => {
     </div>
   );
 };
+
+export const Head = () => (
+  <Seo title="Schedule" description="Learn about CUSEC's 2024 schedule" />
+);
 
 export const query = graphql`
   query MyQuery {

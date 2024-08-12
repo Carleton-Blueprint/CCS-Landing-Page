@@ -5,6 +5,7 @@ import SocialMedia from '../components/contact-us-components/SocialMedia';
 import background from '../images/contact-us-header.svg';
 import Layout from '../components/base/Layout';
 import AppearFrom from '../components/animation-wrappers/AppearFrom';
+import { Seo } from '../components/base/Seo';
 
 const ContactPage = ({ location }) => {
   return (
@@ -17,5 +18,11 @@ const ContactPage = ({ location }) => {
     </Layout>
   );
 };
+export const Head = () => (
+  <Seo
+    title="Contact Us"
+    description="Let us know your thoughts and conerns about CCS"
+  />
+);
 
 export default ContactPage;

@@ -9,6 +9,7 @@ import background from '../images/about-us-header.svg';
 import WhyAttendMobile from '../components/about-us-components/WhyAttendMobile';
 import AboutUsGalleryMobile from '../components/about-us-components/gallery-components/AboutUsGalleryMobile';
 import Layout from '../components/base/Layout';
+
 const ImageGallery = ({ data, location }) => {
   const galleryImages = data.allContentfulAboutUsGallery.nodes; //all images the AboutUsGallery
   const bodySections = data.contentfulAboutPage.aboutUsSection;
@@ -126,7 +127,7 @@ export const query = graphql`
 `;
 
 export const Head = () => (
-  <Seo title="About" description="This is the about page" />
+  <Seo title="About" description="Get to know CCS and our initiatives" />
 );
 
 export default ImageGallery;

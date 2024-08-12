@@ -6,6 +6,7 @@ import { Seo } from '../components/base/Seo';
 import Layout from '../components/base/Layout';
 import Bubble from '../components/animation-wrappers/Bubble';
 import AppearFrom from '../components/animation-wrappers/AppearFrom';
+
 const Events = (props) => {
   const eventsData = props.data.allContentfulFeaturedEvent.nodes;
   const [availableEvents, setAvailableEvents] = useState([]);
@@ -234,7 +235,10 @@ export const query = graphql`
 `;
 
 export const Head = () => (
-  <Seo title="Events Page" description="This is the events page" />
+  <Seo
+    title="Events Page"
+    description="Learn about upcoming and past events at CCS"
+  />
 );
 
 export default Events;

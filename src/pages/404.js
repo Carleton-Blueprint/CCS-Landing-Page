@@ -2,6 +2,7 @@ import React from 'react';
 import background from '../images/404-background.svg';
 import logo from '../images/logo.svg';
 import Layout from '../components/base/Layout';
+import { Seo } from '../components/base/Seo';
 
 const Page404 = ({ location }) => {
   return (
@@ -47,5 +48,7 @@ const Page404 = ({ location }) => {
     </Layout>
   );
 };
+
+export const Head = () => <Seo title="404" description="Uknown URL" />;
 
 export default Page404;
