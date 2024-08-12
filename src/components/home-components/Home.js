@@ -65,7 +65,6 @@ const Home = ({ data }) => {
                 <AppearFrom direction="right" speed="2">
                   <HomeImageCarousel
                     images={data.allContentfulAboutUsGallery.nodes}
-                    size="lg"
                   />
                 </AppearFrom>
               </Springy>
