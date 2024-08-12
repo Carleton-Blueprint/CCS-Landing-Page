@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import CarletonCUSECLogo from '../../../images/cusec-logo.png';
+import CarletonCUSECLogo from '../../../images/ccs-logo.png';
 import { Link } from 'gatsby';
 import Dropdown from './Dropdown';
 const NavigationBar = (props) => {
@@ -29,6 +29,7 @@ const NavigationBar = (props) => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };

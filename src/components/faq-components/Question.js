@@ -6,7 +6,6 @@ function Question(props) {
   const [isOpen, setIsOpen] = useState(false);
   const question = props.faq.faqQuestion;
   const answer = JSON.parse(props.faq.faqAnswer.raw);
-  const index = props.index;
   const isLast = props.isLast;
   const toggleOpen = () => {
     setIsOpen(!isOpen);

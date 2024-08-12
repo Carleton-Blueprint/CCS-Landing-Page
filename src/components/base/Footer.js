@@ -1,6 +1,6 @@
 import React from 'react';
 import background from '../../images/footer-background.png';
-import CUSECLogo from '../../images/cusec-logo.png';
+import CUSECLogo from '../../images/ccs-logo.png';
 import CarletonLogo from '../../images/carleton-logo.png';
 import CarletonCUSECSocialMedia from './FooterSocialMedia';
 import BlueprintWatermark from './BlueprintWatermark';

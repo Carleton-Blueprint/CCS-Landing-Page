@@ -47,6 +47,8 @@ const EventsTitle = () => {
                   Read More
                 </button>
               </a>
+            </AppearFrom>
+            <AppearFrom direction="right" speed="3">
               <Link to="/schedule">
                 <button
                   className="text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm 

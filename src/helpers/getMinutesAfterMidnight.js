@@ -3,7 +3,7 @@ export const getMinutesAfterMidnight = (time) => {
     let hours = time.split(':')[0];
     let mins = time.split(':')[1].slice(0, 2);
     let period = time.split(':')[1].slice(-2).toLowerCase();
-    let totalTimePastMidnight = period === 'pm' && hours != 12 ? 720 : 0;
+    let totalTimePastMidnight = period === 'pm' && hours !== 12 ? 720 : 0;
 
     totalTimePastMidnight += parseInt(hours) * 60;
     totalTimePastMidnight += parseInt(mins);
