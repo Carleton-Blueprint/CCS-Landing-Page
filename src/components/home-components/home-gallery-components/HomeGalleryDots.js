@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HomeGalleryDots = (props) => {
-  const translateIncrement = props.increment;
+  const translateIncrement = props.increment ? ;
   const mapDots = Array(props.amount).fill(null);
   const activeImage = props.activeImage;
 

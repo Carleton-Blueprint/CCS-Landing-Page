@@ -47,14 +47,18 @@ const Home = ({ data }) => {
           </div>
           <div className="flex flex-col items-center w-full h-full mt-2 mb-10 xl:items-start xl:h-auto xl:flex-row">
             <div className="w-full mb-5">
-              <Link to="/about-us">
-                <button
-                  className="text-base transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] 
+              <AppearFrom direction="left" speed="2">
+                <div className="w-fit">
+                  <Link to="/about-us">
+                    <button
+                      className="text-base transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] 
                 font-poppins font-medium px-4 p-2 rounded-full text-white flex appearance-none bg-[#ffffff80]"
-                >
-                  Learn More
-                </button>
-              </Link>
+                    >
+                      Learn More
+                    </button>
+                  </Link>
+                </div>
+              </AppearFrom>
             </div>
             {data ? (
               <Springy style="md:flex-1 xl:flex-0 flex justify-center items-center">
