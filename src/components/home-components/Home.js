@@ -51,6 +51,7 @@ const Home = ({ data }) => {
                 <div className="w-fit">
                   <Link to="/about-us">
                     <button
+                      aria-label="go to about us"
                       className="text-base transition-all duration-150 ease-out active:bg-black hover:bg-[#ffffff3b] 
                 font-poppins font-medium px-4 p-2 rounded-full text-white flex appearance-none bg-[#ffffff80]"
                     >

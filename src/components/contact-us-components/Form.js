@@ -193,6 +193,7 @@ const Form = () => {
           p-6 px-10 h-10 mx-auto rounded-full padding my-5 transition-all duration-100 ease-out
           bg-white hover:bg-brightRed active:bg-[#7C0005] text-black hover:text-white active:text-white"
           type="submit"
+          ariaLabel='Submit'
         >
           SUBMIT
         </button>

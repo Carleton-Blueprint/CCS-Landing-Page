@@ -33,7 +33,7 @@ const AboutUsGalleryMobile = (props) => {
           })
         : null}
       <div className="flex justify-center gap-10 py-10">
-        <div
+        <button
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
@@ -49,6 +49,7 @@ const AboutUsGalleryMobile = (props) => {
             )
           }
           onMouseDown={(e) => e.preventDefault()}
+          aria-label="previous image"
         >
           <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -57,8 +58,8 @@ const AboutUsGalleryMobile = (props) => {
               fill="white"
             />
           </svg>
-        </div>
-        <div
+        </button>
+        <button
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full"
           onMouseEnter={(e) =>
             (e.currentTarget.className =
@@ -70,6 +71,7 @@ const AboutUsGalleryMobile = (props) => {
           }
           onClick={() => setVisibleIndex((prev) => (prev + 1) % imagesLength)}
           onMouseDown={(e) => e.preventDefault()}
+          aria-label="next image"
         >
           <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -78,7 +80,7 @@ const AboutUsGalleryMobile = (props) => {
               fill="white"
             />
           </svg>
-        </div>
+        </button>
       </div>
     </div>
   );

@@ -32,6 +32,7 @@ function Question(props) {
         <button
           className="flex items-center justify-between w-full px-4 pt-4 pb-4"
           onClick={toggleOpen}
+          ariaLabel={`FAQ Question: ${question}`}
         >
           <span className="mx-2 my-2 text-xs font-semibold md:mx-4 md:text-sm">
             {question}

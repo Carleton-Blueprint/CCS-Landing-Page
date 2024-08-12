@@ -42,19 +42,18 @@ const EventsTitle = () => {
                 flex justify-center items-center cursor-pointer bg-darkGrey hover:bg-[#9E7979] 
                 hover:shadow-sm active:bg-[#631919] active:Shadow-none active:text-darkGrey 
                 active:duration-75 active:ease-linear transition-all ease-in duration-200"
+                  aria-label="go to Canadian University Software Engineering Conference home page"
                 >
                   Read More
                 </button>
               </a>
-            </AppearFrom>
-
-            <AppearFrom direction="right" speed="3">
               <Link to="/schedule">
                 <button
                   className="text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm 
                 flex justify-center items-center cursor-pointer bg-darkGrey hover:bg-[#9E7979] 
                 hover:shadow-sm active:bg-[#631919] active:Shadow-none active:text-darkGrey 
                 active:duration-75 active:ease-linear transition-all ease-in duration-200"
+                  aria-label="go to the schedule"
                 >
                   CUSEC 2024 Schedule
                 </button>
