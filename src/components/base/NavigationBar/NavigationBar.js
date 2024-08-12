@@ -111,11 +111,11 @@ const NavigationBar = (props) => {
               <div className="w-full border-t border-gray-400 my-14">
                 <ul className="flex-col items-center justify-end pt-2 pl-20 ">
                   <li
-                    className={`my-16 ${
+                    className={`my-16 hover:text-black active:text-primaryGray transition-colors duration-300 ${
                       currentpath === '/' ? 'font-bold' : 'font-normal'
                     }`}
                   >
-                    <a href="/">HOME</a>
+                    <Link to="/">HOME</Link>
                   </li>
                   <li
                     className={`my-16 ${
@@ -126,7 +126,7 @@ const NavigationBar = (props) => {
                       isCurrent={isCurrentPath}
                       hover={aboutHover}
                       setHover={setAboutHover}
-                      label={{ name: 'ABOUT US', href: '/about-us' }}
+                      label={{ name: 'About Us', href: '/about-us' }}
                       items={[{ name: 'Meet The Team', href: '/meet-team' }]}
                       mobile={true}
                     />
@@ -140,33 +140,33 @@ const NavigationBar = (props) => {
                       isCurrent={isCurrentPath}
                       hover={eventsHover}
                       setHover={setEventsHover}
-                      label={{ name: 'EVENTS', href: '/events' }}
+                      label={{ name: 'Events', href: '/events' }}
                       items={[{ name: 'Schedule', href: '/schedule' }]}
                       mobile={true}
                     />
                   </li>
                   <li
-                    className={`my-16 ${
+                    className={`my-16 hover:text-black active:text-primaryGray transition-colors duration-300 ${
                       isCurrentPath('/faq') ? 'font-bold' : 'font-normal'
                     }`}
                   >
-                    <a href="/faq">FAQ</a>
+                    <Link to="/faq">FAQ</Link>
                   </li>
                   <li
-                    className={`my-16 ${
+                    className={`my-16 hover:text-black active:text-primaryGray transition-colors duration-300 ${
                       isCurrentPath('/get-involved')
                         ? 'font-bold'
                         : 'font-normal'
                     }`}
                   >
-                    <a href="/get-involved">GET INVOVLED</a>
+                    <Link to="/get-involved">Get Involved</Link>
                   </li>
                   <li
-                    className={`my-16 ${
+                    className={`my-16 hover:text-black active:text-primaryGray transition-colors duration-300 ${
                       isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
                     }`}
                   >
-                    <a href="/contact-us">CONTACT</a>
+                    <Link to="/contact-us">Contact Us</Link>
                   </li>
                 </ul>
               </div>
@@ -186,12 +186,14 @@ const NavigationBar = (props) => {
         </Link>
         <ul className="flex items-center justify-end gap-20 pr-20">
           <li
-            className={`${currentpath === '/' ? 'font-bold' : 'font-normal'}`}
+            className={`hover:text-black active:text-primaryGray transition-colors duration-300 ${
+              currentpath === '/' ? 'font-bold' : 'font-normal'
+            }`}
           >
-            <a href="/">HOME</a>
+            <Link to="/">Home</Link>
           </li>
           <li
-            className={`${
+            className={` ${
               isCurrentPath('/about-us') ? 'font-bold' : 'font-normal'
             } flex justify-center items-center`}
           >
@@ -199,13 +201,13 @@ const NavigationBar = (props) => {
               isCurrent={isCurrentPath}
               hover={aboutHover}
               setHover={setAboutHover}
-              label={{ name: 'ABOUT US', href: '/about-us' }}
+              label={{ name: 'About Us', href: '/about-us' }}
               items={[{ name: 'Meet Team', href: '/meet-team' }]}
               mobile={false}
             />
           </li>
           <li
-            className={`${
+            className={` ${
               isCurrentPath('/events') ? 'font-bold' : 'font-normal'
             } flex justify-center items-center`}
           >
@@ -213,29 +215,30 @@ const NavigationBar = (props) => {
               isCurrent={isCurrentPath}
               hover={eventsHover}
               setHover={setEventsHover}
-              label={{ name: 'EVENTS', href: '/events' }}
+              label={{ name: 'Events', href: '/events' }}
               items={[{ name: 'Schedule', href: '/schedule' }]}
               mobile={false}
             />
           </li>
           <li
-            className={`${isCurrentPath('/faq') ? 'font-bold' : 'font-normal'}`}
+            className={`hover:text-black active:text-primaryGray transition-colors duration-300 
+${isCurrentPath('/faq') ? 'font-bold' : 'font-normal'}`}
           >
-            <a href="/faq">FAQ</a>
+            <Link to="/faq">FAQ</Link>
           </li>
           <li
-            className={`${
+            className={`hover:text-black active:text-primaryGray transition-colors duration-300 ${
               isCurrentPath('/get-involved') ? 'font-bold' : 'font-normal'
             }`}
           >
-            <a href="/get-involved">GET INVOVLED</a>
+            <Link to="/get-involved">Get Involved</Link>
           </li>
           <li
-            className={`${
+            className={`hover:text-black active:text-primaryGray transition-colors duration-300 ${
               isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
             }`}
           >
-            <a href="/contact-us">CONTACT</a>
+            <Link to="/contact-us">Contact Us</Link>
           </li>
         </ul>
       </div>
