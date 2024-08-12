@@ -17,7 +17,7 @@ const Statistic = (props) => {
           setIsInView(false);
         }
       },
-      { threshold: 0.8 }
+      { threshold: 0.3 }
     );
 
     if (ref.current) {
