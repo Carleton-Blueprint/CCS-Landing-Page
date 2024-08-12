@@ -9,7 +9,6 @@ const Layout = ({ pathname, backgroundColour, children }) => {
   const locked = useRef(false);
   useEffect(() => {
     const handleScroll = () => {
-      console.log(locked.current);
       if (locked.current) {
         setIsVisible(true);
         return;
@@ -41,7 +40,6 @@ const Layout = ({ pathname, backgroundColour, children }) => {
     };
 
     const handleMouseMove = (event) => {
-      console.log(locked.current);
       if (locked.current) {
         setIsVisible(true);
         return;
