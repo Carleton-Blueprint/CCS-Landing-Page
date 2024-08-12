@@ -9,8 +9,8 @@ const HomeImageCarousel = (props) => {
   const carouselRef = useRef(null);
 
   const getActive = () => {
-    if (!carouselRef.current) return;
-    return translateAmount / carouselRef.current.offsetWidth;
+    if (!carouselWidth) return 0;
+    return translateAmount / carouselWidth;
   };
 
   useEffect(() => {
@@ -31,6 +31,7 @@ const HomeImageCarousel = (props) => {
   }, []);
 
   const allImages = props.images;
+  console.log(allImages);
   return (
     <div
       ref={carouselRef}
@@ -42,16 +43,18 @@ const HomeImageCarousel = (props) => {
       >
         <div className="flex">
           {allImages.map((image) => (
-            <div
-              style={{ transform: `translateX(-${translateAmount}px)` }}
-              className="transition-all duration-150 ease-out"
-            >
-              <GatsbyImage
-                className="w-[267px] h-[306px] md:w-[355px] md:h-[423px] xl:w-[267px] xl:h-[306px]"
-                image={image.galleryImage.gatsbyImageData}
-                alt={image.galleryImage.description}
-              />
-            </div>
+            <>
+              <div
+                style={{ transform: `translateX(-${translateAmount}px)` }}
+                className="transition-all duration-150 ease-out"
+              >
+                <GatsbyImage
+                  className="w-[267px] h-[306px] md:w-[355px] md:h-[423px] xl:w-[267px] xl:h-[306px]"
+                  image={image.galleryImage.gatsbyImageData}
+                  alt={image.galleryImage.description}
+                />
+              </div>
+            </>
           ))}
         </div>
       </div>
