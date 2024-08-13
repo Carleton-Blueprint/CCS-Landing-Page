@@ -5,10 +5,10 @@ import linkedin from '../../images/linkedin-icon.png';
 import instagram from '../../images/instagram-icon.png';
 
 const SocialMedia = () => {
-  const sharedStyles =
-    'bg-gray-300 rounded-full w-[40px] m-[5px] p-[10px] transition-colors transform hover:scale-110 hover:rotate-6 hover:bg-gray-500 active:bg-gray-700 ease-out duration-200';
+  const sharedStyles = `bg-gray-300 rounded-full w-[40px] m-[5px] p-[10px] 
+  transition-colors transform hover:scale-110 hover:rotate-6 hover:bg-gray-500 active:bg-gray-700 ease-out duration-200`;
   return (
-    <div className="flex-col items-center justify-center mb-3">
+    <div className="flex-col items-center justify-center mb-3 transform -translate-y-10 lg:-translate-y-20 2xl:-translate-y-28">
       <h1 className="mb-1 text-xl font-bold text-center text-gray-600">
         Get in touch with the official CUSEC Team
       </h1>
