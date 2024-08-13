@@ -17,7 +17,7 @@ const CarletonCUSECSocialMedia = () => {
         </a>
 
         <a
-          href="mailto:info@cusec.net"
+          href="mailto:cusec.carleton@gmail.com"
           className="bg-gray-300 rounded-full w-[40px] m-[5px] p-[10px] transition-colors transform hover:scale-110 
           hover:rotate-6 hover:bg-gray-500 active:bg-gray-700 ease-out duration-200"
           style={{ boxShadow: 'inset 0 3px 5px 1px rgb(0,0,0,0.3)' }}
@@ -25,7 +25,7 @@ const CarletonCUSECSocialMedia = () => {
           <img alt="Carleton CUSEC Society official mail" src={mail} />
         </a>
         <a
-          href="https://www.linkedin.com/company/cusec/mycompany/"
+          href="https://www.instagram.com/carleton.cusec/"
           className="bg-gray-300 rounded-full w-[40px] m-[5px] p-[10px] transition-colors transform hover:scale-110 
           hover:rotate-6 hover:bg-gray-500 active:bg-gray-700 ease-out duration-200"
           style={{ boxShadow: 'inset 0 3px 5px 1px rgb(0,0,0,0.3)' }}

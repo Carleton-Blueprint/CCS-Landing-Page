@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import background from '../../images/footer-background.png';
 import CUSECLogo from '../../images/ccs-logo.png';
 import CarletonLogo from '../../images/carleton-logo.png';
@@ -25,7 +26,7 @@ const Footer = () => {
               <img
                 className="object-contain w-full h-full"
                 src={CarletonLogo}
-                alt="CUSEC logo"
+                alt="Carleton logo"
               />
             </div>
           </div>
@@ -35,19 +36,52 @@ const Footer = () => {
           <span>Site Map</span>
           <ul className="flex-col pt-2 font-poppins">
             <li>
-              <a href="/">Home</a>
+              <Link
+                to="/"
+                className="transition-all duration-300 hover:text-gray-500 active:text-gray-600 active:scale-95"
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <a href="/about-us">About Us</a>
+              <Link
+                to="/about-us"
+                className="transition-all duration-300 hover:text-gray-500 active:text-gray-600 active:scale-95"
+              >
+                About Us
+              </Link>
             </li>
             <li>
-              <a href="/events">Events</a>
+              <Link
+                to="/events"
+                className="transition-all duration-300 hover:text-gray-500 active:text-gray-600 active:scale-95"
+              >
+                Events
+              </Link>
             </li>
             <li>
-              <a href="/faq">FAQ</a>
+              <Link
+                to="/faq"
+                className="transition-all duration-300 hover:text-gray-500 active:text-gray-600 active:scale-95"
+              >
+                FAQ
+              </Link>
             </li>
             <li>
-              <a href="/contact-us">Contact Us</a>
+              <Link
+                to="/get-involved"
+                className="transition-all duration-300 hover:text-gray-500 active:text-gray-600 active:scale-95"
+              >
+                Get Involved
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contact-us"
+                className="transition-all duration-300 hover:text-gray-500 active:text-gray-600 active:scale-95"
+              >
+                Contact Us
+              </Link>
             </li>
           </ul>
         </div>
