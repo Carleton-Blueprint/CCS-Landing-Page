@@ -82,9 +82,7 @@ const Form = () => {
               <label
                 className="block mb-2 text-sm text-white lg:text-md"
                 htmlFor="firstName"
-              >
-                First Name
-              </label>
+              ></label>
               <input
                 value={formData.firstName}
                 onChange={handleChange}
@@ -108,9 +106,7 @@ const Form = () => {
               <label
                 className="block mb-2 text-sm text-white lg:text-md"
                 htmlFor="lastName"
-              >
-                Last Name
-              </label>
+              ></label>
               <input
                 value={formData.lastName}
                 onChange={handleChange}
@@ -135,9 +131,7 @@ const Form = () => {
             <label
               className="block mb-2 text-sm text-white lg:text-md"
               htmlFor="email"
-            >
-              Email
-            </label>
+            ></label>
             <input
               value={formData.email}
               onChange={handleChange}
@@ -159,12 +153,6 @@ const Form = () => {
 
         <div className="flex mb-4">
           <div className="flex-1">
-            <label
-              className="block mb-2 text-sm text-white lg:text-md"
-              htmlFor="subject"
-            >
-              Subject
-            </label>
             <input
               value={formData.subject}
               onChange={handleChange}
@@ -183,13 +171,6 @@ const Form = () => {
             *
           </div>
         </div>
-
-        <label
-          className="block mb-2 text-sm text-white lg:text-md"
-          htmlFor="message"
-        >
-          Message
-        </label>
         <textarea
           value={formData.message}
           onChange={handleChange}
