@@ -46,7 +46,7 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
       <AnimatePresence initial={false}>
         {hover && (
           <motion.div
-            className={`${
+            className={`hover:text-red-900 hover:bg-white active:text-white active:bg-primaryGray ${
               !mobile ? 'absolute  bg-dark-red-to-light-red' : ''
             } rounded-lg top-[5.5rem] mb-10`}
             initial={{ opacity: 0, y: -20 }}
