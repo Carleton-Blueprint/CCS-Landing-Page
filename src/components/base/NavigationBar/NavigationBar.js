@@ -202,7 +202,7 @@ const NavigationBar = (props) => {
               hover={aboutHover}
               setHover={setAboutHover}
               label={{ name: 'About Us', href: '/about-us' }}
-              items={[{ name: 'Meet Team', href: '/meet-team' }]}
+              items={[{ name: 'Meet the Team', href: '/meet-team' }]}
               mobile={false}
             />
           </li>
