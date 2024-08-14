@@ -7,19 +7,10 @@ require('dotenv').config({
 });
 
 module.exports = {
-  plugins: [
-    {
-      resolve: `gatsby-source-custom`,
-      options: {
-        apiKey: process.env.API_KEY,
-      },
-    },
-  ],
-};
-module.exports = {
   siteMetadata: {
     title: `Carleton CUSEC Society`,
-    description: 'Placeholder Description',
+    description: `Carleton's own CUSEC society designed to raise awarness of CUSEC and guide Carleton's 
+      future software engineers on the ins and outs of CUSEC`,
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
@@ -29,6 +20,12 @@ module.exports = {
         accessToken: process.env.ACCESS_TOKEN,
         spaceId: process.env.SPACE_ID,
         host: process.env.CONTENTFUL_HOST,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/images/ccs-logo.png',
       },
     },
     'gatsby-plugin-image',

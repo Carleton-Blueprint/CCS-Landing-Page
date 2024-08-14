@@ -8,6 +8,8 @@ import Layout from '../components/base/Layout';
 import HeaderWithSubtitle from '../components/base/HeaderWithSubtitle';
 import { SchedulerRightArrow } from '../SVGs/scheduler-SVGs';
 import { SchedulerLeftArrow } from '../SVGs/scheduler-SVGs'; //need to import these individually or bugs occur
+import { Seo } from '../components/base/Seo';
+
 const Schedule = ({ data, location }) => {
   const [date, setDate] = useState(1);
   const [currentEvents, setCurrentEvents] = useState([]);
@@ -101,9 +103,22 @@ const Schedule = ({ data, location }) => {
                 ${dayNumber > 1 ? '' : 'hidden'}
 
               `}
-              ariaLabel={`set date to ${date-1}`}
+              ariaLabel={`set date to ${date - 1}`}
             >
-              <SchedulerLeftArrow />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="white"
+                className="size-8"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 19.5 8.25 12l7.5-7.5"
+                />
+              </svg>{' '}
             </button>
             <div className="">
               <h1 className="text-3xl font-bold text-center text-white">
@@ -119,9 +134,22 @@ const Schedule = ({ data, location }) => {
                 border-2 absolute right-10 sm:right-20 rounded-full p-2 
                 ${dayNumber < 3 ? '' : 'hidden'}
               `}
-              ariaLabel={`set date to ${date+1}`}
+              ariaLabel={`set date to ${date + 1}`}
             >
-              <SchedulerRightArrow />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="white"
+                className="size-8"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                />
+              </svg>{' '}
             </button>
           </div>
           <div className="mt-[-50px]">
@@ -132,6 +160,10 @@ const Schedule = ({ data, location }) => {
     </div>
   );
 };
+
+export const Head = () => (
+  <Seo title="Schedule" description="Learn about CUSEC's 2024 schedule" />
+);
 
 export const query = graphql`
   query MyQuery {

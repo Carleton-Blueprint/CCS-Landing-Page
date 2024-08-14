@@ -5,6 +5,8 @@ import background from '../images/get-involved-header.svg';
 import Header from '../components/base/Header';
 import Layout from '../components/base/Layout';
 import Bubble from '../components/animation-wrappers/Bubble';
+import { Seo } from '../components/base/Seo';
+
 const GetInovlved = ({ data, location }) => {
   const [isInView, setIsInView] = useState(false);
   const ref = useRef(null);
@@ -51,6 +53,10 @@ const GetInovlved = ({ data, location }) => {
 };
 
 export default GetInovlved;
+
+export const Head = () => (
+  <Seo title="About" description="Findout how to get involved with CCS" />
+);
 
 export const query = graphql`
   query {

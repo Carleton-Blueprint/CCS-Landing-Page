@@ -5,6 +5,7 @@ import Header from '../components/base/Header';
 import background from '../images/faq-header.svg';
 import Layout from '../components/base/Layout';
 import AppearFrom from '../components/animation-wrappers/AppearFrom';
+import { Seo } from '../components/base/Seo';
 
 function Faq({ data, location }) {
   return (
@@ -33,5 +34,9 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = () => (
+  <Seo title="FAQ" description="Most common questions CCS gets" />
+);
 
 export default Faq;
