@@ -9,6 +9,13 @@ const GetInvolvedCard = ({ data }) => {
   const buttonText = data?.linkTitle;
   const link = data?.link;
 
+  const overlayStyle = {
+    backgroundSize: '100% 600%',
+    backgroundPosition: isHovering ? '100% 100%' : '100% 0%',
+    backgroundImage:
+      'linear-gradient(135deg, rgb(255,0,0,0), rgb(255,0,0,0), rgb(255,0,0,0), rgb(255,0,0,0.6))',
+  };
+
   return (
     <div
       onMouseEnter={() => setIsHovering(true)}
@@ -16,7 +23,8 @@ const GetInvolvedCard = ({ data }) => {
       className="relative flex flex-col w-10/12 transition-all duration-30 text-white 
                 rounded-tr-[3rem] rounded-bl-[3rem] 
                 hover:rounded-tr-none hover:rounded-bl-none hover:rounded-tl-[3rem] hover:rounded-br-[3rem] 
-                bg-primaryGray h-[16rem] sm:w-[32rem] sm:h-[22rem] shadow-red-bottom-left hover:shadow-red-bottom-left-hover"
+                bg-primaryGray h-[16rem] sm:w-[32rem] sm:h-[22rem]"
+      style={{ ...overlayStyle }}
     >
       <div className="px-6 pt-8 ">
         <p className="mb-4 text-lg font-semibold sm:text-2xl font-poppins">
