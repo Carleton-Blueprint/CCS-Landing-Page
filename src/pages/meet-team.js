@@ -31,7 +31,6 @@ export const query = graphql`
         position1
         position2
         year
-        description
         linkedin
         standing
         program

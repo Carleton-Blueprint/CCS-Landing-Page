@@ -20,7 +20,7 @@ const ImageGallery = ({ data, location }) => {
     if (!window) return;
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 824);
     };
 
     // Invoke handleResize initially

@@ -70,7 +70,6 @@ const Member = (props) => {
           <h3 className="text-sm font-bold text-center">
             {props.member.standing} year {props.member.program}
           </h3>
-          <p className="text-sm text-justify">{props.member.description}</p>
         </div>
       </div>
     </div>

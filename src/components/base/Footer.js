@@ -16,18 +16,22 @@ const Footer = () => {
         <div className="flex flex-col justify-between mt-6">
           <div className="flex justify-center mb-5 space-x-4">
             <div className="w-[85px]">
-              <img
-                className="object-contain w-full h-full"
-                src={CUSECLogo}
-                alt="CUSEC logo"
-              />
+              <a href={'/'}>
+                <img
+                  className="object-contain w-full h-full"
+                  src={CUSECLogo}
+                  alt="CUSEC logo"
+                />
+              </a>
             </div>
             <div className="w-[85px]">
-              <img
-                className="object-contain w-full h-full"
-                src={CarletonLogo}
-                alt="Carleton logo"
-              />
+              <a href={'https://carleton.ca/'}>
+                <img
+                  className="object-contain w-full h-full"
+                  src={CarletonLogo}
+                  alt="Carleton logo"
+                />
+              </a>
             </div>
           </div>
           <CarletonCUSECSocialMedia />
