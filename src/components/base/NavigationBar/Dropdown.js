@@ -35,7 +35,12 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
     <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <motion.div initial={false}>
         <div className="whitespace-nowrap">
-          <Link to={label.href}>{label.name}</Link>
+          <Link
+            className="hover:text-black active:text-primaryGray"
+            to={label.href}
+          >
+            {label.name}
+          </Link>
           <RotatingArrow
             isHovering={hover}
             handleClick={handleClick}
