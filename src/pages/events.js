@@ -6,6 +6,7 @@ import { Seo } from '../components/base/Seo';
 import Layout from '../components/base/Layout';
 import Bubble from '../components/animation-wrappers/Bubble';
 import AppearFrom from '../components/animation-wrappers/AppearFrom';
+
 const Events = (props) => {
   const eventsData = props.data.allContentfulFeaturedEvent.nodes;
   const [availableEvents, setAvailableEvents] = useState([]);
@@ -126,13 +127,19 @@ const Events = (props) => {
         </AppearFrom>
         <div className="flex justify-center md:justify-normal">
           <select
+            aria-label="select year"
             value={selectedYear}
             onChange={(e) => setSelectedYear(e.target.value)}
             className="px-2 mb-4 text-sm rounded-md focus:outline-none bg-eventsGrey text-eventsTextGrey drop-shadow-md md:ml-32 w-28 md:w-44 md:text-base md:px-4 md:py-1 md:mb-0 md:mt-4"
           >
             {academicYears.map((year, index) => {
               return (
-                <option key={index} value={year} className="hover:bg-darkGrey">
+                <option
+                  key={index}
+                  value={year}
+                  className="hover:bg-darkGrey"
+                  aria-label={`${year}`}
+                >
                   {year}
                 </option>
               );
@@ -152,6 +159,7 @@ const Events = (props) => {
               className={`transition-colors duration-300 ${
                 renderingPresent ? 'text-red-500' : 'text-black'
               }`}
+              aria-label="see upcoming events"
             >
               Upcoming
             </button>
@@ -167,6 +175,7 @@ const Events = (props) => {
               className={`transition-colors duration-300 ${
                 renderingPresent ? 'text-black' : 'text-red-500'
               }`}
+              aria-label="see past events"
             >
               Past
             </button>
@@ -226,7 +235,10 @@ export const query = graphql`
 `;
 
 export const Head = () => (
-  <Seo title="Events Page" description="This is the events page" />
+  <Seo
+    title="Events Page"
+    description="Learn about upcoming and past events at CCS"
+  />
 );
 
 export default Events;

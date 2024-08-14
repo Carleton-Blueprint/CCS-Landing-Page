@@ -11,7 +11,7 @@ const RotatingArrow = ({ isHovering, isMobile, handleClick }) => {
       className={`inline ml-2 cursor-pointer ${
         isMobile ? 'size-10' : 'size-6'
       }`}
-      animate={{ rotate: isHovering ? 0 : 180 }}
+      animate={{ rotate: isHovering ? 180 : 0 }}
       transition={{ duration: 0.3 }}
     >
       <path

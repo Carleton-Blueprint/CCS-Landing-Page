@@ -31,6 +31,4 @@ export const query = graphql`
 export default HomePage;
 // query to return all galleryImages from the AboutUsGallery
 
-export const Head = () => (
-  <Seo title="Home Page" description="This is the home page" />
-);
+export const Head = () => <Seo title="Home" description="Welcome to CCS" />;

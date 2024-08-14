@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const GetInvolvedCard = ({ data }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -29,7 +29,10 @@ const GetInvolvedCard = ({ data }) => {
       <div className="flex justify-between w-full">
         <div className="p-6">
           <a href={link}>
-            <button className="absolute w-1/3 transition-all duration-200 ease-in border border-white active:border-[#676666] rounded-3xl bottom-8 bg-primaryGray hover:bg-darkGrey active:bg-[#676666]">
+            <button
+              ariaLabel={buttonText}
+              className="absolute w-1/3 transition-all duration-200 ease-in border border-white active:border-[#676666] rounded-3xl bottom-8 bg-primaryGray hover:bg-darkGrey active:bg-[#676666]"
+            >
               <p className="p-2 text-xs font-bold sm:text-lg hover:text-[#151515] active:text-white">
                 {buttonText}
               </p>

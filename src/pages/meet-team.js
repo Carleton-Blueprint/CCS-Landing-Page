@@ -4,6 +4,7 @@ import TeamMembers from '../components/team-components/TeamMembers';
 import Header from '../components/base/Header';
 import background from '../images/meet-the-team-header.svg';
 import Layout from '../components/base/Layout';
+import { Seo } from '../components/base/Seo';
 
 const MeetTeam = ({ data, location }) => {
   const members = data.allContentfulTeamMember.nodes;
@@ -17,6 +18,10 @@ const MeetTeam = ({ data, location }) => {
   );
 };
 
+export const Head = () => (
+  <Seo title="Meet the Team" description="Meet the past and present CCS team" />
+);
+
 export const query = graphql`
   query MyQuery {
     allContentfulTeamMember {
@@ -26,7 +31,6 @@ export const query = graphql`
         position1
         position2
         year
-        description
         linkedin
         standing
         program

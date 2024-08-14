@@ -6,7 +6,6 @@ function Question(props) {
   const [isOpen, setIsOpen] = useState(false);
   const question = props.faq.faqQuestion;
   const answer = JSON.parse(props.faq.faqAnswer.raw);
-  const index = props.index;
   const isLast = props.isLast;
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -32,6 +31,7 @@ function Question(props) {
         <button
           className="flex items-center justify-between w-full px-4 pt-4 pb-4"
           onClick={toggleOpen}
+          ariaLabel={`FAQ Question: ${question}`}
         >
           <span className="mx-2 my-2 text-xs font-semibold md:mx-4 md:text-sm">
             {question}

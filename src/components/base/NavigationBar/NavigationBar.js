@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import CarletonCUSECLogo from '../../../images/cusec-logo.png';
+import CarletonCUSECLogo from '../../../images/ccs-logo.png';
 import { Link } from 'gatsby';
 import Dropdown from './Dropdown';
 const NavigationBar = (props) => {
@@ -8,7 +8,6 @@ const NavigationBar = (props) => {
   const [aboutHover, setAboutHover] = useState(false);
   const [eventsHover, setEventsHover] = useState(false);
   const currentpath = props.pathname;
-
   const isCurrentPath = (page) => {
     if (currentpath.startsWith(page)) {
       return true;
@@ -18,8 +17,10 @@ const NavigationBar = (props) => {
 
   useEffect(() => {
     if (isMenuOpen) {
+      props.lockNavBar();
       document.body.style.overflow = 'hidden';
     } else {
+      props.unlockNavBar();
       document.body.style.overflow = '';
     }
 
@@ -28,6 +29,7 @@ const NavigationBar = (props) => {
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -39,10 +41,8 @@ const NavigationBar = (props) => {
   };
 
   return (
-    // change height based on screen
-    <div className="container h-14 md:h-auto z-[95]">
-      {/* Add custom styles to tailwind config to match figma */}
-      <div className="flex items-center justify-end w-full gap-10 text-white md:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
+    <div className="container h-14 xl:h-auto z-[95]">
+      <div className="flex items-center justify-end w-full gap-10 text-white xl:hidden bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
         <div className="relative z-50 w-full pr-10">
           {!isMenuOpen ? (
             <div className="flex justify-between w-full ">
@@ -111,11 +111,11 @@ const NavigationBar = (props) => {
               <div className="w-full border-t border-gray-400 my-14">
                 <ul className="flex-col items-center justify-end pt-2 pl-20 ">
                   <li
-                    className={`my-16 ${
+                    className={`my-16 hover:text-black active:text-primaryGray transition-colors duration-300 ${
                       currentpath === '/' ? 'font-bold' : 'font-normal'
                     }`}
                   >
-                    <a href="/">HOME</a>
+                    <Link to="/">HOME</Link>
                   </li>
                   <li
                     className={`my-16 ${
@@ -126,7 +126,7 @@ const NavigationBar = (props) => {
                       isCurrent={isCurrentPath}
                       hover={aboutHover}
                       setHover={setAboutHover}
-                      label={{ name: 'ABOUT US', href: '/about-us' }}
+                      label={{ name: 'About Us', href: '/about-us' }}
                       items={[{ name: 'Meet The Team', href: '/meet-team' }]}
                       mobile={true}
                     />
@@ -140,35 +140,33 @@ const NavigationBar = (props) => {
                       isCurrent={isCurrentPath}
                       hover={eventsHover}
                       setHover={setEventsHover}
-                      label={{ name: 'EVENTS', href: '/events' }}
-                      items={[
-                        { name: 'Schedule', href: '/schedule' },
-                        { name: 'Another Item', href: '/schedule' },
-                        { name: 'Other Item', href: '/schedule' },
-                      ]}
+                      label={{ name: 'Events', href: '/events' }}
+                      items={[{ name: 'Schedule', href: '/schedule' }]}
                       mobile={true}
                     />
                   </li>
                   <li
-                    className={`my-16 ${
+                    className={`my-16 hover:text-black active:text-primaryGray transition-colors duration-300 ${
                       isCurrentPath('/faq') ? 'font-bold' : 'font-normal'
                     }`}
                   >
-                    <a href="/faq">FAQ</a>
+                    <Link to="/faq">FAQ</Link>
                   </li>
                   <li
-                    className={`my-16 ${
+                    className={`my-16 hover:text-black active:text-primaryGray transition-colors duration-300 ${
+                      isCurrentPath('/get-involved')
+                        ? 'font-bold'
+                        : 'font-normal'
+                    }`}
+                  >
+                    <Link to="/get-involved">Get Involved</Link>
+                  </li>
+                  <li
+                    className={`my-16 hover:text-black active:text-primaryGray transition-colors duration-300 ${
                       isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
                     }`}
                   >
-                    <a href="/get-involved">GET INVOVLED</a>
-                  </li>
-                  <li
-                    className={`my-16 ${
-                      isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
-                    }`}
-                  >
-                    <a href="/contact-us">CONTACT</a>
+                    <Link to="/contact-us">Contact Us</Link>
                   </li>
                 </ul>
               </div>
@@ -176,7 +174,7 @@ const NavigationBar = (props) => {
           )}
         </AnimatePresence>
       </div>
-      <div className="items-center justify-between hidden w-full gap-20 text-white md:flex bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
+      <div className="items-center justify-between hidden w-full gap-20 text-white xl:flex bg-gradient-to-r from-neutral-900 to-red-700 font-poppins">
         <Link to="/">
           <div className="p-3 ml-3 ">
             <img
@@ -188,12 +186,14 @@ const NavigationBar = (props) => {
         </Link>
         <ul className="flex items-center justify-end gap-20 pr-20">
           <li
-            className={`${currentpath === '/' ? 'font-bold' : 'font-normal'}`}
+            className={`hover:text-black active:text-primaryGray transition-colors duration-300 ${
+              currentpath === '/' ? 'font-bold' : 'font-normal'
+            }`}
           >
-            <a href="/">HOME</a>
+            <Link to="/">Home</Link>
           </li>
           <li
-            className={`${
+            className={` ${
               isCurrentPath('/about-us') ? 'font-bold' : 'font-normal'
             } flex justify-center items-center`}
           >
@@ -201,13 +201,13 @@ const NavigationBar = (props) => {
               isCurrent={isCurrentPath}
               hover={aboutHover}
               setHover={setAboutHover}
-              label={{ name: 'ABOUT US', href: '/about-us' }}
-              items={[{ name: 'Meet Team', href: '/meet-team' }]}
+              label={{ name: 'About Us', href: '/about-us' }}
+              items={[{ name: 'Meet the Team', href: '/meet-team' }]}
               mobile={false}
             />
           </li>
           <li
-            className={`${
+            className={` ${
               isCurrentPath('/events') ? 'font-bold' : 'font-normal'
             } flex justify-center items-center`}
           >
@@ -215,29 +215,30 @@ const NavigationBar = (props) => {
               isCurrent={isCurrentPath}
               hover={eventsHover}
               setHover={setEventsHover}
-              label={{ name: 'EVENTS', href: '/events' }}
+              label={{ name: 'Events', href: '/events' }}
               items={[{ name: 'Schedule', href: '/schedule' }]}
               mobile={false}
             />
           </li>
           <li
-            className={`${isCurrentPath('/faq') ? 'font-bold' : 'font-normal'}`}
+            className={`hover:text-black active:text-primaryGray transition-colors duration-300 
+${isCurrentPath('/faq') ? 'font-bold' : 'font-normal'}`}
           >
-            <a href="/faq">FAQ</a>
+            <Link to="/faq">FAQ</Link>
           </li>
           <li
-            className={`${
+            className={`hover:text-black active:text-primaryGray transition-colors duration-300 ${
+              isCurrentPath('/get-involved') ? 'font-bold' : 'font-normal'
+            }`}
+          >
+            <Link to="/get-involved">Get Involved</Link>
+          </li>
+          <li
+            className={`hover:text-black active:text-primaryGray transition-colors duration-300 ${
               isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
             }`}
           >
-            <a href="/get-involved">GET INVOVLED</a>
-          </li>
-          <li
-            className={`${
-              isCurrentPath('/contact-us') ? 'font-bold' : 'font-normal'
-            }`}
-          >
-            <a href="/contact-us">CONTACT</a>
+            <Link to="/contact-us">Contact Us</Link>
           </li>
         </ul>
       </div>

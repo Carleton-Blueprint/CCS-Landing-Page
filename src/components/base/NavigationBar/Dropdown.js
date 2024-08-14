@@ -35,7 +35,12 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
     <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <motion.div initial={false}>
         <div className="whitespace-nowrap">
-          <Link to={label.href}>{label.name}</Link>
+          <Link
+            className="hover:text-black active:text-primaryGray"
+            to={label.href}
+          >
+            {label.name}
+          </Link>
           <RotatingArrow
             isHovering={hover}
             handleClick={handleClick}
@@ -46,7 +51,7 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
       <AnimatePresence initial={false}>
         {hover && (
           <motion.div
-            className={`${
+            className={`hover:text-red-900 hover:bg-white active:text-white active:bg-primaryGray ${
               !mobile ? 'absolute  bg-dark-red-to-light-red' : ''
             } rounded-lg top-[5.5rem] mb-10`}
             initial={{ opacity: 0, y: -20 }}
@@ -60,32 +65,28 @@ const Dropdown = ({ isCurrent, hover, setHover, label, items, mobile }) => {
           >
             {items.map((item, index) => {
               return (
-                <motion.div
-                  key={index}
-                  className={`${!mobile ? 'text-center' : ''}`}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{
-                    opacity: 1,
-                    y: mobile ? 20 : 0,
-                  }}
-                  exit={{ opacity: 0, y: -20 }}
-                  whileInView={{ y: mobile ? 20 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div>
-                    <div
-                      className={`${
-                        isCurrent(item.href) ? 'font-bold' : 'font-normal'
-                      } ${
-                        mobile
-                          ? 'ml-[50px] mb-[30px]'
-                          : 'w-[9em] whitespace-nowrap z-[100] relative p-2 rounded-lg hover:text-red-900 hover:bg-white transition-colors duration-150 ease-in-out'
-                      }`}
-                    >
-                      <a href={item.href}>{item.name}</a>
-                    </div>
-                  </div>
-                </motion.div>
+                <Link to={item.href}>
+                  <motion.div
+                    key={index}
+                    className={`${
+                      isCurrent(item.href) ? 'font-bold' : 'font-normal'
+                    } ${
+                      mobile
+                        ? 'ml-[50px] mb-[30px]'
+                        : 'w-[9em] whitespace-nowrap z-[100] relative p-2 rounded-lg hover:text-red-900 hover:bg-white active:text-white active:bg-primaryGray transition-colors duration-150 ease-in-out text-center'
+                    }`}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{
+                      opacity: 1,
+                      y: mobile ? 20 : 0,
+                    }}
+                    exit={{ opacity: 0, y: -20 }}
+                    whileInView={{ y: mobile ? 20 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {item.name}
+                  </motion.div>
+                </Link>
               );
             })}
           </motion.div>

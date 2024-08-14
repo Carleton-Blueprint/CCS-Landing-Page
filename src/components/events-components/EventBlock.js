@@ -137,7 +137,7 @@ const EventBlock = (props) => {
       </div>
       <div className="flex items-center justify-center gap-5 mb-5">
         {props.event.featureDetailedEventPage && (
-          <EventReadMore eventSlug={props.event.slug} />
+          <EventReadMore eventSlug={props.event.slug} eventName={title} />
         )}
         <EventButton
           description={description}

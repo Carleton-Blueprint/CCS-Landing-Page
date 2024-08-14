@@ -18,7 +18,6 @@ const Member = (props) => {
     backgroundImage:
       'linear-gradient(rgb(255,0,0,0), rgb(255,0,0,0), rgb(255,0,0,0.6))',
   };
-  const randomInt = Math.floor(Math.random() * 10) + 1;
 
   return (
     <div className="h-[600px] lg:h-[620px]">
@@ -40,6 +39,7 @@ const Member = (props) => {
               className={`flex relative top-[85%] left-[80%] lg:relative ${
                 isHovering ? 'block' : 'lg:hidden'
               }`}
+              aria-label={`go to ${props.member.name}'s linkedIn`}
             >
               <a
                 href={props.member.linkedin}
@@ -70,7 +70,6 @@ const Member = (props) => {
           <h3 className="text-sm font-bold text-center">
             {props.member.standing} year {props.member.program}
           </h3>
-          <p className="text-sm text-justify">{props.member.description}</p>
         </div>
       </div>
     </div>
