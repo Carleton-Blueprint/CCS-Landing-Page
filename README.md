@@ -1,5 +1,5 @@
 # Carleton CUSEC Society Website
-
+ 
 Welcome to the Carleton CUSEC Society (CCS) website, brought to you by Carleton Blueprint ❤️!
 
 # Technologies
