@@ -1,51 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AttendReason from './AttendReason';
-import { useState } from 'react';
 import { WhyAttendRightArrow } from '../../SVGs/about-us-SVGs';
 import { useSwipeable } from 'react-swipeable';
+
 const WhyAttendMobile = (props) => {
   const [renderIndex, setRenderIndex] = useState(1);
-  const [test, setTest] = useState('HI');
   const allNodes = props.reasons;
+
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       setRenderIndex((prev) =>
         prev - 1 === -1 ? allNodes.length - 1 : prev - 1
       );
-      setTest('P');
     },
     onSwipedRight: () => {
       setRenderIndex((prev) => (prev + 1) % allNodes.length);
-      setTest('Q');
     },
-    onSwipedDown: () => setTest('P'),
-    onSwipedUp: () => setTest('Q'),
     preventDefaultTouchmoveEvent: true,
     trackMouse: true, // Enables mouse swipe detection
   });
+
   return (
-    <div>
-      <div>{test}</div>
-      <div className="relative flex justify-center items-center h-[360px] lg:w-[600px]">
-        {allNodes.map((r, index) => {
-          return (
-            <div
-              {...handlers}
-              className={` h-full transition-all duration-200 ease-in-out absolute z-40 w-[50vw]  ${
-                renderIndex === index ? 'opacity-100 z-50' : 'opacity-0 z-0'
-              }`}
-            >
-              <AttendReason
-                key={r.id}
-                title={r.title}
-                subtitle={r.subtitle}
-                isCenter={true}
-                brightness={100}
-                image={r.icon}
-              />
-            </div>
-          );
-        })}
+    <div {...handlers}>
+      <div className="relative flex justify-center items-center py-12 h-[300px]">
+        {allNodes.map((r, index) => (
+          <div
+            key={r.id}
+            className={`h-full transition-all duration-200 ease-in-out absolute z-40 w-[70vw] ${
+              renderIndex === index ? 'opacity-100 z-50' : 'opacity-0 z-0'
+            }`}
+          >
+            <AttendReason
+              title={r.title}
+              subtitle={r.subtitle}
+              isCenter={true}
+              brightness={100}
+              image={r.icon}
+            />
+          </div>
+        ))}
       </div>
       <div className="flex justify-center items-align lg:w-[600px] mt-10">
         <button
