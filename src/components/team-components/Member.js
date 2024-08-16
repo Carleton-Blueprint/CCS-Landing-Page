@@ -31,7 +31,7 @@ const Member = (props) => {
             onMouseLeave={() => setIsHovering(false)}
             className="transition-all ease-linears 
             w-[240px] h-[320px] lg:w-[300px] lg:h-[400px] rounded-tr-[3rem] rounded-bl-[3rem]
-            shadow-light-bottom-left hover:shadow-light-bottom-left-hover duration-300
+            hover:shadow-light-bottom-left duration-300
             hover:rounded-tr-none hover:rounded-bl-none hover:rounded-tl-[3rem] hover:rounded-br-[3rem]"
             style={{ ...overlayStyle }}
           >
