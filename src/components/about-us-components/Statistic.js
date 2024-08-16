@@ -37,8 +37,8 @@ const Statistic = (props) => {
 
       <Springy magnitude="3">
         <div
-          className="transition-transform hover:scale-110 relative rounded-full p-8 m-4 
-          shadow-light-bottom-left hover:shadow-light-bottom-left-hover bg-gradient-to-b from-white to-[#d6d6d6] from-50% "
+          className="transition-transform hover:scale-110 relative rounded-full p-8 m-4 shadow-lg 
+           hover:shadow-2xl bg-gradient-to-b from-white to-[#d6d6d6] from-50% "
         >
           <div className="flex items-center justify-center h-full p-4 bg-white border-4 border-red-200 rounded-full shadow-inner-top">
             <p className="text-xl font-bold text-red-500">{props.stat}%</p>
