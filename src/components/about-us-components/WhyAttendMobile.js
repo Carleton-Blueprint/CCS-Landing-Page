@@ -2,16 +2,36 @@ import React from 'react';
 import AttendReason from './AttendReason';
 import { useState } from 'react';
 import { WhyAttendRightArrow } from '../../SVGs/about-us-SVGs';
+import { useSwipeable } from 'react-swipeable';
 const WhyAttendMobile = (props) => {
   const [renderIndex, setRenderIndex] = useState(1);
+  const [test, setTest] = useState('HI');
   const allNodes = props.reasons;
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      setRenderIndex((prev) =>
+        prev - 1 === -1 ? allNodes.length - 1 : prev - 1
+      );
+      setTest('P');
+    },
+    onSwipedRight: () => {
+      setRenderIndex((prev) => (prev + 1) % allNodes.length);
+      setTest('Q');
+    },
+    onSwipedDown: () => setTest('P'),
+    onSwipedUp: () => setTest('Q'),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true, // Enables mouse swipe detection
+  });
   return (
     <div>
+      <div>{test}</div>
       <div className="relative flex justify-center items-center h-[360px] lg:w-[600px]">
         {allNodes.map((r, index) => {
           return (
             <div
-              className={` transition-all duration-200 ease-in-out absolute z-40 w-[70vw]  ${
+              {...handlers}
+              className={` h-full transition-all duration-200 ease-in-out absolute z-40 w-[50vw]  ${
                 renderIndex === index ? 'opacity-100 z-50' : 'opacity-0 z-0'
               }`}
             >
