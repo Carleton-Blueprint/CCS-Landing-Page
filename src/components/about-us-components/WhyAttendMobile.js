@@ -8,12 +8,12 @@ const WhyAttendMobile = (props) => {
   const allNodes = props.reasons;
 
   const handlers = useSwipeable({
-    onSwipedLeft: () => {
+    onSwipedRight: () => {
       setRenderIndex((prev) =>
         prev - 1 === -1 ? allNodes.length - 1 : prev - 1
       );
     },
-    onSwipedRight: () => {
+    onSwipedLeft: () => {
       setRenderIndex((prev) => (prev + 1) % allNodes.length);
     },
     preventDefaultTouchmoveEvent: true,

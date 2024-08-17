@@ -62,13 +62,11 @@ const Home = ({ data }) => {
               </AppearFrom>
             </div>
             {data ? (
-              <Springy style="md:flex-1 xl:flex-0 flex justify-center items-center">
-                <AppearFrom direction="right" speed="2">
-                  <HomeImageCarousel
-                    images={data.allContentfulAboutUsGallery.nodes}
-                  />
-                </AppearFrom>
-              </Springy>
+              <AppearFrom direction="right" speed="2">
+                <HomeImageCarousel
+                  images={data.allContentfulAboutUsGallery.nodes}
+                />
+              </AppearFrom>
             ) : null}
           </div>
         </div>
