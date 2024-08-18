@@ -7,11 +7,11 @@ const EventsTitle = () => {
   return (
     <>
       <div
-        className="w-full min-h-screen"
+        className="w-full min-h-[135vh]"
         style={{
           backgroundImage: `url(${background})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'bottom',
         }}
       >
         <div className="flex justify-center">
@@ -35,7 +35,7 @@ const EventsTitle = () => {
             Software Engineering Conference
           </p>
           <div className="flex gap-10 p-8">
-            <AppearFrom direction="left" speed="3">
+            <AppearFrom direction="left" speed="1">
               <a href="https://2024.cusec.net/">
                 <button
                   className="text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm 
@@ -48,7 +48,7 @@ const EventsTitle = () => {
                 </button>
               </a>
             </AppearFrom>
-            <AppearFrom direction="right" speed="3">
+            <AppearFrom direction="right" speed="1">
               <Link to="/schedule">
                 <button
                   className="text-black rounded-full px-6 py-2 text-center shadow-dark-bottom-left text-sm 
