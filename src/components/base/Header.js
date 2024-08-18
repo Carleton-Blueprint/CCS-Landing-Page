@@ -9,7 +9,7 @@ const Header = (props) => {
         src={props.background}
         alt="Header Background"
       />
-      <div className="absolute z-10 top-[14vh] sm:top-[20vh] md:top-[18vh] w-full text-center">
+      <div className="absolute z-10 top-[14vh] sm:top-[20vh] md:top-[18vh] w-full text-center" style={{'text-shadow': '2px 4px 8px rgba(0, 0, 0, 0.5)'}}>
         <h1 className="lg:text-[80px] md:text-[70px] sm:text-[60px] text-[50px] font-bold text-white">
           {props.title}
         </h1>
