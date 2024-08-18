@@ -9,13 +9,22 @@ import HeaderWithSubtitle from '../components/base/HeaderWithSubtitle';
 import { SchedulerRightArrow } from '../SVGs/scheduler-SVGs';
 import { SchedulerLeftArrow } from '../SVGs/scheduler-SVGs'; //need to import these individually or bugs occur
 import { Seo } from '../components/base/Seo';
-
+import { useSwipeable } from 'react-swipeable';
 const Schedule = ({ data, location }) => {
   const [date, setDate] = useState(1);
   const [currentEvents, setCurrentEvents] = useState([]);
 
   const allEvents = [...data.allContentfulScheduleRow.nodes];
-
+  const handlers = useSwipeable({
+    onSwipedRight: () => {
+      dayNumber > 1 && setDate((prev) => prev - 1);
+    },
+    onSwipedLeft: () => {
+      dayNumber < 3 && setDate((prev) => prev + 1);
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true, // Enables mouse swipe detection
+  });
   useEffect(() => {
     const currentDate = new Date(dates[date - 1]);
     const currentEvents = allEvents.filter((event) => {
@@ -82,7 +91,7 @@ const Schedule = ({ data, location }) => {
   const dayNumber = date;
   return (
     <div className="bg-gradient-to-b from-60% from-[#41151B] to-black">
-      <Layout pathname={location.pathname}>
+      <Layout pathname={location.pathname} disableMouseListener={true}>
         <HeaderWithSubtitle
           title="Schedule"
           subtitle="CUSEC 2024"
@@ -90,6 +99,8 @@ const Schedule = ({ data, location }) => {
         />
         <div className="relative">
           <div
+            {...handlers}
+            onClick={(e) => e.preventDefault()}
             className="sticky top-0 z-[99] flex justify-center w-full p-8 mt-[-20px] bg-bottom items-align"
             style={{
               'background-image': `url(${greyBackground})`,

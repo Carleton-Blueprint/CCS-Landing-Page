@@ -1,37 +1,50 @@
 import React from 'react';
 import { useState } from 'react';
 import GalleryImage from './GalleryImage';
-
+import { useSwipeable } from 'react-swipeable';
 const AboutUsGalleryMobile = (props) => {
   const allImages = props.images;
   const imagesLength = allImages.length;
   const [visibleIndex, setVisibleIndex] = useState(0);
-
+  const handlers = useSwipeable({
+    onSwipedRight: () => {
+      setVisibleIndex((prev) =>
+        prev - 1 === -1 ? imagesLength - 1 : prev - 1
+      );
+    },
+    onSwipedLeft: () => {
+      setVisibleIndex((prev) => (prev + 1) % imagesLength);
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true, // Enables mouse swipe detection
+  });
   return (
     <div className="flex flex-col">
-      {allImages.length
-        ? allImages.map((image, index) => {
-            return (
-              <div
-                className={` transition-opacity duration-200 ease-in-out ${
-                  visibleIndex !== index
-                    ? 'p-0 w-0 h-0 opacity-0'
-                    : 'px-10 h-44 opacity-100'
-                }`}
-              >
-                {visibleIndex === index && (
-                  <GalleryImage
-                    key={image.galleryImage.id}
-                    clicked={() => {}}
-                    url={image.galleryImage.gatsbyImageData}
-                    description={image.galleryImage.description}
-                    index={index}
-                  />
-                )}
-              </div>
-            );
-          })
-        : null}
+      <div {...handlers}>
+        {allImages.length
+          ? allImages.map((image, index) => {
+              return (
+                <div
+                  className={` transition-opacity duration-200 ease-in-out ${
+                    visibleIndex !== index
+                      ? 'p-0 w-0 h-0 opacity-0'
+                      : 'px-10 h-44 opacity-100'
+                  }`}
+                >
+                  {visibleIndex === index && (
+                    <GalleryImage
+                      key={image.galleryImage.id}
+                      clicked={() => {}}
+                      url={image.galleryImage.gatsbyImageData}
+                      description={image.galleryImage.description}
+                      index={index}
+                    />
+                  )}
+                </div>
+              );
+            })
+          : null}
+      </div>
       <div className="flex justify-center gap-10 py-10">
         <button
           className="bg-[#ABAAAA] w-[40px] h-[40px] transition-all ease-in-out duration-300 rounded-full"

@@ -2,7 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import NavigationBar from './NavigationBar/NavigationBar';
 import Footer from './Footer';
 import { ToastContainer } from 'react-toastify';
-const Layout = ({ pathname, backgroundColour, children }) => {
+const Layout = ({
+  pathname,
+  backgroundColour,
+  children,
+  disableMouseListener,
+}) => {
   const [isVisible, setIsVisible] = useState(true);
   const scrollY = useRef(0);
   const timeoutRef = useRef(null); // Reference to store the timeout
@@ -39,29 +44,31 @@ const Layout = ({ pathname, backgroundColour, children }) => {
       scrollY.current = currentScrollY;
     };
 
-    const handleMouseMove = (event) => {
-      if (locked.current) {
-        setIsVisible(true);
-        return;
-      }
-      const viewportHeight = window.innerHeight;
-      const currentScrollY = window.scrollY;
-      const threshold = viewportHeight * 0.21;
-      // Clear any existing timeout to reset the timer
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+    const handleMouseMove = !disableMouseListener
+      ? (event) => {
+          if (locked.current) {
+            setIsVisible(true);
+            return;
+          }
+          const viewportHeight = window.innerHeight;
+          const currentScrollY = window.scrollY;
+          const threshold = viewportHeight * 0.21;
+          // Clear any existing timeout to reset the timer
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+          }
 
-      if (event.clientY < 150) {
-        // Cursor is within 150 pixels of the top of the viewport
-        setIsVisible(true);
-      } else if (currentScrollY > threshold) {
-        // Set a new timeout to hide the navigation bar after 2 seconds if cursor is not near the top
-        timeoutRef.current = setTimeout(() => {
-          setIsVisible(false);
-        }, 2000);
-      }
-    };
+          if (event.clientY < 150) {
+            // Cursor is within 150 pixels of the top of the viewport
+            setIsVisible(true);
+          } else if (currentScrollY > threshold) {
+            // Set a new timeout to hide the navigation bar after 2 seconds if cursor is not near the top
+            timeoutRef.current = setTimeout(() => {
+              setIsVisible(false);
+            }, 2000);
+          }
+        }
+      : undefined;
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
