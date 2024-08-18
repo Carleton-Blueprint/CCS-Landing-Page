@@ -10,10 +10,10 @@ const GetInvolvedCard = ({ data }) => {
   const link = data?.link;
 
   const overlayStyle = {
-    backgroundSize: '100% 600%',
+    backgroundSize: '100% 300%',
     backgroundPosition: isHovering ? '100% 100%' : '100% 0%',
     backgroundImage:
-      'linear-gradient(135deg, rgb(255,0,0,0), rgb(255,0,0,0), rgb(255,0,0,0), rgb(255,0,0,0.6))',
+      'linear-gradient(135deg, rgb(255,0,0,0), rgb(255,0,0,0), rgb(255,0,0,0), rgb(255,0,0,0.1), rgb(255,0,0,0.4))',
   };
 
   return (
