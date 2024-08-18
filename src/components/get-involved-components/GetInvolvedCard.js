@@ -20,7 +20,7 @@ const GetInvolvedCard = ({ data }) => {
     <div
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className="relative flex flex-col w-10/12 transition-all duration-30 text-white 
+      className="relative flex flex-col w-10/12 transition-all duration-300 text-white 
                 rounded-tr-[3rem] rounded-bl-[3rem] 
                 hover:rounded-tr-none hover:rounded-bl-none hover:rounded-tl-[3rem] hover:rounded-br-[3rem] 
                 bg-primaryGray h-[16rem] sm:w-[32rem] sm:h-[22rem]"
