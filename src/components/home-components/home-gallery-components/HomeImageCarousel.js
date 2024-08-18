@@ -55,7 +55,7 @@ const HomeImageCarousel = (props) => {
       >
         <div
           className="z-30 transition-all duration-150 ease-out masked-div
-      w-[267px] h-[306px] md:w-[355px] md:h-[423px] xl:w-[267px] xl:h-[306px]"
+      w-[267px] h-[306px] md:w-[355px] md:h-[423px] xl:w-[267px] xl:h-[306px]  hover:scale-[1.075]"
         >
           <div className="flex">
             {allImages.map((image) => (
